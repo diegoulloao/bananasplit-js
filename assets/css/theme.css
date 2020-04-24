@@ -10200,6 +10200,7 @@ a.theme-link:hover {
   font-size: 0.875rem;
   position: relative;
   padding-bottom: 60px !important;
+  padding-top: 20px;
 }
 .docs-nav .nav-item {
   margin-left: 2.5rem;
@@ -10336,6 +10337,9 @@ a.theme-link:hover {
 .docs-code-block pre {
   margin-bottom: 0 !important;
 }
+.docs-code-block pre .hljs {
+  padding: 2rem 4rem;
+}
 
 .callout-block {
   padding: 1.5rem;
@@ -10425,7 +10429,7 @@ a.theme-link:hover {
     font-size: 1.5rem;
   }
 
-  .feature-logo {
+  #docs-page .feature-logo {
     margin-top: 70px !important;
     margin-bottom: 70px !important;
   }
@@ -10443,7 +10447,7 @@ a.theme-link:hover {
 }
 @media (min-width: 768px) {
   .docs-article#intro header.docs-header {
-    margin-top: 65px !important;
+    margin: 65px 0 !important;
   }
 }
 @media (max-width: 768px) {
@@ -10453,6 +10457,10 @@ a.theme-link:hover {
 
   .docs-article .docs-intro h2 {
     font-size: 2rem;
+  }
+
+  .docs-code-block pre .hljs {
+    padding: 1rem 2.8rem;
   }
 }
 @media (max-width: 576px) {
@@ -10466,6 +10474,10 @@ a.theme-link:hover {
 
   .docs-article#intro {
     padding-top: 15px;
+  }
+
+  .docs-code-block pre .hljs {
+    padding: 1rem 1.7rem;
   }
 }
 @media (max-width: 320px) {
@@ -10482,7 +10494,7 @@ a.theme-link:hover {
 *   Custom styles for Banana-split Docs
 *
 */
-body {
+body:not(.docs-page) {
   overflow-x: hidden;
 }
 
