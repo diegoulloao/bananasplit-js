@@ -10465,7 +10465,7 @@ body {
   position: absolute;
   bottom: 14px;
   right: 14px;
-  border: 2px dashed #fff;
+  border: 2px dashed rgba(255, 255, 255, 0.8);
   background-image: repeating-linear-gradient(-24deg, transparent, transparent 4px, rgba(255, 255, 255, 0.5) 0, rgba(255, 255, 255, 0.5) 5px);
   z-index: -1;
 }
@@ -10505,7 +10505,7 @@ body {
   display: none;
 }
 #top-carousel .carousel-item.template div:last-child ul li svg {
-  margin-right: 20px;
+  margin-right: 10px;
   color: #e94665;
 }
 @media only screen and (max-width: 1024px) {
@@ -11216,7 +11216,8 @@ div.codePreview {
   }
   #codebox .container .code-box-container {
     grid-template-columns: 100%;
-    max-width: 500px;
+    max-width: 602px;
+    width: 100%;
     margin: 0 auto;
   }
   #codebox .container .code-box-container .codePreview {
@@ -11228,29 +11229,39 @@ div.codePreview {
   }
   #codebox .container .code-box-container .code-descr h3 {
     font-size: 1.4rem;
+    margin-bottom: 4px;
   }
   #codebox .container .code-box-container .code-descr span {
     border: none;
     background: none;
     text-align: center;
   }
-}
-@media only screen and (min-width: 577px) and (max-width: 768px) {
-  .code-box-container .code-descr span {
-    padding: 0 35px 40px 35px;
-  }
-}
-@media only screen and (max-width: 576px) {
-  #codebox .code-descr svg {
+  #codebox .container .code-box-container .code-descr svg {
     display: none;
   }
 }
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 767px) {
   #codebox .container {
-    gap: 7px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+@media only screen and (min-width: 577px) and (max-width: 768px) {
+  .code-box-container .code-descr span {
+    padding: 0 35px 35px 35px;
+  }
+}
+@media only screen and (max-width: 576px) {
+  #codebox .container {
+    gap: 0;
+    padding-left: 15px;
+    padding-right: 15px;
   }
   #codebox .container .code-box-container:not(:first-of-type) {
-    padding-top: 16px;
+    padding-top: 28px;
+  }
+  #codebox .container .code-box-container:not(:first-of-type) .code-descr span {
+    padding-bottom: 28px;
   }
 }
 div.codePreview > .dots {
