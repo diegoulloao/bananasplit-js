@@ -10199,6 +10199,7 @@ a.theme-link:hover {
 .docs-nav .section-items {
   font-size: 0.875rem;
   position: relative;
+  padding-bottom: 60px !important;
 }
 .docs-nav .nav-item {
   margin-left: 2.5rem;
@@ -10247,7 +10248,7 @@ a.theme-link:hover {
 
 .docs-content {
   margin-left: 300px;
-  padding-bottom: 500px;
+  padding-bottom: 40px;
 }
 
 .docs-article {
@@ -10258,9 +10259,12 @@ a.theme-link:hover {
   color: #1a1e23;
 }
 .docs-article .docs-heading {
-  font-size: 3.4rem;
+  font-size: 3rem;
   margin-bottom: 0rem;
   position: relative;
+}
+.docs-article .docs-heading#main-docs-title {
+  font-size: 3.6rem;
 }
 .docs-article .docs-intro h2 {
   margin-top: 0px;
@@ -10286,6 +10290,9 @@ a.theme-link:hover {
 .docs-article .docs-section p:last-child {
   margin-bottom: 0;
 }
+.docs-article .docs-section#about-template {
+  padding-top: 0;
+}
 .docs-article .features-list-doc li svg {
   color: #ef84a3;
 }
@@ -10296,7 +10303,7 @@ a.theme-link:hover {
 }
 .docs-article h2 {
   color: #303740;
-  margin-top: 2rem !important;
+  font-size: 2.5rem;
 }
 .docs-article h3 {
   font-size: 1.5rem;
@@ -10325,7 +10332,9 @@ a.theme-link:hover {
 
 .docs-code-block {
   padding-top: 1rem;
-  padding-bottom: 1rem;
+}
+.docs-code-block pre {
+  margin-bottom: 0 !important;
 }
 
 .callout-block {
@@ -10393,14 +10402,32 @@ a.theme-link:hover {
   font-size: 1.125rem;
 }
 
+@media (max-width: 576px) {
+  .docs-article {
+    padding: 2rem 0;
+  }
+}
 /* We occasionally use media queries that go in the other direction */
 @media (max-width: 767.98px) {
+  .docs-heading#main-docs-title {
+    font-size: 3.2rem;
+  }
+
+  .docs-intro h2 {
+    font-size: 2rem;
+  }
+
   .docs-article .docs-heading {
-    font-size: 2.25rem;
+    font-size: 2.5rem;
   }
 
   .docs-article .section-heading {
     font-size: 1.5rem;
+  }
+
+  .feature-logo {
+    margin-top: 70px !important;
+    margin-bottom: 70px !important;
   }
 }
 @media (max-width: 1199.98px) {
@@ -10412,6 +10439,42 @@ a.theme-link:hover {
     position: static;
     display: block;
     padding-top: 0.5rem;
+  }
+}
+@media (min-width: 768px) {
+  .docs-article#intro header.docs-header {
+    margin-top: 65px !important;
+  }
+}
+@media (max-width: 768px) {
+  .docs-heading#main-docs-title {
+    font-size: 3.3rem !important;
+  }
+
+  .docs-article .docs-intro h2 {
+    font-size: 2rem;
+  }
+}
+@media (max-width: 576px) {
+  .docs-heading#main-docs-title {
+    font-size: 2.6rem !important;
+  }
+
+  .docs-article .docs-intro h2 {
+    font-size: 1.6rem;
+  }
+
+  .docs-article#intro {
+    padding-top: 15px;
+  }
+}
+@media (max-width: 320px) {
+  .docs-heading#main-docs-title {
+    font-size: 2.3rem !important;
+  }
+
+  .docs-article .docs-intro h2 {
+    font-size: 1.5rem;
   }
 }
 /**
