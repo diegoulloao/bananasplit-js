@@ -127,10 +127,10 @@
 							<li><strong>Express Framework</strong> for Node.js</li>
 							<li><strong>Apollo</strong> for GraphQL</li>
 							<li><strong>Jest</strong> for Testing</li>
-							<li><strong>Sequelize</strong> ORM</li>
+							<li><strong>Sequelize</strong> ORM for Data Management</li>
 							<li><strong>Typescript</strong> Superset for Javascript</li>
 							<li><strong>SASS</strong> Precompiler for CSS</li>
-							<li><strong>Handlebars</strong> Template for Views</li>
+							<li><strong>Handlebars</strong> Template engine for Views</li>
 							<li><strong>Bootstrap</strong> Framework for CSS</li>
 						</ol>
 					</section><!--//section-->
@@ -217,7 +217,7 @@
 					
 					<section class="docs-section" id="create">
 						<h2 class="section-heading">Step 2: Create a new project</h2>
-						<p>Replace with the name of your project:</p>
+						<p>Replace by your project name:</p>
 						<code>banana new project-name</code>
 
 						<br/><br/>
@@ -237,7 +237,7 @@
 				     <section class="docs-section" id="dependencies">
 						<h2 class="section-heading">1. Dependencies</h2>
 
-						<p>Install project dependencies:</p>
+						<p>Install the project dependencies:</p>
 						<code>npm i</code>
 
 						<div class="progress my-4">
@@ -259,7 +259,7 @@
 
 						<br/>
 
-						<p>Then at <b>sequelize.conf.js</b> and <b>database.conf.ts</b> files set the dialect:</p>
+						<p>Then at <b>sequelize.conf.js</b> and <b>database.conf.ts</b> files set your dialect:</p>
 
 						<code>dialect: 'mysql' | 'mariadb' | 'postgres' | 'mssql' | 'sqlite'</code>
 						
@@ -313,12 +313,12 @@ DB_PASSWORD=1234
 					<section class="docs-section" id="data">
 						<h2 class="section-heading">4. Database and tables</h2>
 
-						<p>Create database:</p>
+						<p>Create the database:</p>
 						<code>npx sequelize db:create</code>
 
-						<br/><br/>
+						<br/><br/><br/>
 
-						<p>Create test tables:</p>
+						<p><span class="badge badge-light">optional</span> Create the test tables:</p>
 						<code>npx sequelize-cli db:migrate</code>
 
 						<br/><br/>
@@ -349,7 +349,7 @@ DB_PASSWORD=1234
 				    </header>
 				     <section class="docs-section" id="routes">
 						<h2 class="section-heading"><i class="fas fa-map-signs mr-2"></i>Creating Routes</h2>
-						<p>Routes in Banana works the same as in Express.</p>
+						<p>Routes in Banana works the same as Express.</p>
 						To create a new route module you can use the template file <b>routes.ts</b>.</p>
 						
 						<br/>
@@ -404,7 +404,7 @@ export default router
 							</pre>
 						</div><!--//docs-code-block-->
 
-						<p>After that the final step is to register that module in the <b>main.routes.ts</b> file.</p>
+						<p>The final step is to register it in the <b>main.routes.ts</b> file.</p>
 
 						<br/>
 
@@ -445,7 +445,7 @@ export default [
 				
 				<section class="docs-section" id="controllers">
 					<h2 class="section-heading"><i class="fas fa-cog mr-2"></i>Creating Controllers</h2>
-					<p>Banana is a MVC template so all the functions that will be handled by your routes should be contained in a class controller as static methods.</p>
+					<p>Bananasplit is a <b>MVC</b> based template so all the functions will be handled by the routes throw the controller class associated as static methods.</p>
 					<p>To create a new controller you can use the template file <b>controller.ts</b>.</p>
 
 					<br/>
@@ -505,13 +505,13 @@ export default
 							</pre>
 						</div><!--//docs-code-block-->
 
-						<p>Now you can import your brand new Controller anywhere and access the methods by his class name:</p>
+						<p>Now you can import it anywhere and access the methods like:</p>
 						<code>CustomController.doSomething()</code>
 					</section><!--//section-->
 					
 					<section class="docs-section" id="models">
 						<h2 class="section-heading"><i class="fas fa-table mr-2"></i>Creating Models</h2>
-						<p>To create a new model you have two choices.</p>
+						<p>To create a new model you have two options.</p>
 
 						<br/>
 
@@ -686,7 +686,7 @@ export function anotherHelper(): void {
 							</pre>
 						</div><!--//docs-code-block-->
 
-						<p>Now you can import your new helper function from anywhere as:</p>
+						<p>Now you can import them from anywhere:</p>
 						<code>import { anotherHelper } from './src/app/helpers/helpers'</code>
 					</section><!--//section-->
 
@@ -778,7 +778,7 @@ export default [
 				    </header>
 				     <section class="docs-section" id="graphql-independent">
 						<h2 class="section-heading">GraphQL as independent service</h2>
-						<p>By default GraphQL service is provided through the Express Server middleware, this means that GraphQL will only works if Express is running.</p>
+						<p>By default GraphQL is provided through the Express Server middleware, this means that GraphQL will only works if Express is running.</p>
 						<p>To change this behavior you can specify that you want GraphQL running an independent port.</p>
 
 						<br/>
@@ -791,7 +791,6 @@ export default [
 // Express Server
 const app: Express = Express.build()
 
-
 // Apollo Server
 const apollo: Apollo = Apollo.build()
 
@@ -803,6 +802,9 @@ await apollo.start()
 						</div><!--//docs-code-block-->
 
 						<p>Now GraphQL will be accesible via port 5000.</p>
+						<p>Also you can specify the port in an object as parameter:</p>
+						<code>Apollo.build({ port: 7000 })</code>
+						<br/><br/><br/>
 						<div class="alert alert-success" role="alert">
 							Check <a href="http://localhost:5000" target="_blank">http://localhost:5000</a>
 						</div>
@@ -811,7 +813,7 @@ await apollo.start()
 					
 					<section class="docs-section" id="sqlite">
 						<h2 class="section-heading">SQLite configuration</h2>
-						<p>SQLite databases requiere two parameters in the Sequelize configuration object.</p>
+						<p>SQLite requiere two parameters.</p>
 
 						<ol>
 							<li>Dialect</li>
@@ -820,7 +822,7 @@ await apollo.start()
 
 						<br/>
 
-						<p>If you are using SQLite you may want to modify this configuration in <b>database.conf.ts</b> file.</p>
+						<p>If you are using it may want to modify this in the <b>database.conf.ts</b> file.</p>
 
 						<br/>
 
@@ -856,10 +858,9 @@ const SequelizeOptions: Sequelize.Options = {
 					
 					<section class="docs-section" id="custom-graphql">
 							<h2 class="section-heading">Customizing GraphQL</h2>
-						<p>To pre-process your GraphQL schema before Banana creates the service you can use the <b>customize.graphql.ts</b> file.
-						<br/>This file allows you to manipulate the schema with Apollo functions or graphql-tools, for example.</p>
+						<p>To preprocess your GraphQL Schema before Bananasplit creates the service for you, you can use the <b>customize.graphql.ts</b> file. This file allows you to manipulate the Schema as you like.</p>
 
-						<p>The function there included is called by the Provider before instanciates Apollo Server and receives as parameter the schema object that is returned by makeExecutableSchema function directly from Apollo.</p>
+						<p>The function there included is called by the Provider before instanciates Apollo Server and receives as parameter the schema object that is returned by the makeExecutableSchema function directly from Apollo.</p>
 						
 						<br/>
 
@@ -919,7 +920,7 @@ const SequelizeOptions: Sequelize.Options = {
 		                            </span><!--//icon-holder-->
 	                                Important!
 	                            </h4>
-                                <p>The function <b>must returns</b> an options object that will be passed directly to the Apollo Server construct to build the service.</p>
+                                <p>The function <b>must returns</b> an object with the options that will be passed directly to the Apollo construct in order to build the service.</p>
                             </div><!--//content-->
 						</div><!--//callout-block-->
 						
@@ -938,8 +939,8 @@ const SequelizeOptions: Sequelize.Options = {
 						<p>To set different variables you need to put focus on two files:</p>
 
 						<ol>
-							<li><b>sequelize.conf.ts</b> where we specify the variables to use</li>
-							<li><b>.env</b> where we declarate those variables</li>
+							<li><b>sequelize.conf.ts</b> where we specify the variables to use.</li>
+							<li><b>.env</b> where we declarate those variables.</li>
 						</ol>
 
 						<br/>
@@ -1065,8 +1066,8 @@ DB_TEST_PASSWORD=abcd1234
 					
 				     <section class="docs-section" id="extend">
 						<h2 class="section-heading">Extending Providers functionalities</h2>
-						<p>Banana is based on their own Providers classes that provides all the basics services to the template.</p>
-						<p>By default Banana dispose of three.</p>
+						<p>Banana is based on their own Providers classes that provides to the template all the basics services.</p>
+						<p>By default Bananasplit dispose of three.</p>
 
 						<div class="table-responsive my-4">
 							<table class="table table-bordered">
@@ -1132,11 +1133,11 @@ DB_TEST_PASSWORD=abcd1234
 				     <section class="docs-section" id="about">
 						<h2 class="section-heading">About this project <small>(basic questions)</small></h2>
 						<h5 class="pt-3"><i class="fas fa-question-circle mr-1"></i>Is bananasplit a framework?</h5>
-						<p>No, bananasplit is a template/boilerplate that brings to you a background for develop your project. This includes all the most used resources and basic configurations what you need.</p>
+						<p>No. Bananasplit is a template that brings to you a background for develop your project. This means that includes all the basics and most used resources what you need already configured.</p>
 						<h5 class="pt-3"><i class="fas fa-question-circle mr-1"></i>It is hard to learn?</h5>
-						<p>Nope. Banana is extremily simply.<br/>This is pure Express framework code but modularized, the Express that you always knew.</p>
+						<p>Nope, Banana is extremely simple.<br/>Pure Express code but modularized, the Express that you always knew.</p>
 						<h5 class="pt-3"><i class="fas fa-question-circle mr-1"></i>It is hard to configure?</h5>
-						<p>No, you just need to configure your database and database credentials.</p>
+						<p>It's easy! You just need to configure your database settings and credentials.</p>
 						<h5 class="pt-3"><i class="fas fa-question-circle mr-1"></i>What I need for getting work?</h5>
 						<p>All you need is Node.js.</p>
 						<h5 class="pt-3"><i class="fas fa-question-circle mr-1"></i>Why Bananasplit?</h5>
@@ -1146,11 +1147,11 @@ DB_TEST_PASSWORD=abcd1234
 					<section class="docs-section" id="rights">
 						<h2 class="section-heading">About the rights <small>(the code)</small></h2>
 						<h5 class="pt-3"><i class="fas fa-question-circle mr-1"></i>Can I modifiy bananasplit?</h5>
-						<p>Yes of course! Banana is licensed under <b>MIT</b>. You can do with it what you wish.
+						<p>Yes of course! Bananasplit is licensed under <b>MIT</b>. You can do with it what you wish.
 						<br/><a href="https://github.com/diegoulloao/bananasplit-express-template/blob/master/LICENSE" target="_blank">See the license.</a></p>
 					
-						<h5 class="pt-3"><i class="fas fa-question-circle mr-1"></i>Can I contribute to bananasplit project?</h5>
-						<p>Yes! That is all about, contribute to make something better. You can send a pull request or get in contact with me: <a href="http://www.diegoulloa.cl/#contact" target="_blank">www.diegoulloa.cl</a></p>
+						<h5 class="pt-3"><i class="fas fa-question-circle mr-1"></i>Can I contribute to the project?</h5>
+						<p>Yes! That is all about, contribute to make the things better. You can send a pull request or get in contact with me: <a href="http://www.diegoulloa.cl/#contact" target="_blank">www.diegoulloa.cl</a></p>
 					</section><!--//section-->
 			    </article><!--//docs-article-->
 
