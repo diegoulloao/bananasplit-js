@@ -83,7 +83,7 @@
 				    <li class="nav-item"><a class="nav-link scrollto" href="#database">Database engine</a></li>
 				    <li class="nav-item"><a class="nav-link scrollto" href="#env">Enviroment variables</a></li>
 				    <li class="nav-item"><a class="nav-link scrollto" href="#data">Database and tables</a></li>
-				    <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#docs"><span class="theme-icon-holder mr-2"><i class="fas fa-book-reader"></i></span>Documentation</a></li>
+				    <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#guide"><span class="theme-icon-holder mr-2"><i class="fas fa-book-reader"></i></span>Guide</a></li>
 				    <li class="nav-item"><a class="nav-link scrollto" href="#routes">Creating Routes</a></li>
 				    <li class="nav-item"><a class="nav-link scrollto" href="#controllers">Creating Controllers</a></li>
 				    <li class="nav-item"><a class="nav-link scrollto" href="#models">Creating Models</a></li>
@@ -94,7 +94,7 @@
 				    <li class="nav-item"><a class="nav-link scrollto" href="#graphql-independent">GraphQL as independent service</a></li>
 				    <li class="nav-item"><a class="nav-link scrollto" href="#sqlite">SQLite configuration</a></li>
 				    <li class="nav-item"><a class="nav-link scrollto" href="#custom-graphql">Customizing GraphQL</a></li>
-				    <li class="nav-item"><a class="nav-link scrollto" href="#env-context">Database variables for development, test and production</a></li>
+				    <li class="nav-item"><a class="nav-link scrollto" href="#env-context">Database variables for: Development, test and production</a></li>
 				    <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#advanced"><span class="theme-icon-holder mr-2"><i class="fas fa-laptop-code"></i></span>Advanced</a></li>
 				    <li class="nav-item"><a class="nav-link scrollto" href="#extend">Extending Providers functionalities</a></li>
 					<li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#info"><span class="theme-icon-holder mr-2"><i class="fas fa-info-circle"></i></span>Further Information</a></li>
@@ -126,12 +126,12 @@
 						<ol>
 							<li><strong>Express Framework</strong> for Node.js</li>
 							<li><strong>Apollo</strong> for GraphQL</li>
-							<li><strong>Jest</strong> for Test</li>
+							<li><strong>Jest</strong> for Testing</li>
 							<li><strong>Sequelize</strong> ORM</li>
-							<li><strong>Typescript</strong> Language</li>
-							<li><strong>SASS</strong> Pre-compiler</li>
-							<li><strong>Handlebars</strong> Template engine</li>
-							<li><strong>Bootstrap</strong> CSS Framework</li>
+							<li><strong>Typescript</strong> Superset for Javascript</li>
+							<li><strong>SASS</strong> Precompiler for CSS</li>
+							<li><strong>Handlebars</strong> Template for Views</li>
+							<li><strong>Bootstrap</strong> Framework for CSS</li>
 						</ol>
 					</section><!--//section-->
 					
@@ -206,7 +206,7 @@
 				    <header class="docs-header">
 					    <h1 class="docs-heading">Installation</h1>
 					    <section class="docs-intro">
-						    <p>To generate a new bananasplit project you can make it simply by using the banana client.</p>
+						    <p>To generate a new project you can make it simple by using the banana client.</p>
 						</section><!--//docs-intro-->
 				    </header>
 				     <section class="docs-section" id="banana-cli">
@@ -259,8 +259,12 @@
 
 						<br/>
 
-						<p>And set the dialect: <code>dialect: 'mysql' | 'mariadb' | 'postgres' | 'mssql' | 'sqlite'</code> at <b>sequelize.conf.js</b> and <b>database.conf.ts</b> files.</p>
+						<p>Then at <b>sequelize.conf.js</b> and <b>database.conf.ts</b> files set the dialect:</p>
+
+						<code>dialect: 'mysql' | 'mariadb' | 'postgres' | 'mssql' | 'sqlite'</code>
 						
+						<br/>
+
 						<div class="progress my-4">
 							<div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
 						</div>
@@ -284,6 +288,8 @@
 						<h2 class="section-heading">3. Enviroment variables</h2>
 						<p>Rename the <b>.env.example</b> file to <b>.env</b>, then set your vars:</p>
 
+						<br/>
+						<span class="badge badge-secondary">.env.example -> .env</span>
 						<div class="docs-code-block">
 							<pre class="rounded">
 								<code class="misc hljs">
@@ -337,14 +343,14 @@ DB_PASSWORD=1234
 				</article><!--//docs-article-->
 
 			    
-			    <article class="docs-article" id="docs">
+			    <article class="docs-article" id="guide">
 				    <header class="docs-header">
-					    <h1 class="docs-heading">Documentation</h1>
+					    <h1 class="docs-heading">Guide</h1>
 				    </header>
 				     <section class="docs-section" id="routes">
 						<h2 class="section-heading"><i class="fas fa-map-signs mr-2"></i>Creating Routes</h2>
-						<p>Routes in Banana works the same as in Express.
-							<br/>To create a new route module you can use the sample file <b>routes.ts</b> as template.</p>
+						<p>Routes in Banana works the same as in Express.</p>
+						To create a new route module you can use the template file <b>routes.ts</b>.</p>
 						
 						<br/>
 
@@ -398,7 +404,7 @@ export default router
 							</pre>
 						</div><!--//docs-code-block-->
 
-						<p>After that the final step is to register that module in the main routes file.</p>
+						<p>After that the final step is to register that module in the <b>main.routes.ts</b> file.</p>
 
 						<br/>
 
@@ -407,6 +413,7 @@ export default router
 							<pre class="rounded">
 								<code class="typescript hljs">
 ...
+
 
 /**
 *  
@@ -439,7 +446,7 @@ export default [
 				<section class="docs-section" id="controllers">
 					<h2 class="section-heading"><i class="fas fa-cog mr-2"></i>Creating Controllers</h2>
 					<p>Banana is a MVC template so all the functions that will be handled by your routes should be contained in a class controller as static methods.</p>
-					<p>To create a new controller you can use the sample file <b>controller.ts</b> as template.</p>
+					<p>To create a new controller you can use the template file <b>controller.ts</b>.</p>
 
 					<br/>
 
@@ -537,7 +544,7 @@ export default
 
 						<br/><br/>
 
-						<p>You can use the sample file <b>model.ts</b> as template.</p>
+						<p>You can use the template file <b>model.ts</b>.</p>
 
 						<br/>
 
@@ -615,10 +622,8 @@ export default MyModel
 
 					<section class="docs-section" id="migrations-seeders">
 						<h2 class="section-heading"><i class="fas fa-database mr-2"></i>Creating Migrations and Seeders</h2>
-						<p>In this case the best option is to use the sequelize client.
-							<br/>
-							<b>Sequelize-cli don't provides native Typescript support</b>, therefore they must be written in Javascript.
-						</p>
+						<p>In this case the best option is to use the sequelize client.</p>
+						<p><b>Sequelize-cli don't provides native Typescript support</b>, therefore they must be written in Javascript.</p>
 
 						<br/>
 
@@ -788,9 +793,7 @@ const app: Express = Express.build()
 
 
 // Apollo Server
-const apollo: Apollo = Apollo.build({
-	port: 5000
-})
+const apollo: Apollo = Apollo.build()
 
 
 await app.start()
@@ -799,7 +802,7 @@ await apollo.start()
 							</pre>
 						</div><!--//docs-code-block-->
 
-						<p>Now GraphQL will be accesible via port :5000</p>
+						<p>Now GraphQL will be accesible via port 5000.</p>
 						<div class="alert alert-success" role="alert">
 							Check <a href="http://localhost:5000" target="_blank">http://localhost:5000</a>
 						</div>
@@ -926,9 +929,9 @@ const SequelizeOptions: Sequelize.Options = {
 					</section><!--//section-->
 
 					<section class="docs-section" id="env-context">
-						<h2 class="section-heading">Database variables for development, test and production</h2>
-						<p>By default Banana uses the same variables for development, test and production.
-						<br/>Plus, Banana uses dotenv that allows you to create or delete your own variables easily.</p>
+						<h2 class="section-heading">Database variables for: Development, test and production</h2>
+						<p>By default Banana uses the same variables for development, test and production.</p>
+						<p>Plus, Banana uses dotenv that allows you to create or delete your own variables easily.</p>
 
 						<br/>
 
@@ -1003,8 +1006,8 @@ module.exports = {
 
 						<p><b>Notice that we have two variable prefix groups here:</b></p>
 						<ul>
-							<li><code>DB_DEV_*</code> for development variables</li>
-							<li><code>DB_TEST_*</code> for testing variables</li>
+							<li><code>DB_DEV_*</code> for development variables.</li>
+							<li><code>DB_TEST_*</code> for testing variables.</li>
 						</ul>
 
 						<div class="progress my-4">
@@ -1015,7 +1018,7 @@ module.exports = {
 
 						<h3>Step 2. Declaring those variables</h3>
 
-						<p>That way, now you can declare those variables at your .env file:</p>
+						<p>That way, now you can declare those variables at your <b>.env</b> file:</p>
 
 						<br/>
 
@@ -1062,9 +1065,8 @@ DB_TEST_PASSWORD=abcd1234
 					
 				     <section class="docs-section" id="extend">
 						<h2 class="section-heading">Extending Providers functionalities</h2>
-						<p>Banana is based on their own Providers classes that provides all the basics services to the template.
-							<br/>By default Banana dispose of three.
-						</p>
+						<p>Banana is based on their own Providers classes that provides all the basics services to the template.</p>
+						<p>By default Banana dispose of three.</p>
 
 						<div class="table-responsive my-4">
 							<table class="table table-bordered">
@@ -1097,6 +1099,8 @@ DB_TEST_PASSWORD=abcd1234
 				    </header>
 					<section class="docs-section">
 						<h4><i class="fas fa-book-open mr-2"></i>For more information you can visit the official documentations:</h4>
+
+						<br/>
 						
 						<ul>
 							<li><strong class="mr-1">Express</strong> <a href="https://expressjs.com" target="_blank">https://expressjs.com</a></li>
@@ -1113,6 +1117,7 @@ DB_TEST_PASSWORD=abcd1234
 						<br/>
 
 						<h4><i class="fab fa-github mr-2"></i>For more detailed documentation about this project you can visit:</h4>
+						<br/>
 						<div style="overflow:auto"><a href="https://github.com/diegoulloao/bananasplit-express-template">https://github.com/diegoulloao/bananasplit-express-template</a></div>
 						<br/><br/>
 						<a href="https://github.com/diegoulloao/bananasplit-express-template" class="btn btn-secondary"><i class="fas fa-arrow-alt-circle-right mr-2"></i> View on Github</a>
@@ -1127,8 +1132,7 @@ DB_TEST_PASSWORD=abcd1234
 				     <section class="docs-section" id="about">
 						<h2 class="section-heading">About this project <small>(basic questions)</small></h2>
 						<h5 class="pt-3"><i class="fas fa-question-circle mr-1"></i>Is bananasplit a framework?</h5>
-						<p>No, bananasplit is a template/boilerplate that brings to you a background for develop your project.
-							<br/>This includes all the most used resources and configurations what you need.</p>
+						<p>No, bananasplit is a template/boilerplate that brings to you a background for develop your project. This includes all the most used resources and basic configurations what you need.</p>
 						<h5 class="pt-3"><i class="fas fa-question-circle mr-1"></i>It is hard to learn?</h5>
 						<p>Nope. Banana is extremily simply.<br/>This is pure Express framework code but modularized, the Express that you always knew.</p>
 						<h5 class="pt-3"><i class="fas fa-question-circle mr-1"></i>It is hard to configure?</h5>
@@ -1146,9 +1150,7 @@ DB_TEST_PASSWORD=abcd1234
 						<br/><a href="https://github.com/diegoulloao/bananasplit-express-template/blob/master/LICENSE" target="_blank">See the license.</a></p>
 					
 						<h5 class="pt-3"><i class="fas fa-question-circle mr-1"></i>Can I contribute to bananasplit project?</h5>
-						<p>Yes! That is all about, contribute to make something better.
-							<br/>You can send a pull request or get in contact with me: <a href="http://www.diegoulloa.cl/#contact" target="_blank">www.diegoulloa.cl</a>
-						</p>
+						<p>Yes! That is all about, contribute to make something better. You can send a pull request or get in contact with me: <a href="http://www.diegoulloa.cl/#contact" target="_blank">www.diegoulloa.cl</a></p>
 					</section><!--//section-->
 			    </article><!--//docs-article-->
 

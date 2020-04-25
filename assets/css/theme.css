@@ -10199,7 +10199,7 @@ a.theme-link:hover {
 .docs-nav .section-items {
   font-size: 0.875rem;
   position: relative;
-  padding-bottom: 60px !important;
+  padding-bottom: 40px !important;
   padding-top: 20px;
 }
 .docs-nav .nav-item {
@@ -10331,9 +10331,6 @@ a.theme-link:hover {
   padding-bottom: 0.5rem;
 }
 
-.docs-code-block {
-  padding-top: 1rem;
-}
 .docs-code-block pre {
   margin-bottom: 0 !important;
 }
