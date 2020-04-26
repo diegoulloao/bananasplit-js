@@ -337,7 +337,7 @@ DB_PASSWORD=1234
 						<br/><br/><br/>
 	
 						<div class="alert alert-success" role="alert">
-							CHECK <a href="http://localhost:4000" target="_blank">http://localhost:4000</a>
+							CHECK <a href="http://localhost:3000" target="_blank">http://localhost:3000</a>
 						</div>
 					</section>
 				</article><!--//docs-article-->
@@ -449,7 +449,7 @@ export default [
 					<p>To create a new controller you can use the template file <b>controller.ts</b>.</p>
 
 					<br/>
-
+								
 					<span class="badge badge-secondary">my-custom-controller.ts</span>
 
 					<div class="docs-code-block">
@@ -603,13 +603,13 @@ class MyModel extends Model {
 
 
 // Load the model
-MyModel.init( MyModel.fields, MyModel.options )
+const $ = MyModel
+MyModel.init( $.fields, $.options )
 
 
-// Do something async before export the model (optional)
-; (async () => {
+; ( async () => {
 
-	// do something
+	// do something async before export the model
 
 })()
 
@@ -789,24 +789,24 @@ export default [
 							<pre class="rounded">
 								<code class="typescript hljs">
 // Express Server
-const app: Express = Express.build()
+const express: Express = Express.build()
 
 // Apollo Server
 const apollo: Apollo = Apollo.build()
 
 
-await app.start()
+await express.start()
 await apollo.start()
 								</code>
 							</pre>
 						</div><!--//docs-code-block-->
 
-						<p>Now GraphQL will be accesible via port 5000.</p>
+						<p>Now GraphQL will be accesible via port 4000.</p>
 						<p>Also you can specify the port in an object as parameter:</p>
-						<code>Apollo.build({ port: 7000 })</code>
+						<code>Apollo.build({ port: 7000 })</code> or <code>apollo.start( 7000 )</code>
 						<br/><br/><br/>
 						<div class="alert alert-success" role="alert">
-							Check <a href="http://localhost:5000" target="_blank">http://localhost:5000</a>
+							Check <a href="http://localhost:4000" target="_blank">http://localhost:4000</a>
 						</div>
 						<span class="badge badge-success">Done.</span>
 					</section><!--//section-->
