@@ -794,9 +794,12 @@ const express: Express = Express.build()
 // Apollo Server
 const apollo: Apollo = Apollo.build()
 
+; ( async () => {
 
-await express.start()
-await apollo.start()
+	await express.start()
+	await apollo.start()
+	
+})()
 								</code>
 							</pre>
 						</div><!--//docs-code-block-->
