@@ -138,7 +138,7 @@
 					<section class="docs-section" id="packages">
 						<h2 class="section-heading">About Packages</h2>
 
-						<h5>Banana also includes useful npm-packages like:</h5>
+						<h5>Banana also includes useful npm-packages already configured like:</h5>
 						<br/>
 						<div class="table-responsive my-0">
 							<table class="table table-bordered">
@@ -206,7 +206,7 @@
 				    <header class="docs-header">
 					    <h1 class="docs-heading">Installation</h1>
 					    <section class="docs-intro">
-						    <p>To generate a new project you can make it simple by using the banana client.</p>
+						    <p>To generate a new project you can use the banana client.</p>
 						</section><!--//docs-intro-->
 				    </header>
 				     <section class="docs-section" id="banana-cli">
@@ -259,7 +259,7 @@
 
 						<br/>
 
-						<p>Then at <b>sequelize.conf.js</b> and <b>database.conf.ts</b> files set your dialect:</p>
+						<p>Then at <b>sequelize.conf.js</b> and <b>database.conf.ts</b> files, set your dialect:</p>
 
 						<code>dialect: 'mysql' | 'mariadb' | 'postgres' | 'mssql' | 'sqlite'</code>
 						
@@ -430,7 +430,7 @@ export default [
 	/**
 	* 
 	*  @register @routes
-	*  Your custom Routes register goes here.
+	*  Your custom Routes registry goes here.
 	*  
 	*/
 
@@ -721,7 +721,7 @@ export default [
 	/**
 	*
 	*  @register @schemas
-	*  Your Schemas register goes here.
+	*  Your Schemas registry goes here.
 	* 
 	*/
 	HelloSchema,
@@ -758,7 +758,7 @@ export default [
 	/**
 	*
 	*  @register @resolvers
-	*  Your Resolvers register goes here.
+	*  Your Resolvers registry goes here.
 	* 
 	*/
 	HelloResolvers,
@@ -794,8 +794,10 @@ const express: Express = Express.build()
 // Apollo Server
 const apollo: Apollo = Apollo.build()
 
+
 ; ( async () => {
 
+	// Start the services
 	await express.start()
 	await apollo.start()
 	
@@ -1120,7 +1122,7 @@ DB_TEST_PASSWORD=abcd1234
 
 						<br/>
 
-						<h4><i class="fab fa-github mr-2"></i>For more detailed documentation about this project you can visit:</h4>
+						<h4><i class="fab fa-github mr-2"></i>You can visit the project in Github:</h4>
 						<br/>
 						<div style="overflow:auto"><a href="https://github.com/diegoulloao/bananasplit-express-template">https://github.com/diegoulloao/bananasplit-express-template</a></div>
 						<br/><br/>
