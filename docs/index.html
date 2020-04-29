@@ -271,7 +271,7 @@
 		                            </span><!--//icon-holder-->
 	                                Note
 	                            </h4>
-                                <p>SQLite3 receives special parameters.<br/> Read for more information: <a href="https://sequelize.org/v5/manual/getting-started.html">https://sequelize.org/v5/manual/getting-started.html</a></p>
+                                <p>SQLite3 receives an special parameter in the database configuration file. Please <a href="#sqlite">go to SQLite3 section</a>.<br/> Read for more information: <a href="https://sequelize.org/v5/manual/getting-started.html">https://sequelize.org/v5/manual/getting-started.html</a></p>
                             </div><!--//content-->
                         </div><!--//callout-block-->
 					</section><!--//section-->
@@ -820,16 +820,15 @@ const apollo: Apollo = Apollo.build()
 					
 					<section class="docs-section" id="sqlite">
 						<h2 class="section-heading">SQLite configuration</h2>
-						<p>SQLite requiere two parameters.</p>
+						<p>SQLite requieres an additional parameter:</p>
 
-						<ol>
-							<li>Dialect</li>
+						<ul>
 							<li>Storage path</li>
-						</ol>
+						</ul>
 
 						<br/>
 
-						<p>If you are using it may want to modify this in the <b>database.conf.ts</b> file.</p>
+						<p>If you are using it may want to add this in the <b>database.conf.ts</b> file.</p>
 
 						<br/>
 
@@ -838,9 +837,6 @@ const apollo: Apollo = Apollo.build()
 						<div class="docs-code-block">
 							<pre class="rounded">
 								<code class="typescript hljs">
-...
-
-
 /**
 * 
 *  @options
@@ -849,13 +845,14 @@ const apollo: Apollo = Apollo.build()
 */
 const SequelizeOptions: Sequelize.Options = {
 
-	dialect: 'sqlite',
+	...
+
+	// Added storage for SQLite3
 	storage: 'path/to/database.sqlite'
 
+	...
+
 }
-
-
-...
 								</code>
 							</pre>
 						</div><!--//docs-code-block-->
