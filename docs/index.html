@@ -281,7 +281,7 @@
 						<p>Rename the <b>.env.example</b> file to <b>.env</b>, then set your vars:</p>
 
 						<br/>
-						<span class="badge badge-secondary">.env.example -> .env</span> <span class="badge badge-light">example</span>
+						<span class="badge badge-secondary">.env.example -> .env</span>
 						<div class="docs-code-block">
 							<pre class="rounded">
 								<code class="misc hljs">
@@ -601,12 +601,17 @@ class MyModel extends Model {
 
 	}
 
+
+	// Init
+	public static init() {
+		super.init.call( this, this.fields, this.options )
+	}
+
 }
 
 
 // Load the model
-const $ = MyModel
-MyModel.init( $.fields, $.options )
+MyModel.init()
 
 
 ; ( async () => {
