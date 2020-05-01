@@ -82,7 +82,8 @@
 				    <li class="nav-item"><a class="nav-link scrollto" href="#dependencies">Dependencies</a></li>
 				    <li class="nav-item"><a class="nav-link scrollto" href="#database">Database engine</a></li>
 				    <li class="nav-item"><a class="nav-link scrollto" href="#env">Enviroment variables</a></li>
-				    <li class="nav-item"><a class="nav-link scrollto" href="#data">Database and tables</a></li>
+					<li class="nav-item"><a class="nav-link scrollto" href="#data">Database and tables</a></li>
+					<li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#now"><span class="theme-icon-holder mr-2"><i class="fas fa-check"></i></span>Run and Testing</a></li>
 				    <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#guide"><span class="theme-icon-holder mr-2"><i class="fas fa-book-reader"></i></span>Guide</a></li>
 				    <li class="nav-item"><a class="nav-link scrollto" href="#routes">Creating Routes</a></li>
 				    <li class="nav-item"><a class="nav-link scrollto" href="#controllers">Creating Controllers</a></li>
@@ -248,7 +249,7 @@
 					<section class="docs-section" id="database">
 						<h2 class="section-heading">2. Database engine</h2>
 
-						<p>Choose to install your database driver:</p>
+						<p>Install your database driver:</p>
 						<ul>
 						    <li><strong class="mr-1">MySQL</strong> <code>npm i mysql2</code></li>
 						    <li><strong class="mr-1">MariaDB</strong> <code>npm i mariadb</code></li>
@@ -278,16 +279,16 @@
 					
 					<section class="docs-section" id="env">
 						<h2 class="section-heading">3. Enviroment variables</h2>
-						<p>Rename the <b>.env.example</b> file to <b>.env</b>, then set your vars:</p>
+						<p>Set your vars renaming your <b>.env.example</b> file to <b>.env</b>:</p>
 
 						<br/>
 						<span class="badge badge-secondary">.env.example -> .env</span>
 						<div class="docs-code-block">
 							<pre class="rounded">
 								<code class="misc hljs">
-# [development] Database
+# [development]
 
-DB_ENGINE=mysql
+DB_DIALECT=mysql
 
 DB_HOST=localhost
 DB_PORT=3306
@@ -302,8 +303,8 @@ DB_PASSWORD=1234
 							</pre>
 						</div><!--//docs-code-block-->
 
-						<p>Choices for the Database engine are:</p>
-						<code>DB_ENGINE=mysql|mariadb|postgres|mssql|sqlite</code>
+						<p>Choices for dialect:</p>
+						<code>DB_DIALECT=mysql|mariadb|postgres|mssql|sqlite</code>
 
 						<br/><br/>
 
@@ -320,8 +321,13 @@ DB_PASSWORD=1234
 
 						<br/><br/><br/>
 
-						<p><span class="badge badge-light">optional</span> Create the test tables:</p>
-						<code>npx sequelize-cli db:migrate</code>
+						<p><span class="badge badge-light">optional</span> Create the test table:</p>
+						<code>npx sequelize db:migrate</code>
+
+						<br/><br/><br/>
+
+						<p><span class="badge badge-light">optional</span> Seed the test table:</p>
+						<code>npx sequelize db:seed --seed user-table-test</code>
 
 						<br/><br/>
 
@@ -331,8 +337,16 @@ DB_PASSWORD=1234
 
 						<span class="badge badge-success">Done.</span>
 					</section><!--//section-->
+				</article><!--//docs-article-->
 
-					<section class="docs-section">
+
+				<article class="docs-article" id="now">
+					<header class="docs-header">
+						<h1 class="docs-heading">Now what?</h1>
+						<p>You are ready!</p>
+					</header>
+					
+					<section class="docs-section" id="run">
 						<h2 class="section-heading">Run the server!</h2>
 						<code>npm run server</code>
 	
@@ -341,6 +355,35 @@ DB_PASSWORD=1234
 						<div class="alert alert-success" role="alert">
 							CHECK <a href="http://localhost:3000" target="_blank">http://localhost:3000</a>
 						</div>
+					</section>
+
+					<section class="docs-section" id="test">
+						<span class="badge badge-light">optional</span>
+						<br/><br/><h2 class="section-heading">Testing your app setup</h2>
+						<p>You can test your app services integration by running jest:</p>
+						<code>npx jest setup.test</code>
+
+						<br/><br/><br/>
+
+						<p>Test should be pass:</p>
+						<ul style="list-style:none">
+							<li><i class="fas fa-check-circle mr-1"></i> "Hello response is received" <a href="http://localhost:3000"> (http://localhost:3000)</a></li>
+							<li><i class="fas fa-check-circle mr-1"></i> "Database Authetication is correct" <a href="http://localhost:3000/auth-test"> (http://localhost:3000/auth-test)</a></li>
+							<li><i class="fas fa-check-circle mr-1"></i> "Hello from Database response is received" <a href="http://localhost:3000/query-test"> (http://localhost:3000/query-test)</a></li>
+							<li><i class="fas fa-check-circle mr-1"></i> "User model returns all users" <a href="http://localhost:3000/model-test"> (http://localhost:3000/model-test)</a></li>
+						</ul>
+
+						<div class="callout-block callout-block-info mt-5">
+                            <div class="content">
+                                <h4 class="callout-title">
+	                                <span class="callout-icon-holder mr-1">
+		                                <i class="fas fa-info-circle"></i>
+		                            </span><!--//icon-holder-->
+	                                Note
+	                            </h4>
+                                <p>Jest run your test in a testing enviroment. So you should have your vars already set in your .env file.</p>
+                            </div><!--//content-->
+                        </div><!--//callout-block-->
 					</section>
 				</article><!--//docs-article-->
 
@@ -567,7 +610,7 @@ export default
 
 
 import { Model, DataTypes } from 'sequelize'
-import { sequelize } from '../../providers/sequelize'
+import sequelize from '../../providers/sequelize'
 
 
 class MyModel extends Model {
@@ -795,11 +838,26 @@ export default [
 						<div class="docs-code-block">
 							<pre class="rounded">
 								<code class="typescript hljs">
+...
+
+
 // Express Server
 const express: Express = Express.build()
 
 // Apollo Server
 const apollo: Apollo = Apollo.build()
+								</code>
+							</pre>
+						</div><!--//docs-code-block-->
+
+						<br/>
+
+						<span class="badge badge-secondary">index.ts</span>
+
+						<div class="docs-code-block">
+							<pre class="rounded">
+								<code class="typescript hljs">
+...
 
 
 ; ( async () => {
@@ -833,19 +891,22 @@ const apollo: Apollo = Apollo.build()
 
 						<br/>
 
-						<p>If you are using it may want to add this in the <b>database.conf.ts</b> file.</p>
+						<p>If you are using it may want to add this in the <b>sequelize.conf.ts</b> file.</p>
 
 						<br/>
 
-						<span class="badge badge-secondary">database.conf.ts</span>
+						<span class="badge badge-secondary">sequelize.conf.ts</span>
 
 						<div class="docs-code-block">
 							<pre class="rounded">
 								<code class="typescript hljs">
 /**
 * 
-*  @options
-*  Sequelize App Options
+*  @options @overwrite
+*  Sequelize Options
+* 
+*  You can overwrite default options by yours **
+*  This option object is directly passed to Sequelize constructor in the Provider.
 * 
 */
 const SequelizeOptions: Sequelize.Options = {
@@ -940,95 +1001,11 @@ const SequelizeOptions: Sequelize.Options = {
 
 					<section class="docs-section" id="env-context">
 						<h2 class="section-heading">Database variables for: Development, test and production</h2>
-						<p>By default Banana uses the same variables for development, test and production.</p>
-						<p>Plus, Banana uses dotenv that allows you to create or delete your own variables easily.</p>
+						<p>Banana uses dotenv to set the enviroment variables for the project.</p>
 
 						<br/>
 
-						<p>To set different variables you need to put focus on two files:</p>
-
-						<ol>
-							<li><b>sequelize.conf.ts</b> where we specify the variables to use.</li>
-							<li><b>.env</b> where we declarate those variables.</li>
-						</ol>
-
-						<br/>
-
-						<h3>Step 1. Using the variables</h3>
-
-						<h5>Let's see an example:</h5>
-
-						<br/>
-
-						<span class="badge badge-secondary">sequelize.conf.ts</span>
-
-						<div class="docs-code-block">
-							<pre class="rounded">
-								<code class="javascript hljs">
-...
-
-
-module.exports = {
-
-	// For development
-
-	development: {
-
-		dialect: 'mysql',
-
-		host: process.env.DB_DEV_HOST,
-		port: process.env.DB_DEV_PORT,
-
-		username: process.env.DB_DEV_USERNAME,
-		password: process.env.DB_DEV_PASSWORD,
-		database: process.env.DB_DEV_DATABASE,
-
-
-		...
-
-	},
-
-	
-	// For testing
-
-	test: {
-
-		dialect: 'mysql',
-
-		host: process.env.DB_TEST_HOST,
-		port: process.env.DB_TEST_PORT,
-
-		username: process.env.DB_TEST_USERNAME,
-		password: process.env.DB_TEST_PASSWORD,
-		database: process.env.DB_TEST_DATABASE,
-
-
-		...
-
-	},
-
-	
-	...
-}
-								</code>
-							</pre>
-						</div><!--//docs-code-block-->
-
-						<p><b>Notice that we have two variable prefix groups here:</b></p>
-						<ul>
-							<li><code>DB_DEV_*</code> for development variables.</li>
-							<li><code>DB_TEST_*</code> for testing variables.</li>
-						</ul>
-
-						<div class="progress my-4">
-							<div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-						</div>
-
-						<br/><br/>
-
-						<h3>Step 2. Declaring those variables</h3>
-
-						<p>That way, now you can declare those variables at your <b>.env</b> file:</p>
+						<p>You can defines your development, testing and productions vars in the <b>.env</b> file, for example:</p>
 
 						<br/>
 
@@ -1037,28 +1014,61 @@ module.exports = {
 						<div class="docs-code-block">
 							<pre class="rounded">
 								<code class="misc hljs">
-# Development Database
+# [development]
 
-DB_DEV_HOST=localhost
-DB_DEV_PORT=3306
+DB_DIALECT=myqsl
 
-DB_DEV_DATABASE=test
-DB_DEV_USERNAME=root
-DB_DEV_PASSWORD=1234
+DB_HOST=localhost
+DB_PORT=3306
+
+# Auth
+DB_DATABASE=app_name
+DB_USERNAME=root
+DB_PASSWORD=1234
+
+# -----------------------
 
 
-# Testing Database
 
-DB_TEST_HOST=localhost
-DB_TEST_PORT=1433
+# [testing]
 
-DB_TEST_DATABASE=digitalocean_test
-DB_TEST_USERNAME=user_db
-DB_TEST_PASSWORD=abcd1234
+TEST_DB_DIALECT=mysql
+
+TEST_DB_HOST=http://205.60.34.44
+TEST_DB_PORT=9000
+
+# Auth
+TEST_DB_DATABASE=digitalocean_2CpqHC
+TEST_DB_USERNAME=test_user
+TEST_DB_PASSWORD=mKSnR6JyAeuPXSWv
+
+# -----------------------
+
+
+
+# [production]
+
+PROD_DB_DIALECT=mysql
+
+PROD_DB_HOST=http://250.1.17.246
+PROD_DB_PORT=9000
+
+# Auth
+PROD_DB_DATABASE=digitalocean_app
+PROD_DB_USERNAME=user
+PROD_DB_PASSWORD=6rTsZPtVpRAdG7Ns								
 								</code>
 							</pre>
 						</div><!--//docs-code-block-->
 
+						<p><b>Notice that we have two variable prefix groups here:</b></p>
+						<ul>
+							<li><code>TEST_*</code> for testing variables.</li>
+							<li><code>PROD_*</code> for production variables.</li>
+						</ul>
+
+						<br/>
+						
 						<div class="progress my-4">
 							<div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
 						</div>
