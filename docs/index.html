@@ -280,7 +280,7 @@
 					
 					<section class="docs-section" id="env">
 						<h2 class="section-heading">3. Enviroment variables</h2>
-						<p>Set your vars renaming your <b>.env.example</b> file to <b>.env</b>:</p>
+						<p>Set your vars renaming the <b>.env.example</b> file to <b>.env</b>:</p>
 
 						<br/>
 						<span class="badge badge-secondary">.env.example -> .env</span>
@@ -382,7 +382,7 @@ DB_PASSWORD=1234
 		                            </span><!--//icon-holder-->
 	                                Note
 	                            </h4>
-                                <p>Jest run your test in a testing enviroment. So you should have your vars already set in your .env file.</p>
+                                <p>Jest will run all test in a testing enviroment. So you should have your vars already set in your .env file.</p>
                             </div><!--//content-->
                         </div><!--//callout-block-->
 					</section>
@@ -1121,18 +1121,18 @@ PROD_DB_PASSWORD=6rTsZPtVpRAdG7Ns
 					</header>
 					
 				     <section class="docs-section" id="logs">
-						<div class="mb-5"><h2>v1.1.0 - 2020-05-01</h2><hr/></div>
+						<div class="mb-5"><h1 class="section-heading">v1.1.0 - 2020-05-01</h1><hr/></div>
 						<h3>Added</h3>
 						<ul>
 							<li>Bananasplit will pick all configurations from the .env file variables.</li>
-							<li>Sequelize and Sequelize Client will automatically manage the correct configuration for your app running enviroment in development, testing and production.</li>
+							<li>Sequelize and Sequelize Client will automatically manage the correct configuration for your app enviroment in development, testing and production.</li>
 						</ul>
 
 						<br/>
 
 						<h3>Changed</h3>
 						<ul>
-							<li>Database dialect moved from app.settings file to the .env enviroment variables file.</li>
+							<li>Database dialect moved from app.settings to enviroment variables file.</li>
 							<li>Morgan and SassMiddleware logs deactivated for testing (jest) and production.</li>
 							<li>Added popper.js (for bootstrap) directly as npm package and not from the bootstrap package resources.</li>
 							<li>Minor changes and improvements.</li>
