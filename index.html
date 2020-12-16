@@ -48,7 +48,7 @@
           <div class="docs-top-utilities d-flex justify-content-end align-items-center">
 
             <ul class="social-list list-inline mx-md-3 mx-lg-5 mb-0 d-none d-lg-flex">
-              <li class="list-inline-item"><a href="https://github.com/diegoulloao/bananasplit-express-template" target="_blank"><i class="fab fa-github fa-fw"></i></a></li>
+              <li class="list-inline-item"><a href="https://github.com/bananasplit-js/bananasplit-js" target="_blank"><i class="fab fa-github fa-fw"></i></a></li>
               <li class="list-inline-item"><a href="#"><i class="fab fa-slack fa-fw"></i></a></li>
               <li class="list-inline-item"><a href="#"><i class="fab fa-twitter fa-fw"></i></a></li>
               <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f fa-fw"></i></a></li>
@@ -62,7 +62,7 @@
     <section id="banana-header-logo" class="cta-section banana-bg text-center py-5 position-relative">
       <div class="container">
         <div id="home-title">
-          <span class="logo-text">Banana</span><span class="text-alt">split</span><span class="title-js">JS</span>
+          <span class="logo-text">Banana</span><span class="text-alt">split</span><span class="title-js">JS <small class="font-weight-bold">v2</small></span>
           <span><lottie-player src="assets/animations/new.json"  background="transparent"  speed="1"  style="width:80px;height:80px;display:inline" loop autoplay></lottie-player></span>
         </div>
 
@@ -180,7 +180,7 @@
             <input type="checkbox" class="dots" />
             <input type="checkbox" class="dots" />
             <pre class="rounded">
-<code class="bash hljs">
+<code class="markdown hljs">
 # [database]
 
 DB_DIALECT=mysql
@@ -191,7 +191,6 @@ DB_PORT=3306
 DB_DATABASE=my-backend
 DB_USERNAME=bananasplit
 DB_PASSWORD=secret
-
 </code>
             </pre>
           </div>
@@ -292,7 +291,10 @@ yarn lint:fix
           </div>
 
           <div class="col-9 feature-wonderful align-self-center">
-            <h2 class="text-left ml-5">Backend can be wonderful<span style="color:#eb628a">! * _</span></h2>
+            <h2 class="text-left ml-1">Backend can be wonderful<span style="color:#eb628a">! * _</span></h2>
+            <span class="badge badge-success d-inline mt-2 float-left p-2" style="background:#fcf0da;color:#1a1e23;font-size:14px">
+              import { Stack } from '@bananasplit-js'
+            </span>
           </div>
         </div>
       </div>
@@ -363,7 +365,7 @@ yarn lint:fix
       </div>
 
       <div class="source">
-        <div><p>Currently v2 &nbsp; | &nbsp; Code licensed <a href="https://github.com/diegoulloao/bananasplit-express-template/blob/master/LICENSE" target="_blank"><b>MIT</b></a></p></div>
+        <div><p>Currently <span class="font-weight-bold" style="color:#eb628a">v2</span> &nbsp; | &nbsp; Code licensed <a href="https://github.com/diegoulloao/bananasplit-express-template/blob/master/LICENSE" target="_blank"><b>MIT</b></a></p></div>
 
         <div class="text-right">
           <a href="docs">Read the Documentation</a>
@@ -412,7 +414,7 @@ yarn lint:fix
         let alert = new Noty({
           id: 'banana-alert',
           type: 'warning',
-          text: '<span style="color:#45505e"><b><i class="fas fa-grin-stars mr-2"></i>Version 2 available!</b><br/>Try the new features</span>',
+          text: '<span style="color:#45505e"><b><i class="fas fa-grin-stars mr-2"></i>Version 2 is available!</b><br/>Try the new features</span>',
           theme: 'bootstrap-v4',		// mint | relax | nest | light | bootstrap-v4
           timeout: 4000,
           animation: {
