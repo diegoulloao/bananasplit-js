@@ -11155,6 +11155,13 @@ h1.home-title + p {
   margin-bottom: 20px;
 }
 
+.feature-wonderful h2 {
+  font-family: Pacifico, cursive;
+  font-weight: 500;
+  font-size: 55px;
+  color: #45505e;
+}
+
 :root {
   --colour-background-stripes: rgba(255, 255, 255, 0.5);
 }
