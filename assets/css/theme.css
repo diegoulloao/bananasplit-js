@@ -11289,6 +11289,12 @@ div.codePreview {
   font-size: 1rem;
 }
 
+.lottie-programmer {
+  width: 270px;
+  height: 270px;
+  margin-left: -50px !important;
+}
+
 @media only screen and (max-width: 768px) {
   #codebox .container {
     gap: 45px;
@@ -11317,6 +11323,10 @@ div.codePreview {
   }
   #codebox .container .code-box-container .code-descr svg {
     display: none;
+  }
+
+  .lottie-programmer {
+    margin-left: auto !important;
   }
 }
 @media only screen and (max-width: 767px) {
