@@ -11004,73 +11004,73 @@ h1.home-title + p {
   margin-bottom: 0 !important;
 }
 
-#get-started {
+section#get-started {
   background: #bae2e2;
   overflow: hidden;
 }
-#get-started .container {
+section#get-started .container {
   padding-top: 40px;
 }
-#get-started h1 {
+section#get-started h1 {
   color: #1a1e23;
 }
-#get-started h2 {
+section#get-started h2 {
   color: #45505e;
 }
-#get-started .get-started-step {
+section#get-started .get-started-step {
   margin-top: 40px;
 }
-#get-started code {
+section#get-started code {
   padding: 20px 0;
   width: 500px;
   text-align: center;
   display: inline-block;
   background: #ef84a3;
 }
-#get-started .fancy {
+section#get-started .fancy {
   line-height: 1;
   text-align: center;
   margin: 40px 0 !important;
 }
-#get-started .fancy span {
+section#get-started .fancy span {
   display: inline-block;
   position: relative;
 }
-#get-started .fancy span i {
+section#get-started .fancy span i {
   font-family: "Poppins", cursive;
   font-size: 18px;
   font-weight: 500;
   font-style: normal;
   color: #45505e;
 }
-#get-started .fancy span:before,
-#get-started .fancy span:after {
+section#get-started .fancy span:before,
+section#get-started .fancy span:after {
   content: "";
   position: absolute;
   height: 10px;
   background-color: #45505e;
   width: 3px;
 }
-#get-started .fancy span:before {
+section#get-started .fancy span:before {
   right: calc(50% - 1px);
   top: -8px;
 }
-#get-started .fancy span:after {
+section#get-started .fancy span:after {
   left: calc(50% - 2px);
   bottom: -12px;
 }
 
 @media only screen and (max-width: 768px) {
-  #get-started h2 {
+  section#get-started h2 {
     font-size: 1.4rem;
   }
 }
 @media only screen and (max-width: 480px) {
-  #get-started .container code {
+  section#get-started .container code {
     width: 100%;
   }
-  #get-started .get-started-step,
-#get-started .fancy {
+  section#get-started .get-started-step,
+section#get-started .fancy {
     margin: 25px 0 !important;
   }
 }
