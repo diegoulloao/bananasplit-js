@@ -248,7 +248,7 @@
 
             <section class="docs-section" id="env-vars">
               <h2 class="section-heading">Step 2: Add enviroment variables</h2>
-              <p>Open the .env file and complete like the example:</p>
+              <p>Open the .env file and complete the values like the example:</p>
 
               <div class="docs-code-block">
                 <pre class="rounded">
@@ -267,7 +267,8 @@
                 </pre>
               </div>
 
-              <p>The databases supported are the same supported by sequelize: mysql, mariadb, posgres, mssql, sqlite.</p>
+              <p>The supported databases are the same supported by sequelize: mysql, mariadb, posgres, mssql and sqlite.</p>
+              <p><b>NOTE:</b> The SQLite databases receives a special parameter in the sequelize configuration file. Please <a href="#">read more</a> about this.</p>
             </section><!--//section-->
 
             <section class="docs-section" id="create">
@@ -276,7 +277,8 @@
               <code>yarn build:stack | npm run build:stack</code>
 
               <br/><br/>
-              <p>The build stack script will install all your dependencies and your database drivers detecting it automatically. Yeah, is great!</p>
+              <p>The build stack script will install all your dependencies and your database drivers detecting it automatically from the .env file. Also will run migrations and seeders and finally, will run a jest setup test automatically in order to check that the integration of all your backend application is ok.</p>
+              <p>Yeah, is great!</p>
 
               <span class="badge badge-success">Done.</span>
             </section><!--//section-->
@@ -287,7 +289,7 @@
             <header class="docs-header">
               <h1 class="docs-heading">Manual Configuration</h1>
               <section class="docs-intro">
-                <p>Optionally, you can build the app by the hand.</p>
+                <p>Optionally, you can build the app by the hand. This is highly recommend for deployment build steps because offer to the developer more control and specificity over the workflow.</p>
               </section><!--//docs-intro-->
             </header>
 
