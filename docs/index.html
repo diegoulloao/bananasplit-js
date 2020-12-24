@@ -76,15 +76,15 @@
             <li class="nav-item"><a class="nav-link scrollto" href="#template">About the template</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#packages">About the packages</a></li>
             <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#get-started"><span class="theme-icon-holder mr-2"><i class="fas fa-arrow-down"></i></span>Getting started</a></li>
-            <li class="nav-item"><a class="nav-link scrollto" href="#banana-cli">Create a new project</a></li>
-            <li class="nav-item"><a class="nav-link scrollto" href="#env-vars">Add enviroment variables</a></li>
-            <li class="nav-item"><a class="nav-link scrollto" href="#create">Build the stack</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#banana-cli">1. Create a new project</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#env-vars">2. Add enviroment variables</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#create">3. Build the stack</a></li>
             <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#config"><span class="theme-icon-holder mr-2"><i class="fas fa-cogs"></i></span>Manual stack build</a></li>
-            <li class="nav-item"><a class="nav-link scrollto" href="#dependencies">Install dependencies</a></li>
-            <li class="nav-item"><a class="nav-link scrollto" href="#database">Install database driver</a></li>
-            <li class="nav-item"><a class="nav-link scrollto" href="#env">Enviroment variables</a></li>
-            <li class="nav-item"><a class="nav-link scrollto" href="#data">Migrate and seed</a></li>
-            <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#now"><span class="theme-icon-holder mr-2"><i class="fas fa-check"></i></span>Run and Testing</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#dependencies">1. Install dependencies</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#database">2. Install database driver</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#env">3. Add enviroment variables</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#data">4. Migrate and seed</a></li>
+            <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#now"><span class="theme-icon-holder mr-2"><i class="fas fa-check"></i></span>Run server and test setup</a></li>
             <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#guide"><span class="theme-icon-holder mr-2"><i class="fas fa-book-reader"></i></span>Guide</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#routes">Creating Routes</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#controllers">Creating Controllers</a></li>
@@ -355,7 +355,7 @@
             </section><!--//section-->
 
             <section class="docs-section" id="env">
-              <h2 class="section-heading">Step 3: Enviroment variables</h2>
+              <h2 class="section-heading">Step 3: Add enviroment variables</h2>
               <p>Rename the .env.example file to .env and complete the values like:</p>
 
               <div class="docs-code-block">
@@ -381,7 +381,7 @@
 
               <br/><br/><br/>
 
-              <h3>Workflows</h3>
+              <h3>Workflows and deploys</h3>
               <p>
               When you set enviroment variables in a deploy workflow, bananasplit will ignore the values contained in the .env file <b>but only</b> if those was already declared in it, if is that the case, you can omit what this file contains becase they will be overwritten by the workflow itself.
               </p>
@@ -428,7 +428,7 @@
 
           <article class="docs-article" id="now">
             <section class="docs-section pt-0" id="run">
-              <h2 class="section-heading">Run the server!</h2>
+              <h1 class="docs-heading">Run the server!</h1>
               <p>Great, you are ready to go!</p>
               <code>yarn dev | npm run dev</code>
 
@@ -445,8 +445,8 @@
 
             <section class="docs-section" id="test">
               <br/>
-              <h2 class="section-heading">Testing your app setup</h2>
-              <p>You can test your app services integration by running jest:</p>
+              <h1 class="docs-heading">Test setup</h1>
+              <p>You can test your setup integration by running:</p>
               <code>yarn test setup | npm test setup</code>
 
               <br/><br/><br/>
