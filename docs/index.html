@@ -79,11 +79,11 @@
             <li class="nav-item"><a class="nav-link scrollto" href="#banana-cli">Create a new project</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#env-vars">Add enviroment variables</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#create">Build the stack</a></li>
-            <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#config"><span class="theme-icon-holder mr-2"><i class="fas fa-cogs"></i></span>Manual Configuration</a></li>
-            <li class="nav-item"><a class="nav-link scrollto" href="#dependencies">Dependencies</a></li>
-            <li class="nav-item"><a class="nav-link scrollto" href="#database">Database engine</a></li>
+            <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#config"><span class="theme-icon-holder mr-2"><i class="fas fa-cogs"></i></span>Manual stack build</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#dependencies">Install dependencies</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#database">Install database driver</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#env">Enviroment variables</a></li>
-            <li class="nav-item"><a class="nav-link scrollto" href="#data">Database and tables</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#data">Migrate and seed</a></li>
             <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#now"><span class="theme-icon-holder mr-2"><i class="fas fa-check"></i></span>Run and Testing</a></li>
             <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#guide"><span class="theme-icon-holder mr-2"><i class="fas fa-book-reader"></i></span>Guide</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#routes">Creating Routes</a></li>
@@ -121,7 +121,7 @@
             </header>
 
             <section class="docs-section" id="template">
-              <h2 class="section-heading">About Template</h2>
+              <h2 class="section-heading">About template</h2>
 
               <h5>Banana includes integrated support for:</h5>
               <br/>
@@ -133,13 +133,13 @@
                 <li><strong>Typescript</strong> Superset language for Javascript</li>
               </ol>
 
-              <p>The superpack that you will love!</p>
+              <p><a href="#">The superpack that you will love!</a></p>
             </section><!--//section-->
 
             <section class="docs-section" id="packages">
-              <h2 class="section-heading">About Packages</h2>
+              <h2 class="section-heading">About packages</h2>
 
-              <h5>Banana also includes useful npm-packages already configured like:</h5>
+              <h5>Banana includes useful npm-packages already configured like:</h5>
               <br/>
               <div class="table-responsive my-0">
                 <table class="table table-bordered">
@@ -240,7 +240,7 @@
 
             <section class="docs-section" id="banana-cli">
               <h2 class="section-heading">Step 1: Create a new project</h2>
-              <p>Run on command line:</p>
+              <p>Run in the command line:</p>
               <code>npx bananasplit-js new "my-app" --git | -g</code>
               <br/><br/>
               <p>The optionals --git and -g flags are the same and using it will generate a started git repository inside your project. This feature automatically checkout to the dev branch and creates the first commit.</p>
@@ -248,7 +248,7 @@
 
             <section class="docs-section" id="env-vars">
               <h2 class="section-heading">Step 2: Add enviroment variables</h2>
-              <p>Open the .env file and complete the values like the example:</p>
+              <p>Rename the .env.example file to .env and complete the values like:</p>
 
               <div class="docs-code-block">
                 <pre class="rounded">
@@ -284,20 +284,37 @@
             </section><!--//section-->
           </article><!--//docs-article-->
 
+          <article class="docs-article" id="ekre">
+            <section class="docs-section pt-0" id="324ks">
+              <h2 class="section-heading">Run the server!</h2>
+              <p>Great, you are ready to go!</p>
+              <code>yarn dev | npm run dev</code>
+
+              <br/><br/><br/>
+
+              <p>
+                Your application will be available at:
+              </p>
+
+              <div class="alert alert-success" role="alert">
+                BROWSE &nbsp; <a href="http://localhost:3627" target="_blank">http://localhost:3627</a>
+              </div>
+            </section>
+          </article>
 
           <article class="docs-article" id="config">
             <header class="docs-header">
-              <h1 class="docs-heading">Manual Configuration</h1>
+              <h1 class="docs-heading">Manual stack build</h1>
               <section class="docs-intro">
-                <p>Optionally, you can build the app by the hand. This is highly recommend for deployment build steps because offer to the developer more control and specificity over the workflow.</p>
+                <p>Optionally, you can build the stack by the hand. This is highly recommended for deployment build steps because offer to the developer more control and specificity over the workflow.</p>
               </section><!--//docs-intro-->
             </header>
 
             <section class="docs-section" id="dependencies">
-              <h2 class="section-heading">1. Dependencies</h2>
+              <h2 class="section-heading">Step 1: Install dependencies</h2>
 
-              <p>Install the project dependencies:</p>
-              <code>npm i</code>
+              <p>Run in the command line:</p>
+              <code>yarn | npm i</code>
 
               <div class="progress my-4">
                 <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
@@ -305,16 +322,18 @@
             </section><!--//section-->
 
             <section class="docs-section" id="database">
-              <h2 class="section-heading">2. Database engine</h2>
+              <h2 class="section-heading">Step 2: Install database driver</h2>
 
-              <p>Install your database driver:</p>
+              <p>Run in the command line by the corresponding engine:</p>
               <ul>
-                <li><strong class="mr-1">MySQL</strong> <code>npm i mysql2</code></li>
-                <li><strong class="mr-1">MariaDB</strong> <code>npm i mariadb</code></li>
-                <li><strong class="mr-1">Postgres</strong> <code>npm i pg pg-hstore</code></li>
-                <li><strong class="mr-1">MSSQL</strong> <code>npm i tedious</code></li>
-                <li><strong class="mr-1">SQLite</strong> <code>npm i sqlite3</code></li>
+                <li><strong class="mr-1">MySQL</strong> <code>yarn add mysql2 | npm i mysql2</code></li>
+                <li><strong class="mr-1">MariaDB</strong> <code>yarn add mariadb | npm i mariadb</code></li>
+                <li><strong class="mr-1">Postgres</strong> <code>yarn add pg pg-hstore | npm i pg pg-hstore</code></li>
+                <li><strong class="mr-1">MSSQL</strong> <code>yarn add tedious | npm i tedious</code></li>
+                <li><strong class="mr-1">SQLite</strong> <code>yarn add sqlite3 | npm i sqlite3</code></li>
               </ul>
+
+              <p>This allow to sequelize to communicate with the database engine.</p>
 
               <div class="progress my-4">
                 <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
@@ -330,41 +349,42 @@
                     </span><!--//icon-holder-->
                     Note
                   </h4>
-                  <p>SQLite3 receives an special parameter in the database configuration file. Please <a href="#sqlite">go to SQLite3 section</a>.<br/> Read for more information: <a href="https://sequelize.org/v5/manual/getting-started.html">https://sequelize.org/v5/manual/getting-started.html</a></p>
+                  <p>The SQLite3 receives a special parameter in the sequelize configuration file. Please <a href="#sqlite">go to SQLite3 section</a>. Read for more information: <a href="https://sequelize.org/v5/manual/getting-started.html">https://sequelize.org/v5/manual/getting-started.html</a></p>
                 </div><!--//content-->
               </div><!--//callout-block-->
             </section><!--//section-->
 
             <section class="docs-section" id="env">
-              <h2 class="section-heading">3. Enviroment variables</h2>
-              <p>Set your vars renaming the <b>.env.example</b> file to <b>.env</b>:</p>
+              <h2 class="section-heading">Step 3: Enviroment variables</h2>
+              <p>Rename the .env.example file to .env and complete the values like:</p>
 
-              <br/>
-              <span class="badge badge-secondary">.env.example -> .env</span>
               <div class="docs-code-block">
                 <pre class="rounded">
                 <code class="misc hljs">
-# [development]
+# [database]
 
-DB_DIALECT=mysql
+  DB_DIALECT=mysql
 
-DB_HOST=localhost
-DB_PORT=3306
+  DB_HOST=localhost
+  DB_PORT=3306
 
-# Auth
-DB_DATABASE=test
-DB_USERNAME=root
-DB_PASSWORD=1234
-
-# -----------------------
+  DB_DATABASE=bananasplit-app
+  DB_USERNAME=root
+  DB_PASSWORD=secret
                 </code>
                 </pre>
               </div><!--//docs-code-block-->
 
-              <p>Choices for dialect:</p>
+              <p>The supported databases are the same supported by sequelize: mysql, mariadb, posgres, mssql and sqlite.</p>
+              <p>So the dialect value possibilities are:</p>
               <code>DB_DIALECT=mysql|mariadb|postgres|mssql|sqlite</code>
 
-              <br/><br/>
+              <br/><br/><br/>
+
+              <h3>Workflows</h3>
+              <p>
+              When you set enviroment variables in a deploy workflow, bananasplit will ignore the values contained in the .env file <b>but only</b> if those was already declared in it, if is that the case, you can omit what this file contains becase they will be overwritten by the workflow itself.
+              </p>
 
               <div class="progress my-4">
                 <div class="progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
@@ -372,22 +392,31 @@ DB_PASSWORD=1234
             </section><!--//section-->
 
             <section class="docs-section" id="data">
-              <h2 class="section-heading">4. Database and tables</h2>
+              <h2 class="section-heading">Step 4: Migrate and seed</h2>
+              <p>
+                The purpose of this step is create the specified database for your application, create the tables and populate them with development purpose data.
+              </p>
 
-              <p>Create the database:</p>
+              <br/>
+
+              <h3>4.1 Create database:</h3>
               <code>npx sequelize db:create</code>
 
               <br/><br/><br/>
 
-              <p><span class="badge badge-light">optional</span> Create the test table:</p>
+              <h3>4.2 Migrate tables:</h3>
               <code>npx sequelize db:migrate</code>
 
               <br/><br/><br/>
 
-              <p><span class="badge badge-light">optional</span> Seed the test table:</p>
-              <code>npx sequelize db:seed --seed user-table-seeder</code>
+              <h3>4.3 Seed tables:</h3>
+              <code>npx sequelize db:seed:all</code>
 
               <br/><br/>
+
+              <p>
+              This step is very flexible and you can migrate or seed only the tables you need. Please see <a href="https://sequelize.org/master/manual/migrations.html#running-migrations" target="_blank">sequelize migrations</a> and <a href="https://sequelize.org/master/manual/migrations.html#running-seeds">sequelize seeders</a> for more information.
+              </p>
 
               <div class="progress my-4">
                 <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
@@ -397,40 +426,39 @@ DB_PASSWORD=1234
             </section><!--//section-->
           </article><!--//docs-article-->
 
-
           <article class="docs-article" id="now">
-            <header class="docs-header">
-              <h1 class="docs-heading">Now what?</h1>
-              <p>You are ready!</p>
-            </header>
-
-            <section class="docs-section" id="run">
+            <section class="docs-section pt-0" id="run">
               <h2 class="section-heading">Run the server!</h2>
-              <code>npm start</code>
+              <p>Great, you are ready to go!</p>
+              <code>yarn dev | npm run dev</code>
 
               <br/><br/><br/>
 
+              <p>
+                Your application will be available at:
+              </p>
+
               <div class="alert alert-success" role="alert">
-                CHECK <a href="http://localhost:3000" target="_blank">http://localhost:3000</a>
+                BROWSE &nbsp; <a href="http://localhost:3627" target="_blank">http://localhost:3627</a>
               </div>
             </section>
 
             <section class="docs-section" id="test">
-              <span class="badge badge-light">optional</span>
-              <br/><br/><h2 class="section-heading">Testing your app setup</h2>
+              <br/>
+              <h2 class="section-heading">Testing your app setup</h2>
               <p>You can test your app services integration by running jest:</p>
-              <code>npx jest setup.test</code>
+              <code>yarn test setup | npm test setup</code>
 
               <br/><br/><br/>
 
               <p>Test should be pass:</p>
               <ul style="list-style:none">
-                <li><i class="fas fa-check-circle mr-1" style="color:#5cb377"></i> "Hello response is received" <a href="http://localhost:3000"> (http://localhost:3000)</a></li>
-                <li><i class="fas fa-check-circle mr-1" style="color:#5cb377"></i> "Database Authetication is correct" <a href="http://localhost:3000/auth-test"> (http://localhost:3000/auth-test)</a></li>
-                <li><i class="fas fa-check-circle mr-1" style="color:#5cb377"></i> "Hello from Database response is received" <a href="http://localhost:3000/query-test"> (http://localhost:3000/query-test)</a></li>
-                <li><i class="fas fa-check-circle mr-1" style="color:#5cb377"></i> "User model returns all users" <a href="http://localhost:3000/model-test"> (http://localhost:3000/model-test)</a></li>
-                <li><i class="fas fa-check-circle mr-1" style="color:#5cb377"></i> "GraphQL Playground loads" <a href="http://localhost:3000/graphql"> (http://localhost:3000/graphql)</a></li>
-                <li><i class="fas fa-check-circle mr-1" style="color:#5cb377"></i> "Hello from GraphQL is received" <a href="http://localhost:3000/graphql?query=%7Bhello%7D"> (http://localhost:3000/graphql?query=%7Bhello%7D)</a></li>
+                <li><i class="fas fa-check-circle mr-1" style="color:#5cb377"></i> "Hello response is received" <a href="http://localhost:3627"> (http://localhost:3627)</a></li>
+                <li><i class="fas fa-check-circle mr-1" style="color:#5cb377"></i> "Database Authetication is correct" <a href="http://localhost:3627/auth-test"> (http://localhost:3627/auth-test)</a></li>
+                <li><i class="fas fa-check-circle mr-1" style="color:#5cb377"></i> "Hello from Database response is received" <a href="http://localhost:3627/query-test"> (http://localhost:3627/query-test)</a></li>
+                <li><i class="fas fa-check-circle mr-1" style="color:#5cb377"></i> "User model returns all users" <a href="http://localhost:3627/model-test"> (http://localhost:3627/model-test)</a></li>
+                <li><i class="fas fa-check-circle mr-1" style="color:#5cb377"></i> "GraphQL Playground loads" <a href="http://localhost:3627/graphql"> (http://localhost:3627/graphql)</a></li>
+                <li><i class="fas fa-check-circle mr-1" style="color:#5cb377"></i> "Hello from GraphQL is received" <a href="http://localhost:3627/graphql?query=%7Bhello%7D"> (http://localhost:3627/graphql?query=%7Bhello%7D)</a></li>
               </ul>
 
               <div class="callout-block callout-block-info mt-5">
