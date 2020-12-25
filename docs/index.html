@@ -84,7 +84,7 @@
             <li class="nav-item"><a class="nav-link scrollto" href="#database">2. Install database driver</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#env">3. Add enviroment variables</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#data">4. Migrate and seed</a></li>
-            <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#now"><span class="theme-icon-holder mr-2"><i class="fas fa-check"></i></span>Run server and test setup</a></li>
+            <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#now"><span class="theme-icon-holder mr-2"><i class="fas fa-check"></i></span>Final steps</a></li>
             <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#guide"><span class="theme-icon-holder mr-2"><i class="fas fa-book-reader"></i></span>Guide</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#routes">Creating Routes</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#controllers">Creating Controllers</a></li>
@@ -427,9 +427,45 @@
           </article><!--//docs-article-->
 
           <article class="docs-article" id="now">
-            <section class="docs-section pt-0" id="run">
+            <section class="docs-section pt-0" id="test">
+              <h1 class="docs-heading">Test setup</h1>
+              <p>Bananasplit includes a setup test file which test all your application integration making sure that all components are working properly.</p>
+              <p>You can test your setup by running:</p>
+              <code>yarn test setup | npm test setup</code>
+
+              <br/><br/><br/>
+
+              <p><b>Test should be pass:</b></p>
+              <ul style="list-style:none">
+                <li><i class="fas fa-check-circle mr-1" style="color:#5cb377"></i> Express server is ok <a href="http://localhost:3627"> <small>(http://localhost:3627)</small></a></li>
+                <li><i class="fas fa-check-circle mr-1" style="color:#5cb377"></i> Database connection is ok <a href="http://localhost:3627/auth-test"> <small>(http://localhost:3627/auth-test)</small></a></li>
+                <li><i class="fas fa-check-circle mr-1" style="color:#5cb377"></i> Database queries are ok <a href="http://localhost:3627/query-test"> <small>(http://localhost:3627/query-test)</small></a></li>
+                <li><i class="fas fa-check-circle mr-1" style="color:#5cb377"></i> Database migrations are ok <a href="http://localhost:3627/model-test"> <small>(http://localhost:3627/model-test)</small></a></li>
+                <li><i class="fas fa-check-circle mr-1" style="color:#5cb377"></i> Database seeders are ok <a href="http://localhost:3627/graphql"> <small>(http://localhost:3627/graphql)</small></a></li>
+              </ul>
+
+              <div class="callout-block callout-block-info mt-5">
+                <div class="content">
+                  <h4 class="callout-title">
+                    <span class="callout-icon-holder mr-1">
+                      <i class="fas fa-info-circle"></i>
+                    </span><!--//icon-holder-->
+                    Note
+                  </h4>
+                  <p>Jest will run all the tests in a testing enviroment, replacing the original NODE_ENV value you have.</p>
+                </div><!--//content-->
+              </div><!--//callout-block-->
+
+              <br/>
+
+              <p>
+                If all test succeed you are ready to start coding the business. Otherwise, if any test fails is recommended to check your enviroment variables such as the database credentials, check out that the database services are already running, or check for some package version (if you did an update) that could be causing some troubles.
+              </p>
+            </section>
+
+            <section class="docs-section" id="run">
               <h1 class="docs-heading">Run the server!</h1>
-              <p>Great, you are ready to go!</p>
+              <p>Great, you are ready to go! Run the development server:</p>
               <code>yarn dev | npm run dev</code>
 
               <br/><br/><br/>
@@ -441,37 +477,6 @@
               <div class="alert alert-success" role="alert">
                 BROWSE &nbsp; <a href="http://localhost:3627" target="_blank">http://localhost:3627</a>
               </div>
-            </section>
-
-            <section class="docs-section" id="test">
-              <br/>
-              <h1 class="docs-heading">Test setup</h1>
-              <p>You can test your setup integration by running:</p>
-              <code>yarn test setup | npm test setup</code>
-
-              <br/><br/><br/>
-
-              <p>Test should be pass:</p>
-              <ul style="list-style:none">
-                <li><i class="fas fa-check-circle mr-1" style="color:#5cb377"></i> "Hello response is received" <a href="http://localhost:3627"> (http://localhost:3627)</a></li>
-                <li><i class="fas fa-check-circle mr-1" style="color:#5cb377"></i> "Database Authetication is correct" <a href="http://localhost:3627/auth-test"> (http://localhost:3627/auth-test)</a></li>
-                <li><i class="fas fa-check-circle mr-1" style="color:#5cb377"></i> "Hello from Database response is received" <a href="http://localhost:3627/query-test"> (http://localhost:3627/query-test)</a></li>
-                <li><i class="fas fa-check-circle mr-1" style="color:#5cb377"></i> "User model returns all users" <a href="http://localhost:3627/model-test"> (http://localhost:3627/model-test)</a></li>
-                <li><i class="fas fa-check-circle mr-1" style="color:#5cb377"></i> "GraphQL Playground loads" <a href="http://localhost:3627/graphql"> (http://localhost:3627/graphql)</a></li>
-                <li><i class="fas fa-check-circle mr-1" style="color:#5cb377"></i> "Hello from GraphQL is received" <a href="http://localhost:3627/graphql?query=%7Bhello%7D"> (http://localhost:3627/graphql?query=%7Bhello%7D)</a></li>
-              </ul>
-
-              <div class="callout-block callout-block-info mt-5">
-                <div class="content">
-                  <h4 class="callout-title">
-                    <span class="callout-icon-holder mr-1">
-                      <i class="fas fa-info-circle"></i>
-                    </span><!--//icon-holder-->
-                    Note
-                  </h4>
-                  <p>Jest will run all test in a testing enviroment. So you should have your vars already set in your .env file.</p>
-                </div><!--//content-->
-              </div><!--//callout-block-->
             </section>
           </article><!--//docs-article-->
 
