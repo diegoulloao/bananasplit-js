@@ -86,12 +86,12 @@
             <li class="nav-item"><a class="nav-link scrollto" href="#data">4. Migrate and seed</a></li>
             <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#now"><span class="theme-icon-holder mr-2"><i class="fas fa-check"></i></span>Final steps</a></li>
             <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#guide"><span class="theme-icon-holder mr-2"><i class="fas fa-book-reader"></i></span>Guide</a></li>
-            <li class="nav-item"><a class="nav-link scrollto" href="#routes">Creating Routes</a></li>
-            <li class="nav-item"><a class="nav-link scrollto" href="#controllers">Creating Controllers</a></li>
-            <li class="nav-item"><a class="nav-link scrollto" href="#models">Creating Models</a></li>
-            <li class="nav-item"><a class="nav-link scrollto" href="#migrations-seeders">Creating Migrations and Seeders</a></li>
-            <li class="nav-item"><a class="nav-link scrollto" href="#helpers">Creating Helper functions</a></li>
-            <li class="nav-item"><a class="nav-link scrollto" href="#schemas-resolvers">GraphQL: Registering Schemas and Resolvers</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#routes">Routes</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#controllers">Controllers</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#models">Models</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#migrations-seeders">Migrations and Seeders</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#helpers">Helper functions</a></li>
+            <!--<li class="nav-item"><a class="nav-link scrollto" href="#schemas-resolvers">GraphQL: Registering Schemas and Resolvers</a></li>-->
             <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#util"><span class="theme-icon-holder mr-2"><i class="fas fa-tools"></i></span>Utilities</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#graphql-independent">GraphQL as independent service</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#sqlite">SQLite configuration</a></li>
@@ -139,7 +139,7 @@
             <section class="docs-section" id="packages">
               <h2 class="section-heading">About packages</h2>
 
-              <h5>Banana includes useful npm-packages already configured like:</h5>
+              <h5>Banana includes useful npm-packages like:</h5>
               <br/>
               <div class="table-responsive my-0">
                 <table class="table table-bordered">
@@ -225,7 +225,8 @@
                   </tbody>
                 </table>
 
-                <p>All of them already configured and ready for the action.</p>
+                <br/>
+                <p><b>All of them are already configured and ready for action.</b></p>
               </div><!--//table-responsive-->
             </section><!--//section-->
           </article>
@@ -243,7 +244,7 @@
               <p>Run in the command line:</p>
               <code>npx bananasplit-js new "my-app" --git | -g</code>
               <br/><br/>
-              <p>The optionals --git and -g flags are the same and using it will generate a started git repository inside your project. This feature automatically checkout to the dev branch and creates the first commit.</p>
+              <p>The optionals --git and -g flags are the same, using it Banansplit will generate a started git repository inside your project. This feature automatically checkout to the dev branch and creates the first commit.</p>
             </section><!--//section-->
 
             <section class="docs-section" id="env-vars">
@@ -268,7 +269,7 @@
               </div>
 
               <p>The supported databases are the same supported by sequelize: mysql, mariadb, posgres, mssql and sqlite.</p>
-              <p><b>NOTE:</b> The SQLite databases receives a special parameter in the sequelize configuration file. Please <a href="#">read more</a> about this.</p>
+              <p><b>NOTE:</b> The SQLite databases receives a special parameter in the sequelize configuration file. Please read more about: <a href="#">sqlite configuration</a>.</p>
             </section><!--//section-->
 
             <section class="docs-section" id="create">
@@ -452,14 +453,14 @@
                     </span><!--//icon-holder-->
                     Note
                   </h4>
-                  <p>Jest will run all the tests in a testing enviroment, replacing the original NODE_ENV value you have.</p>
+                  <p>Jest will run all the tests in a testing enviroment, overwritting the original NODE_ENV value you have.</p>
                 </div><!--//content-->
               </div><!--//callout-block-->
 
               <br/>
 
               <p>
-                If all test succeed you are ready to start coding the business. Otherwise, if any test fails is recommended to check your enviroment variables such as the database credentials, check out that the database services are already running, or check for some package version (if you did an update) that could be causing some troubles.
+                If all test succeed you are ready to start coding. Otherwise, if any test fails is recommended to check your enviroment variables such as the database credentials, check out that the database services are already running, or check for some package version (if you did an update) that could be causing some troubles.
               </p>
             </section>
 
@@ -484,105 +485,121 @@
           <article class="docs-article" id="guide">
             <header class="docs-header">
               <h1 class="docs-heading">Guide</h1>
+              <p>
+                Bananasplit provides a collection of templates for the most used resources like: routes, controllers, models, middlewares and more!
+              </p>
+               <p>
+                 For the models generated through the sequelize-cli is recommended to use the model template content instead of the original, copying the content from one to another. This model template extends from a simple Model class that provides an organized code and an more improved way to work with classes.
+               </p>
+
+               <p>
+                 Additionally, is important to mention that Bananasplit follows a philosophy that is: <b>use jsdocs and comment your code.</b>
+                 Have your files well documented is very beneficial for you and other developers because, most part of the time you spent it reading the code instead of writing it.
+               </p>
+
+               <br/>
+               <p><b>Now, let's checkout the different resources that we can create:</b></p>
             </header>
+
+            <br/>
+
             <section class="docs-section" id="routes">
-              <h2 class="section-heading"><i class="fas fa-map-signs mr-2"></i>Creating Routes</h2>
-              <p>Routes in Banana works the same as Express.</p>
-              To create a new route module you can use the template file <b>routes.ts</b>.</p>
+              <h2 class="section-heading"><i class="fas fa-map-signs mr-3"></i>Routes</h2>
+              <p>In bananasplit routes works the same as express.</p>
+              <p>To start make a duplicate of the tmpl.routes file renaming it to the plural form of the resource name with the ".routes" suffix. Let's take the example of a <b>Products</b> router. You will get something like this:</p>
 
               <br/>
 
-              <span class="badge badge-secondary">my-custom-routes.ts</span>
+              <span class="badge badge-secondary">products.routes.ts</span>
               <div class="docs-code-block">
                 <pre class="rounded">
-                <code class="typescript hljs">
+                  <code class="typescript hljs">
 /**
-* 
-*  My Custom Router
-*  @routes
-* 
-*  @module app/routes/my-custom-routes
-* 
-*/
-
-
-import { Router } from 'express'
-
-
-// Creates new Router
-const router: Router = Router()
-
+ * 
+ *  Router: Products
+ *  @module app/routes/products
+ * 
+ *  @description routes for products
+ * 
+ */
+import Express, { Router } from 'express'
 
 /**
-* 
-*  @import @controller
-*  My Custom Controller
-* 
-*/
-import CustomController from '../controllers/my-custom-controller'
+ *  @controller
+ */
+import ProductsController from '@controllers/products'
 
 
-( $ => {
-
-  /**
-  * 
-  *  @routes
-  *  My custom routes
-  * 
-  */
-
-  $.route( '/some-route' )
-    .get( CustomController.doSomething )
-
-} )( router )
+// Router
+const $: Express.Router = Router()
 
 
-export default router
-                </code>
+export default
+
+    ( app: Express.Application ): Router => {
+
+        /**
+         *  @routes
+         */
+        $.route( '/products' )
+          .get( ProductsController.findAll )
+
+        return $
+
+    }
+
+;
+                  </code>
                 </pre>
               </div><!--//docs-code-block-->
 
-              <p>The final step is to register it in the <b>main.routes.ts</b> file.</p>
+              <p>
+                Notice that all routes definitions goes into an anonymous function that receives the express application as parameter and returns the router itself. This is the way Bananasplit let you access to the express settings.
+              </p>
+
+              <p>
+                Maybe you will be interested in: <a href="#">how to access the express settings inside a controller handler.</a>
+              </p>
+
+              <p>
+                Other thing you can notice is the short router name which is <b>$</b>, this short name is very convenient because let you chain methods handlers in a more clean way, for example:
+              </p>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="typescript hljs">
+/**
+ *  @routes
+ */
+$.route( '/products' )
+  .get( ProductsController.findAll )
+  .post( ProductsController.create )
+                  </code>
+                </pre>
+              </div><!--//docs-code-block-->
+
+              <p>Making very explicit where the route is.</p>
+
+              <p>
+                One time created, Bananasplit will detect automatically the existence of this new module adding it to the express middleware. All files without ".routes" suffix will be ignored, this is an excellent way to deactivate routes modules while developing.
+              </p>
 
               <br/>
 
-              <span class="badge badge-secondary">main.routes.ts</span>
-              <div class="docs-code-block">
-                <pre class="rounded">
-                <code class="typescript hljs">
-...
+              <p>
+                This routes definitions are pure express. You can read more about: <a href="https://expressjs.com/en/guide/routing.html" target="_blank">express routing.</a>
+              </p>
 
+              <br/>
 
-/**
-*  
-*  @import @routers
-*  Your custom Routers import goes here.
-* 
-*/
-import Router from './routes'
-import MyCustomRouter from './my-custom-router'		// My new Router @import
+              <p>
+                <b>Next step is to define the controller handler in the ProductsController class.</b>
+              </p>
 
-
-export default [
-
-  /**
-  * 
-  *  @register @routes
-  *  Your custom Routes registry goes here.
-  *  
-  */
-
-  Router,
-  MyCustomRouter      				// My new Router @registry
-
-]
-              </code>
-                </pre>
-              </div><!--//docs-code-block-->
-            </section><!--//section-->
+              <br/>
 
             <section class="docs-section" id="controllers">
-              <h2 class="section-heading"><i class="fas fa-cog mr-2"></i>Creating Controllers</h2>
+              <h2 class="section-heading"><i class="fas fa-cog mr-3"></i>Controllers</h2>
               <p>Bananasplit is a <b>MVC</b> based template so all the functions will be handled by the routes throw the controller class associated as static methods.</p>
               <p>To create a new controller you can use the template file <b>controller.ts</b>.</p>
 
