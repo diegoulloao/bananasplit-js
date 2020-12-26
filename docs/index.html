@@ -429,7 +429,7 @@
 
           <article class="docs-article" id="now">
             <section class="docs-section pt-0" id="test">
-              <h1 class="docs-heading">Test setup</h1>
+              <h1 class="docs-heading">Test your setup</h1>
               <p>Bananasplit includes a setup test file which test all your application integration making sure that all components are working properly.</p>
               <p>You can test your setup by running:</p>
               <code>yarn test setup | npm test setup</code>
@@ -510,7 +510,7 @@
 
               <br/>
 
-              <span class="badge badge-secondary">products.routes.ts</span>
+              <span class="badge badge-secondary">routes/products.routes.ts</span>
               <div class="docs-code-block">
                 <pre class="rounded">
                   <code class="typescript hljs">
@@ -542,7 +542,7 @@ export default
          *  @routes
          */
         $.route( '/products' )
-          .get( ProductsController.findAll )
+            .get( ProductsController.findAll )
 
         return $
 
@@ -572,8 +572,8 @@ export default
  *  @routes
  */
 $.route( '/products' )
-  .get( ProductsController.findAll )
-  .post( ProductsController.create )
+    .get( ProductsController.findAll )
+    .post( ProductsController.create )
                   </code>
                 </pre>
               </div><!--//docs-code-block-->
@@ -595,73 +595,103 @@ $.route( '/products' )
               <p>
                 <b>Next step is to define the controller handler in the ProductsController class.</b>
               </p>
-
-              <br/>
+            </section>
 
             <section class="docs-section" id="controllers">
+              <br/>
               <h2 class="section-heading"><i class="fas fa-cog mr-3"></i>Controllers</h2>
-              <p>Bananasplit is a <b>MVC</b> based template so all the functions will be handled by the routes throw the controller class associated as static methods.</p>
-              <p>To create a new controller you can use the template file <b>controller.ts</b>.</p>
+              <p>
+                Controllers in Bananasplit are based in classes instead of exported functions from a module. The reason is classes allows to manage static properties and heritance. Controllers are treated as an entity and not only like a function that handles a http request.
+              </p>
+              <p>In order to create a controller make a duplicate of the tmpl.ts controller file renaming it to the plural form  of the resource name. Let's continue with our <b>ProductsController</b> idea. You will get something like this:</p>
 
               <br/>
 
-              <span class="badge badge-secondary">my-custom-controller.ts</span>
+              <span class="badge badge-secondary">controllers/products.ts</span>
 
               <div class="docs-code-block">
                 <pre class="rounded">
-              <code class="typescript hljs">
+                  <code class="typescript hljs">
 /**
-* 
-*  My Custom Controller
-*  @controller
-* 
-*  @module app/controllers/my-custom-controller
-*  @description This is my Custom Controller
-* 
-*/
-
-
+ * 
+ *  Controller: Products
+ *  @module controllers/products
+ * 
+ *  @description controller for products
+ * 
+ */
 import { Request, Response } from 'express'
 
-
 /**
-*
-*  @import @models
-*  Your models import goes here.
-*
-*/
-import Model from '../models/my-model'
+ *  @model
+ */
+import Product from '@models/product'
 
 
-export default
-  /**
-  * 
-  *  @class CustomController
-  *  @classdesc This is my Custom Controller
-  * 
-  */
-  class CustomController {
-
+class ProductsController {
+    
     /**
-    *      I do something 	@handler
-    */
-    public static doSomething( request: Request, response: Response ) {
-
-      response.status( 200 )
-      response.send( 'I did something :)' )
-
-      return response
-
+     *  @description returns all the products
+     */
+    public findAll = async ( req: Request, res: Response ): Promise&lt;Response&gt; =&gt; {
+        const products: any = await Product.findAll()
+        return res.json( products )
     }
 
-  }
-;
-                </code>
+}
+
+
+export default new ProductsController
+              </code>
                 </pre>
               </div><!--//docs-code-block-->
 
-              <p>Now you can import it anywhere and access the methods like:</p>
-              <code>CustomController.doSomething()</code>
+              <p>The controller definition is very simple, all method are defined with a public scope and written as arrows functions. In some cases you will need to have some private methods which will be in charge of the internal logic of the controller resource being used for the public ones.</p>
+              <p>Notice that the exported controller is not the class controller itself but a single instance of it. This is very important because statics methods actually loss the reference to <code>this</code> in the router callback.</p>
+
+              <br/>
+              <h3>Accesing to the express settings</h3>
+              <p>
+                In some cases you will want to access to the express settings via <code>get</code> or <code>set</code> methods. This is very useful to share data between your application parts.
+              </p>
+
+              <br/>
+              <p>In order to do that, let's update the controller handler for show the app version:</p>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="typescript hljs">
+public findAll = ( app: Express.Application ): Function =&gt; {
+
+    return async ( req: Request, res: Response ): Promise&lt;Response&gt; => {
+        // We access to the "version" setting
+        const version: string = app.get( "version" )
+        const products: any = await Product.findAll()
+
+        return res.json({
+            products,
+            version
+        })
+    }
+}
+                  </code>
+                </pre>
+              </div><!--//docs-code-block-->
+
+              <p>Then we update the handler assignment into the route:</p>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="typescript hljs">
+$.route( '/products' )
+    .get( ProductsController.findAll(app) )
+                  </code>
+                </pre>
+              </div><!--//docs-code-block-->
+
+              <p>
+                Using this trick instead of <code>.bind(app)</code> we keep the <code>this</code> reference to the controller itself.
+              </p>
             </section><!--//section-->
 
             <section class="docs-section" id="models">
