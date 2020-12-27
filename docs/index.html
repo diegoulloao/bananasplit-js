@@ -601,7 +601,7 @@ $.route( '/products' )
               <br/>
               <h2 class="section-heading"><i class="fas fa-cog mr-3"></i>Controllers</h2>
               <p>
-                Controllers in Bananasplit are based in classes instead of exported functions from a module. The reason is classes allows to manage static properties and heritance. Controllers are treated as an entity and not only like a function that handles a http request.
+                Controllers in Bananasplit are based in classes instead of exported functions from a module. The reason is classes provides heritance and properties. Controllers are treated as an entity and not only like a function that handles a http request.
               </p>
               <p>In order to create a controller make a duplicate of the tmpl.ts controller file renaming it to the plural form  of the resource name. Let's continue with our <b>ProductsController</b> idea. You will get something like this:</p>
 
@@ -656,7 +656,7 @@ export default new ProductsController
               </p>
 
               <br/>
-              <p>In order to do that, let's update the controller handler for show the app version:</p>
+              <p>In order to do that, let's update the controller handler for show the app version in the response:</p>
 
               <div class="docs-code-block">
                 <pre class="rounded">
@@ -694,121 +694,112 @@ $.route( '/products' )
               </p>
             </section><!--//section-->
 
+            <br/>
+
             <section class="docs-section" id="models">
-              <h2 class="section-heading"><i class="fas fa-table mr-2"></i>Creating Models</h2>
-              <p>To create a new model you have two options.</p>
+              <h2 class="section-heading"><i class="fas fa-table mr-3"></i>Models</h2>
+              <p>
+                Bananasplit provides a Model class that allow  to represent a sequelize model based on classes easier. Unlike the <code>define</code> function that sequelizes provides, the Bananasplit model includes both attributes definition and options into the class. Also the columns types are defined as class attributes. This differences makes possible to observe the model programatically as an entity.
+              </p>
+
+              <p>In order to generate a model <b>is recommended not to use the sequelize command line</b>, but rather make a duplicate of the tmpl.ts file and rename it to the singular form of the resource name. Let's continue with our Product idea. You will get something like this:</p>
+
+              <!--<div class="callout-block callout-block-success">-->
+                <!--<div class="content">-->
+                  <!--<h4 class="callout-title">-->
+                    <!--<span class="callout-icon-holder mr-1">-->
+                      <!--<i class="fas fa-thumbs-up"></i>-->
+                    <!--</span>[>//icon-holder<]-->
+                    <!--Using sequelize-cli-->
+                  <!--</h4>-->
+                  <!--<p>For more information, please visit: <a href="https://sequelize.org/master/manual/migrations.html" target="_blank">https://sequelize.org/master/manual/migrations.html</a></p>-->
+                <!--</div>[>//content<]-->
+              <!--</div>[>//callout-block<]-->
 
               <br/>
 
-              <h4>Option 1: Using the sequelize client</h4>
-              <span class="badge badge-light">javascript</span>
-
-              <br/><br/>
-
-              <p>Run replacing by your model name:</p>
-              <code>npx sequelize model:generate --name model-name --attributes attribute:type</code>
-
-              <br/><br/>
-
-              <div class="callout-block callout-block-success">
-                <div class="content">
-                  <h4 class="callout-title">
-                    <span class="callout-icon-holder mr-1">
-                      <i class="fas fa-thumbs-up"></i>
-                    </span><!--//icon-holder-->
-                    Using sequelize-cli
-                  </h4>
-                  <p>For more information, please visit: <a href="https://sequelize.org/master/manual/migrations.html" target="_blank">https://sequelize.org/master/manual/migrations.html</a></p>
-                </div><!--//content-->
-              </div><!--//callout-block-->
-
-              <br/><br/>
-
-              <h4>Option 2: Using the template file <span class="badge badge-success">Recommended</span></h4>
-              <span class="badge badge-light">typescript</span>
-
-              <br/><br/>
-
-              <p>You can use the template file <b>model.ts</b>.</p>
-
-              <br/>
-
-              <span class="badge badge-secondary">my-model.ts</span>
+              <span class="badge badge-secondary">models/product.ts</span>
 
               <div class="docs-code-block">
                 <pre class="rounded">
                 <code class="typescript hljs">
 /**
-*
-*  My new Model
-*  @model
-* 
-*  @module app/models/new-model
-*  @description This is my new model
-* 
-*/
+ *
+ *  Model: Product
+ *  @module app/models/product
+ * 
+ *  @description model for product
+ * 
+ */
+import { Model } from '@bananasplit-js'
+import { DataTypes, ModelAttributes } from 'sequelize'
 
 
-import { Model, DataTypes } from 'sequelize'
-import sequelize from '../../providers/sequelize'
+class Product extends Model {
+
+    /**
+     *  @types
+     */
+    public id!: number
+    public name!: string
+    public category!: string
+    public price!: number
 
 
-class MyModel extends Model {
+    /**
+     *  @attributes
+     */
+    public attributes: ModelAttributes = {
 
-  // Fields listing
-  private id!: number
-  private category!: string
+        id: {
+            type: DataTypes.INTEGER.UNSIGNED,
+            autoIncrement: true,
+            
+            primaryKey: true
+        },
 
+        name: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
 
-  // Fields definitions
-  public static fields = {
+        category: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
 
-    id: {
-      type: DataTypes.INTEGER.UNSIGNED,
-      autoIncrement: true,
-      primaryKey: true
-    },
-
-    category: {
-      type: new DataTypes.STRING(30),
-      allowNull: false
+        price: {
+            type: DataTypes.INTEGER.UNSIGNED
+        }
+        
     }
 
-  }
 
-  // Options
-  public static options = {
-
-    sequelize,
-    timestamps: false
-
-  }
-
-
-  // Init
-  public static init() {
-    super.init.call( this, this.fields, this.options )
-  }
+    /**
+     *  @options
+     */
+    public $options: object = {
+        timestamps: true
+    }
 
 }
 
 
-// Load the model
-MyModel.init()
-
-
-; ( async () => {
-
-  // do something async before export the model
-
-})()
-
-
-export default MyModel
+export default new Product
                 </code>
                 </pre>
               </div><!--//docs-code-block-->
+
+              <p>
+                Notice that what is exported is a single instance of Products. This instance inits automatically the model in background loading attributes and options.
+              </p>
+
+              <p>
+                Is important to mention too the fact that, at the same time, the Bananasplit Model extends from the Sequelize Model as well, but making it much more understandable and neater than the default provided.
+              </p>
             </section><!--//section-->
+
+            <br/>
 
             <section class="docs-section" id="migrations-seeders">
               <h2 class="section-heading"><i class="fas fa-database mr-2"></i>Creating Migrations and Seeders</h2>
