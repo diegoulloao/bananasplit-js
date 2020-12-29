@@ -248,6 +248,9 @@
               <code>npx bananasplit-js new "my-app" --git | -g</code>
               <br/><br/>
               <p>The optionals --git and -g flags are the same, using it Banansplit will generate a started git repository inside your project. This feature automatically checkout to the dev branch and creates the first commit.</p>
+              <div class="progress my-4">
+                <div class="progress-bar bg-success" role="progressbar" style="width: 33%" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
             </section><!--//section-->
 
             <section class="docs-section" id="env-vars">
@@ -273,6 +276,9 @@
 
               <p>The supported databases are the same supported by sequelize: mysql, mariadb, posgres, mssql and sqlite.</p>
               <p><b>NOTE:</b> The SQLite databases receives a special parameter in the sequelize configuration file. Please read more about: <a href="#">sqlite configuration</a>.</p>
+              <div class="progress my-4">
+                <div class="progress-bar bg-success" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
             </section><!--//section-->
 
             <section class="docs-section" id="create">
@@ -284,6 +290,9 @@
               <p>The build stack script will install all your dependencies and your database drivers detecting it automatically from the .env file. Also will run migrations and seeders and finally, will run a jest setup test automatically in order to check that the integration of all your backend application is ok.</p>
               <p>Yeah, is great!</p>
 
+              <div class="progress my-4">
+                <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
               <span class="badge badge-success">Done.</span>
             </section><!--//section-->
           </article><!--//docs-article-->
@@ -966,12 +975,6 @@ export function down ( queryInterface, Sequelize ) {
               <p><b>Sequelize-cli don't provides native Typescript support</b>, therefore they must be written in Javascript.</p>
 
               <br/>
-
-              <h4>Migrations</h4>
-              <p>Run replacing by your migration name:</p>
-              <code>npx sequelize migration:generate --name migration-name</code>
-
-              <br/><br/><br/>
 
               <h4>Seeders</h4>
               <p>Run replacing by your seeder name:</p>
