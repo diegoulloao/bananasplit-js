@@ -845,22 +845,105 @@ export default Product
 
             <section class="docs-section" id="migrations">
               <h2 class="section-heading"><i class="fas fa-database mr-3"></i>Migrations</h2>
-              <p>In this case the best option is to use the sequelize client.</p>
-              <p><b>Sequelize-cli don't provides native Typescript support</b>, therefore they must be written in Javascript.</p>
+              <p>Migrations are like a version control of your tables, you can create the table, update the fields, modify the constraints and more, all based in a timeline registry that sequelize manages.</p>
+
+              <p>
+                The sequelize command line tool will help in this task. In order to create a new migration run the following command replacing part of the name with the plural form of the resource:
+              </p>
+
+              <code>npx sequelize migration:generate --name create-products-table</code>
+              
+              <br/><br/>
+              
+              <p>
+                This will generate a new file in the database/migrations directory. Notice that the beggining name of this new file starts with a timestamp, that is the moment when it was created and the full name describes the action that this migration is performing, this last is very important.
+              </p>
+
+              <p>Let's continue creating the migration for the Products example. <b>For this is highly recommended to use the tmpl file content instead of the generated</b>, because this file provides a better order and it's more readable.</p>
+
+              <p>You should get something like this:</p>
 
               <br/>
+              <span class="badge badge-secondary">migrations/20201229085157-create-products-table.js</span>
 
-              <h4>Migrations</h4>
-              <p>Run replacing by your migration name:</p>
-              <code>npx sequelize migration:generate --name migration-name</code>
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="javascript hljs">
+/**
+ * 
+ *  Migration: Products
+ *  @description products table migration
+ * 
+ */
 
-              <br/><br/><br/>
 
-              <h4>Seeders</h4>
-              <p>Run replacing by your seeder name:</p>
-              <code>npx sequelize seeder:generate --name seeder-name</code>
+export function up ( queryInterface, DataTypes ) {
 
-              <br/><br/><br/>
+    return queryInterface.createTable( 'Products', {
+
+        id: {
+            type: DataTypes.INTEGER.UNSIGNED,
+            autoIncrement: true,
+
+            primaryKey: true
+        },
+       
+        name: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+
+        category: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+
+        price: {
+            type: DataTypes.INTEGER.UNSIGNED
+        }
+        
+
+        /* Timestamps */
+        createdAt: {
+            type: 'TIMESTAMP',
+            defaultValue: DataTypes.literal( 'CURRENT_TIMESTAMP' ),
+            allowNull: false
+
+        },
+
+        updatedAt: {
+            type: 'TIMESTAMP',
+            defaultValue: DataTypes.literal('CURRENT_TIMESTAMP'),
+            allowNull: false
+
+        }
+        
+    })
+
+}
+
+
+export function down ( queryInterface, Sequelize ) {
+    return queryInterface.dropTable( 'Products' )
+}
+                  </code>
+                </pre>
+              </div><!--//docs-code-block-->
+
+              <p>
+                This migrations mainly performs the creation of the Products table including the timestamps (which should be declared explicity). It counts of two members functions: <code>up</code>, that is in charge of create the table and <code>down</code> that does exactly the reverse action, drop the table.
+              </p>
+              
+              <p>
+                In that way we can create the tables from the command line:
+              </p>
+
+              <code>npx sequelize db:migrate</code>
+              <br/><br/>
+              <p>or drop them:</p>
+              <code>npx sequelize db:migrate:undo</code>
+
+              <br/><br/>
 
               <div class="callout-block callout-block-success">
                 <div class="content">
@@ -868,9 +951,9 @@ export default Product
                     <span class="callout-icon-holder mr-1">
                       <i class="fas fa-thumbs-up"></i>
                     </span><!--//icon-holder-->
-                    Creating migrations and seeders
+                    Migrations with sequelize
                   </h4>
-                  <p>For more information, please visit: <a href="https://sequelize.org/master/manual/migrations.html" target="_blank">https://sequelize.org/master/manual/migrations.html</a></p>
+                  <p>If you are interested in knowing what migrations can do, please visit: <a href="https://sequelize.org/master/manual/migrations.html" target="_blank">https://sequelize.org/master/manual/migrations.html</a></p>
                 </div><!--//content-->
               </div><!--//callout-block-->
             </section><!--//section-->
