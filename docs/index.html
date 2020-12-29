@@ -785,17 +785,56 @@ class Product extends Model {
 }
 
 
-export default new Product
+// Init the model
+Product.init()
+
+export default Products
                 </code>
                 </pre>
               </div><!--//docs-code-block-->
 
               <p>
-                Notice that what is exported is a single instance of Products. This instance inits automatically the model in background loading attributes and options.
+                Notice that what is exported is the class Products itself. When calling the init method, the model loads in background the attributes and options from the class.
               </p>
 
               <p>
                 Is important to mention too the fact that, at the same time, the Bananasplit Model extends from the Sequelize Model as well, but making it much more understandable and neater than the default provided.
+              </p>
+
+              <p>
+                Define the types is not required, not adding them does not cause a compilation error but is highly recommended.
+              </p>
+
+              <br/>
+
+              <h3>
+                Executing tasks before export the model
+              </h3>
+
+              <p>
+                It is possible to execute certain tasks before export the model. Let's get in the case that we want to synchronize this Product model forcing it to drop and create the table every time the models change. You will get something like this:
+              </p>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="typescript hljs">
+;( async(): Promise&lt;void&gt; =&gt; {
+    Product.init()
+    await Product.sync({ force: true })
+})()
+
+
+export default Product
+                  </code>
+                </pre>
+              </div><!--//docs-code-block-->
+
+              <p>
+                In the example above an autocallable anonymous function executes itself in an async/await way. Inside it, first the Product model is initializated and then the model is forced to syncrhonize. This function returns a void promise.
+              </p>
+
+              <p>
+                The possibilities are many and you can do what you want. If you want to know more about models please visit: <a href="https://sequelize.org/master/manual/model-basics.html" target="_blank">models basic with sequelize</a>.
               </p>
             </section><!--//section-->
 
