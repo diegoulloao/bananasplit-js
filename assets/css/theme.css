@@ -10594,7 +10594,8 @@ body:not(.docs-page) {
   border-color: #e94665;
 }
 #top-carousel img#banana-logo {
-  height: -webkit-fill-available;
+  height: auto;
+  max-height: 560px !important;
 }
 #top-carousel img#banana-code {
   width: auto;
@@ -11047,17 +11048,17 @@ section#get-started .fancy span:before,
 section#get-started .fancy span:after {
   content: "";
   position: absolute;
-  height: 10px;
+  height: 20px;
   background-color: #45505e;
   width: 3px;
 }
 section#get-started .fancy span:before {
   right: calc(50% - 1px);
-  top: -8px;
+  top: -22px;
 }
 section#get-started .fancy span:after {
   left: calc(50% - 2px);
-  bottom: -12px;
+  bottom: -22px;
 }
 
 @media only screen and (max-width: 768px) {

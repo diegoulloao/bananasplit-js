@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en"> 
   <head>
-    <title>Bananasplit-js · An express superset template that brings to you a background to quickly develop your backend</title>
+    <title>Bananasplit-js · An express superset template that brings to you a background to quickly develop your app</title>
 
     <!-- Meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Bananasplit is an Express.js superset template that brings to you a background to quickly develop your backend.">
+    <meta name="description" content="Bananasplit is an Express.js superset template that brings to you a background to quickly develop your app.">
     <meta name="author" content="@diegoulloao on Github!"> 
     <!-- Open Graph data -->
-    <meta property="og:title" content="Bananasplit-js · An express.js superset template that brings to you a background to quicky develop your backend">
-    <meta property="og:description" content="Bananasplit-js · An express.js superset template that brings to you a background to quicky develop your backend">
+    <meta property="og:title" content="Bananasplit-js · An express.js superset template that brings to you a background to quicky develop your app">
+    <meta property="og:description" content="Bananasplit-js · An express.js superset template that brings to you a background to quicky develop your app">
     <meta property="og:image" content="http://bananasplit-js.com/assets/images/bananasplit-logo.meta.jpg">
     <meta property="og:url" content="http://bananasplit-js.com/">
 
@@ -62,16 +62,16 @@
     <section id="banana-header-logo" class="cta-section banana-bg text-center py-5 position-relative">
       <div class="container">
         <div id="home-title">
-          <span class="logo-text">Banana</span><span class="text-alt">split</span><span class="title-js">JS <small class="font-weight-bold">v2</small></span>
-          <span><lottie-player src="assets/animations/new.json"  background="transparent"  speed="1"  style="width:80px;height:80px;display:inline" loop autoplay></lottie-player></span>
+          <span class="logo-text">Banana</span><span class="text-alt">split</span><span class="title-js">JS</span>
+          <span><lottie-player src="assets/animations/new.json" background="transparent" speed="1" style="width:60px;height:60px;display:inline-block;position:relative;bottom:15px;right:10px" loop autoplay></lottie-player></span>
         </div>
 
-        <h1 style="color:#935435;font-weight:500" class="mt-2">An express.js <span style="color:#e94665">superset template</span> that brings to you a background to quickly develop your backend</h1>
+        <h1 style="color:#935435;font-weight:500" class="mt-2">An express.js <span style="color:#e94665">superset template</span> that brings to you a background to quickly develop your app</h1>
 
         <div id="top-carousel" class="carousel slide carousel-fade">
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <h1 class="mobile-header-descr" style="color:#935435;font-weight:500" class="mt-2">An Express.js <span style="color:#e94665">superset template</span> that brings to you a background to quickly develop your backend</h1>
+              <h1 class="mobile-header-descr" style="color:#935435;font-weight:500" class="mt-2">An Express.js <span style="color:#e94665">superset template</span> that brings to you a background to quickly develop your app</h1>
               <img id="banana-logo" src="assets/images/bananasplit-logo.png" alt="">
             </div>
             <div class="carousel-item template">
@@ -127,7 +127,7 @@
       <div class="theme-bg-shapes-left"></div>
       <div class="container">
         <h1 class="mb-2 text-white mb-3">Get enough of starting from scratch?</h1>
-        <div class="section-intro text-white mb-3 single-col-max mx-auto">You don't need to waste time building your backend from scratch. Banana comes ready-made and it is still clean!</div>
+        <div class="section-intro text-white mb-3 single-col-max mx-auto">You don't need to waste time building your app from scratch. Bananasplit-js comes ready-made and it is still clean!</div>
         <div class="pt-3 text-center">
           <a href="#features" class="btn btn-light"><i class="fas fa-arrow-alt-circle-right mr-2"></i>View Features</a>
         </div>
@@ -143,7 +143,7 @@
 
       <div class="container">
         <div>
-          <h2><i class="fas fa-plus mr-2"></i>Create a new project</h2>
+          <h2 class="mb-3"><i class="fas fa-plus mr-2"></i>Create a new project</h2>
           <code>npx bananasplit-js new "my-app" --git|-g</code>
         </div>
 
@@ -156,13 +156,13 @@
         <div class="get-started-step">
           <h2><i class="fas fa-cubes mr-2"></i>Build the stack</h2>
           <p>
-            Add your database variables to .env
+            Add your environment variables to .env
           </p>
           <code>yarn build:stack | npm run build:stack</code>
         </div>
 
-        <span class="badge badge-success mt-4" style="background:#454f5d">Ready to dev</span>
-        <a href="http://gitpod.io/#https://github.com/bananasplit-js/bananasplit-js/tree/main/gitpod/template" target="_blank" class="d-block mt-5 mx-auto" style="width:138px">
+        <span class="badge badge-success mt-5" style="background:#454f5d">Ready to dev</span>
+        <a href="http://gitpod.io/#https://github.com/bananasplit-js/bananasplit-js/tree/main/gitpod/template" target="_blank" class="d-block mt-5 mx-auto">
           <img src="https://gitpod.io/button/open-in-gitpod.svg" alt="">
         </a>
      </div>
@@ -198,8 +198,8 @@ DB_PASSWORD=secret
 
           <div class="code-descr">
             <span>
-              <h3>Builds and integrates the stack for you</h3>
-              <p>It will install and configure: Express, Typescript, Sequelize, Jest and more! just based on your database engine</p>
+              <h3>Set your environment variables</h3>
+              <p>Add your database engine, your database name (no need to create it), and the credentials.</p>
             </span>
           </div>
         </div>
@@ -222,8 +222,8 @@ npm run build:stack
 
           <div class="code-descr">
             <span>
-              <h3>The stack builder</h3>
-              <p>It will detect your database and install the drivers. After the process it will run units and integrations test for check the setup automatically</p>
+              <h3>Run the stack builder</h3>
+              <p>It will detect your package manager and database to install Express, Typescript, Sequelize, Jest, your Database Driver and more! Also it will run an integration test to check the setup</p>
             </span>
           </div>
         </div>
@@ -235,19 +235,18 @@ npm run build:stack
             <input type="checkbox" class="dots" />
             <input type="checkbox" class="dots" />
             <pre class="rounded">
-<code class="typescript hljs">
-const services = Stack([
-    express
-])
-
-services.serve()</code>
+<code class="misc hljs">
+# which is yours?
+yarn dev
+npm dev
+</code>
             </pre>
           </div>
 
           <div class="code-descr">
             <span>
-              <h3>Get the server running</h3>
-              <p>The services are already written... Run the development server and just code the business</p>
+              <h3>Start the development server</h3>
+              <p>The services are already written. Your database is already created. Just run the development server and code the business!</p>
             </span>
 
           </div>
@@ -262,11 +261,10 @@ services.serve()</code>
             <pre class="rounded">
 <code class="misc hljs">
 yarn build
-yarn build:database
+yarn route:list
+yarn generator:create
 yarn test:watch
-yarn test:coverage
 yarn upgrade:stack
-yarn lint
 yarn lint:fix
 </code>
             </pre>
@@ -275,7 +273,7 @@ yarn lint:fix
           <div class="code-descr">
             <span>
               <h3>¿Need to perform an action?</h3>
-              <p>The swiss knife of scripts, just pick up what you need: Run migrations and seeders, test in coverage mode, lint your code, and more...</p>
+              <p>The swiss knife of scripts. Just pick up what you need: Run the route and middleware inspector, create resources in command-line to use in your REST client, run tests in coverage mode, and more...</p>
             </span>
           </div>
         </div>
@@ -314,7 +312,7 @@ yarn lint:fix
           <div class="intro">
             <div class="home-title-icon"><i class="fas fa-medal"></i></div>
             <h1 class="text-center home-title">Features</h1>
-            <p class="text-center">This is why bananasplit is great</p>
+            <p class="text-center">Start with strong wings</p>
           </div>
           <div class="row justify-content-center features">
             <div class="col-sm-6 col-md-5 col-lg-4 item banana-box">
@@ -367,13 +365,13 @@ yarn lint:fix
           <li class="list-inline-item"><a href="#"><i class="fab fa-twitter fa-fw"></i></a></li>
           <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f fa-fw"></i></a></li>
         </ul><!--/social-list-->
-        <small class="copyright">2021 · Copyright &copy; <a href="#">Bananasplit-js</a></small>
+        <small class="copyright">2022 · Copyright&copy; <a href="#">Bananasplit-js</a></small>
 
         <p class="built">Built with <i class="fas fa-heart" style="color:#eb628a"></i> for all the community</p>
       </div>
 
       <div class="source">
-        <div><p>Currently <span class="font-weight-bold" style="color:#eb628a">v2</span> &nbsp; | &nbsp; Code licensed <a href="https://github.com/diegoulloao/bananasplit-express-template/blob/master/LICENSE" target="_blank"><b>MIT</b></a></p></div>
+        <div><p><span class="font-weight-bold" style="color:#eb628a">v2</span> &nbsp; | &nbsp; Code licensed <a href="https://github.com/diegoulloao/bananasplit-express-template/blob/master/LICENSE" target="_blank"><b>MIT</b></a></p></div>
 
         <div class="text-right">
           <a href="docs">Read the Documentation</a>
