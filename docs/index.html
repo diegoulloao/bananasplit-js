@@ -57,12 +57,12 @@
             </div>
 
             <ul class="social-list list-inline mx-md-3 mx-lg-5 mb-0 d-none d-lg-flex">
-              <li class="list-inline-item"><a href="https://github.com/diegoulloao/bananasplit-express-template" target="_blank"><i class="fab fa-github fa-fw"></i></a></li>
+              <li class="list-inline-item"><a href="https://github.com/bananasplit-js/bananasplit-js" target="_blank"><i class="fab fa-github fa-fw"></i></a></li>
               <li class="list-inline-item"><a href="#"><i class="fab fa-slack fa-fw"></i></a></li>
               <li class="list-inline-item"><a href="#"><i class="fab fa-twitter fa-fw"></i></a></li>
               <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f fa-fw"></i></a></li>
             </ul><!--//social-list-->
-            <a href="https://github.com/diegoulloao/bananasplit-express-template/archive/master.zip" class="btn btn-primary d-none d-lg-flex"><i class="fas fa-download mr-2 mt-1"></i>Download</a>
+            <a href="https://github.com/bananasplit-js/bananasplit-js/archive/main/template.zip" class="btn btn-primary d-none d-lg-flex"><i class="fas fa-download mr-2 mt-1"></i>Download v2</a>
           </div><!--//docs-top-utilities-->
         </div><!--//container-->
       </div><!--//branding-->
@@ -96,10 +96,7 @@
             <li class="nav-item"><a class="nav-link scrollto" href="#middlewares">Middlewares</a></li>
             <!--<li class="nav-item"><a class="nav-link scrollto" href="#schemas-resolvers">GraphQL: Registering Schemas and Resolvers</a></li>-->
             <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#util"><span class="theme-icon-holder mr-2"><i class="fas fa-tools"></i></span>Utilities</a></li>
-            <li class="nav-item"><a class="nav-link scrollto" href="#graphql-independent">GraphQL as independent service</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#sqlite">SQLite configuration</a></li>
-            <li class="nav-item"><a class="nav-link scrollto" href="#custom-graphql">Customizing GraphQL</a></li>
-            <li class="nav-item"><a class="nav-link scrollto" href="#env-context">Database variables for: Development, test and production</a></li>
             <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#advanced"><span class="theme-icon-holder mr-2"><i class="fas fa-laptop-code"></i></span>Advanced</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#extend">Extending Providers functionalities</a></li>
             <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#changelog"><span class="theme-icon-holder mr-2"><i class="fas fa-clipboard"></i></span>Changelog</a></li>
@@ -135,101 +132,89 @@
                 <li><strong>Sequelize</strong> ORM for Data Management</li>
                 <li><strong>Typescript</strong> Superset language for Javascript</li>
               </ol>
-
-              <p><a href="#">The superpack that you will love!</a></p>
             </section><!--//section-->
 
             <section class="docs-section" id="packages">
               <h2 class="section-heading">About packages</h2>
 
-              <h5>Banana includes useful npm-packages like:</h5>
+              <h5>Banana includes useful npm-packages:</h5>
               <br/>
               <div class="table-responsive my-0">
                 <table class="table table-bordered">
                   <tbody>
                     <tr>
                       <th class="theme-bg-light"><a class="theme-link" href="https://www.npmjs.com/package/nodemon" target="_blank">nodemon</a></th>
-                      <td>to auto-restart your server every time your code change</td>
+                      <td>auto restart your server every time a change is detected</td>
                     </tr>
                     <tr>
                       <th class="theme-bg-light"><a class="theme-link" href="https://www.npmjs.com/package/ts-node" target="_blank">ts-node</a></th>
-                      <td>to autocompile your Typescript files when they change</td>
+                      <td>auto transpiles typescript to javascript on execution</td>
                     </tr>
 
                     <tr>
                       <th class="theme-bg-light"><a class="theme-link" href="https://www.npmjs.com/package/ts-jest" target="_blank">ts-jest</a></th>
-                      <td>to provides Typescript support to Jest</td>
+                      <td>provides typescript support for jest</td>
                     </tr>
 
                     <tr>
                       <th class="theme-bg-light"><a class="theme-link" href="https://www.npmjs.com/package/morgan" target="_blank">morgan</a></th>
-                      <td>to print in console detailed information about your server requests</td>
+                      <td>prints all express requests in the console</td>
                     </tr>
 
                     <tr>
                       <th class="theme-bg-light"><a class="theme-link" href="https://www.npmjs.com/package/sequelize-cli" target="_blank">sequelize-cli</a></th>
-                      <td>to manage your database migrations and seeders</td>
+                      <td>sequelize cli to manage migrations and seeders</td>
                     </tr>
 
                     <tr>
                       <th class="theme-bg-light"><a class="theme-link" href="https://www.npmjs.com/package/dotenv" target="_blank">dotenv</a></th>
-                      <td>to protect your project privacy with out-side enviroment variables</td>
+                      <td>secure custom enviroment variables support</td>
                     </tr>
 
                     <tr>
                       <th class="theme-bg-light"><a class="theme-link" href="https://www.npmjs.com/package/supertest" target="_blank">supertest</a></th>
-                      <td>to build your http-based tests with Jest</td>
+                      <td>http-based test support for jest</td>
                     </tr>
 
                     <tr>
                       <th class="theme-bg-light"><a class="theme-link" href="https://www.npmjs.com/package/faker" target="_blank">faker</a></th>
-                      <td>to generate random data and seed your database with Sequelize</td>
+                      <td>generates fake data inside your generators and seeders</td>
                     </tr>
 
                     <tr>
                       <th class="theme-bg-light"><a class="theme-link" href="https://www.npmjs.com/package/npm-check-updates" target="_blank">npm-check-updates</a></th>
-                      <td>to auto-update all your project dependencies</td>
-                    </tr>
-
-                    <tr>
-                      <th class="theme-bg-light"><a class="theme-link" href="https://www.npmjs.com/package/npm-check-updates" target="_blank">module-alias</a></th>
-                      <td>to support custom paths in your dist modules</td>
-                    </tr>
-
-                    <tr>
-                      <th class="theme-bg-light"><a class="theme-link" href="https://www.npmjs.com/package/npm-check-updates" target="_blank">tsconfig-paths</a></th>
-                      <td>to support custom paths in typescript when on the run</td>
+                      <td>auto updates your project dependencies in secure mode</td>
                     </tr>
 
                     <tr>
                       <th class="theme-bg-light"><a class="theme-link" href="https://www.npmjs.com/package/npm-check-updates" target="_blank">alias-hq</a></th>
-                      <td>to support custom paths in jest modules written in typescript</td>
-                    </tr>
-
-                    <tr>
-                      <th class="theme-bg-light"><a class="theme-link" href="https://www.npmjs.com/package/npm-check-updates" target="_blank">@babel-core</a></th>
-                      <td>to use modern javascript features in js files (plugins and presets)</td>
+                      <td>custom paths support for typescript, jest and javascript</td>
                     </tr>
 
                     <tr>
                       <th class="theme-bg-light"><a class="theme-link" href="https://www.npmjs.com/package/npm-check-updates" target="_blank">eslint</a></th>
-                      <td>to lints and fixes your code syntax</td>
+                      <td>auto lints/fixes your code</td>
                     </tr>
 
                     <tr>
                       <th class="theme-bg-light"><a class="theme-link" href="https://www.npmjs.com/package/npm-check-updates" target="_blank">prettier</a></th>
-                      <td>to format your code</td>
+                      <td>makes your code prettier</td>
                     </tr>
 
                     <tr>
                       <th class="theme-bg-light"><a class="theme-link" href="https://www.npmjs.com/package/chalk" target="_blank">chalk</a></th>
-                      <td>to put colorful messages in your console output</td>
+                      <td>highlights console outputs in a nice way</td>
+                    </tr>
+
+                    <tr>
+                      <th class="theme-bg-light"><a class="theme-link" href="https://www.npmjs.com/package/boxen" target="_blank">boxen</a></th>
+                      <td>shows service status in command-line</td>
                     </tr>
                   </tbody>
                 </table>
 
                 <br/>
-                <p><b>All of them are already configured and ready for action.</b></p>
+                <h5>All of them comes already configured eady for action.</h5>
               </div><!--//table-responsive-->
             </section><!--//section-->
           </article>
@@ -238,7 +223,7 @@
             <header class="docs-header">
               <h1 class="docs-heading">Get Started</h1>
               <section class="docs-intro">
-                <p>To generate a new project use the banana command client.</p>
+                <p>To generate a new project use the bananasplit-js CLI.</p>
               </section><!--//docs-intro-->
             </header>
 
@@ -247,7 +232,7 @@
               <p>Run in the command line:</p>
               <code>npx bananasplit-js new "my-app" --git | -g</code>
               <br/><br/>
-              <p>The optionals --git and -g flags are the same, using it Banansplit will generate a started git repository inside your project. This feature automatically checkout to the dev branch and creates the first commit.</p>
+              <p>The optionals <code>--git</code> and <code>-g</code> flags are equals, using them Banansplit-js CLI will generate a git repository within the project.</p>
               <div class="progress my-4">
                 <div class="progress-bar bg-success" role="progressbar" style="width: 33%" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
@@ -255,30 +240,39 @@
 
             <section class="docs-section" id="env-vars">
               <h2 class="section-heading">Step 2: Add enviroment variables</h2>
-              <p>Rename the .env.example file to .env and complete the values like:</p>
+              <p>Rename the <code>.env.example</code> file to <code>.env</code>, then complete the values:</p>
 
               <div class="docs-code-block">
                 <pre class="rounded">
-                  <code class="misc hljs">
-# [database]
+                  <code class="misc hljs"># [Sequelize]
+DB_DIALECT=mysql
 
-  DB_DIALECT=mysql
-
-  DB_HOST=localhost
-  DB_PORT=3306
-
-  DB_DATABASE=bananasplit-app
-  DB_USERNAME=root
-  DB_PASSWORD=secret
-                  </code>
+# [Database]
+DB_HOST=localhost
+DB_PORT=3306
+DB_DATABASE=my-app
+DB_USERNAME=root
+DB_PASSWORD=secret</code>
                 </pre>
               </div>
 
-              <p>The supported databases are the same supported by sequelize: mysql, mariadb, posgres, mssql and sqlite.</p>
-              <p><b>NOTE:</b> The SQLite databases receives a special parameter in the sequelize configuration file. Please read more about: <a href="#">sqlite configuration</a>.</p>
-              <div class="progress my-4">
-                <div class="progress-bar bg-success" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
+              <p><b>Supported databases are the supported by sequelize:</b> <code>mysql | mariadb | postgres | mssql | sqlite</code></p>
+
+              <div class="callout-block callout-block-info">
+                <div class="content">
+                  <h4 class="callout-title">
+                    <span class="callout-icon-holder mr-1">
+                      <i class="fas fa-info-circle"></i>
+                    </span><!--//icon-holder-->
+                    Note
+                  </h4>
+                  <p>
+                    SQLite3 receives a special parameter in the sequelize configuration file. Please <a href="#sqlite">check the SQLite3 section</a>.
+                    <br />
+                    For more information visit: <a href="https://sequelize.org/v5/manual/getting-started.html">https://sequelize.org/v5/manual/getting-started.html</a>
+                  </p>
+                </div><!--//content-->
+              </div><!--//callout-block-->
             </section><!--//section-->
 
             <section class="docs-section" id="create">
@@ -287,8 +281,7 @@
               <code>yarn build:stack | npm run build:stack</code>
 
               <br/><br/>
-              <p>The build stack script will install all your dependencies and your database drivers detecting it automatically from the .env file. Also will run migrations and seeders and finally, will run a jest setup test automatically in order to check that the integration of all your backend application is ok.</p>
-              <p>Yeah, is great!</p>
+              <p>The <code>build:stack</code> script will install the dependencies and database drivers detecting it automatically from the <code>.env</code> file. It will also run migrations and seeders, finally, it will run a jest integration test in order to check that the application is ok.</p>
 
               <div class="progress my-4">
                 <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
@@ -299,14 +292,15 @@
 
           <article class="docs-article" id="ekre">
             <section class="docs-section pt-0" id="324ks">
-              <h2 class="section-heading">Run the server!</h2>
-              <p>Great, you are ready to go!</p>
+              <h2 class="section-heading">Run the server</h2>
+              <p><b>You are ready to go!</b></p>
+              <p>Run the development server:</p>
               <code>yarn dev | npm run dev</code>
 
               <br/><br/><br/>
 
               <p>
-                Your application will be available at:
+                Your application will be available by default at:
               </p>
 
               <div class="alert alert-success" role="alert">
@@ -319,7 +313,7 @@
             <header class="docs-header">
               <h1 class="docs-heading">Manual stack build</h1>
               <section class="docs-intro">
-                <p>Optionally, you can build the stack by the hand. This is highly recommended for deployment build steps because offer to the developer more control and specificity over the workflow.</p>
+                <p>Also you can build the stack step by step. This is <b>recommended for deployments</b> because offer to the developer more control and specificity along the workflow.</p>
               </section><!--//docs-intro-->
             </header>
 
@@ -337,7 +331,7 @@
             <section class="docs-section" id="database">
               <h2 class="section-heading">Step 2: Install database driver</h2>
 
-              <p>Run in the command line by the corresponding engine:</p>
+              <p>Select your engine and run in the command line:</p>
               <ul>
                 <li><strong class="mr-1">MySQL</strong> <code>yarn add mysql2 | npm i mysql2</code></li>
                 <li><strong class="mr-1">MariaDB</strong> <code>yarn add mariadb | npm i mariadb</code></li>
@@ -346,13 +340,30 @@
                 <li><strong class="mr-1">SQLite</strong> <code>yarn add sqlite3 | npm i sqlite3</code></li>
               </ul>
 
-              <p>This allow to sequelize to communicate with the database engine.</p>
-
               <div class="progress my-4">
                 <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
+            </section><!--//section-->
 
-              <br/>
+            <section class="docs-section" id="env">
+              <h2 class="section-heading">Step 3: Add enviroment variables</h2>
+              <p>Rename the <code>.env.example</code> file to <code>.env</code>, then complete the values:</p>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="misc hljs"># [Sequelize]
+DB_DIALECT=mysql
+
+# [Database]
+DB_HOST=localhost
+DB_PORT=3306
+DB_DATABASE=my-app
+DB_USERNAME=root
+DB_PASSWORD=secret</code>
+                </pre>
+              </div>
+
+              <p><b>Supported databases are the supported by sequelize:</b> <code>mysql | mariadb | postgres | mssql | sqlite</code></p>
 
               <div class="callout-block callout-block-info">
                 <div class="content">
@@ -362,42 +373,13 @@
                     </span><!--//icon-holder-->
                     Note
                   </h4>
-                  <p>The SQLite3 receives a special parameter in the sequelize configuration file. Please <a href="#sqlite">go to SQLite3 section</a>. Read for more information: <a href="https://sequelize.org/v5/manual/getting-started.html">https://sequelize.org/v5/manual/getting-started.html</a></p>
+                  <p>
+                    SQLite3 receives a special parameter in the sequelize configuration file. Please <a href="#sqlite">check the SQLite3 section</a>.
+                    <br />
+                    For more information visit: <a href="https://sequelize.org/v5/manual/getting-started.html">https://sequelize.org/v5/manual/getting-started.html</a>
+                  </p>
                 </div><!--//content-->
               </div><!--//callout-block-->
-            </section><!--//section-->
-
-            <section class="docs-section" id="env">
-              <h2 class="section-heading">Step 3: Add enviroment variables</h2>
-              <p>Rename the .env.example file to .env and complete the values like:</p>
-
-              <div class="docs-code-block">
-                <pre class="rounded">
-                <code class="misc hljs">
-# [database]
-
-  DB_DIALECT=mysql
-
-  DB_HOST=localhost
-  DB_PORT=3306
-
-  DB_DATABASE=bananasplit-app
-  DB_USERNAME=root
-  DB_PASSWORD=secret
-                </code>
-                </pre>
-              </div><!--//docs-code-block-->
-
-              <p>The supported databases are the same supported by sequelize: mysql, mariadb, posgres, mssql and sqlite.</p>
-              <p>So the dialect value possibilities are:</p>
-              <code>DB_DIALECT=mysql|mariadb|postgres|mssql|sqlite</code>
-
-              <br/><br/><br/>
-
-              <h3>Workflows and deploys</h3>
-              <p>
-              When you set enviroment variables in a deploy workflow, bananasplit will ignore the values contained in the .env file <b>but only</b> if those was already declared in it, if is that the case, you can omit what this file contains becase they will be overwritten by the workflow itself.
-              </p>
 
               <div class="progress my-4">
                 <div class="progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
@@ -407,7 +389,7 @@
             <section class="docs-section" id="data">
               <h2 class="section-heading">Step 4: Migrate and seed</h2>
               <p>
-                The purpose of this step is create the specified database for your application, create the tables and populate them with development purpose data.
+                This will create a table with data inside your database in order to test the application.
               </p>
 
               <br/>
@@ -417,19 +399,13 @@
 
               <br/><br/><br/>
 
-              <h3>4.2 Migrate tables:</h3>
+              <h3>4.2 Run migrations:</h3>
               <code>npx sequelize db:migrate</code>
 
               <br/><br/><br/>
 
-              <h3>4.3 Seed tables:</h3>
+              <h3>4.3 Run seeders:</h3>
               <code>npx sequelize db:seed:all</code>
-
-              <br/><br/>
-
-              <p>
-              This step is very flexible and you can migrate or seed only the tables you need. Please see <a href="https://sequelize.org/master/manual/migrations.html#running-migrations" target="_blank">sequelize migrations</a> and <a href="https://sequelize.org/master/manual/migrations.html#running-seeds">sequelize seeders</a> for more information.
-              </p>
 
               <div class="progress my-4">
                 <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
@@ -441,20 +417,20 @@
 
           <article class="docs-article" id="now">
             <section class="docs-section pt-0" id="test">
-              <h1 class="docs-heading">Test your setup</h1>
-              <p>Bananasplit includes a setup test file which test all your application integration making sure that all components are working properly.</p>
-              <p>You can test your setup by running:</p>
+              <h1 class="docs-heading">Test your app</h1>
+              <p>Bananasplit-js includes a setup integration test which tests all your application making sure that all is working properly.</p>
+              <p>You can do the test by running:</p>
               <code>yarn test setup | npm test setup</code>
 
               <br/><br/><br/>
 
-              <p><b>Test should be pass:</b></p>
+              <p><b>Tests should be pass:</b></p>
               <ul style="list-style:none">
                 <li><i class="fas fa-check-circle mr-1" style="color:#5cb377"></i> Express server is ok <a href="http://localhost:3627"> <small>(http://localhost:3627)</small></a></li>
-                <li><i class="fas fa-check-circle mr-1" style="color:#5cb377"></i> Database connection is ok <a href="http://localhost:3627/test-connection"> <small>(http://localhost:3627/test-connection)</small></a></li>
-                <li><i class="fas fa-check-circle mr-1" style="color:#5cb377"></i> Database queries are ok <a href="http://localhost:3627/test-query"> <small>(http://localhost:3627/test-query)</small></a></li>
-                <li><i class="fas fa-check-circle mr-1" style="color:#5cb377"></i> Database migrations are ok <a href="http://localhost:3627/test-migration"> <small>(http://localhost:3627/test-migration)</small></a></li>
-                <li><i class="fas fa-check-circle mr-1" style="color:#5cb377"></i> Database seeders are ok <a href="http://localhost:3627/test-seeder"> <small>(http://localhost:3627/test-seeder)</small></a></li>
+                <li><i class="fas fa-check-circle mr-1" style="color:#5cb377"></i> Database connection is ok <a href="http://localhost:3627/test/connection"> <small>(http://localhost:3627/test/connection)</small></a></li>
+                <li><i class="fas fa-check-circle mr-1" style="color:#5cb377"></i> Database queries are ok <a href="http://localhost:3627/test/query"> <small>(http://localhost:3627/test/query)</small></a></li>
+                <li><i class="fas fa-check-circle mr-1" style="color:#5cb377"></i> Database migrations are ok <a href="http://localhost:3627/test/migration"> <small>(http://localhost:3627/test/migration)</small></a></li>
+                <li><i class="fas fa-check-circle mr-1" style="color:#5cb377"></i> Database seeders are ok <a href="http://localhost:3627/test/seeder"> <small>(http://localhost:3627/test/seeder)</small></a></li>
               </ul>
 
               <div class="callout-block callout-block-info mt-5">
@@ -465,26 +441,21 @@
                     </span><!--//icon-holder-->
                     Note
                   </h4>
-                  <p>Jest will run all the tests in a testing enviroment, overwritting the original NODE_ENV value you have.</p>
+                  <p>Jest will run all the tests as a testing enviroment, overwritting the original NODE_ENV value if set.</p>
                 </div><!--//content-->
               </div><!--//callout-block-->
-
-              <br/>
-
-              <p>
-                If all test succeed you are ready to start coding. Otherwise, if any test fails is recommended to check your enviroment variables such as the database credentials, check out that the database services are already running, or check for some package version (if you did an update) that could be causing some troubles.
-              </p>
             </section>
 
             <section class="docs-section" id="run">
-              <h1 class="docs-heading">Run the server!</h1>
-              <p>Great, you are ready to go! Run the development server:</p>
+              <h1 class="docs-heading">Run the server</h1>
+              <p><b>You are ready to go!</b></p>
+              <p>Run the development server:</p>
               <code>yarn dev | npm run dev</code>
 
               <br/><br/><br/>
 
               <p>
-                Your application will be available at:
+                Your application will be available by default at:
               </p>
 
               <div class="alert alert-success" role="alert">
@@ -1108,64 +1079,10 @@ export function anotherHelper(): void {
             <header class="docs-header">
               <h1 class="docs-heading">Utilities</h1>
             </header>
-            <section class="docs-section" id="graphql-independent">
-              <h2 class="section-heading">GraphQL as independent service</h2>
-              <p>By default GraphQL is provided through the Express Server middleware, this means that GraphQL will only works if Express is running.</p>
-              <p>To change this behavior you can specify that you want GraphQL running an independent port.</p>
-
-              <br/>
-
-              <span class="badge badge-secondary">app.ts</span>
-
-              <div class="docs-code-block">
-                <pre class="rounded">
-                <code class="typescript hljs">
-...
-
-
-// Express Server
-const express: Express = Express.build()
-
-// Apollo Server
-const apollo: Apollo = Apollo.build()
-                </code>
-                </pre>
-              </div><!--//docs-code-block-->
-
-              <br/>
-
-              <span class="badge badge-secondary">index.ts</span>
-
-              <div class="docs-code-block">
-                <pre class="rounded">
-                <code class="typescript hljs">
-...
-
-
-; ( async () => {
-
-  // Start the services
-  await express.start()
-  await apollo.start()
-
-})()
-                </code>
-                </pre>
-              </div><!--//docs-code-block-->
-
-              <p>Now GraphQL will be accesible via port 4000.</p>
-              <p>Also you can specify the port in an object as parameter:</p>
-              <code>Apollo.build({ port: 7000 })</code> or <code>apollo.start( 7000 )</code>
-              <br/><br/><br/>
-              <div class="alert alert-success" role="alert">
-                Check <a href="http://localhost:4000" target="_blank">http://localhost:4000</a>
-              </div>
-              <span class="badge badge-success">Done.</span>
-            </section><!--//section-->
 
             <section class="docs-section" id="sqlite">
               <h2 class="section-heading">SQLite configuration</h2>
-              <p>SQLite requieres an additional parameter:</p>
+              <p>SQLite requires an additional parameter:</p>
 
               <ul>
                 <li>Storage path</li>
@@ -1173,7 +1090,7 @@ const apollo: Apollo = Apollo.build()
 
               <br/>
 
-              <p>If you are using it may want to add this in the <b>sequelize.conf.ts</b> file.</p>
+              <p>You may want to add this in the <code>sequelize.conf.ts</code> file.</p>
 
               <br/>
 
@@ -1183,8 +1100,6 @@ const apollo: Apollo = Apollo.build()
                 <pre class="rounded">
                 <code class="typescript hljs">
 /**
-* 
-*  @options @overwrite
 *  Sequelize Options
 * 
 *  You can overwrite default options by yours **
@@ -1192,168 +1107,14 @@ const apollo: Apollo = Apollo.build()
 * 
 */
 const SequelizeOptions: Sequelize.Options = {
+  // ...rest
 
-  ...
-
-  // Added storage for SQLite3
+  // Storage for SQLite3
   storage: 'path/to/database.sqlite'
-
-  ...
-
 }
                 </code>
                 </pre>
               </div><!--//docs-code-block-->
-
-              <span class="badge badge-success">Done.</span>
-            </section><!--//section-->
-
-            <section class="docs-section" id="custom-graphql">
-              <h2 class="section-heading">Customizing GraphQL</h2>
-              <p>To preprocess your GraphQL Schema before Bananasplit creates the service for you, you can use the <b>customize.graphql.ts</b> file. This file allows you to manipulate the Schema as you like.</p>
-
-              <p>The function there included is called by the Provider before instanciates Apollo Server and receives as parameter the schema object that is returned by the makeExecutableSchema function directly from Apollo.</p>
-
-              <br/>
-
-              <h5>Let's see an example:</h5>
-
-              <br/>
-
-              <span class="badge badge-secondary">customize.graphql.ts</span>
-
-              <div class="docs-code-block">
-                <pre class="rounded">
-                <code class="typescript hljs">
-...
-
-
-( schema: GraphQLSchema ): object => {
-
-  // My GraphQL customization
-  addMockFunctionsToSchema({
-
-    schema,
-    mocks: {},
-    preserveResolvers: false
-
-  })
-
-
-  /**
-  * 
-  *  @options
-  *  Your Apollo options goes here.
-  * 
-  */
-  const options: object = {
-
-    schema,
-    context: {}
-
-
-    ...
-
-  }
-
-
-  return options
-
-}
-                </code>
-                </pre>
-              </div><!--//docs-code-block-->
-
-              <div class="callout-block callout-block-warning">
-                <div class="content">
-                  <h4 class="callout-title">
-                    <span class="callout-icon-holder mr-1">
-                      <i class="fas fa-bullhorn"></i>
-                    </span><!--//icon-holder-->
-                    Important!
-                  </h4>
-                  <p>The function <b>must returns</b> an object with the options that will be passed directly to the Apollo construct in order to build the service.</p>
-                </div><!--//content-->
-              </div><!--//callout-block-->
-
-              <br/>
-
-              <span class="badge badge-success">Done.</span>
-            </section><!--//section-->
-
-            <section class="docs-section" id="env-context">
-              <h2 class="section-heading">Database variables for: Development, test and production</h2>
-              <p>Banana uses dotenv to set the enviroment variables for the project.</p>
-
-              <br/>
-
-              <p>You can defines your development, testing and productions vars in the <b>.env</b> file, for example:</p>
-
-              <br/>
-
-              <span class="badge badge-secondary">.env</span>
-
-              <div class="docs-code-block">
-                <pre class="rounded">
-                <code class="misc hljs">
-# [development]
-
-DB_DIALECT=myqsl
-
-DB_HOST=localhost
-DB_PORT=3306
-
-# Auth
-DB_DATABASE=app_name
-DB_USERNAME=root
-DB_PASSWORD=1234
-
-# -----------------------
-
-
-
-# [testing]
-
-TEST_DB_DIALECT=mysql
-
-TEST_DB_HOST=http://205.60.34.44
-TEST_DB_PORT=9000
-
-# Auth
-TEST_DB_DATABASE=digitalocean_2CpqHC
-TEST_DB_USERNAME=test_user
-TEST_DB_PASSWORD=mKSnR6JyAeuPXSWv
-
-# -----------------------
-
-
-
-# [production]
-
-PROD_DB_DIALECT=mysql
-
-PROD_DB_HOST=http://250.1.17.246
-PROD_DB_PORT=9000
-
-# Auth
-PROD_DB_DATABASE=digitalocean_app
-PROD_DB_USERNAME=user
-PROD_DB_PASSWORD=6rTsZPtVpRAdG7Ns								
-                </code>
-                </pre>
-              </div><!--//docs-code-block-->
-
-              <p><b>Notice that we have two variable prefix groups here:</b></p>
-              <ul>
-                <li><code>TEST_*</code> for testing variables.</li>
-                <li><code>PROD_*</code> for production variables.</li>
-              </ul>
-
-              <br/>
-
-              <div class="progress my-4">
-                <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
 
               <span class="badge badge-success">Done.</span>
             </section><!--//section-->
@@ -1367,30 +1128,25 @@ PROD_DB_PASSWORD=6rTsZPtVpRAdG7Ns
 
             <section class="docs-section" id="extend">
               <h2 class="section-heading">Extending Providers functionalities</h2>
-              <p>Banana is based on their own Providers classes that provides to the template all the basics services.</p>
-              <p>By default Bananasplit dispose of three.</p>
+              <p>Bananasplit-js is built on their own Service Providers. These are classes that provides to the template the most important services.</p>
+              <p>By default Bananasplit-js dispose of two:</p>
 
               <div class="table-responsive my-4">
                 <table class="table table-bordered">
                   <tbody>
                     <tr>
-                      <th class="theme-bg-light"><a class="theme-link" href="https://github.com/diegoulloao/bananasplit-express-template/blob/master/src/providers/express.ts" target="_blank">Express Provider</a></th>
-                      <td>for the Express Server and the middlewaring.</td>
+                      <th class="theme-bg-light"><a class="theme-link" href="https://github.com/bananasplit-js/bananasplit-js/blob/main/template/src/providers/core/libs/express.ts" target="_blank">Express Provider</a></th>
+                      <td>provides the express server already configurated</td>
                     </tr>
                     <tr>
-                      <th class="theme-bg-light"><a class="theme-link" href="https://github.com/diegoulloao/bananasplit-express-template/blob/master/src/providers/apollo.ts" target="_blank">Apollo Provider</a></th>
-                      <td>for all the GraphQL and Apollo Server.</td>
-                    </tr>
-
-                    <tr>
-                      <th class="theme-bg-light"><a class="theme-link" href="https://github.com/diegoulloao/bananasplit-express-template/blob/master/src/providers/sequelize.ts" target="_blank">Sequelize Provider</a></th>
-                      <td>for all the Sequelize ORM integration and the Database configuration for your application.</td>
+                      <th class="theme-bg-light"><a class="theme-link" href="https://github.com/bananasplit-js/bananasplit-js/blob/main/template/src/providers/core/libs/sequelize.ts" target="_blank">Sequelize Provider</a></th>
+                      <td>provides the Sequelize ORM already integrated to your database</td>
                     </tr>
                   </tbody>
                 </table>
               </div><!--//table-responsive-->
 
-              <p>These classes are all located at the <b>src/providers</b> folder and you can modify it or create your own.</p>
+              <p>These classes are located in the <code>src/providers/core/libs</code> folder and you can modify them as you want, even create your own one.</p>
             </section><!--//section-->
           </article><!--//docs-article-->
 
@@ -1434,23 +1190,18 @@ PROD_DB_PASSWORD=6rTsZPtVpRAdG7Ns
 
               <ul>
                 <li><strong class="mr-1">Express</strong> <a href="https://expressjs.com" target="_blank">https://expressjs.com</a></li>
-                <li><strong class="mr-1">Apollo</strong> <a href="https://www.apollographql.com/docs/apollo-server/" target="_blank">https://www.apollographql.com/docs/apollo-server/</a></li>
-                <li><strong class="mr-1">GraphQL</strong> <a href=" https://graphql.org/learn/" target="_blank"> https://graphql.org/learn/</a></li>
                 <li><strong class="mr-1">Sequelize</strong> <a href="https://sequelize.org/v5/" target="_blank">https://sequelize.org/v5/</a></li>
                 <li><strong class="mr-1">Jest</strong> <a href="https://jestjs.io/docs/en/getting-started" target="_blank">https://jestjs.io/docs/en/getting-started and https://www.albertgao.xyz/2017/05/24/how-to-test-expressjs-with-jest-and-supertest/</a></li>
-                <li><strong class="mr-1">Supertest</strong> <a href="https://github.com/visionmedia/supertest" target="_blank">https://github.com/visionmedia/supertest</a></li>
                 <li><strong class="mr-1">Typescript</strong> <a href="https://www.typescriptlang.org/docs/home.html" target="_blank">https://www.typescriptlang.org/docs/home.html</a></li>
-                <li><strong class="mr-1">SASS</strong> <a href="https://sass-lang.com/documentation" target="_blank">https://sass-lang.com/documentation</a></li>
-                <li><strong class="mr-1">Handlebars</strong> <a href="https://handlebarsjs.com/guide/" target="_blank">https://handlebarsjs.com/guide/</a></li>
               </ul>
 
               <br/>
 
               <h4><i class="fab fa-github mr-2"></i>You can visit the project in Github:</h4>
               <br/>
-              <div style="overflow:auto"><a href="https://github.com/diegoulloao/bananasplit-express-template">https://github.com/diegoulloao/bananasplit-express-template</a></div>
+              <div style="overflow:auto"><a href="https://github.com/bananasplit-js/bananasplit-js">https://github.com/bananasplit-js/bananasplit-js</a></div>
               <br/><br/>
-              <a href="https://github.com/diegoulloao/bananasplit-express-template" class="btn btn-secondary"><i class="fas fa-arrow-alt-circle-right mr-2"></i> View on Github</a>
+              <a href="https://github.com/bananasplit-js/bananasplit-js" class="btn btn-secondary"><i class="fas fa-arrow-alt-circle-right mr-2"></i> View on Github</a>
             </section><!--//docs-intro-->
           </article><!--//docs-article-->
 
@@ -1461,35 +1212,35 @@ PROD_DB_PASSWORD=6rTsZPtVpRAdG7Ns
             </header>
             <section class="docs-section" id="about">
               <h2 class="section-heading">About this project <small>(basic questions)</small></h2>
-              <h5 class="pt-3"><i class="fas fa-question-circle mr-1"></i>Is bananasplit a framework?</h5>
-              <p>No. Bananasplit is a template that brings to you a background for develop your project. This means that includes all the basics and most used resources what you need already configured.</p>
+              <h5 class="pt-3"><i class="fas fa-question-circle mr-1"></i>Is bananasplit-js a framework?</h5>
+              <p>No. Bananasplit-js is a template that brings to you a background to quickly develop your app. This means that includes all the basics and most used resources you need already configured.</p>
               <h5 class="pt-3"><i class="fas fa-question-circle mr-1"></i>It is hard to learn?</h5>
-              <p>Nope, Banana is extremely simple.<br/>Pure Express code but modularized, the Express that you always knew.</p>
+              <p>Nope, Bananasplit-js is extremely simple to learn.<br/>Is pure Express code modularizated, the Express that you always knew.</p>
               <h5 class="pt-3"><i class="fas fa-question-circle mr-1"></i>It is hard to configure?</h5>
-              <p>It's easy! You just need to configure your database settings and credentials.</p>
-              <h5 class="pt-3"><i class="fas fa-question-circle mr-1"></i>What I need for getting work?</h5>
-              <p>All you need is Node.js.</p>
-              <h5 class="pt-3"><i class="fas fa-question-circle mr-1"></i>Why Bananasplit?</h5>
+              <p>No! it's super easy! You just need to add your environment variables and let the builder do the rest.</p>
+              <h5 class="pt-3"><i class="fas fa-question-circle mr-1"></i>What I need to know to get it working?</h5>
+              <p>All you need to know is Typescript/Node.js.</p>
+              <h5 class="pt-3"><i class="fas fa-question-circle mr-1"></i>Why Bananasplit-js?</h5>
               <p>I like bananas! and icecream. This template is that: a mix of flavors.</p>
             </section><!--//section-->
 
             <section class="docs-section" id="rights">
               <h2 class="section-heading">About the rights <small>(the code)</small></h2>
-              <h5 class="pt-3"><i class="fas fa-question-circle mr-1"></i>Can I modifiy bananasplit?</h5>
-              <p>Yes of course! Bananasplit is licensed under <b>MIT</b>. You can do with it what you wish.
-              <br/><a href="https://github.com/diegoulloao/bananasplit-express-template/blob/master/LICENSE" target="_blank">See the license.</a></p>
+              <h5 class="pt-3"><i class="fas fa-question-circle mr-1"></i>Can I modifiy bananasplit-js?</h5>
+              <p>Yes of course! Bananasplit-js is licensed under <b>MIT</b>. You can do with it what you want.
+              <br/><a href="https://github.com/bananasplit-js/bananasplit-js/blob/main/template/LICENSE" target="_blank">Read the license.</a></p>
 
               <h5 class="pt-3"><i class="fas fa-question-circle mr-1"></i>Can I contribute to the project?</h5>
-              <p>Yes! That is all about, contribute to make the things better. You can send a pull request or get in contact with me: <a href="http://www.diegoulloa.dev/#contact" target="_blank">www.diegoulloa.dev</a></p>
+              <p>Yes! That's all about, contributing to make things better. Feel free to open a pull request or get in contact with me: <a href="https://diegoulloa.dev/contact" target="_blank">https://diegoulloa.dev/contact</a></p>
             </section><!--//section-->
           </article><!--//docs-article-->
 
 
           <footer class="footer">
             <div class="container text-center py-5">
-              <small class="copyright">2020 · Copyright &copy; <a href="../" target="_blank">Bananasplit</a></small>
+              <small class="copyright">2022 · Copyright &copy; <a href="../" target="_blank">Bananasplit-js</a></small>
               <ul class="social-list list-unstyled pt-4 mb-0">
-                <li class="list-inline-item"><a href="https://github.com/diegoulloao/bananasplit-express-template" target="_blank"><i class="fab fa-github fa-fw"></i></a></li> 
+                <li class="list-inline-item"><a href="https://github.com/bananasplit-js/bananasplit-js" target="_blank"><i class="fab fa-github fa-fw"></i></a></li> 
                 <li class="list-inline-item"><a href="#"><i class="fab fa-slack fa-fw"></i></a></li>
                 <li class="list-inline-item"><a href="#"><i class="fab fa-twitter fa-fw"></i></a></li>
                 <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f fa-fw"></i></a></li>
