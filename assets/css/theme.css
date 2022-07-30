@@ -10732,9 +10732,6 @@ body:not(.docs-page) {
   #top-carousel .carousel-inner {
     display: flex;
   }
-  #top-carousel .carousel-item:first-child h1 {
-    height: -webkit-fill-available;
-  }
   #top-carousel .carousel-item:first-child img#banana-logo {
     height: auto !important;
     width: 100%;
