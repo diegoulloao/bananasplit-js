@@ -331,7 +331,7 @@ DB_PASSWORD=secret</code>
             <section class="docs-section" id="database">
               <h2 class="section-heading">Step 2: Install database driver</h2>
 
-              <p>Select your engine and run in the command line:</p>
+              <p>Select your engine, then run in the command line:</p>
               <ul>
                 <li><strong class="mr-1">MySQL</strong> <code>yarn add mysql2 | npm i mysql2</code></li>
                 <li><strong class="mr-1">MariaDB</strong> <code>yarn add mariadb | npm i mariadb</code></li>
@@ -347,7 +347,7 @@ DB_PASSWORD=secret</code>
 
             <section class="docs-section" id="env">
               <h2 class="section-heading">Step 3: Add enviroment variables</h2>
-              <p>Rename the <code>.env.example</code> file to <code>.env</code>, then complete the values:</p>
+              <p>Rename the <code>.env.example</code> -> <code>.env</code>, then complete the values:</p>
 
               <div class="docs-code-block">
                 <pre class="rounded">
@@ -389,7 +389,7 @@ DB_PASSWORD=secret</code>
             <section class="docs-section" id="data">
               <h2 class="section-heading">Step 4: Migrate and seed</h2>
               <p>
-                This will create a table with data inside your database in order to test the application.
+                Let's create a table in your database, then populate it in order to test the application.
               </p>
 
               <br/>
@@ -418,7 +418,7 @@ DB_PASSWORD=secret</code>
           <article class="docs-article" id="now">
             <section class="docs-section pt-0" id="test">
               <h1 class="docs-heading">Test your app</h1>
-              <p>Bananasplit-js includes a setup integration test which tests all your application making sure that all is working properly.</p>
+              <p>Bananasplit-js includes a setup integration test in order to check that all is working properly.</p>
               <p>You can do the test by running:</p>
               <code>yarn test setup | npm test setup</code>
 
@@ -441,7 +441,7 @@ DB_PASSWORD=secret</code>
                     </span><!--//icon-holder-->
                     Note
                   </h4>
-                  <p>Jest will run all the tests as a testing enviroment, overwritting the original NODE_ENV value if set.</p>
+                  <p>Jest will run all the tests in a testing enviroment, overwriting the original NODE_ENV value even if is set.</p>
                 </div><!--//content-->
               </div><!--//callout-block-->
             </section>
@@ -471,7 +471,9 @@ DB_PASSWORD=secret</code>
               <p>
                 Bananasplit-js include templates for the most used resources: routes, controllers, models, migrations, seeders, etc.
               </p>
-               <p>Sequelize CLI is able to create new migrations and seeders but is recommended to use the bananasplit-js template instead.</p>
+               <p>Sequelize CLI is able to create new migrations and seeders but is recommended to use the bananasplit-js templates instead.</p>
+
+               <br/>
                <p><b>Let's checkout the different resources we can create:</b></p>
             </header>
 
@@ -481,7 +483,7 @@ DB_PASSWORD=secret</code>
               <h2 class="section-heading"><i class="fas fa-map-signs mr-3"></i>Routes</h2>
               <p>Routes works exactly as in express.</p>
               <p>To start copy <code>tmpl.routes.ts</code> -> <code>products.routes.ts</code> (in plural form).</p>
-              <p>The <code>.routes</code> suffix is very important because it tells to banasplit-js to not ignore this file.</p>
+              <p>The <code>.routes</code> suffix is very important because it tells to bananasplit-js to not ignore this file.</p>
 
               <br/>
               <p><b>Let's code a basic route example to listing products:</b></p>
@@ -541,7 +543,7 @@ export default (): Router => {
               </div><!--//docs-code-block-->
 
               <p>
-                This exported function let us to <b>access to the express instance and settings inside routes files</b>, which are shared into the entire application:
+                This exported function let us to <b>access the express instance and settings inside the routes files</b>, which are shared to the entire application:
               </p>
 
               <div class="docs-code-block">
@@ -585,7 +587,7 @@ export default (app: Application): Router => {
             <section class="docs-section" id="controllers">
               <br/>
               <h2 class="section-heading"><i class="fas fa-cog mr-3"></i>Controllers</h2>
-              <p>Bananasplit-js controllers are just classes with static members. Use classes allows us to have heritance and static attributes to store volatile values at memory while the instance is up.</p>
+              <p>Bananasplit-js controllers are just classes with static members. Using classes allows us to have heritance and static attributes for store volatile values at memory while the server instance is up.</p>
               <p>To start copy <code>tmpl.ts</code> -> <code>products.ts</code> (in plural form).</p>
 
               <br/>
@@ -657,7 +659,7 @@ export default class ProductsController {
               </div><!--//docs-code-block-->
 
               <p>
-                This is the classic example of <b>resource</b>. It contains 5 methods:
+                This is the classic example of a <b>resource</b>. It contains 5 methods:
                 <ul>
                   <li><code>index</code> which list all the existent products (implemented)</li>
                   <li><code>show</code> which list only one particular product</li>
@@ -677,7 +679,7 @@ export default class ProductsController {
               One of the advantages of using classes are attributes. Attributes members can be used in order to store data while the server is up. <b>They will be available even between multiple requests</b>.
               </p>
 
-              <p>Is important to mention that <b>this sort of data is completely volatile</b> and it will be lost once the server is restarted or down. Also should not be used if you are running multiple application instances with load balancers. On those cases is better to use a database instead.</p>
+              <p>Is important to mention that <b>this sort of data is completely volatile</b> and it will be lost once the server is restarted or down. Also should not be used if the application is running multiple instances through load balancers. On those cases is better to use a database instead.</p>
 
               <br />
 
@@ -703,14 +705,14 @@ export default class ProductsController {
               </div>
 
               <p>
-                The <code>index</code> method will run at every request but the <code>ips</code> attribute value will persist over the time. Notice that <code>ips</code> has a private scope. This restrict the access to inside the controller itself.
+                The <code>index</code> method will run at every request but the <code>ips</code> attribute value will persist over the time. Notice that <code>ips</code> has a private scope. This restrict the access to inside the controller only.
               </p>
 
               <br />
 
               <h3>Accesing the express settings</h3>
               <p>
-                In some cases you may want to access the express settings. This is very useful to read or edit them at runtime.
+                In some cases you may want to access the express settings inside controllers. This is very useful to read or edit them at runtime.
               </p>
 
               <br/>
@@ -741,7 +743,7 @@ export default class ProductsController {
 
               <br />
 
-              <p><b>Finally, we add the following change into the route definition:</b></p>
+              <p><b>To finish, we add the following change into the route definition:</b></p>
 
               <span class="badge badge-secondary">routes/products.routes.ts</span>
               <div class="docs-code-block">
