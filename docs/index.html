@@ -659,7 +659,7 @@ export default class ProductsController {
               </div><!--//docs-code-block-->
 
               <p>
-                This is the classic example of a <b>resource</b>. It contains 5 methods:
+                This is the classic <b>resource</b> example. It contains 5 methods:
                 <ul>
                   <li><code>index</code> which list all the existent products (implemented)</li>
                   <li><code>show</code> which list only one particular product</li>
@@ -669,7 +669,7 @@ export default class ProductsController {
                 </ul>
               </p>
 
-              <p>It uses the <code>Product</code> model in order to retrieve the data from the database and every handler is a pure express handler.</p>
+              <p>This controller uses the <code>Product</code> model in order to retrieve the data from the database and every handler is a pure express handler.</p>
               <p>Read more about: <a href="https://expressjs.com/es/guide/routing.html#route-methods">Express route methods</a></p>
 
               <br/>
@@ -743,7 +743,7 @@ export default class ProductsController {
 
               <br />
 
-              <p><b>To finish, we add the following change into the route definition:</b></p>
+              <p><b>To finish, add the following change into the route definition:</b></p>
 
               <span class="badge badge-secondary">routes/products.routes.ts</span>
               <div class="docs-code-block">
@@ -758,7 +758,7 @@ export default (app: Application): Router => {
               </div><!--//docs-code-block-->
 
               <p>
-                Calling the function in this way we keep the <code>this</code> reference still pointing to the controller itself.
+                Calling the function in this way we keep the <code>this</code> reference pointing to the controller itself.
               </p>
             </section><!--//section-->
 
@@ -766,143 +766,120 @@ export default (app: Application): Router => {
 
             <section class="docs-section" id="models">
               <h2 class="section-heading"><i class="fas fa-table mr-3"></i>Models</h2>
+              <p>Bananasplit-js provides a class that you can extend for the model creation. The resulting model is more orderly than the define function provided by Sequelize.</p>
+
               <p>
-                Bananasplit provides a Model class that allow  to represent a sequelize model based on classes easier. Unlike the <code>define</code> function that sequelizes provides, the Bananasplit model includes both attributes definition and options into the class. Also the columns types are defined as class attributes. This differences makes possible to observe the model programatically as an entity.
+                In this class all the columns types are declared, the model definition (attributes) is a static member and also the model options. The <code>attributes</code> attribute value is what usually is passed as first parameter to the define function and <code>$options</code> the second one.
               </p>
 
-              <p>In order to generate a model <b>is recommended not to use the sequelize command line</b>, but rather make a duplicate of the tmpl.ts file and rename it to the singular form of the resource name. Let's continue with our Product idea. You will get something like this:</p>
 
-              <!--<div class="callout-block callout-block-success">-->
-                <!--<div class="content">-->
-                  <!--<h4 class="callout-title">-->
-                    <!--<span class="callout-icon-holder mr-1">-->
-                      <!--<i class="fas fa-thumbs-up"></i>-->
-                    <!--</span>[>//icon-holder<]-->
-                    <!--Using sequelize-cli-->
-                  <!--</h4>-->
-                  <!--<p>For more information, please visit: <a href="https://sequelize.org/master/manual/migrations.html" target="_blank">https://sequelize.org/master/manual/migrations.html</a></p>-->
-                <!--</div>[>//content<]-->
-              <!--</div>[>//callout-block<]-->
+              <p>To start copy <code>tmpl.ts</code> -> <code>product.ts</code> (in singular form).</p>
 
+              <br/>
+
+              <b>Let's create a basic product model:</b>
+
+              <br/>
               <br/>
 
               <span class="badge badge-secondary">models/product.ts</span>
 
               <div class="docs-code-block">
                 <pre class="rounded">
-                <code class="typescript hljs">
-/**
+                <code class="typescript hljs">/**
  *
  *  Model: Product
+
  *  @module app/models/product
- * 
  *  @description model for product
  * 
  */
-import { Model } from '@bananasplit-js'
-import { DataTypes, ModelAttributes } from 'sequelize'
 
+import { Model } from '@bananasplit-js'
+import { DataTypes, ModelAttributes, ModelOptions } from 'sequelize'
 
 class Product extends Model {
+  /**
+   * @columns
+   */
+  declare id: number
+  declare name: string
+  declare category: string
+  declare price: number
 
-    /**
-     *  @types
-     */
-    public id!: number
-    public name!: string
-    public category!: string
-    public price!: number
+  /**
+   * @attributes
+   */
+  static attributes: ModelAttributes = {
+    id: {
+      type: DataTypes.INTEGER.UNSIGNED,
+      autoIncrement: true,
+      primaryKey: true
+    },
 
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
 
-    /**
-     *  @attributes
-     */
-    public attributes: ModelAttributes = {
+    category: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
 
-        id: {
-            type: DataTypes.INTEGER.UNSIGNED,
-            autoIncrement: true,
-            
-            primaryKey: true
-        },
-
-        name: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-
-        category: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-
-        price: {
-            type: DataTypes.INTEGER.UNSIGNED
-        }
-        
+    price: {
+      type: DataTypes.INTEGER.UNSIGNED
     }
+  }
 
-
-    /**
-     *  @options
-     */
-    public $options: object = {
-        timestamps: true
-    }
-
+  /**
+   * @options
+   */
+  static $options: ModelOptions = {
+    timestamps: true
+  }
 }
-
 
 // Init the model
 Product.init()
 
-export default Products
-                </code>
+export default Product</code>
                 </pre>
               </div><!--//docs-code-block-->
 
-              <p>
-                Notice that what is exported is the class Products itself. When calling the init method, the model loads in background the attributes and options from the class.
-              </p>
+              <p>When the <code>init</code> method is called, the model loads the defined attributes and options in background.</p>
 
-              <p>
-                Is important to mention too the fact that, at the same time, the Bananasplit Model extends from the Sequelize Model as well, but making it much more understandable and neater than the default provided.
-              </p>
-
-              <p>
-                Define the types is not required, not adding them does not cause a compilation error but is highly recommended.
-              </p>
+              <p>It's important to mention the fact that the Bananasplit-js model extends from the Sequelize Model as well, but this logic is transparent to the developer.</p>
 
               <br/>
 
-              <h3>
-                Executing tasks before
-              </h3>
+              <h3>Executing tasks before the export</h3>
 
-              <p>
-                It is possible to execute certain tasks before export the model. Let's get in the case that we want to synchronize this Product model forcing it to drop and create the table every time the models change. You will get something like this:
-              </p>
+              <p>Sometimes you may need to execute tasks before the model is exported. For this purpose you can declare a self-invoking function which in some cases is asynchronous.</p>
+
+              <br />
+
+              <p><b>Let's supose we need to synchronize the product model with the table in the database:</b></p>
 
               <div class="docs-code-block">
                 <pre class="rounded">
-                  <code class="typescript hljs">
-;( async(): Promise&lt;void&gt; =&gt; {
-    Product.init()
-    await Product.sync({ force: true })
+                  <code class="typescript hljs">class Product extends Model {
+  // ...rest
+}
+
+;(async () =&gt; {
+  Product.init()
+  await Product.sync({ force: true })
 })()
 
-
-export default Product
-                  </code>
+export default Product</code>
                 </pre>
               </div><!--//docs-code-block-->
 
-              <p>
-                In the example above an autocallable anonymous function executes itself in an async/await way. Inside it, first the Product model is initializated and then the model is forced to syncrhonize. This function returns a void promise.
-              </p>
+              <p>Inside this self-invoking function you can run any task you want. For this particular case, we init the model first, then we synchronize the model with the table in the database.</p>
 
               <p>
-                The possibilities are many and you can do what you want. If you want to know more about models please visit: <a href="https://sequelize.org/master/manual/model-basics.html" target="_blank">models basics with sequelize</a>.
+                For more information visit: <a href="https://sequelize.org/master/manual/model-basics.html" target="_blank">models basics with sequelize</a>.
               </p>
             </section><!--//section-->
 
