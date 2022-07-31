@@ -469,211 +469,294 @@ DB_PASSWORD=secret</code>
             <header class="docs-header">
               <h1 class="docs-heading">Guide</h1>
               <p>
-                Bananasplit provides a collection of templates for the most used resources like: routes, controllers, models, middlewares and more!
+                Bananasplit-js include templates for the most used resources: routes, controllers, models, migrations, seeders, etc.
               </p>
-               <p>
-                 For the models generated through the sequelize-cli is recommended to use the model template content instead of the original, copying the content from one to another. This model template extends from a simple Model class that provides an organized code and an more improved way to work with classes.
-               </p>
-
-               <p>
-                 Additionally, is important to mention that Bananasplit follows a philosophy that is: <b>use jsdocs and comment your code.</b>
-                 Have your files well documented is very beneficial for you and other developers because, most part of the time you spent it reading the code instead of writing it.
-               </p>
-
-               <br/>
-               <p><b>Now, let's checkout the different resources that we can create:</b></p>
+               <p>Sequelize CLI is able to create new migrations and seeders but is recommended to use the bananasplit-js template instead.</p>
+               <p><b>Let's checkout the different resources we can create:</b></p>
             </header>
 
             <br/>
 
             <section class="docs-section" id="routes">
               <h2 class="section-heading"><i class="fas fa-map-signs mr-3"></i>Routes</h2>
-              <p>In bananasplit routes works the same as express.</p>
-              <p>To start make a duplicate of the tmpl.routes file renaming it to the plural form of the resource name with the ".routes" suffix. Let's take the example of a <b>Products</b> router. You will get something like this:</p>
+              <p>Routes works exactly as in express.</p>
+              <p>To start copy <code>tmpl.routes.ts</code> -> <code>products.routes.ts</code> (in plural form).</p>
+              <p>The <code>.routes</code> suffix is very important because it tells to banasplit-js to not ignore this file.</p>
 
               <br/>
+              <p><b>Let's code a basic route example to listing products:</b></p>
 
               <span class="badge badge-secondary">routes/products.routes.ts</span>
               <div class="docs-code-block">
                 <pre class="rounded">
-                  <code class="typescript hljs">
-/**
- * 
+                  <code class="typescript hljs">/**
+ *
  *  Router: Products
+ *
  *  @module app/routes/products
- * 
  *  @description routes for products
- * 
+ *
  */
-import Express, { Router } from 'express'
+
+import { Router } from 'express'
 
 /**
- *  @controller
+ * @controller
  */
-import ProductsController from '@controllers/products'
+import ProductsController from "@controllers/products"
 
+const $: Router = Router()
 
-// Router
-const $: Express.Router = Router()
+export default (): Router => {
+  $.route('/products')
+    .get(ProductsController.index)
 
+  return $
+}</code>
+                </pre>
+              </div><!--//docs-code-block-->
 
-export default
+              <p><b>What this file does is very simple:</b></p>
+              <ul>
+                <li>It imports the product controller from <code>@controllers</code></li>
+                <li>It creates a <code>new router</code>, so you have entire control over it</li>
+                <li>It creates a new route <code>/products</code> assigning the <code>index</code> controller method</li>
+                <li>It exports a <code>function</code> by default which returns the created router</li>
+              </ul>
 
-    ( app: Express.Application ): Router => {
+              <br />
 
-        /**
-         *  @routes
-         */
-        $.route( '/products' )
-            .get( ProductsController.findAll )
+              <p>For convenience the router is named <code>$</code>, this is simple and clean to <b>chain multiple controller functions to the same route</b>:</p>
 
-        return $
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="typescript hljs">export default (): Router => {
+  $.route('/products')
+    .get(ProductsController.index)
+    .post(ProductsController.create)
 
-    }
-
-;
-                  </code>
+  return $
+}</code>
                 </pre>
               </div><!--//docs-code-block-->
 
               <p>
-                Notice that all routes definitions goes into an anonymous function that receives the express application as parameter and returns the router itself. This is the way Bananasplit let you access to the express settings.
-              </p>
-
-              <p>
-                Maybe you will be interested in: <a href="#">how to access the express settings inside a controller handler.</a>
-              </p>
-
-              <p>
-                Other thing you can notice is the short router name which is <b>$</b>, this short name is very convenient because let you chain methods handlers in a more clean way, for example:
+                This exported function let us to <b>access to the express instance and settings inside routes files</b>, which are shared into the entire application:
               </p>
 
               <div class="docs-code-block">
                 <pre class="rounded">
-                  <code class="typescript hljs">
-/**
- *  @routes
- */
-$.route( '/products' )
-    .get( ProductsController.findAll )
-    .post( ProductsController.create )
-                  </code>
+                  <code class="typescript hljs">import { Application } from "express"
+
+// ...rest
+
+export default (app: Application): Router => {
+  const setting: any = app.get('key')
+  // do something with it
+
+  $.route('/products')
+    .get(ProductsController.index)
+
+  return $
+}</code>
                 </pre>
               </div><!--//docs-code-block-->
 
-              <p>Making very explicit where the route is.</p>
+              <p>This must be used to <b>read only</b> and not to set.</p>
 
+              <br />
+
+              <h3>Automatic router detection</h3>
+
+              <p>Once a routes file is created, <b>Bananasplit-js will detect it automatically adding it to the express application</b>.</p>
               <p>
-                One time created, Bananasplit will detect automatically the existence of this new module adding it to the express middleware. All files without ".routes" suffix will be ignored, this is an excellent way to deactivate routes modules while developing.
+                All routers are incorporated to the express application by default, this behavior is declared in the <code>middlewares/express.ts</code> file.
+                <br />
+                Read more about: <a href="#">Managing how routers are added to the express application</a>.
               </p>
 
-              <br/>
+              <p>All files without <code>.routes</code> suffix will be ignored, this is an excellent way to deactivate routers while developing.</p>
 
               <p>
-                This routes definitions are pure express. You can read more about: <a href="https://expressjs.com/en/guide/routing.html" target="_blank">express routing.</a>
-              </p>
-
-              <br/>
-
-              <p>
-                <b>Next step is to define the controller handler in the ProductsController class.</b>
+                This routes definitions are pure express code. Check the express documentation: <a href="https://expressjs.com/en/guide/routing.html" target="_blank">Express Routing.</a>
               </p>
             </section>
 
             <section class="docs-section" id="controllers">
               <br/>
               <h2 class="section-heading"><i class="fas fa-cog mr-3"></i>Controllers</h2>
-              <p>
-                Controllers in Bananasplit are based in classes instead of exported functions from a module. The reason is classes provides heritance and properties. Controllers are treated as an entity and not only like a function that handles a http request.
-              </p>
-              <p>In order to create a controller make a duplicate of the tmpl.ts controller file renaming it to the plural form  of the resource name. Let's continue with our <b>ProductsController</b> idea. You will get something like this:</p>
+              <p>Bananasplit-js controllers are just classes with static members. Use classes allows us to have heritance and static attributes to store volatile values at memory while the instance is up.</p>
+              <p>To start copy <code>tmpl.ts</code> -> <code>products.ts</code> (in plural form).</p>
 
               <br/>
+              <p><b>Let's code a basic products controller example:</b></p>
 
               <span class="badge badge-secondary">controllers/products.ts</span>
 
               <div class="docs-code-block">
                 <pre class="rounded">
-                  <code class="typescript hljs">
-/**
- * 
+                  <code class="typescript hljs">/**
+ *
  *  Controller: Products
+ *
  *  @module controllers/products
- * 
  *  @description controller for products
- * 
+ *
  */
+
 import { Request, Response } from 'express'
+import { IProduct } from '@interfaces/product'
 
 /**
- *  @model
+ * @model
  */
-import Product from '@models/product'
+import Product from "@models/product"
 
+export default class ProductsController {
+  /**
+   *  @description gets all the products
+   */
+  static async index(req: Request, res: Response): Promise&lt;Response&lt;IProduct[]&gt;&gt; {
+    const products: IProduct[] = await Product.findAll()
+    return res.json(products)
+  }
 
-class ProductsController {
-    
-    /**
-     *  @description returns all the products
-     */
-    public findAll = async ( req: Request, res: Response ): Promise&lt;Response&gt; =&gt; {
-        const products: any = await Product.findAll()
-        return res.json( products )
-    }
+  /**
+   *  @description gets an existent product
+   */
+  static async show(req: Request, res: Response) {
+    // ...code
+    return res.json({ ... })
+  }
 
-}
+  /**
+   *  @description creates a new product
+   */
+  static async create(req: Request, res: Response) {
+    // ...code
+    return res.json({ ... })
+  }
 
+  /**
+   *  @description updates an existent product
+   */
+  static async update(req: Request, res: Response) {
+    // ...code
+    return res.json({ ... })
+  }
 
-export default new ProductsController
-              </code>
+  /**
+   *  @description deletes an existent product
+   */
+  static delete(req: Request, res: Response) {
+    // ...code
+    return res.json({ ... })
+  }
+}</code>
                 </pre>
               </div><!--//docs-code-block-->
 
-              <p>The controller definition is very simple, all method are defined with a public scope and written as arrows functions. In some cases you will need to have some private methods which will be in charge of the internal logic of the controller resource being used for the public ones.</p>
-              <p>Notice that the exported controller is not the class controller itself but a single instance of it. This is very important because statics methods actually loss the reference to <code>this</code> in the router callback.</p>
+              <p>
+                This is the classic example of <b>resource</b>. It contains 5 methods:
+                <ul>
+                  <li><code>index</code> which list all the existent products (implemented)</li>
+                  <li><code>show</code> which list only one particular product</li>
+                  <li><code>create</code> which creates a new product</li>
+                  <li><code>update</code> which updates an existent product</li>
+                  <li><code>delete</code> which deletes an existent product</li>
+                </ul>
+              </p>
+
+              <p>It uses the <code>Product</code> model in order to retrieve the data from the database and every handler is a pure express handler.</p>
+              <p>Read more about: <a href="https://expressjs.com/es/guide/routing.html#route-methods">Express route methods</a></p>
 
               <br/>
-              <h3>Accesing to the express settings</h3>
+
+              <h3>Store data at memory</h3>
               <p>
-                In some cases you will want to access to the express settings via <code>get</code> or <code>set</code> methods. This is very useful to share data between your application parts.
+              One of the advantages of using classes are attributes. Attributes members can be used in order to store data while the server is up. <b>They will be available even between multiple requests</b>.
+              </p>
+
+              <p>Is important to mention that <b>this sort of data is completely volatile</b> and it will be lost once the server is restarted or down. Also should not be used if you are running multiple application instances with load balancers. On those cases is better to use a database instead.</p>
+
+              <br />
+
+              <p><b>Let's check an example that registers the client ip at every request:</b></p>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="typescript hljs">export default class ProductsController {
+  // clients ip collection
+  private static ips = new Set&lt;string&gt;()
+
+  static async index(req: Request, res: Response): Promise&lt;Response&lt;IProduct[]&gt;&gt; {
+    // registry the client ip
+    const ip: string = req.headers['x-forwarded-for'] ?? req.socket.remoteAddress
+    this.ips.add(ip)
+
+    // retrieve all the products
+    const products: IProduct[] = await Product.findAll()
+    return res.json(products)
+  }
+}</code>
+                </pre>
+              </div>
+
+              <p>
+                The <code>index</code> method will run at every request but the <code>ips</code> attribute value will persist over the time. Notice that <code>ips</code> has a private scope. This restrict the access to inside the controller itself.
+              </p>
+
+              <br />
+
+              <h3>Accesing the express settings</h3>
+              <p>
+                In some cases you may want to access the express settings. This is very useful to read or edit them at runtime.
               </p>
 
               <br/>
-              <p>In order to do that, let's update the controller handler for show the app version in the response:</p>
+
+              <p><b>Let's wrap the index method inside a high order function:</b></p>
 
               <div class="docs-code-block">
                 <pre class="rounded">
-                  <code class="typescript hljs">
-public findAll = ( app: Express.Application ): Function =&gt; {
+                  <code class="typescript hljs">import { Application, RequestHandler, Request, Response } from 'express'
 
-    return async ( req: Request, res: Response ): Promise&lt;Response&gt; => {
-        // We access to the "version" setting
-        const version: string = app.get( "version" )
-        const products: any = await Product.findAll()
+export default class ProductsController {
+  static index(app: Application): RequestHandler {
+    return async (req: Request, res: Response): Promise&lt;Response&lt;IProduct[]&gt;&gt; => {
+      // access the setting
+      const setting: string = app.get('key')
+      // do something with it
 
-        return res.json({
-            products,
-            version
-        })
+      // retrieve all the products
+      const products: IProduct[] = await Product.findAll()
+      return res.json(products)
     }
-}
-                  </code>
+  }
+}</code>
                 </pre>
               </div><!--//docs-code-block-->
 
-              <p>Then we update the handler assignment into the route:</p>
+              <p>Now the <code>index</code> method receives the <code>app</code> express instance as parameter and returns the request handler as arrow function.</p>
 
+              <br />
+
+              <p><b>Finally, we add the following change into the route definition:</b></p>
+
+              <span class="badge badge-secondary">routes/products.routes.ts</span>
               <div class="docs-code-block">
                 <pre class="rounded">
-                  <code class="typescript hljs">
-$.route( '/products' )
-    .get( ProductsController.findAll(app) )
-                  </code>
+                  <code class="typescript hljs">// ...rest
+
+export default (app: Application): Router => {
+  $.route('/products')
+    .get(ProductsController.index(app))
+}</code>
                 </pre>
               </div><!--//docs-code-block-->
 
               <p>
-                Using this trick instead of <code>.bind(app)</code> we keep the <code>this</code> reference to the controller itself.
+                Calling the function in this way we keep the <code>this</code> reference still pointing to the controller itself.
               </p>
             </section><!--//section-->
 
@@ -791,7 +874,7 @@ export default Products
               <br/>
 
               <h3>
-                Executing tasks before export the model
+                Executing tasks before
               </h3>
 
               <p>
