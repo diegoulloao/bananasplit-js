@@ -618,7 +618,7 @@ export default class ProductsController {
   /**
    *  @description gets all the products
    */
-  static async index(req: Request, res: Response): Promise&lt;Response&lt;IProduct[]&gt;&gt; {
+  static async index (req: Request, res: Response): Promise&lt;Response&lt;IProduct[]&gt;&gt; {
     const products: IProduct[] = await Product.findAll()
     return res.json(products)
   }
@@ -626,7 +626,7 @@ export default class ProductsController {
   /**
    *  @description gets an existent product
    */
-  static async show(req: Request, res: Response) {
+  static async show (req: Request, res: Response) {
     // ...code
     return res.json({ ... })
   }
@@ -634,7 +634,7 @@ export default class ProductsController {
   /**
    *  @description creates a new product
    */
-  static async create(req: Request, res: Response) {
+  static async create (req: Request, res: Response) {
     // ...code
     return res.json({ ... })
   }
@@ -642,7 +642,7 @@ export default class ProductsController {
   /**
    *  @description updates an existent product
    */
-  static async update(req: Request, res: Response) {
+  static async update (req: Request, res: Response) {
     // ...code
     return res.json({ ... })
   }
@@ -650,7 +650,7 @@ export default class ProductsController {
   /**
    *  @description deletes an existent product
    */
-  static delete(req: Request, res: Response) {
+  static delete (req: Request, res: Response) {
     // ...code
     return res.json({ ... })
   }
@@ -691,7 +691,7 @@ export default class ProductsController {
   // clients ip collection
   private static ips = new Set&lt;string&gt;()
 
-  static async index(req: Request, res: Response): Promise&lt;Response&lt;IProduct[]&gt;&gt; {
+  static async index (req: Request, res: Response): Promise&lt;Response&lt;IProduct[]&gt;&gt; {
     // registry the client ip
     const ip: string = req.headers['x-forwarded-for'] ?? req.socket.remoteAddress
     this.ips.add(ip)
@@ -724,7 +724,7 @@ export default class ProductsController {
                   <code class="typescript hljs">import { Application, RequestHandler, Request, Response } from 'express'
 
 export default class ProductsController {
-  static index(app: Application): RequestHandler {
+  static index (app: Application): RequestHandler {
     return async (req: Request, res: Response): Promise&lt;Response&lt;IProduct[]&gt;&gt; => {
       // access the setting
       const setting: string = app.get('key')
@@ -769,7 +769,7 @@ export default (app: Application): Router => {
               <p>Bananasplit-js provides a class that you can extend for the model creation. The resulting model is more orderly than the define function provided by Sequelize.</p>
 
               <p>
-                In this class all the columns types are declared, the model definition (attributes) is a static member and also the model options. The <code>attributes</code> attribute value is what usually is passed as first parameter to the define function and <code>$options</code> the second one.
+                In this class all the columns types are declared, the model definition (attributes) is a static member and also the model options. The <code>attributes</code> attribute value is what usually is passed as first parameter to the sequelize define function, and <code>$options</code> the second one.
               </p>
 
 
@@ -847,19 +847,19 @@ export default Product</code>
                 </pre>
               </div><!--//docs-code-block-->
 
-              <p>When the <code>init</code> method is called, the model loads the defined attributes and options in background.</p>
+              <p>When the <code>init</code> method is called, the model loads the attributes and options in background.</p>
 
-              <p>It's important to mention the fact that the Bananasplit-js model extends from the Sequelize Model as well, but this logic is transparent to the developer.</p>
+              <p>It's important to mention the fact that the <code>Model</code> class provided by Bananasplit-js extends from the Sequelize Model as well, but this logic is transparent to the developer.</p>
 
               <br/>
 
               <h3>Executing tasks before the export</h3>
 
-              <p>Sometimes you may need to execute tasks before the model is exported. For this purpose you can declare a self-invoking function which in some cases is asynchronous.</p>
+              <p>Sometimes you may need to execute tasks before the model is exported. For this purpose you can declare a self-invoking function which in some cases can be asynchronous.</p>
 
               <br />
 
-              <p><b>Let's supose we need to synchronize the product model with the table in the database:</b></p>
+              <p><b>Let's synchronize the product model with the table in the database:</b></p>
 
               <div class="docs-code-block">
                 <pre class="rounded">
@@ -887,105 +887,83 @@ export default Product</code>
 
             <section class="docs-section" id="migrations">
               <h2 class="section-heading"><i class="fas fa-database mr-3"></i>Migrations</h2>
-              <p>Migrations are like a version control of your tables, you can create the table, update the fields, modify the constraints and more, all based in a timeline registry that sequelize manages.</p>
+              <p>Migrations are like a version control of your tables, you can create the table, update the fields, modify the constraints, etc, all backed up in a registry that sequelize manages.</p>
 
-              <p>
-                The sequelize command line tool will help in this task. In order to create a new migration run the following command replacing part of the name with the plural form of the resource:
-              </p>
+              <p>The Sequelize CLI can help on this task.</p>
+
+              <br />
+
+              <p><b>Let's create a migration for the products table:</b></p>
 
               <code>npx sequelize migration:generate --name create-products-table</code>
               
               <br/><br/>
               
+              <p>This will generate a new migration file in the <code>database/migrations</code> directory.</p>
+
               <p>
-                This will generate a new file in the database/migrations directory. Notice that the beggining name of this new file starts with a timestamp, that is the moment when it was created and the full name describes the action that this migration is performing, this last is very important.
+                Notice that the first part of the file name starts with a timestamp, that is the exact moment when the migration was created, and most important, the <b>fullname describes the action that the migration is performing</b>.
               </p>
 
-              <p>Let's continue creating the migration for the Products example. <b>For this is highly recommended to use the tmpl file content instead of the generated</b>, because this file provides a better order and it's more readable.</p>
+              <br />
 
-              <p>You should get something like this:</p>
+              <p><b>Let's continue writing the migration:</b></p>
+              <p>Optionally, you can copy the content from <code>tmpl.ts</code> -> <code>20201229085157-create-products-table.ts</code></p>
 
-              <br/>
               <span class="badge badge-secondary">migrations/20201229085157-create-products-table.js</span>
 
               <div class="docs-code-block">
                 <pre class="rounded">
-                  <code class="javascript hljs">
-/**
+                  <code class="javascript hljs">/**
  * 
  *  Migration: Products
- *  @description products table migration
+ *  @description migration for the products table
  * 
  */
 
-
-export function up ( queryInterface, DataTypes ) {
-
-    return queryInterface.createTable( 'Products', {
-
-        id: {
-            type: DataTypes.INTEGER.UNSIGNED,
-            autoIncrement: true,
-
-            primaryKey: true
-        },
+export function up (queryInterface, DataTypes) {
+  return queryInterface.createTable('Products', {
+    id: {
+      type: DataTypes.INTEGER.UNSIGNED,
+      autoIncrement: true,
+      primaryKey: true
+    },
        
-        name: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
 
-        category: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
+    category: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
 
-        price: {
-            type: DataTypes.INTEGER.UNSIGNED
-        }
-        
+    price: {
+      type: DataTypes.INTEGER.UNSIGNED
+    },
 
-        /* Timestamps */
-        createdAt: {
-            type: 'TIMESTAMP',
-            defaultValue: DataTypes.literal( 'CURRENT_TIMESTAMP' ),
-            allowNull: false
+    createdAt: {
+      type: 'TIMESTAMP',
+      defaultValue: DataTypes.literal('CURRENT_TIMESTAMP'),
+      allowNull: false
+    },
 
-        },
-
-        updatedAt: {
-            type: 'TIMESTAMP',
-            defaultValue: DataTypes.literal('CURRENT_TIMESTAMP'),
-            allowNull: false
-
-        }
-        
-    })
-
+    updatedAt: {
+      type: 'TIMESTAMP',
+      defaultValue: DataTypes.literal('CURRENT_TIMESTAMP'),
+      allowNull: false
+    }
+  })
 }
 
-
-export function down ( queryInterface, Sequelize ) {
-    return queryInterface.dropTable( 'Products' )
-}
-                  </code>
+export function down (queryInterface, Sequelize) {
+  return queryInterface.dropTable('Products')
+}</code>
                 </pre>
               </div><!--//docs-code-block-->
 
-              <p>
-                This migrations mainly performs the creation of the Products table including the timestamps (which should be declared explicity). It counts of two members functions: <code>up</code>, that is in charge of create the table and <code>down</code> that does exactly the reverse action, drop the table.
-              </p>
-              
-              <p>
-                In that way we can create the tables from the command line:
-              </p>
-
-              <code>npx sequelize db:migrate</code>
-              <br/><br/>
-              <p>or drop them:</p>
-              <code>npx sequelize db:migrate:undo</code>
-
-              <br/><br/>
+              <p>This migrations mainly performs the creation of the products table including their timestamps.</p>
 
               <div class="callout-block callout-block-success">
                 <div class="content">
@@ -993,11 +971,29 @@ export function down ( queryInterface, Sequelize ) {
                     <span class="callout-icon-holder mr-1">
                       <i class="fas fa-thumbs-up"></i>
                     </span><!--//icon-holder-->
-                    Migrations with sequelize
+                    Migrations with Sequelize
                   </h4>
-                  <p>If you are interested in knowing what migrations can do, please visit: <a href="https://sequelize.org/master/manual/migrations.html" target="_blank">https://sequelize.org/master/manual/migrations.html</a></p>
+                  <p>If you are interested in knowing how migrations work, please visit: <a href="https://sequelize.org/master/manual/migrations.html" target="_blank">https://sequelize.org/master/manual/migrations.html</a></p>
                 </div><!--//content-->
               </div><!--//callout-block-->
+
+              <br />
+
+              <p><b>All migration files contains two member functions:</b></p>
+
+              <ul>
+                <li><code>up</code> which is in charge to create the table</li>
+                <li><code>down</code> which does exactly the reverse action: drop the table.</li>
+              </ul>
+
+              <p>
+                To create the table run the following command:
+              </p>
+
+              <code>npx sequelize db:migrate</code>
+              <br/><br/>
+              <p>to drop:</p>
+              <code>npx sequelize db:migrate:undo</code>
             </section><!--//section-->
 
             <br/>
