@@ -687,7 +687,9 @@ export default class ProductsController {
 
               <div class="docs-code-block">
                 <pre class="rounded">
-                  <code class="typescript hljs">export default class ProductsController {
+                  <code class="typescript hljs">// ...rest
+
+export default class ProductsController {
   // clients ip collection
   private static ips = new Set&lt;string&gt;()
 
@@ -721,7 +723,7 @@ export default class ProductsController {
 
               <div class="docs-code-block">
                 <pre class="rounded">
-                  <code class="typescript hljs">import { Application, RequestHandler, Request, Response } from 'express'
+                  <code class="typescript hljs">// ...rest
 
 export default class ProductsController {
   static index (app: Application): RequestHandler {
@@ -1101,40 +1103,41 @@ exports.down = (queryInterface) => {
 
             <section class="docs-section" id="helpers">
               <h2 class="section-heading"><i class="fas fa-code mr-3"></i>Helpers</h2>
-              <p>Open the <b>helpers.ts</b> file and write your function as below.</p>
+              <p>Nothing simpler than export a function which helps bigger functions to do minor tasks.</p>
+              <p><b>Helpers are just isolated portions of code</b> that helps high level functions to become lighter.</p>
+              <p>You can export too many functions as you want and organizate them by files. <b>Each filename must describe a group of functions</b>.</p>
 
               <br/>
 
-              <span class="badge badge-secondary">helpers.ts</span>
+              <p><b>Let's create a helper function which parses the product code to a category:</b></p>
+
+              <span class="badge badge-secondary">helpers/products.ts</span>
 
               <div class="docs-code-block">
                 <pre class="rounded">
-                <code class="typescript hljs">
-/**
+                <code class="typescript hljs">/**
 * 
-*  @helpers
-*  Your helpers goes here.
+*  Helpers: Products
+*  @description helper functions for products
 * 
 */
-export function helper(): void {
 
-  // do something helpful
+export function parseProductCodeToCat (code: string): string {
+  const categories: { [code: string]: string } = {
+    'fjw32': 'keyboards',
+    '3n2io': 'screens',
+    'mdnf2': 'racks',
+    'oi4o3': 'earphones',
+    default: 'no category'
+  }
 
-},
-
-
-// My new Helper
-export function anotherHelper(): void {
-
-  // do something helpful too
-
-}
-                </code>
+  return categories[code] ?? categories.default
+}</code>
                 </pre>
               </div><!--//docs-code-block-->
 
-              <p>Now you can import them from anywhere:</p>
-              <code>import { anotherHelper } from './src/app/helpers/helpers'</code>
+              <p><b>This function can be imported from anywhere:</b></p>
+              <code>import { parseProductCodeToCat } from '@helpers/products'</code>
             </section><!--//section-->
 
             <br/>
