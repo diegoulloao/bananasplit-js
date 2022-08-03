@@ -1000,16 +1000,55 @@ export function down (queryInterface, Sequelize) {
 
             <section class="docs-section" id="seeders">
               <h2 class="section-heading"><i class="fas fa-layer-group mr-3"></i>Seeders</h2>
-              <p>In this case the best option is to use the sequelize client.</p>
-              <p><b>Sequelize-cli don't provides native Typescript support</b>, therefore they must be written in Javascript.</p>
+              <p>Seeders are basically loaders that populate your tables with fake data, this is very useful to develop and test your application.</p>
+
+              <p>To create a seeder file the best option to use is the Sequelize CLI.</p>
+              <p><b>Sequelize CLI doesn't provide native Typescript support</b>, therefore, seeders must be written in Javascript.</p>
 
               <br/>
 
-              <h4>Seeders</h4>
-              <p>Run replacing by your seeder name:</p>
-              <code>npx sequelize seeder:generate --name seeder-name</code>
+              <p><b>Let's create a seeder for the products table:</b></p>
+              <code>npx sequelize seeder:generate --name products-seeder</code>
 
-              <br/><br/><br/>
+              <br/><br/>
+
+              <p>Optionally, you can copy the content from <code>tmpl</code> -> <code>20201229085902-products-seeder.js</code></p>
+
+              <span class="badge badge-secondary">seeders/20201229085902-products-seeder.js</span>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="javascript hljs">/**
+ *
+ *  Seeder: Products
+ *  @description seeds the products table
+ *
+ */
+
+const createProduct = require("@generators/create-product")
+
+exports.up = (queryInterface) => {
+  const products = createProduct.amount(10)
+  return queryInterface.bulkInsert('Products', products, {})
+}
+
+exports.down = (queryInterface) => {
+  return queryInterface.bulkDelete('Products', null, {})
+}</code>
+                </pre>
+              </div><!--//docs-code-block-->
+
+              <p><b>Like migrations, seeder files contains the same two member functions:</b></p>
+
+              <ul>
+                <li><code>up</code> which is in charge to add registries to the table</li>
+                <li><code>down</code> which does exactly the reverse action: truncate the table.</li>
+              </ul>
+
+              <br />
+
+              <p>This seeder file use a <b>generator function</b> which allow us to generate amount of registries of the same type.</p>
+              <p>Please check: <a href="#generators">Creating Generators</a></p>
 
               <div class="callout-block callout-block-success">
                 <div class="content">
@@ -1017,9 +1056,9 @@ export function down (queryInterface, Sequelize) {
                     <span class="callout-icon-holder mr-1">
                       <i class="fas fa-thumbs-up"></i>
                     </span><!--//icon-holder-->
-                    Creating migrations and seeders
+                    Creating seeders
                   </h4>
-                  <p>For more information, please visit: <a href="https://sequelize.org/master/manual/migrations.html" target="_blank">https://sequelize.org/master/manual/migrations.html</a></p>
+                  <p>For more information, please visit: <a href="https://sequelize.org/master/manual/migrations.html#creating-the-first-seed" target="_blank">https://sequelize.org/master/manual/migrations.html#creating-the-first-seed</a></p>
                 </div><!--//content-->
               </div><!--//callout-block-->
             </section><!--//section-->
