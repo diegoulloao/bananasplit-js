@@ -548,7 +548,7 @@ export default (): Router => {
 
               <div class="docs-code-block">
                 <pre class="rounded">
-                  <code class="typescript hljs">import { Application } from "express"
+                  <code class="typescript hljs">import { Application, Router } from "express"
 
 // ...rest
 
@@ -568,7 +568,7 @@ export default (app: Application): Router => {
 
               <br />
 
-              <h3>Automatic router detection</h3>
+              <h3>Automatic routes detection</h3>
 
               <p>Once a routes file is created, <b>Bananasplit-js will detect it automatically adding it to the express application</b>.</p>
               <p>
@@ -712,7 +712,7 @@ export default class ProductsController {
 
               <br />
 
-              <h3>Accesing the express settings</h3>
+              <h3>Accessing the express settings</h3>
               <p>
                 In some cases you may want to access the express settings inside controllers. This is very useful to read or edit them at runtime.
               </p>
@@ -723,7 +723,9 @@ export default class ProductsController {
 
               <div class="docs-code-block">
                 <pre class="rounded">
-                  <code class="typescript hljs">// ...rest
+                  <code class="typescript hljs">import { Application, Request, Response, RequestHandler } from 'express'
+
+// ...rest
 
 export default class ProductsController {
   static index (app: Application): RequestHandler {
@@ -1137,7 +1139,16 @@ export function parseProductCodeToCat (code: string): string {
               </div><!--//docs-code-block-->
 
               <p><b>This function can be imported from anywhere:</b></p>
-              <code>import { parseProductCodeToCat } from '@helpers/products'</code>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                <code class="typescript hljs">// ...some file
+
+import { parseProductCodeToCat } from '@helpers/products'
+
+const productCategory: string = parseProductCodeToCat(product.code)</code>
+                </pre>
+              </div><!--//docs-code-block-->
             </section><!--//section-->
 
             <br/>
