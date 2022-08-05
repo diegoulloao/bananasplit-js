@@ -808,7 +808,7 @@ class Product extends Model {
    */
   declare id: number
   declare name: string
-  declare category: string
+  declare code: string
   declare price: number
 
   /**
@@ -826,7 +826,7 @@ class Product extends Model {
       allowNull: false
     },
 
-    category: {
+    code: {
       type: DataTypes.STRING,
       allowNull: false
     },
@@ -938,7 +938,7 @@ export function up (queryInterface, DataTypes) {
       allowNull: false
     },
 
-    category: {
+    code: {
       type: DataTypes.STRING,
       allowNull: false
     },
@@ -1071,34 +1071,10 @@ exports.down = (queryInterface) => {
 
             <section class="docs-section" id="generators">
               <h2 class="section-heading"><i class="fas fa-list-alt mr-3"></i>Generators</h2>
-              <p>In this case the best option is to use the sequelize client.</p>
-              <p><b>Sequelize-cli don't provides native Typescript support</b>, therefore they must be written in Javascript.</p>
 
-              <br/>
-
-              <h4>Migrations</h4>
-              <p>Run replacing by your migration name:</p>
-              <code>npx sequelize migration:generate --name migration-name</code>
-
-              <br/><br/><br/>
-
-              <h4>Seeders</h4>
-              <p>Run replacing by your seeder name:</p>
-              <code>npx sequelize seeder:generate --name seeder-name</code>
-
-              <br/><br/><br/>
-
-              <div class="callout-block callout-block-success">
-                <div class="content">
-                  <h4 class="callout-title">
-                    <span class="callout-icon-holder mr-1">
-                      <i class="fas fa-thumbs-up"></i>
-                    </span><!--//icon-holder-->
-                    Creating migrations and seeders
-                  </h4>
-                  <p>For more information, please visit: <a href="https://sequelize.org/master/manual/migrations.html" target="_blank">https://sequelize.org/master/manual/migrations.html</a></p>
-                </div><!--//content-->
-              </div><!--//callout-block-->
+              <p>
+                Content
+              </p>
             </section><!--//section-->
 
             <br/>
@@ -1111,7 +1087,7 @@ exports.down = (queryInterface) => {
 
               <br/>
 
-              <p><b>Let's create a helper function which parses the product code to a category:</b></p>
+              <p><b>Let's create a helper function which maps the product code into a category:</b></p>
 
               <span class="badge badge-secondary">helpers/products.ts</span>
 
@@ -1124,8 +1100,12 @@ exports.down = (queryInterface) => {
 * 
 */
 
-export function parseProductCodeToCat (code: string): string {
-  const categories: { [code: string]: string } = {
+/**
+ *  Map Product Code to Category
+ *  @description takes the first 5 characters of the code and maps them into a category
+ */
+export const mapProductCodeToCat = (code: string): string => {
+  const categories: { [prefixCode: string]: string } = {
     'fjw32': 'keyboards',
     '3n2io': 'screens',
     'mdnf2': 'racks',
@@ -1133,44 +1113,125 @@ export function parseProductCodeToCat (code: string): string {
     default: 'no category'
   }
 
-  return categories[code] ?? categories.default
+  return categories[code.substr(0, 5)] ?? categories.default
 }</code>
                 </pre>
               </div><!--//docs-code-block-->
 
-              <p><b>This function can be imported from anywhere:</b></p>
+              <p><b>This function can be used from anywhere, for example, in the products controller:</b></p>
+
+              <span class="badge badge-secondary">controllers/products.ts</span>
 
               <div class="docs-code-block">
                 <pre class="rounded">
-                <code class="typescript hljs">// ...some file
+                <code class="typescript hljs">// ...rest
 
-import { parseProductCodeToCat } from '@helpers/products'
+import { mapProductCodeToCat } from '@helpers/products'
 
-const productCategory: string = parseProductCodeToCat(product.code)</code>
+export default class ProductsController {
+  static async index (req: Request, res: Response): Promise&lt;Response&lt;Array&ltIProduct & { category: string }&gt;&gt;&gt; {
+    const products: IProduct[] = await Product.findAll()
+    
+    // add category for each product
+    const productsWithCategory: Array&ltIProduct & { category: string }&gt; = products.map((p: IProduct) => {
+      // map product code into a category
+      const category: string = mapProductCodeToCat(p.code)
+      return { ...p, category }
+    })
+
+    return res.json(productsWithCategory)
+  }
+}</code>
                 </pre>
               </div><!--//docs-code-block-->
+
+              <p>This controller will return exactly the same <code>products array</code> than the older one but with an extra property: <code>category</code>.</p>
             </section><!--//section-->
 
             <br/>
 
             <section class="docs-section" id="middlewares">
               <h2 class="section-heading"><i class="fas fa-random mr-3"></i>Middlewares</h2>
-              <p>In this case the best option is to use the sequelize client.</p>
-              <p><b>Sequelize-cli don't provides native Typescript support</b>, therefore they must be written in Javascript.</p>
+              <p>Middlewares are just express request handler functions which receives an extra third param: <code>next</code>.</p>
+              <p>All middlewares functions are exported from middleware files which are located in the <code>middlewares</code> folder. Those files describes a group of middlewares and exports so many request handler functions as you need.</p>
 
-              <br/>
+              <br />
 
-              <h4>Migrations</h4>
-              <p>Run replacing by your migration name:</p>
-              <code>npx sequelize migration:generate --name migration-name</code>
+              <p><b>Let's create a simple auth middleware for the products route:</b></p>
 
-              <br/><br/><br/>
+              <span class="badge badge-secondary">middlewares/auth.ts</span>
 
-              <h4>Seeders</h4>
-              <p>Run replacing by your seeder name:</p>
-              <code>npx sequelize seeder:generate --name seeder-name</code>
+              <div class="docs-code-block">
+                <pre class="rounded">
+                <code class="typescript hljs">/**
+ *
+ *  Middleware: Auth
+ *
+ *  @module middlewares/auth
+ *  @description authentication middlewares
+ *
+ */
 
-              <br/><br/><br/>
+import { Request, Response, NextFunction } from 'express'
+import passport from 'passport'
+
+/**
+ *  Basic Auth Middleware
+ *  @description checks for authentication before get the routes
+ */
+export const authMiddleware = async (req: Request, res: Response, next: NextFunction) => {
+  const authenticate = await passport.authenticate('jwt', { session: false })
+
+  // passport will call next() automatically if the token is valid
+  authenticate(req, res, next)
+}</code>
+                </pre>
+              </div><!--//docs-code-block-->
+
+              <p><b>Then you can import the auth middleware and add it to any route and method yo want:</b></p>
+
+              <span class="badge badge-secondary">routes/products.routes.ts</span>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="typescript hljs">import { authMiddleware } from "@middlewares/auth"
+
+// ...rest
+
+export default (): Router => {
+  $.route('/products')
+    .get([authMiddleware], ProductsController.index)
+    .post([authMiddleware], ProductsController.create)
+
+  return $
+}</code>
+                </pre>
+              </div><!--//docs-code-block-->
+
+              <p><b>Also, is possible to add the middleware to the entire router:</b></p>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="typescript hljs">import { authMiddleware } from "@middlewares/auth"
+
+// ...rest
+
+export default (): Router => {
+  /**
+   * @middlewares
+   */
+  $.use([authMiddleware])
+
+  $.route('/products')
+    .get(ProductsController.index)
+    .post(ProductsController.create)
+
+  return $
+}</code>
+                </pre>
+              </div><!--//docs-code-block-->
+
+              <p>The usage you see in the code above is pure express middlewaring and routing. The possibilities are multiple but is recommended to use it in this way.</p>
 
               <div class="callout-block callout-block-success">
                 <div class="content">
@@ -1178,11 +1239,24 @@ const productCategory: string = parseProductCodeToCat(product.code)</code>
                     <span class="callout-icon-holder mr-1">
                       <i class="fas fa-thumbs-up"></i>
                     </span><!--//icon-holder-->
-                    Creating migrations and seeders
+                    Using express middlewares
                   </h4>
-                  <p>For more information, please visit: <a href="https://sequelize.org/master/manual/migrations.html" target="_blank">https://sequelize.org/master/manual/migrations.html</a></p>
+                  <p>For more information, please visit: <a href="https://expressjs.com/en/guide/using-middleware.html" target="_blank">https://expressjs.com/en/guide/using-middleware.html</a></p>
                 </div><!--//content-->
               </div><!--//callout-block-->
+
+              <br/>
+
+              <p>To check if the middlewares were applied correctly, use the <code>route:list</code> built-in command.</p>
+              <p>Please check: <a href="#router-dex">Listing routes and middlewares in the command-line</a>.</p>
+
+              <br />
+
+              <h3>Express Middleware</h3>
+
+              <p>
+                Content
+              </p>
             </section><!--//section-->
           </article><!--//docs-article-->
 
@@ -1257,7 +1331,7 @@ const SequelizeOptions: Sequelize.Options = {
                 </table>
               </div><!--//table-responsive-->
 
-              <p>These classes are located in the <code>src/providers/core/libs</code> folder and you can modify them as you want, even create your own one.</p>
+              <p>These classes are located in the <code>providers/core/libs</code> folder and you can modify them as you want, even create your own one.</p>
             </section><!--//section-->
           </article><!--//docs-article-->
 
