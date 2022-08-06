@@ -45,6 +45,16 @@
   box-sizing: border-box;
 }
 
+:not(.selection-secondary)::selection {
+  background-color: var(--primary);
+  color: #000;
+}
+
+.selection-secondary *::selection {
+  background-color: #bae2e2 !important;
+  color: #000 !important;
+}
+
 html {
   font-family: sans-serif;
   line-height: 1.15;
