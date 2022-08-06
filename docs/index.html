@@ -13,8 +13,8 @@
     <!-- Open Graph data -->
     <meta property="og:title" content="Bananasplit-js Documentation">
     <meta property="og:description" content="Documentation · An express.js superset template that brings to you a background to quicky develop your backend">
-    <meta property="og:image" content="http://bananasplit-js.com/assets/images/bananasplit-logo.meta.jpg">
-    <meta property="og:url" content="http://bananasplit-js.com/">
+    <meta property="og:image" content="https://bananasplit.js.org/assets/images/bananasplit-logo.meta.jpg">
+    <meta property="og:url" content="https://bananasplit.js.org/">
 
     <link rel="shortcut icon" href="../favicon.ico"> 
 
@@ -30,7 +30,6 @@
 
     <!-- Theme CSS -->  
     <link id="theme-style" rel="stylesheet" href="../assets/css/theme.css">
-
   </head> 
 
   <body class="docs-page" style="background:#ffe5b8">    
@@ -43,11 +42,13 @@
               <span></span>
               <span></span>
             </button>
+
             <div class="site-logo"><a class="navbar-brand" href="../">
                 <img class="logo-icon" src="../assets/images/bananasplit-header.png" alt="logo">
                 <span class="logo-text">
                   <span class="banana-text">Banana</span><span class="text-alt">split</span></span>JS</a></div>    
           </div><!--//docs-logo-wrapper-->
+
           <div class="docs-top-utilities d-flex justify-content-end align-items-center">
             <div class="top-search-box d-none d-lg-flex">
               <form class="search-form">
@@ -62,6 +63,7 @@
               <li class="list-inline-item"><a href="#"><i class="fab fa-twitter fa-fw"></i></a></li>
               <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f fa-fw"></i></a></li>
             </ul><!--//social-list-->
+
             <a href="https://github.com/bananasplit-js/bananasplit-js/archive/main/template.zip" class="btn btn-primary d-none d-lg-flex"><i class="fas fa-download mr-2 mt-1"></i>Download v2</a>
           </div><!--//docs-top-utilities-->
         </div><!--//container-->
@@ -94,7 +96,6 @@
             <li class="nav-item"><a class="nav-link scrollto" href="#migrations">Migrations</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#generators">Generators</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#seeders">Seeders</a></li>
-            <!--<li class="nav-item"><a class="nav-link scrollto" href="#schemas-resolvers">GraphQL: Registering Schemas and Resolvers</a></li>-->
             <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#util"><span class="theme-icon-holder mr-2"><i class="fas fa-tools"></i></span>Utilities</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#sqlite">SQLite configuration</a></li>
             <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#advanced"><span class="theme-icon-holder mr-2"><i class="fas fa-laptop-code"></i></span>Advanced</a></li>
@@ -105,7 +106,6 @@
             <li class="nav-item"><a class="nav-link scrollto" href="#about">About this project</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#rights">About the rights</a></li>
           </ul>
-
         </nav><!--//docs-nav-->
       </div><!--//docs-sidebar-->
 
@@ -116,7 +116,7 @@
               <h1 id="main-docs-title" class="docs-heading">Documentation v2</h1>
 
               <section class="docs-intro">
-                <p>The complete guide for Bananasplit-js</p>
+                <p>The complete guide for use Bananasplit-js</p>
               </section><!--//docs-intro-->
             </header>
 
@@ -947,7 +947,7 @@ export const authMiddleware = async (req: Request, res: Response, next: NextFunc
                 </pre>
               </div><!--//docs-code-block-->
 
-              <p><b>Then you can import the auth middleware and add it to any route and method yo want:</b></p>
+              <p><b>Then you can import the auth middleware and add it to any route - method you want:</b></p>
 
               <span class="badge badge-secondary">routes/products.routes.ts</span>
 
@@ -1342,7 +1342,7 @@ exports.down = (queryInterface) => {
 
               <br />
 
-              <p>This seeder file use a <b>generator function</b> which allow us to generate amount of registries of the same type.</p>
+              <p>This seeder file uses a <b>generator function</b> which allow us to generate amount of registries of the same type.</p>
               <p>Please check: <a href="#generators">Creating Generators</a></p>
 
               <div class="callout-block callout-block-success">
@@ -1404,7 +1404,6 @@ const SequelizeOptions: Sequelize.Options = {
             </section><!--//section-->
           </article><!--//docs-article-->
 
-
           <article class="docs-article" id="advanced">
             <header class="docs-header">
               <h1 class="docs-heading">Advanced</h1>
@@ -1434,7 +1433,6 @@ const SequelizeOptions: Sequelize.Options = {
             </section><!--//section-->
           </article><!--//docs-article-->
 
-
           <article class="docs-article" id="changelog">
             <header class="docs-header">
               <h1 class="docs-heading">Changelog</h1>
@@ -1462,7 +1460,6 @@ const SequelizeOptions: Sequelize.Options = {
             </section><!--//section-->
           </article><!--//docs-article-->
 
-
           <article class="docs-article" id="info">
             <header class="docs-header">
               <h1 class="docs-heading">Further Information</h1>
@@ -1489,13 +1486,12 @@ const SequelizeOptions: Sequelize.Options = {
             </section><!--//docs-intro-->
           </article><!--//docs-article-->
 
-
           <article class="docs-article" id="faq">
             <header class="docs-header">
               <h1 class="docs-heading">FAQs</h1>
             </header>
             <section class="docs-section" id="about">
-              <h2 class="section-heading">About this project <small>(basic questions)</small></h2>
+              <h2 class="section-heading">About this project <small>(questions)</small></h2>
               <h5 class="pt-3"><i class="fas fa-question-circle mr-1"></i>Is bananasplit-js a framework?</h5>
               <p>No. Bananasplit-js is a template that brings to you a background to quickly develop your app. This means that includes all the basics and most used resources you need already configured.</p>
               <h5 class="pt-3"><i class="fas fa-question-circle mr-1"></i>It is hard to learn?</h5>
