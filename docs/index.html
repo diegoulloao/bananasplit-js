@@ -86,14 +86,14 @@
             <li class="nav-item"><a class="nav-link scrollto" href="#data">4. Migrate and seed</a></li>
             <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#now"><span class="theme-icon-holder mr-2"><i class="fas fa-check"></i></span>Final steps</a></li>
             <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#guide"><span class="theme-icon-holder mr-2"><i class="fas fa-book-reader"></i></span>Guide</a></li>
-            <li class="nav-item"><a class="nav-link scrollto" href="#routes">Routes</a></li>
-            <li class="nav-item"><a class="nav-link scrollto" href="#controllers">Controllers</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#models">Models</a></li>
-            <li class="nav-item"><a class="nav-link scrollto" href="#migrations">Migrations</a></li>
-            <li class="nav-item"><a class="nav-link scrollto" href="#seeders">Seeders</a></li>
-            <li class="nav-item"><a class="nav-link scrollto" href="#generators">Generators</a></li>
-            <li class="nav-item"><a class="nav-link scrollto" href="#helpers">Helpers</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#controllers">Controllers</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#routes">Routes</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#middlewares">Middlewares</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#helpers">Helpers</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#migrations">Migrations</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#generators">Generators</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#seeders">Seeders</a></li>
             <!--<li class="nav-item"><a class="nav-link scrollto" href="#schemas-resolvers">GraphQL: Registering Schemas and Resolvers</a></li>-->
             <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#util"><span class="theme-icon-holder mr-2"><i class="fas fa-tools"></i></span>Utilities</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#sqlite">SQLite configuration</a></li>
@@ -479,128 +479,126 @@ DB_PASSWORD=secret</code>
 
             <br/>
 
-            <section class="docs-section" id="routes">
-              <h2 class="section-heading"><i class="fas fa-map-signs mr-3"></i>Routes</h2>
-              <p>Routes works exactly as in express.</p>
-              <p>To start copy <code>tmpl.routes.ts</code> -> <code>products.routes.ts</code> (in plural form).</p>
-              <p>The <code>.routes</code> suffix is very important because it tells to bananasplit-js to not ignore this file.</p>
+            <section class="docs-section" id="models">
+              <h2 class="section-heading"><i class="fas fa-table mr-3"></i>Models</h2>
+              <p>Bananasplit-js provides a class that you can extend for the model creation. The resulting model is more orderly than the define function provided by Sequelize.</p>
+
+              <p>
+                In this class all the columns types are declared, the model definition (attributes) is a static member and also the model options. The <code>attributes</code> attribute value is what usually is passed as first parameter to the sequelize define function, and <code>$options</code> the second one.
+              </p>
+
+
+              <p>To start copy <code>tmpl.ts</code> -> <code>product.ts</code> (in singular form).</p>
 
               <br/>
-              <p><b>Let's code a basic route example to listing products:</b></p>
 
-              <span class="badge badge-secondary">routes/products.routes.ts</span>
+              <b>Let's create a basic product model:</b>
+
+              <br/>
+              <br/>
+
+              <span class="badge badge-secondary">models/product.ts</span>
+
               <div class="docs-code-block">
                 <pre class="rounded">
-                  <code class="typescript hljs">/**
+                <code class="typescript hljs">/**
  *
- *  Router: Products
- *
- *  @module app/routes/products
- *  @description routes for products
- *
+ *  Model: Product
+
+ *  @module app/models/product
+ *  @description model for product
+ * 
  */
 
-import { Router } from 'express'
+import { Model } from '@bananasplit-js'
+import { DataTypes, ModelAttributes, ModelOptions } from 'sequelize'
 
-/**
- * @controller
- */
-import ProductsController from "@controllers/products"
+class Product extends Model {
+  /**
+   * @columns
+   */
+  declare id: number
+  declare name: string
+  declare code: string
+  declare price: number
 
-const $: Router = Router()
+  /**
+   * @attributes
+   */
+  static attributes: ModelAttributes = {
+    id: {
+      type: DataTypes.INTEGER.UNSIGNED,
+      autoIncrement: true,
+      primaryKey: true
+    },
 
-export default (): Router => {
-  $.route('/products')
-    .get(ProductsController.index)
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
 
-  return $
-}</code>
+    code: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+
+    price: {
+      type: DataTypes.INTEGER.UNSIGNED
+    }
+  }
+
+  /**
+   * @options
+   */
+  static $options: ModelOptions = {
+    timestamps: true
+  }
+}
+
+// Init the model
+Product.init()
+
+export default Product</code>
                 </pre>
               </div><!--//docs-code-block-->
 
-              <p><b>What this file does is very simple:</b></p>
-              <ul>
-                <li>It imports the product controller from <code>@controllers</code></li>
-                <li>It creates a <code>new router</code>, so you have entire control over it</li>
-                <li>It creates a new route <code>/products</code> assigning the <code>index</code> controller method</li>
-                <li>It exports a <code>function</code> by default which returns the created router</li>
-              </ul>
+              <p>When the <code>init</code> method is called, the model loads the attributes and options in background.</p>
+
+              <p>It's important to mention the fact that the <code>Model</code> class provided by Bananasplit-js extends from the Sequelize Model as well, but this logic is transparent to the developer.</p>
+
+              <br/>
+
+              <h3>Executing tasks before the export</h3>
+
+              <p>Sometimes you may need to execute tasks before the model is exported. For this purpose you can declare a self-invoking function which in some cases can be asynchronous.</p>
 
               <br />
 
-              <p>For convenience the router is named <code>$</code>, this is simple and clean to <b>chain multiple controller functions to the same route</b>:</p>
+              <p><b>Let's synchronize the product model with the table in the database:</b></p>
 
               <div class="docs-code-block">
                 <pre class="rounded">
-                  <code class="typescript hljs">export default (): Router => {
-  $.route('/products')
-    .get(ProductsController.index)
-    .post(ProductsController.create)
+                  <code class="typescript hljs">class Product extends Model {
+  // ...rest
+}
 
-  return $
-}</code>
+;(async () =&gt; {
+  Product.init()
+  await Product.sync({ force: true })
+})()
+
+export default Product</code>
                 </pre>
               </div><!--//docs-code-block-->
 
-              <p>
-                This exported function let us to <b>access the express instance and settings inside the routes files</b>, which are shared to the entire application:
-              </p>
-
-              <div class="docs-code-block">
-                <pre class="rounded">
-                  <code class="typescript hljs">import { Application, Router } from "express"
-
-// ...rest
-
-export default (app: Application): Router => {
-  const setting: any = app.get('key')
-  // do something with it
-
-  $.route('/products')
-    .get(ProductsController.index)
-
-  return $
-}</code>
-                </pre>
-              </div><!--//docs-code-block-->
-
-              <p>This must be used to <b>read only</b> and not to set.</p>
-
-              <br />
-
-              <h3>Automatic routes detection</h3>
-
-              <p>Once a routes file is created, <b>Bananasplit-js will detect it automatically adding it to the express application</b>.</p>
-              <p>
-                All routers are incorporated to the express application by default, this behavior is declared in the <code>middlewares/express.ts</code> file.
-                <br />
-                Read more about: <a href="#">Managing how routers are added to the express application</a>.
-              </p>
-
-              <p>All files without <code>.routes</code> suffix will be ignored, this is an excellent way to deactivate routers while developing.</p>
+              <p>Inside this self-invoking function you can run any task you want. For this particular case, we init the model first, then we synchronize the model with the table in the database.</p>
 
               <p>
-                This routes definitions are pure express code. Check the express documentation: <a href="https://expressjs.com/en/guide/routing.html" target="_blank">Express Routing.</a>
+                For more information visit: <a href="https://sequelize.org/master/manual/model-basics.html" target="_blank">models basics with sequelize</a>.
               </p>
+            </section><!--//section-->
 
-              <br />
-
-              <h3>Default routes</h3>
-
-              <p>
-                If your project doesn't have route files with valid routes defined in it Banansplit-js will serve a default <code>/</code> route returning the following response from server:
-              </p>
-
-              <div class="docs-code-block">
-                <pre class="rounded">
-                  <code class="typescript hljs">GET / 200</code>
-                </pre>
-              </div><!--//docs-code-block-->
-
-              <p>
-                Otherwise, this default route will be automatically ignored and replaced with yours.
-              </p>
-            </section>
+            <br />
 
             <section class="docs-section" id="controllers">
               <br/>
@@ -782,391 +780,134 @@ export default (app: Application): Router => {
               <p>
                 Calling the function in this way we keep the <code>this</code> reference pointing to the controller itself.
               </p>
-            </section><!--//section-->
+            </section>
 
             <br/>
 
-            <section class="docs-section" id="models">
-              <h2 class="section-heading"><i class="fas fa-table mr-3"></i>Models</h2>
-              <p>Bananasplit-js provides a class that you can extend for the model creation. The resulting model is more orderly than the define function provided by Sequelize.</p>
-
-              <p>
-                In this class all the columns types are declared, the model definition (attributes) is a static member and also the model options. The <code>attributes</code> attribute value is what usually is passed as first parameter to the sequelize define function, and <code>$options</code> the second one.
-              </p>
-
-
-              <p>To start copy <code>tmpl.ts</code> -> <code>product.ts</code> (in singular form).</p>
+            <section class="docs-section" id="routes">
+              <h2 class="section-heading"><i class="fas fa-map-signs mr-3"></i>Routes</h2>
+              <p>Routes works exactly as in express.</p>
+              <p>To start copy <code>tmpl.routes.ts</code> -> <code>products.routes.ts</code> (in plural form).</p>
+              <p>The <code>.routes</code> suffix is very important because it tells to bananasplit-js to not ignore this file.</p>
 
               <br/>
+              <p><b>Let's code a basic route example to listing products:</b></p>
 
-              <b>Let's create a basic product model:</b>
-
-              <br/>
-              <br/>
-
-              <span class="badge badge-secondary">models/product.ts</span>
-
+              <span class="badge badge-secondary">routes/products.routes.ts</span>
               <div class="docs-code-block">
                 <pre class="rounded">
-                <code class="typescript hljs">/**
+                  <code class="typescript hljs">/**
  *
- *  Model: Product
-
- *  @module app/models/product
- *  @description model for product
- * 
- */
-
-import { Model } from '@bananasplit-js'
-import { DataTypes, ModelAttributes, ModelOptions } from 'sequelize'
-
-class Product extends Model {
-  /**
-   * @columns
-   */
-  declare id: number
-  declare name: string
-  declare code: string
-  declare price: number
-
-  /**
-   * @attributes
-   */
-  static attributes: ModelAttributes = {
-    id: {
-      type: DataTypes.INTEGER.UNSIGNED,
-      autoIncrement: true,
-      primaryKey: true
-    },
-
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-
-    code: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-
-    price: {
-      type: DataTypes.INTEGER.UNSIGNED
-    }
-  }
-
-  /**
-   * @options
-   */
-  static $options: ModelOptions = {
-    timestamps: true
-  }
-}
-
-// Init the model
-Product.init()
-
-export default Product</code>
-                </pre>
-              </div><!--//docs-code-block-->
-
-              <p>When the <code>init</code> method is called, the model loads the attributes and options in background.</p>
-
-              <p>It's important to mention the fact that the <code>Model</code> class provided by Bananasplit-js extends from the Sequelize Model as well, but this logic is transparent to the developer.</p>
-
-              <br/>
-
-              <h3>Executing tasks before the export</h3>
-
-              <p>Sometimes you may need to execute tasks before the model is exported. For this purpose you can declare a self-invoking function which in some cases can be asynchronous.</p>
-
-              <br />
-
-              <p><b>Let's synchronize the product model with the table in the database:</b></p>
-
-              <div class="docs-code-block">
-                <pre class="rounded">
-                  <code class="typescript hljs">class Product extends Model {
-  // ...rest
-}
-
-;(async () =&gt; {
-  Product.init()
-  await Product.sync({ force: true })
-})()
-
-export default Product</code>
-                </pre>
-              </div><!--//docs-code-block-->
-
-              <p>Inside this self-invoking function you can run any task you want. For this particular case, we init the model first, then we synchronize the model with the table in the database.</p>
-
-              <p>
-                For more information visit: <a href="https://sequelize.org/master/manual/model-basics.html" target="_blank">models basics with sequelize</a>.
-              </p>
-            </section><!--//section-->
-
-            <br/>
-
-            <section class="docs-section" id="migrations">
-              <h2 class="section-heading"><i class="fas fa-database mr-3"></i>Migrations</h2>
-              <p>Migrations are like a version control of your tables, you can create the table, update the fields, modify the constraints, etc, all backed up in a registry that sequelize manages.</p>
-
-              <p>The Sequelize CLI can help on this task.</p>
-
-              <br />
-
-              <p><b>Let's create a migration for the products table:</b></p>
-
-              <code>npx sequelize migration:generate --name create-products-table</code>
-              
-              <br/><br/>
-              
-              <p>This will generate a new migration file in the <code>database/migrations</code> directory.</p>
-
-              <p>
-                Notice that the first part of the file name starts with a timestamp, that is the exact moment when the migration was created, and most important, the <b>fullname describes the action that the migration is performing</b>.
-              </p>
-
-              <br />
-
-              <p><b>Let's continue writing the migration:</b></p>
-              <p>Optionally, you can copy the content from <code>tmpl.ts</code> -> <code>20201229085157-create-products-table.ts</code></p>
-
-              <span class="badge badge-secondary">migrations/20201229085157-create-products-table.js</span>
-
-              <div class="docs-code-block">
-                <pre class="rounded">
-                  <code class="javascript hljs">/**
- * 
- *  Migration: Products
- *  @description migration for the products table
- * 
- */
-
-export function up (queryInterface, DataTypes) {
-  return queryInterface.createTable('Products', {
-    id: {
-      type: DataTypes.INTEGER.UNSIGNED,
-      autoIncrement: true,
-      primaryKey: true
-    },
-       
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-
-    code: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-
-    price: {
-      type: DataTypes.INTEGER.UNSIGNED
-    },
-
-    createdAt: {
-      type: 'TIMESTAMP',
-      defaultValue: DataTypes.literal('CURRENT_TIMESTAMP'),
-      allowNull: false
-    },
-
-    updatedAt: {
-      type: 'TIMESTAMP',
-      defaultValue: DataTypes.literal('CURRENT_TIMESTAMP'),
-      allowNull: false
-    }
-  })
-}
-
-export function down (queryInterface, Sequelize) {
-  return queryInterface.dropTable('Products')
-}</code>
-                </pre>
-              </div><!--//docs-code-block-->
-
-              <p>This migrations mainly performs the creation of the products table including their timestamps.</p>
-
-              <div class="callout-block callout-block-success">
-                <div class="content">
-                  <h4 class="callout-title">
-                    <span class="callout-icon-holder mr-1">
-                      <i class="fas fa-thumbs-up"></i>
-                    </span><!--//icon-holder-->
-                    Migrations with Sequelize
-                  </h4>
-                  <p>If you are interested in knowing how migrations work, please visit: <a href="https://sequelize.org/master/manual/migrations.html" target="_blank">https://sequelize.org/master/manual/migrations.html</a></p>
-                </div><!--//content-->
-              </div><!--//callout-block-->
-
-              <br />
-
-              <p><b>All migration files contains two member functions:</b></p>
-
-              <ul>
-                <li><code>up</code> which is in charge to create the table</li>
-                <li><code>down</code> which does exactly the reverse action: drop the table.</li>
-              </ul>
-
-              <p>
-                To create the table run the following command:
-              </p>
-
-              <code>npx sequelize db:migrate</code>
-              <br/><br/>
-              <p>to drop:</p>
-              <code>npx sequelize db:migrate:undo</code>
-            </section><!--//section-->
-
-            <br/>
-
-            <section class="docs-section" id="seeders">
-              <h2 class="section-heading"><i class="fas fa-layer-group mr-3"></i>Seeders</h2>
-              <p>Seeders are basically loaders that populate your tables with fake data, this is very useful to develop and test your application.</p>
-
-              <p>To create a seeder file the best option to use is the Sequelize CLI.</p>
-              <p><b>Sequelize CLI doesn't provide native Typescript support</b>, therefore, seeders must be written in Javascript.</p>
-
-              <br/>
-
-              <p><b>Let's create a seeder for the products table:</b></p>
-              <code>npx sequelize seeder:generate --name products-seeder</code>
-
-              <br/><br/>
-
-              <p>Optionally, you can copy the content from <code>tmpl</code> -> <code>20201229085902-products-seeder.js</code></p>
-
-              <span class="badge badge-secondary">seeders/20201229085902-products-seeder.js</span>
-
-              <div class="docs-code-block">
-                <pre class="rounded">
-                  <code class="javascript hljs">/**
+ *  Router: Products
  *
- *  Seeder: Products
- *  @description seeds the products table
+ *  @module app/routes/products
+ *  @description routes for products
  *
  */
 
-const createProduct = require("@generators/create-product")
-
-exports.up = (queryInterface) => {
-  const products = createProduct.amount(10)
-  return queryInterface.bulkInsert('Products', products, {})
-}
-
-exports.down = (queryInterface) => {
-  return queryInterface.bulkDelete('Products', null, {})
-}</code>
-                </pre>
-              </div><!--//docs-code-block-->
-
-              <p><b>Like migrations, seeder files contains the same two member functions:</b></p>
-
-              <ul>
-                <li><code>up</code> which is in charge to add registries to the table</li>
-                <li><code>down</code> which does exactly the reverse action: truncate the table.</li>
-              </ul>
-
-              <br />
-
-              <p>This seeder file use a <b>generator function</b> which allow us to generate amount of registries of the same type.</p>
-              <p>Please check: <a href="#generators">Creating Generators</a></p>
-
-              <div class="callout-block callout-block-success">
-                <div class="content">
-                  <h4 class="callout-title">
-                    <span class="callout-icon-holder mr-1">
-                      <i class="fas fa-thumbs-up"></i>
-                    </span><!--//icon-holder-->
-                    Creating seeders
-                  </h4>
-                  <p>For more information, please visit: <a href="https://sequelize.org/master/manual/migrations.html#creating-the-first-seed" target="_blank">https://sequelize.org/master/manual/migrations.html#creating-the-first-seed</a></p>
-                </div><!--//content-->
-              </div><!--//callout-block-->
-            </section><!--//section-->
-
-            <br/>
-
-            <section class="docs-section" id="generators">
-              <h2 class="section-heading"><i class="fas fa-list-alt mr-3"></i>Generators</h2>
-
-              <p>
-                Content
-              </p>
-            </section><!--//section-->
-
-            <br/>
-
-            <section class="docs-section" id="helpers">
-              <h2 class="section-heading"><i class="fas fa-code mr-3"></i>Helpers</h2>
-              <p>Nothing simpler than export a function which helps bigger functions to do minor tasks.</p>
-              <p><b>Helpers are just isolated portions of code</b> that helps high level functions to become lighter.</p>
-              <p>You can export too many functions as you want and organizate them by files. <b>Each filename must describe a group of functions</b>.</p>
-
-              <br/>
-
-              <p><b>Let's create a helper function which maps the product code into a category:</b></p>
-
-              <span class="badge badge-secondary">helpers/products.ts</span>
-
-              <div class="docs-code-block">
-                <pre class="rounded">
-                <code class="typescript hljs">/**
-* 
-*  Helpers: Products
-*  @description helper functions for products
-* 
-*/
+import { Router } from 'express'
 
 /**
- *  Map Product Code to Category
- *  @description takes the first 5 characters of the code and maps them into a category
+ * @controller
  */
-export const mapProductCodeToCat = (code: string): string => {
-  const categories: { [prefixCode: string]: string } = {
-    'fjw32': 'keyboards',
-    '3n2io': 'screens',
-    'mdnf2': 'racks',
-    'oi4o3': 'earphones',
-    default: 'no category'
-  }
+import ProductsController from "@controllers/products"
 
-  return categories[code.substr(0, 5)] ?? categories.default
+const $: Router = Router()
+
+export default (): Router => {
+  $.route('/products')
+    .get(ProductsController.index)
+
+  return $
 }</code>
                 </pre>
               </div><!--//docs-code-block-->
 
-              <p><b>This function can be used from anywhere, for example, in the products controller:</b></p>
+              <p><b>What this file does is very simple:</b></p>
+              <ul>
+                <li>It imports the product controller from <code>@controllers</code></li>
+                <li>It creates a <code>new router</code>, so you have entire control over it</li>
+                <li>It creates a new route <code>/products</code> assigning the <code>index</code> controller method</li>
+                <li>It exports a <code>function</code> by default which returns the created router</li>
+              </ul>
 
-              <span class="badge badge-secondary">controllers/products.ts</span>
+              <br />
+
+              <p>For convenience the router is named <code>$</code>, this is simple and clean to <b>chain multiple controller functions to the same route</b>:</p>
 
               <div class="docs-code-block">
                 <pre class="rounded">
-                <code class="typescript hljs">// ...rest
+                  <code class="typescript hljs">export default (): Router => {
+  $.route('/products')
+    .get(ProductsController.index)
+    .post(ProductsController.create)
 
-import { mapProductCodeToCat } from '@helpers/products'
-
-export default class ProductsController {
-  static async index (req: Request, res: Response): Promise&lt;Response&lt;Array&ltIProduct & { category: string }&gt;&gt;&gt; {
-    const products: IProduct[] = await Product.findAll()
-    
-    // add category for each product
-    const productsWithCategory: Array&ltIProduct & { category: string }&gt; = products.map((p: IProduct) => {
-      // map product code into a category
-      const category: string = mapProductCodeToCat(p.code)
-      return { ...p, category }
-    })
-
-    return res.json(productsWithCategory)
-  }
+  return $
 }</code>
                 </pre>
               </div><!--//docs-code-block-->
 
-              <p>This controller will return exactly the same <code>products array</code> than the older one but with an extra property: <code>category</code>.</p>
-            </section><!--//section-->
+              <p>
+                This exported function let us to <b>access the express instance and settings inside the routes files</b>, which are shared to the entire application:
+              </p>
 
-            <br/>
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="typescript hljs">import { Application, Router } from "express"
+
+// ...rest
+
+export default (app: Application): Router => {
+  const setting: any = app.get('key')
+  // do something with it
+
+  $.route('/products')
+    .get(ProductsController.index)
+
+  return $
+}</code>
+                </pre>
+              </div><!--//docs-code-block-->
+
+              <p>This must be used to <b>read only</b> and not to set.</p>
+
+              <br />
+
+              <h3>Automatic routes detection</h3>
+
+              <p>Once a routes file is created, <b>Bananasplit-js will detect it automatically adding it to the express application</b>.</p>
+              <p>
+                All routers are incorporated to the express application by default, this behavior is declared in the <code>middlewares/express.ts</code> file.
+                <br />
+                Read more about: <a href="#">Managing how routers are added to the express application</a>.
+              </p>
+
+              <p>All files without <code>.routes</code> suffix will be ignored, this is an excellent way to deactivate routers while developing.</p>
+
+              <p>
+                This routes definitions are pure express code. Check the express documentation: <a href="https://expressjs.com/en/guide/routing.html" target="_blank">Express Routing.</a>
+              </p>
+
+              <br />
+
+              <h3>Default routes</h3>
+
+              <p>
+                If your project doesn't have route files with valid routes defined in it Banansplit-js will serve a default <code>/</code> route returning the following response from server:
+              </p>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="typescript hljs">GET / 200</code>
+                </pre>
+              </div><!--//docs-code-block-->
+
+              <p>
+                Otherwise, this default route will be automatically ignored and replaced with yours.
+              </p>
+            </section>
+
+            <br />
 
             <section class="docs-section" id="middlewares">
               <h2 class="section-heading"><i class="fas fa-random mr-3"></i>Middlewares</h2>
@@ -1354,6 +1095,267 @@ app.use(routers.categories)</code>
               <p>
                 This main middleware provides to you full control over the built-in middlewares and routers activation.
               </p>
+            </section>
+
+            <br />
+
+            <section class="docs-section" id="helpers">
+              <h2 class="section-heading"><i class="fas fa-code mr-3"></i>Helpers</h2>
+              <p>Nothing simpler than export a function which helps bigger functions to do minor tasks.</p>
+              <p><b>Helpers are just isolated portions of code</b> that helps high level functions to become lighter.</p>
+              <p>You can export too many functions as you want and organizate them by files. <b>Each filename must describe a group of functions</b>.</p>
+
+              <br/>
+
+              <p><b>Let's create a helper function which maps the product code into a category:</b></p>
+
+              <span class="badge badge-secondary">helpers/products.ts</span>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                <code class="typescript hljs">/**
+* 
+*  Helpers: Products
+*  @description helper functions for products
+* 
+*/
+
+/**
+ *  Map Product Code to Category
+ *  @description takes the first 5 characters of the code and maps them into a category
+ */
+export const mapProductCodeToCat = (code: string): string => {
+  const categories: { [prefixCode: string]: string } = {
+    'fjw32': 'keyboards',
+    '3n2io': 'screens',
+    'mdnf2': 'racks',
+    'oi4o3': 'earphones',
+    default: 'no category'
+  }
+
+  return categories[code.substr(0, 5)] ?? categories.default
+}</code>
+                </pre>
+              </div><!--//docs-code-block-->
+
+              <p><b>This function can be used from anywhere, for example, in the products controller:</b></p>
+
+              <span class="badge badge-secondary">controllers/products.ts</span>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                <code class="typescript hljs">// ...rest
+
+import { mapProductCodeToCat } from '@helpers/products'
+
+export default class ProductsController {
+  static async index (req: Request, res: Response): Promise&lt;Response&lt;Array&ltIProduct & { category: string }&gt;&gt;&gt; {
+    const products: IProduct[] = await Product.findAll()
+    
+    // add category for each product
+    const productsWithCategory: Array&ltIProduct & { category: string }&gt; = products.map((p: IProduct) => {
+      // map product code into a category
+      const category: string = mapProductCodeToCat(p.code)
+      return { ...p, category }
+    })
+
+    return res.json(productsWithCategory)
+  }
+}</code>
+                </pre>
+              </div><!--//docs-code-block-->
+
+              <p>This controller will return exactly the same <code>products array</code> than the older one but with an extra property: <code>category</code>.</p>
+            </section>
+
+            <br/>
+
+            <section class="docs-section" id="migrations">
+              <h2 class="section-heading"><i class="fas fa-database mr-3"></i>Migrations</h2>
+              <p>Migrations are like a version control of your tables, you can create the table, update the fields, modify the constraints, etc, all backed up in a registry that sequelize manages.</p>
+
+              <p>The Sequelize CLI can help on this task.</p>
+
+              <br />
+
+              <p><b>Let's create a migration for the products table:</b></p>
+
+              <code>npx sequelize migration:generate --name create-products-table</code>
+              
+              <br/><br/>
+              
+              <p>This will generate a new migration file in the <code>database/migrations</code> directory.</p>
+
+              <p>
+                Notice that the first part of the file name starts with a timestamp, that is the exact moment when the migration was created, and most important, the <b>fullname describes the action that the migration is performing</b>.
+              </p>
+
+              <br />
+
+              <p><b>Let's continue writing the migration:</b></p>
+              <p>Optionally, you can copy the content from <code>tmpl.ts</code> -> <code>20201229085157-create-products-table.ts</code></p>
+
+              <span class="badge badge-secondary">migrations/20201229085157-create-products-table.js</span>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="javascript hljs">/**
+ * 
+ *  Migration: Products
+ *  @description migration for the products table
+ * 
+ */
+
+export function up (queryInterface, DataTypes) {
+  return queryInterface.createTable('Products', {
+    id: {
+      type: DataTypes.INTEGER.UNSIGNED,
+      autoIncrement: true,
+      primaryKey: true
+    },
+       
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+
+    code: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+
+    price: {
+      type: DataTypes.INTEGER.UNSIGNED
+    },
+
+    createdAt: {
+      type: 'TIMESTAMP',
+      defaultValue: DataTypes.literal('CURRENT_TIMESTAMP'),
+      allowNull: false
+    },
+
+    updatedAt: {
+      type: 'TIMESTAMP',
+      defaultValue: DataTypes.literal('CURRENT_TIMESTAMP'),
+      allowNull: false
+    }
+  })
+}
+
+export function down (queryInterface, Sequelize) {
+  return queryInterface.dropTable('Products')
+}</code>
+                </pre>
+              </div><!--//docs-code-block-->
+
+              <p>This migrations mainly performs the creation of the products table including their timestamps.</p>
+
+              <div class="callout-block callout-block-success">
+                <div class="content">
+                  <h4 class="callout-title">
+                    <span class="callout-icon-holder mr-1">
+                      <i class="fas fa-thumbs-up"></i>
+                    </span><!--//icon-holder-->
+                    Migrations with Sequelize
+                  </h4>
+                  <p>If you are interested in knowing how migrations work, please visit: <a href="https://sequelize.org/master/manual/migrations.html" target="_blank">https://sequelize.org/master/manual/migrations.html</a></p>
+                </div><!--//content-->
+              </div><!--//callout-block-->
+
+              <br />
+
+              <p><b>All migration files contains two member functions:</b></p>
+
+              <ul>
+                <li><code>up</code> which is in charge to create the table</li>
+                <li><code>down</code> which does exactly the reverse action: drop the table.</li>
+              </ul>
+
+              <p>
+                To create the table run the following command:
+              </p>
+
+              <code>npx sequelize db:migrate</code>
+              <br/><br/>
+              <p>to drop:</p>
+              <code>npx sequelize db:migrate:undo</code>
+            </section><!--//section-->
+
+            <br/>
+
+            <section class="docs-section" id="generators">
+              <h2 class="section-heading"><i class="fas fa-list-alt mr-3"></i>Generators</h2>
+
+              <p>
+                Content
+              </p>
+            </section>
+
+            <br />
+
+            <section class="docs-section" id="seeders">
+              <h2 class="section-heading"><i class="fas fa-layer-group mr-3"></i>Seeders</h2>
+              <p>Seeders are basically loaders that populate your tables with fake data, this is very useful to develop and test your application.</p>
+
+              <p>To create a seeder file the best option to use is the Sequelize CLI.</p>
+              <p><b>Sequelize CLI doesn't provide native Typescript support</b>, therefore, seeders must be written in Javascript.</p>
+
+              <br/>
+
+              <p><b>Let's create a seeder for the products table:</b></p>
+              <code>npx sequelize seeder:generate --name products-seeder</code>
+
+              <br/><br/>
+
+              <p>Optionally, you can copy the content from <code>tmpl</code> -> <code>20201229085902-products-seeder.js</code></p>
+
+              <span class="badge badge-secondary">seeders/20201229085902-products-seeder.js</span>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="javascript hljs">/**
+ *
+ *  Seeder: Products
+ *  @description seeds the products table
+ *
+ */
+
+const createProduct = require("@generators/create-product")
+
+exports.up = (queryInterface) => {
+  const products = createProduct.amount(10)
+  return queryInterface.bulkInsert('Products', products, {})
+}
+
+exports.down = (queryInterface) => {
+  return queryInterface.bulkDelete('Products', null, {})
+}</code>
+                </pre>
+              </div><!--//docs-code-block-->
+
+              <p><b>Like migrations, seeder files contains the same two member functions:</b></p>
+
+              <ul>
+                <li><code>up</code> which is in charge to add registries to the table</li>
+                <li><code>down</code> which does exactly the reverse action: truncate the table.</li>
+              </ul>
+
+              <br />
+
+              <p>This seeder file use a <b>generator function</b> which allow us to generate amount of registries of the same type.</p>
+              <p>Please check: <a href="#generators">Creating Generators</a></p>
+
+              <div class="callout-block callout-block-success">
+                <div class="content">
+                  <h4 class="callout-title">
+                    <span class="callout-icon-holder mr-1">
+                      <i class="fas fa-thumbs-up"></i>
+                    </span><!--//icon-holder-->
+                    Creating seeders
+                  </h4>
+                  <p>For more information, please visit: <a href="https://sequelize.org/master/manual/migrations.html#creating-the-first-seed" target="_blank">https://sequelize.org/master/manual/migrations.html#creating-the-first-seed</a></p>
+                </div><!--//content-->
+              </div><!--//callout-block-->
             </section><!--//section-->
           </article><!--//docs-article-->
 
