@@ -1310,7 +1310,7 @@ export default (app: Application, routers: IRouters): void => {
 
               <br />
 
-              <p><b>The following line is the most important one:</b></p>
+              <p><b>The following line is the most important:</b></p>
 
               <div class="docs-code-block">
                 <pre class="rounded">
@@ -1322,7 +1322,7 @@ export default (app: Application, routers: IRouters): void => {
                 Because it tells to Express to use all the routers exported from each file in the <code>app/routes</code> directory.
               </p>
 
-              <p>If you want to have more control in which router is used by Express, then you can add them manually.</p>
+              <p>If you want to have more control in which router is used, then you can manage them manually.</p>
 
               <br />
 
@@ -1338,11 +1338,11 @@ export default (app: Application, routers: IRouters): void => {
                 </pre>
               </div><!--//docs-code-block-->
 
-              <p>Where <code>[Router]</code> is a Router object instance provided by Express.</p>
+              <p><code>[Router]</code> is a Router object instance provided by Express.</p>
 
               <br />
 
-              <p><b>Finally, you can add them one by one:</b></p>
+              <p><b>So, you can add them one by one:</b></p>
 
               <div class="docs-code-block">
                 <pre class="rounded">
@@ -1350,6 +1350,10 @@ export default (app: Application, routers: IRouters): void => {
 app.use(routers.categories)</code>
                 </pre>
               </div><!--//docs-code-block-->
+
+              <p>
+                This main middleware provides to you full control over the built-in middlewares and routers activation.
+              </p>
             </section><!--//section-->
           </article><!--//docs-article-->
 
