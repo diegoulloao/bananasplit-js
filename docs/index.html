@@ -1270,11 +1270,86 @@ export default (): Router => {
 
               <br />
 
-              <h3>Express Middleware</h3>
+              <h3>The "Express" Middleware</h3>
+              <p>
+                Bananasplit-js includes a <b>main middleware</b> file which is plugged-in to Express.
+              </p>
 
               <p>
-                Content
+                <a href="https://github.com/bananasplit-js/bananasplit-js/blob/main/template/src/middlewares/express.ts" target="_blank">This file</a> is very important because contains a variety of pre-built middlewares and the route modules subscriptions for the entire application.
               </p>
+
+              <p>It can be found at <code>middlewares/express.ts</code></p>
+
+              <br />
+
+              <span class="badge badge-secondary">middlewares/express.ts</span>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="typescript hljs">import Express, { Application, Router } from 'express'
+import { IRouters } from '@bananasplit-js/interfaces'
+
+// ...rest
+
+export default (app: Application, routers: IRouters): void => {
+  // ...rest
+
+  // use all routers by default
+  Object.values(routers).forEach((router: Router) => app.use(router))
+}</code>
+                </pre>
+              </div><!--//docs-code-block-->
+
+              <p>This file exports a function by default which receives two parameters:</p>
+
+              <ul>
+                <li><code>app</code> the Express application instance</li>
+                <li><code>routers</code> a key-value based object where the key is the name of each route module contained at the <code>app/routes</code> directory, and value the express router object itself exported from that module.</li>
+              </ul>
+
+              <br />
+
+              <p><b>The following line is the most important one:</b></p>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="typescript hljs">Object.values(routers).forEach((router: Router) => app.use(router))</code>
+                </pre>
+              </div><!--//docs-code-block-->
+
+              <p>
+                Because it tells to Express to use all the routers exported from each file in the <code>app/routes</code> directory.
+              </p>
+
+              <p>If you want to have more control in which router is used by Express, then you can add them manually.</p>
+
+              <br />
+
+              <p><b>The routers object may look like this:</b></p>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="json hljs">{
+  products: [Router],
+  categories: [Router],
+  users: [Router]
+}</code>
+                </pre>
+              </div><!--//docs-code-block-->
+
+              <p>Where <code>[Router]</code> is a Router object instance provided by Express.</p>
+
+              <br />
+
+              <p><b>Finally, you can add them one by one like:</b></p>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="typescript hljs">app.use(routers.products)
+app.use(routers.categories)</code>
+                </pre>
+              </div><!--//docs-code-block-->
             </section><!--//section-->
           </article><!--//docs-article-->
 
