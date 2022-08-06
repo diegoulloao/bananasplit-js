@@ -582,6 +582,24 @@ export default (app: Application): Router => {
               <p>
                 This routes definitions are pure express code. Check the express documentation: <a href="https://expressjs.com/en/guide/routing.html" target="_blank">Express Routing.</a>
               </p>
+
+              <br />
+
+              <h3>Default routes</h3>
+
+              <p>
+                If your project doesn't have route files with valid routes defined in it Banansplit-js will serve a default <code>/</code> route returning the following response from server:
+              </p>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="typescript hljs">GET / 200</code>
+                </pre>
+              </div><!--//docs-code-block-->
+
+              <p>
+                Otherwise, this default route will be automatically ignored and replaced with yours.
+              </p>
             </section>
 
             <section class="docs-section" id="controllers">
