@@ -1,0 +1,1854 @@
+<!DOCTYPE html>
+<html lang="en"> 
+  <head>
+    <title>Bananasplit-js Documentation · The complete guide</title>
+
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Bananasplit-js Documentation">
+    <meta name="author" content="@diegoulloao on Github!"> 
+    <!-- Open Graph data -->
+    <meta property="og:title" content="Bananasplit-js Documentation">
+    <meta property="og:description" content="Documentation · An express.js superset template that brings to you a background to quicky develop your backend">
+    <meta property="og:image" content="https://bananasplit.js.org/assets/images/bananasplit-logo.meta.jpg">
+    <meta property="og:url" content="https://bananasplit.js.org/">
+
+    <link rel="shortcut icon" href="../favicon.ico"> 
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome JS-->
+    <script defer src="../assets/fontawesome/js/all.min.js"></script>
+
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/dracula.min.css">
+
+    <!-- Theme CSS -->  
+    <link id="theme-style" rel="stylesheet" href="../assets/css/theme.css">
+  </head> 
+
+  <body class="docs-page" style="background:#ffe5b8">    
+    <header class="header fixed-top">	    
+      <div class="branding docs-branding">
+        <div class="container-fluid position-relative py-2">
+          <div class="docs-logo-wrapper">
+            <button id="docs-sidebar-toggler" class="docs-sidebar-toggler docs-sidebar-visible mr-2 d-xl-none" type="button">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+
+            <div class="site-logo"><a class="navbar-brand" href="../">
+                <img class="logo-icon" src="../assets/images/bananasplit-header.png" alt="logo">
+                <span class="logo-text">
+                  <span class="banana-text">Banana</span><span class="text-alt">split</span></span>JS</a></div>    
+          </div><!--//docs-logo-wrapper-->
+
+          <div class="docs-top-utilities d-flex justify-content-end align-items-center">
+            <div class="top-search-box d-none d-lg-flex">
+              <form class="search-form">
+                <input type="text" placeholder="Search the docs..." name="search" class="form-control search-input">
+                <button type="submit" class="btn search-btn" value="Search"><i class="fas fa-search"></i></button>
+              </form>
+            </div>
+
+            <ul class="social-list list-inline mx-md-3 mx-lg-5 mb-0 d-none d-lg-flex">
+              <li class="list-inline-item"><a href="https://github.com/bananasplit-js/bananasplit-js" target="_blank"><i class="fab fa-github fa-fw"></i></a></li>
+              <li class="list-inline-item"><a href="#"><i class="fab fa-slack fa-fw"></i></a></li>
+              <li class="list-inline-item"><a href="#"><i class="fab fa-twitter fa-fw"></i></a></li>
+              <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f fa-fw"></i></a></li>
+            </ul><!--//social-list-->
+
+            <a href="https://github.com/bananasplit-js/bananasplit-js/archive/main/template.zip" class="btn btn-primary d-none d-lg-flex"><i class="fas fa-download mr-2 mt-1"></i>Download v2</a>
+          </div><!--//docs-top-utilities-->
+        </div><!--//container-->
+      </div><!--//branding-->
+    </header><!--//header-->
+
+    <div class="docs-wrapper">
+      <div id="docs-sidebar" class="docs-sidebar">
+        <nav id="docs-nav" class="docs-nav navbar">
+          <ul class="section-items list-unstyled nav flex-column pb-3">
+            <li class="nav-item section-title"><a class="nav-link scrollto active" href="#intro"><span class="theme-icon-holder mr-2"><i class="fas fa-map-signs"></i></span>Introduction</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#template">About the template</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#packages">About the packages</a></li>
+            <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#get-started"><span class="theme-icon-holder mr-2"><i class="fas fa-arrow-down"></i></span>Getting started</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#banana-cli">1. Create a new project</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#env-vars">2. Add enviroment variables</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#create">3. Build the stack</a></li>
+            <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#config"><span class="theme-icon-holder mr-2"><i class="fas fa-cogs"></i></span>Manual stack build</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#dependencies">1. Install dependencies</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#database">2. Install database driver</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#env">3. Add enviroment variables</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#data">4. Migrate and seed</a></li>
+            <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#now"><span class="theme-icon-holder mr-2"><i class="fas fa-check"></i></span>Final steps</a></li>
+            <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#guide"><span class="theme-icon-holder mr-2"><i class="fas fa-book-reader"></i></span>Guide</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#models">Models</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#controllers">Controllers</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#routes">Routes</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#middlewares">Middlewares</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#helpers">Helpers</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#migrations">Migrations</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#generators">Generators</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#seeders">Seeders</a></li>
+            <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#util"><span class="theme-icon-holder mr-2"><i class="fas fa-tools"></i></span>Utilities</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#sqlite">SQLite configuration</a></li>
+            <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#advanced"><span class="theme-icon-holder mr-2"><i class="fas fa-laptop-code"></i></span>Advanced</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#extend">Extending Providers functionalities</a></li>
+            <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#changelog"><span class="theme-icon-holder mr-2"><i class="fas fa-clipboard"></i></span>Changelog</a></li>
+            <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#info"><span class="theme-icon-holder mr-2"><i class="fas fa-info-circle"></i></span>Further Information</a></li>
+            <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#faq"><span class="theme-icon-holder mr-2"><i class="fas fa-lightbulb"></i></span>FAQs</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#about">About this project</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#rights">About the rights</a></li>
+          </ul>
+        </nav><!--//docs-nav-->
+      </div><!--//docs-sidebar-->
+
+      <div class="docs-content">
+        <div class="container">
+          <article class="docs-article" id="intro">
+            <header class="docs-header mt-4">
+              <h1 id="main-docs-title" class="docs-heading">Documentation v2</h1>
+
+              <section class="docs-intro">
+                <p>The complete guide for use Bananasplit-js</p>
+              </section><!--//docs-intro-->
+            </header>
+
+            <section class="docs-section" id="template">
+              <h2 class="section-heading">About template</h2>
+
+              <h5>Banana includes integrated support for:</h5>
+              <br/>
+              <ol>
+                <li><strong>Express Framework</strong> for Node.js</li>
+                <!--<li><strong>Apollo</strong> for GraphQL</li>-->
+                <li><strong>Jest</strong> for Testing</li>
+                <li><strong>Sequelize</strong> ORM for Data Management</li>
+                <li><strong>Typescript</strong> Superset language for Javascript</li>
+              </ol>
+            </section><!--//section-->
+
+            <section class="docs-section" id="packages">
+              <h2 class="section-heading">About packages</h2>
+
+              <h5>Banana includes useful npm-packages:</h5>
+              <br/>
+              <div class="table-responsive my-0">
+                <table class="table table-bordered">
+                  <tbody>
+                    <tr>
+                      <th class="theme-bg-light"><a class="theme-link" href="https://www.npmjs.com/package/nodemon" target="_blank">nodemon</a></th>
+                      <td>auto restart your server every time a change is detected</td>
+                    </tr>
+                    <tr>
+                      <th class="theme-bg-light"><a class="theme-link" href="https://www.npmjs.com/package/ts-node" target="_blank">ts-node</a></th>
+                      <td>auto transpiles typescript to javascript on execution</td>
+                    </tr>
+
+                    <tr>
+                      <th class="theme-bg-light"><a class="theme-link" href="https://www.npmjs.com/package/ts-jest" target="_blank">ts-jest</a></th>
+                      <td>provides typescript support for jest</td>
+                    </tr>
+
+                    <tr>
+                      <th class="theme-bg-light"><a class="theme-link" href="https://www.npmjs.com/package/morgan" target="_blank">morgan</a></th>
+                      <td>prints all express requests in the console</td>
+                    </tr>
+
+                    <tr>
+                      <th class="theme-bg-light"><a class="theme-link" href="https://www.npmjs.com/package/sequelize-cli" target="_blank">sequelize-cli</a></th>
+                      <td>sequelize cli to manage migrations and seeders</td>
+                    </tr>
+
+                    <tr>
+                      <th class="theme-bg-light"><a class="theme-link" href="https://www.npmjs.com/package/dotenv" target="_blank">dotenv</a></th>
+                      <td>secure custom enviroment variables support</td>
+                    </tr>
+
+                    <tr>
+                      <th class="theme-bg-light"><a class="theme-link" href="https://www.npmjs.com/package/supertest" target="_blank">supertest</a></th>
+                      <td>http-based test support for jest</td>
+                    </tr>
+
+                    <tr>
+                      <th class="theme-bg-light"><a class="theme-link" href="https://www.npmjs.com/package/faker" target="_blank">faker</a></th>
+                      <td>generates fake data inside your generators and seeders</td>
+                    </tr>
+
+                    <tr>
+                      <th class="theme-bg-light"><a class="theme-link" href="https://www.npmjs.com/package/npm-check-updates" target="_blank">npm-check-updates</a></th>
+                      <td>auto updates your project dependencies in secure mode</td>
+                    </tr>
+
+                    <tr>
+                      <th class="theme-bg-light"><a class="theme-link" href="https://www.npmjs.com/package/npm-check-updates" target="_blank">alias-hq</a></th>
+                      <td>custom paths support for typescript, jest and javascript</td>
+                    </tr>
+
+                    <tr>
+                      <th class="theme-bg-light"><a class="theme-link" href="https://www.npmjs.com/package/npm-check-updates" target="_blank">eslint</a></th>
+                      <td>auto lints/fixes your code</td>
+                    </tr>
+
+                    <tr>
+                      <th class="theme-bg-light"><a class="theme-link" href="https://www.npmjs.com/package/npm-check-updates" target="_blank">prettier</a></th>
+                      <td>makes your code prettier</td>
+                    </tr>
+
+                    <tr>
+                      <th class="theme-bg-light"><a class="theme-link" href="https://www.npmjs.com/package/chalk" target="_blank">chalk</a></th>
+                      <td>highlights console outputs in a nice way</td>
+                    </tr>
+
+                    <tr>
+                      <th class="theme-bg-light"><a class="theme-link" href="https://www.npmjs.com/package/boxen" target="_blank">boxen</a></th>
+                      <td>shows service status in command-line</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <br/>
+                <h5>All of them comes already configured ready for action.</h5>
+              </div><!--//table-responsive-->
+            </section><!--//section-->
+          </article>
+
+          <article class="docs-article" id="get-started">
+            <header class="docs-header">
+              <h1 class="docs-heading">Get Started</h1>
+              <section class="docs-intro">
+                <p>To generate a new project use the bananasplit-js CLI.</p>
+              </section><!--//docs-intro-->
+            </header>
+
+            <section class="docs-section" id="banana-cli">
+              <h2 class="section-heading">Step 1: Create a new project</h2>
+              <p>Run in the command line:</p>
+              <code>npx bananasplit-js new "my-app" --git | -g</code>
+              <br/><br/>
+              <p>The optionals <code>--git</code> and <code>-g</code> flags are equals, using them Banansplit-js CLI will generate a git repository within the project.</p>
+              <div class="progress my-4">
+                <div class="progress-bar bg-success" role="progressbar" style="width: 33%" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </section><!--//section-->
+
+            <section class="docs-section" id="env-vars">
+              <h2 class="section-heading">Step 2: Add enviroment variables</h2>
+              <p>Rename the <code>.env.example</code> -> <code>.env</code>, then complete the values:</p>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="misc hljs"># [Sequelize]
+DB_DIALECT=mysql
+
+# [Database]
+DB_HOST=localhost
+DB_PORT=3306
+DB_DATABASE=my-app
+DB_USERNAME=root
+DB_PASSWORD=secret</code>
+                </pre>
+              </div>
+
+              <p><b>Supported databases are the same by sequelize:</b> <code>mysql | mariadb | postgres | mssql | sqlite</code></p>
+
+              <div class="callout-block callout-block-info">
+                <div class="content">
+                  <h4 class="callout-title">
+                    <span class="callout-icon-holder mr-1">
+                      <i class="fas fa-info-circle"></i>
+                    </span><!--//icon-holder-->
+                    Note
+                  </h4>
+                  <p>
+                    SQLite3 receives a special parameter in the sequelize configuration file. Please <a href="#sqlite">check the SQLite3 section</a>.
+                    <br />
+                    For more information visit: <a href="https://sequelize.org/v5/manual/getting-started.html">https://sequelize.org/v5/manual/getting-started.html</a>
+                  </p>
+                </div><!--//content-->
+              </div><!--//callout-block-->
+            </section><!--//section-->
+
+            <section class="docs-section" id="create">
+              <h2 class="section-heading">Step 3: Build the stack</h2>
+              <p>Run in the command line:</p>
+              <code>yarn build:stack | npm run build:stack</code>
+
+              <br/><br/>
+              <p>The <code>build:stack</code> script will install the dependencies and database drivers detecting it automatically from the <code>.env</code> file. It will also run migrations and seeders, finally, it will run a jest integration test in order to check that the application is ok.</p>
+
+              <div class="progress my-4">
+                <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <span class="badge badge-success">Done.</span>
+            </section><!--//section-->
+          </article><!--//docs-article-->
+
+          <article class="docs-article" id="ekre">
+            <section class="docs-section pt-0" id="324ks">
+              <h2 class="section-heading">Run the server</h2>
+              <p><b>You are ready to go!</b></p>
+              <p>Run the development server:</p>
+              <code>yarn dev | npm run dev</code>
+
+              <br/><br/><br/>
+
+              <p>
+                Your application will be available by default at:
+              </p>
+
+              <div class="alert alert-success" role="alert">
+                BROWSE &nbsp; <a href="http://localhost:3627" target="_blank">http://localhost:3627</a>
+              </div>
+            </section>
+          </article>
+
+          <article class="docs-article" id="config">
+            <header class="docs-header">
+              <h1 class="docs-heading">Manual stack build</h1>
+              <section class="docs-intro">
+                <p>Also is possible to build the stack step by step. This is <b>recommended for deployments</b> because offer to the developer more control and specificity along the workflow.</p>
+              </section><!--//docs-intro-->
+            </header>
+
+            <section class="docs-section" id="dependencies">
+              <h2 class="section-heading">Step 1: Install dependencies</h2>
+
+              <p>Run in the command line:</p>
+              <code>yarn | npm i</code>
+
+              <div class="progress my-4">
+                <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </section><!--//section-->
+
+            <section class="docs-section" id="database">
+              <h2 class="section-heading">Step 2: Install database driver</h2>
+
+              <p>Select your engine, then run in the command line:</p>
+              <ul>
+                <li><strong class="mr-1">MySQL</strong> <code>yarn add mysql2 | npm i mysql2</code></li>
+                <li><strong class="mr-1">MariaDB</strong> <code>yarn add mariadb | npm i mariadb</code></li>
+                <li><strong class="mr-1">Postgres</strong> <code>yarn add pg pg-hstore | npm i pg pg-hstore</code></li>
+                <li><strong class="mr-1">MSSQL</strong> <code>yarn add tedious | npm i tedious</code></li>
+                <li><strong class="mr-1">SQLite</strong> <code>yarn add sqlite3 | npm i sqlite3</code></li>
+              </ul>
+
+              <div class="progress my-4">
+                <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </section><!--//section-->
+
+            <section class="docs-section" id="env">
+              <h2 class="section-heading">Step 3: Add enviroment variables</h2>
+              <p>Rename the <code>.env.example</code> -> <code>.env</code>, then complete the values:</p>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="misc hljs"># [Sequelize]
+DB_DIALECT=mysql
+
+# [Database]
+DB_HOST=localhost
+DB_PORT=3306
+DB_DATABASE=my-app
+DB_USERNAME=root
+DB_PASSWORD=secret</code>
+                </pre>
+              </div>
+
+              <p><b>Supported databases are the same by sequelize:</b> <code>mysql | mariadb | postgres | mssql | sqlite</code></p>
+
+              <div class="callout-block callout-block-info">
+                <div class="content">
+                  <h4 class="callout-title">
+                    <span class="callout-icon-holder mr-1">
+                      <i class="fas fa-info-circle"></i>
+                    </span><!--//icon-holder-->
+                    Note
+                  </h4>
+                  <p>
+                    SQLite3 receives a special parameter in the sequelize configuration file. Please <a href="#sqlite">check the SQLite3 section</a>.
+                    <br />
+                    For more information visit: <a href="https://sequelize.org/v5/manual/getting-started.html">https://sequelize.org/v5/manual/getting-started.html</a>
+                  </p>
+                </div><!--//content-->
+              </div><!--//callout-block-->
+
+              <div class="progress my-4">
+                <div class="progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </section><!--//section-->
+
+            <section class="docs-section" id="data">
+              <h2 class="section-heading">Step 4: Migrate and seed</h2>
+              <p>
+                Let's create a table in your database, then populate it in order to test the application.
+              </p>
+
+              <br/>
+
+              <h3>4.1 Create database:</h3>
+              <code>npx sequelize db:create</code>
+
+              <br/><br/><br/>
+
+              <h3>4.2 Run migrations:</h3>
+              <code>npx sequelize db:migrate</code>
+
+              <br/><br/><br/>
+
+              <h3>4.3 Run seeders:</h3>
+              <code>npx sequelize db:seed:all</code>
+
+              <div class="progress my-4">
+                <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+
+              <span class="badge badge-success">Done.</span>
+            </section><!--//section-->
+          </article><!--//docs-article-->
+
+          <article class="docs-article" id="now">
+            <section class="docs-section pt-0" id="test">
+              <h1 class="docs-heading">Test your app</h1>
+              <p>Bananasplit-js includes a setup integration test in order to check that all is working properly.</p>
+              <p>You can do the test by running:</p>
+              <code>yarn test setup | npm test setup</code>
+
+              <br/><br/><br/>
+
+              <p><b>Tests should be pass:</b></p>
+              <ul style="list-style:none">
+                <li><i class="fas fa-check-circle mr-1" style="color:#5cb377"></i> Express server is ok <a href="http://localhost:3627"> <small>(http://localhost:3627)</small></a></li>
+                <li><i class="fas fa-check-circle mr-1" style="color:#5cb377"></i> Database connection is ok <a href="http://localhost:3627/test/connection"> <small>(http://localhost:3627/test/connection)</small></a></li>
+                <li><i class="fas fa-check-circle mr-1" style="color:#5cb377"></i> Database queries are ok <a href="http://localhost:3627/test/query"> <small>(http://localhost:3627/test/query)</small></a></li>
+                <li><i class="fas fa-check-circle mr-1" style="color:#5cb377"></i> Database migrations are ok <a href="http://localhost:3627/test/migration"> <small>(http://localhost:3627/test/migration)</small></a></li>
+                <li><i class="fas fa-check-circle mr-1" style="color:#5cb377"></i> Database seeders are ok <a href="http://localhost:3627/test/seeder"> <small>(http://localhost:3627/test/seeder)</small></a></li>
+              </ul>
+
+              <div class="callout-block callout-block-info mt-5">
+                <div class="content">
+                  <h4 class="callout-title">
+                    <span class="callout-icon-holder mr-1">
+                      <i class="fas fa-info-circle"></i>
+                    </span><!--//icon-holder-->
+                    Note
+                  </h4>
+                  <p>Jest will run all the tests in a testing enviroment, overwriting the original NODE_ENV value even if is set.</p>
+                </div><!--//content-->
+              </div><!--//callout-block-->
+            </section>
+
+            <section class="docs-section" id="run">
+              <h1 class="docs-heading">Run the server</h1>
+              <p><b>You are ready to go!</b></p>
+              <p>Run the development server:</p>
+              <code>yarn dev | npm run dev</code>
+
+              <br/><br/><br/>
+
+              <p>
+                Your application will be available by default at:
+              </p>
+
+              <div class="alert alert-success" role="alert">
+                BROWSE &nbsp; <a href="http://localhost:3627" target="_blank">http://localhost:3627</a>
+              </div>
+            </section>
+          </article><!--//docs-article-->
+
+
+          <article class="docs-article" id="guide">
+            <header class="docs-header">
+              <h1 class="docs-heading">Guide</h1>
+              <p>
+                Bananasplit-js include templates for the most used resources: routes, controllers, models, migrations, seeders, etc.
+              </p>
+               <p>Sequelize CLI is able to create new migrations and seeders but is recommended to use the bananasplit-js templates instead.</p>
+
+               <br/>
+               <p><b>Let's checkout the different resources we can create:</b></p>
+            </header>
+
+            <br/>
+
+            <section class="docs-section" id="models">
+              <h2 class="section-heading"><i class="fas fa-table mr-3"></i>Models</h2>
+              <p>Bananasplit-js provides a class that you can extend for the model creation. The resulting model is more orderly than the define function provided by Sequelize.</p>
+
+              <p>
+                In this class all the columns types are declared, the model definition (attributes) is a static member and also the model options. The <code>attributes</code> attribute value is what usually is passed as first parameter to the sequelize define function, and <code>$options</code> the second one.
+              </p>
+
+
+              <p>To start copy <code>tmpl.ts</code> -> <code>product.ts</code> (in singular form).</p>
+
+              <br/>
+
+              <b>Let's create a basic product model:</b>
+
+              <br/><br/>
+
+              <span class="badge badge-secondary">models/product.ts</span>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                <code class="typescript hljs">/**
+ *
+ *  Model: Product
+
+ *  @module app/models/product
+ *  @description model for product
+ * 
+ */
+
+import { Model } from '@bananasplit-js'
+import { DataTypes, ModelAttributes, ModelOptions } from 'sequelize'
+
+class Product extends Model {
+  /**
+   * @columns
+   */
+  declare uuid: number
+  declare name: string
+  declare code: string
+  declare price: number
+
+  /**
+   * @attributes
+   */
+  static attributes: ModelAttributes = {
+    uuid: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      primaryKey: true
+    },
+
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+
+    code: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+
+    price: {
+      type: DataTypes.INTEGER.UNSIGNED
+    }
+  }
+
+  /**
+   * @options
+   */
+  static $options: ModelOptions = {
+    timestamps: true
+  }
+}
+
+// Init the model
+Product.init()
+
+export default Product</code>
+                </pre>
+              </div><!--//docs-code-block-->
+
+              <p>When the <code>init</code> method is called, the model loads the attributes and options in background.</p>
+
+              <p>It's important to mention the fact that the <code>Model</code> class provided by Bananasplit-js extends from the Sequelize Model as well, but this logic is transparent to the developer.</p>
+
+              <br/>
+
+              <h3>Executing tasks before the export</h3>
+
+              <p>Sometimes you may need to execute tasks before the model is exported. For this purpose you can declare a self-invoking function which in some cases can be asynchronous.</p>
+
+              <br />
+
+              <p><b>Let's synchronize the product model with the table in the database:</b></p>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="typescript hljs">class Product extends Model {
+  // ...rest
+}
+
+;(async () =&gt; {
+  Product.init()
+  await Product.sync({ force: true })
+})()
+
+export default Product</code>
+                </pre>
+              </div><!--//docs-code-block-->
+
+              <p>Inside this self-invoking function you can run any task you want. For this particular case, we init the model first, then we synchronize the model with the table in the database.</p>
+
+              <p>
+                For more information visit: <a href="https://sequelize.org/master/manual/model-basics.html" target="_blank">models basics with sequelize</a>.
+              </p>
+            </section><!--//section-->
+
+            <br />
+
+            <section class="docs-section" id="controllers">
+              <br/>
+              <h2 class="section-heading"><i class="fas fa-cog mr-3"></i>Controllers</h2>
+              <p>Bananasplit-js controllers are just classes with static members. Using classes allows us to have heritance and static attributes for store volatile values at memory while the server instance is up.</p>
+              <p>To start copy <code>tmpl.ts</code> -> <code>products.ts</code> (in plural form).</p>
+
+              <br/>
+              <p><b>Let's code a basic products controller example:</b></p>
+
+              <br />
+
+              <span class="badge badge-secondary">controllers/products.ts</span>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="typescript hljs">/**
+ *
+ *  Controller: Products
+ *
+ *  @module controllers/products
+ *  @description controller for products
+ *
+ */
+
+import { Request, Response } from 'express'
+import { IProduct } from '@interfaces/product'
+
+/**
+ * @model
+ */
+import Product from "@models/product"
+
+export default class ProductsController {
+  /**
+   *  @description gets all the products
+   */
+  static async index (req: Request, res: Response): Promise&lt;Response&lt;IProduct[]&gt;&gt; {
+    const products: IProduct[] = await Product.findAll()
+    return res.json(products)
+  }
+
+  /**
+   *  @description gets an existent product
+   */
+  static async show (req: Request, res: Response) {
+    // ...code
+    return res.json({ ... })
+  }
+
+  /**
+   *  @description creates a new product
+   */
+  static async create (req: Request, res: Response) {
+    // ...code
+    return res.json({ ... })
+  }
+
+  /**
+   *  @description updates an existent product
+   */
+  static async update (req: Request, res: Response) {
+    // ...code
+    return res.json({ ... })
+  }
+
+  /**
+   *  @description deletes an existent product
+   */
+  static delete (req: Request, res: Response) {
+    // ...code
+    return res.json({ ... })
+  }
+}</code>
+                </pre>
+              </div><!--//docs-code-block-->
+
+              <p>
+                This is the classic <b>resource</b> example. It contains 5 methods:
+                <ul>
+                  <li><code>index</code> which list all the existent products (implemented)</li>
+                  <li><code>show</code> which list only one particular product</li>
+                  <li><code>create</code> which creates a new product</li>
+                  <li><code>update</code> which updates an existent product</li>
+                  <li><code>delete</code> which deletes an existent product</li>
+                </ul>
+              </p>
+
+              <p>This controller uses the <code>Product</code> model in order to retrieve the data from the database and every handler is a pure express handler.</p>
+              <p>Read more about: <a href="https://expressjs.com/es/guide/routing.html#route-methods">Express route methods</a></p>
+
+              <br/>
+
+              <h3>Store data at memory</h3>
+              <p>
+              One of the advantages of using classes are attributes. Attributes members can be used in order to store data while the server is up. <b>They will be available even between multiple requests</b>.
+              </p>
+
+              <p>Is important to mention that <b>this sort of data is completely volatile</b> and it will be lost once the server is restarted or down. Also should not be used if the application is running multiple instances through load balancers. On those cases is better to use a database instead.</p>
+
+              <br />
+
+              <p><b>Let's check an example that registers the client ip at every request:</b></p>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="typescript hljs">// ...rest
+
+export default class ProductsController {
+  // clients ip collection
+  private static ips = new Set&lt;string&gt;()
+
+  static async index (req: Request, res: Response): Promise&lt;Response&lt;IProduct[]&gt;&gt; {
+    // registry the client ip
+    const ip: string = req.headers['x-forwarded-for'] ?? req.socket.remoteAddress
+    this.ips.add(ip)
+
+    // retrieve all the products
+    const products: IProduct[] = await Product.findAll()
+    return res.json(products)
+  }
+}</code>
+                </pre>
+              </div>
+
+              <p>
+                The <code>index</code> method will run at every request but the <code>ips</code> attribute value will persist over the time. Notice that <code>ips</code> has a private scope. This restrict the access to inside the controller only.
+              </p>
+
+              <br />
+
+              <h3>Accessing the express settings</h3>
+              <p>
+                In some cases you may want to access the express settings inside controllers. This is very useful to read or edit them at runtime.
+              </p>
+
+              <br/>
+
+              <p><b>Let's wrap the index method inside a high order function:</b></p>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="typescript hljs">import { Application, Request, Response, RequestHandler } from 'express'
+
+// ...rest
+
+export default class ProductsController {
+  static index (app: Application): RequestHandler {
+    return async (req: Request, res: Response): Promise&lt;Response&lt;IProduct[]&gt;&gt; => {
+      // access the setting
+      const setting: string = app.get('key')
+      // do something with it
+
+      // retrieve all the products
+      const products: IProduct[] = await Product.findAll()
+      return res.json(products)
+    }
+  }
+}</code>
+                </pre>
+              </div><!--//docs-code-block-->
+
+              <p>Now the <code>index</code> method receives the <code>app</code> express instance as parameter and returns the request handler as arrow function.</p>
+
+              <br />
+
+              <p><b>To finish, add the following change into the route definition:</b></p>
+
+              <span class="badge badge-secondary">routes/products.routes.ts</span>
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="typescript hljs">// ...rest
+
+export default (app: Application): Router => {
+  $.route('/products')
+    .get(ProductsController.index(app))
+}</code>
+                </pre>
+              </div><!--//docs-code-block-->
+
+              <p>
+                Calling the function in this way we keep the <code>this</code> reference pointing to the controller itself.
+              </p>
+            </section>
+
+            <br/>
+
+            <section class="docs-section" id="routes">
+              <h2 class="section-heading"><i class="fas fa-map-signs mr-3"></i>Routes</h2>
+              <p>Routes works exactly as in express.</p>
+              <p>To start copy <code>tmpl.routes.ts</code> -> <code>products.routes.ts</code> (in plural form).</p>
+              <p>The <code>.routes</code> suffix is very important because it tells to bananasplit-js to not ignore this file.</p>
+
+              <br/>
+
+              <p><b>Let's code a basic route example to listing products:</b></p>
+
+              <br />
+
+              <span class="badge badge-secondary">routes/products.routes.ts</span>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="typescript hljs">/**
+ *
+ *  Router: Products
+ *
+ *  @module app/routes/products
+ *  @description routes for products
+ *
+ */
+
+import { Router } from 'express'
+
+/**
+ * @controller
+ */
+import ProductsController from "@controllers/products"
+
+const $: Router = Router()
+
+export default (): Router => {
+  $.route('/products')
+    .get(ProductsController.index)
+
+  return $
+}</code>
+                </pre>
+              </div><!--//docs-code-block-->
+
+              <p><b>What this file does is very simple:</b></p>
+              <ul>
+                <li>It imports the product controller from <code>@controllers</code></li>
+                <li>It creates a <code>new router</code>, so you have entire control over it</li>
+                <li>It creates a new route <code>/products</code> assigning the <code>index</code> controller method</li>
+                <li>It exports a <code>function</code> by default which returns the created router</li>
+              </ul>
+
+              <br />
+
+              <p>For convenience the router is named <code>$</code>, this is simple and clean to <b>chain multiple controller functions to the same route</b>:</p>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="typescript hljs">export default (): Router => {
+  $.route('/products')
+    .get(ProductsController.index)
+    .post(ProductsController.create)
+
+  return $
+}</code>
+                </pre>
+              </div><!--//docs-code-block-->
+
+              <p>
+                This exported function let us to <b>access the express instance and settings inside the routes files</b>, which are shared to the entire application:
+              </p>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="typescript hljs">import { Application, Router } from "express"
+
+// ...rest
+
+export default (app: Application): Router => {
+  const setting: any = app.get('key')
+  // do something with it
+
+  $.route('/products')
+    .get(ProductsController.index)
+
+  return $
+}</code>
+                </pre>
+              </div><!--//docs-code-block-->
+
+              <p>This must be used to <b>read only</b> and not to set.</p>
+
+              <br />
+
+              <h3>Automatic routes detection</h3>
+
+              <p>Once a routes file is created, <b>Bananasplit-js will detect it automatically adding it to the express application</b>.</p>
+              <p>
+                All routers are incorporated to the express application by default, this behavior is declared in the <code>middlewares/express.ts</code> file.
+                <br />
+                Read more about: <a href="#">Managing how routers are added to the express application</a>.
+              </p>
+
+              <p>All files without <code>.routes</code> suffix will be ignored, this is an excellent way to deactivate routers while developing.</p>
+
+              <p>
+                This routes definitions are pure express code. Check the express documentation: <a href="https://expressjs.com/en/guide/routing.html" target="_blank">Express Routing.</a>
+              </p>
+
+              <br />
+
+              <h3>Default routes</h3>
+
+              <p>
+                If your project doesn't have route files with valid routes defined in it Banansplit-js will serve a default <code>/</code> route returning the following response from server:
+              </p>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="typescript hljs">GET / 200</code>
+                </pre>
+              </div><!--//docs-code-block-->
+
+              <p>
+                Otherwise, this default route will be automatically ignored and replaced with yours.
+              </p>
+            </section>
+
+            <br />
+
+            <section class="docs-section" id="middlewares">
+              <h2 class="section-heading"><i class="fas fa-random mr-3"></i>Middlewares</h2>
+              <p>Middlewares are just express request handler functions which receives an extra third param: <code>next</code>.</p>
+              <p>All middlewares functions are exported from middleware files which are located in the <code>middlewares</code> folder. Those files describes a group of middlewares and exports so many request handler functions as you need.</p>
+
+              <br />
+
+              <p><b>Let's create a simple auth middleware for the products route:</b></p>
+
+              <br />
+
+              <span class="badge badge-secondary">middlewares/auth.ts</span>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                <code class="typescript hljs">/**
+ *
+ *  Middleware: Auth
+ *
+ *  @module middlewares/auth
+ *  @description authentication middlewares
+ *
+ */
+
+import { Request, Response, NextFunction } from 'express'
+import passport from 'passport'
+
+/**
+ *  Basic Auth Middleware
+ *  @description checks for authentication before get the routes
+ */
+export const authMiddleware = async (req: Request, res: Response, next: NextFunction) => {
+  const authenticate = await passport.authenticate('jwt', { session: false })
+
+  // passport will call next() automatically if the token is valid
+  authenticate(req, res, next)
+}</code>
+                </pre>
+              </div><!--//docs-code-block-->
+
+              <p><b>Then you can import the auth middleware and add it to any route - method you want:</b></p>
+
+              <br />
+
+              <span class="badge badge-secondary">routes/products.routes.ts</span>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="typescript hljs">import { authMiddleware } from "@middlewares/auth"
+
+// ...rest
+
+export default (): Router => {
+  $.route('/products')
+    .get([authMiddleware], ProductsController.index)
+    .post([authMiddleware], ProductsController.create)
+
+  return $
+}</code>
+                </pre>
+              </div><!--//docs-code-block-->
+
+              <p><b>Also, is possible to add the middleware to the entire router:</b></p>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="typescript hljs">import { authMiddleware } from "@middlewares/auth"
+
+// ...rest
+
+export default (): Router => {
+  /**
+   * @middlewares
+   */
+  $.use([authMiddleware])
+
+  $.route('/products')
+    .get(ProductsController.index)
+    .post(ProductsController.create)
+
+  return $
+}</code>
+                </pre>
+              </div><!--//docs-code-block-->
+
+              <p>The usage you see in the code above is pure express middlewaring and routing. The possibilities are multiple but is recommended to use it in this way.</p>
+
+              <div class="callout-block callout-block-success">
+                <div class="content">
+                  <h4 class="callout-title">
+                    <span class="callout-icon-holder mr-1">
+                      <i class="fas fa-thumbs-up"></i>
+                    </span><!--//icon-holder-->
+                    Using express middlewares
+                  </h4>
+                  <p>For more information, please visit: <a href="https://expressjs.com/en/guide/using-middleware.html" target="_blank">https://expressjs.com/en/guide/using-middleware.html</a></p>
+                </div><!--//content-->
+              </div><!--//callout-block-->
+
+              <br/>
+
+              <p>To check if the middlewares were applied correctly, use the <code>route:list</code> built-in command.</p>
+              <p>Please check: <a href="#router-dex">Listing routes and middlewares in the command-line</a>.</p>
+
+              <br />
+
+              <h3>The "Express" Middleware</h3>
+              <p>
+                Bananasplit-js includes a <b>main middleware</b> file which is plugged-in to Express.
+              </p>
+
+              <p>
+                <a href="https://github.com/bananasplit-js/bananasplit-js/blob/main/template/src/middlewares/express.ts" target="_blank">This file</a> is very important because contains a variety of pre-built middlewares and the route modules subscriptions for the entire application.
+              </p>
+
+              <p>It can be found at <code>middlewares/express.ts</code></p>
+
+              <br />
+
+              <span class="badge badge-secondary">middlewares/express.ts</span>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="typescript hljs">import Express, { Application, Router } from 'express'
+import { IRouters } from '@bananasplit-js/interfaces'
+
+// ...rest
+
+export default (app: Application, routers: IRouters): void => {
+  // ...rest
+
+  // use all routers by default
+  Object.values(routers).forEach((router: Router) => app.use(router))
+}</code>
+                </pre>
+              </div><!--//docs-code-block-->
+
+              <p>This file exports a function by default which receives two parameters:</p>
+
+              <ul>
+                <li><code>app</code> the Express application instance</li>
+                <li><code>routers</code> a key-value based object where the key is the name of each route module contained at the <code>app/routes</code> directory, and value the express router object itself exported from that module.</li>
+              </ul>
+
+              <br />
+
+              <p><b>The following line is the most important:</b></p>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="typescript hljs">Object.values(routers).forEach((router: Router) => app.use(router))</code>
+                </pre>
+              </div><!--//docs-code-block-->
+
+              <p>
+                Because it tells to Express to use all the routers exported from each file in the <code>app/routes</code> directory.
+              </p>
+
+              <p>If you want to have more control in which router is used, then you can manage them manually.</p>
+
+              <br />
+
+              <p><b>The routers object may look like this:</b></p>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="json hljs">{
+  products: [Router],
+  categories: [Router],
+  users: [Router]
+}</code>
+                </pre>
+              </div><!--//docs-code-block-->
+
+              <p><code>[Router]</code> is a Router object instance provided by Express.</p>
+
+              <br />
+
+              <p><b>So, you can add them one by one:</b></p>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="typescript hljs">app.use(routers.products)
+app.use(routers.categories)</code>
+                </pre>
+              </div><!--//docs-code-block-->
+
+              <p>
+                This main middleware provides to you full control over the built-in middlewares and routers activation.
+              </p>
+            </section>
+
+            <br />
+
+            <section class="docs-section" id="helpers">
+              <h2 class="section-heading"><i class="fas fa-code mr-3"></i>Helpers</h2>
+              <p>Nothing simpler than export a function which helps bigger functions to do minor tasks.</p>
+              <p><b>Helpers are just isolated portions of code</b> that helps high level functions to become lighter.</p>
+              <p>You can export too many functions as you want and organizate them by files. <b>Each filename must describe a group of functions</b>.</p>
+
+              <br/>
+
+              <p><b>Let's create a helper function which maps the product code into a category:</b></p>
+
+              <br />
+
+              <span class="badge badge-secondary">helpers/products.ts</span>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                <code class="typescript hljs">/**
+* 
+*  Helpers: Products
+*  @description helper functions for products
+* 
+*/
+
+/**
+ *  Map Product Code to Category
+ *  @description takes the first 5 characters of the code and maps them into a category
+ */
+export const mapProductCodeToCat = (code: string): string => {
+  const categories: { [prefixCode: string]: string } = {
+    'fjw32': 'keyboards',
+    '3n2io': 'screens',
+    'mdnf2': 'racks',
+    'oi4o3': 'earphones',
+    default: 'no category'
+  }
+
+  return categories[code.substr(0, 5)] ?? categories.default
+}</code>
+                </pre>
+              </div><!--//docs-code-block-->
+
+              <p><b>This function can be used from anywhere, for example, in the products controller:</b></p>
+
+              <br/>
+
+              <span class="badge badge-secondary">controllers/products.ts</span>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                <code class="typescript hljs">// ...rest
+
+import { mapProductCodeToCat } from '@helpers/products'
+
+export default class ProductsController {
+  static async index (req: Request, res: Response): Promise&lt;Response&lt;Array&ltIProduct & { category: string }&gt;&gt;&gt; {
+    const products: IProduct[] = await Product.findAll()
+    
+    // add category for each product
+    const productsWithCategory: Array&ltIProduct & { category: string }&gt; = products.map((p: IProduct) => {
+      // map product code into a category
+      const category: string = mapProductCodeToCat(p.code)
+      return { ...p, category }
+    })
+
+    return res.json(productsWithCategory)
+  }
+}</code>
+                </pre>
+              </div><!--//docs-code-block-->
+
+              <p>This controller will return exactly the same <code>products array</code> than the older one but with an extra property: <code>category</code>.</p>
+            </section>
+
+            <br/>
+
+            <section class="docs-section" id="migrations">
+              <h2 class="section-heading"><i class="fas fa-database mr-3"></i>Migrations</h2>
+              <p>Migrations are like a version control of your tables, you can create the table, update the fields, modify the constraints, etc, all backed up in a registry that sequelize manages.</p>
+
+              <p>The Sequelize CLI can help on this task.</p>
+
+              <br />
+
+              <p><b>Let's create a migration for the products table:</b></p>
+
+              <code>npx sequelize migration:generate --name create-products-table</code>
+              
+              <br/><br/>
+              
+              <p>This will generate a new migration file in the <code>database/migrations</code> directory.</p>
+
+              <p>
+                Notice that the first part of the file name starts with a timestamp, that is the exact moment when the migration was created, and most important, the <b>fullname describes the action that the migration is performing</b>.
+              </p>
+
+              <br />
+
+              <p><b>Let's continue writing the migration:</b></p>
+              <p>Optionally, you can copy the content from <code>tmpl.ts</code> -> <code>20201229085157-create-products-table.ts</code></p>
+
+              <br />
+
+              <span class="badge badge-secondary">migrations/20201229085157-create-products-table.js</span>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="javascript hljs">/**
+ * 
+ *  Migration: Products
+ *  @description migration for the products table
+ * 
+ */
+
+export function up (queryInterface, DataTypes) {
+  return queryInterface.createTable('Products', {
+    uuid: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      primaryKey: true
+    },
+       
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+
+    code: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+
+    price: {
+      type: DataTypes.INTEGER.UNSIGNED
+    },
+
+    createdAt: {
+      type: 'TIMESTAMP',
+      defaultValue: DataTypes.literal('CURRENT_TIMESTAMP'),
+      allowNull: false
+    },
+
+    updatedAt: {
+      type: 'TIMESTAMP',
+      defaultValue: DataTypes.literal('CURRENT_TIMESTAMP'),
+      allowNull: false
+    }
+  })
+}
+
+export function down (queryInterface, Sequelize) {
+  return queryInterface.dropTable('Products')
+}</code>
+                </pre>
+              </div><!--//docs-code-block-->
+
+              <p>This migrations mainly performs the creation of the products table including their timestamps.</p>
+
+              <div class="callout-block callout-block-success">
+                <div class="content">
+                  <h4 class="callout-title">
+                    <span class="callout-icon-holder mr-1">
+                      <i class="fas fa-thumbs-up"></i>
+                    </span><!--//icon-holder-->
+                    Migrations with Sequelize
+                  </h4>
+                  <p>If you are interested in knowing how migrations work, please visit: <a href="https://sequelize.org/master/manual/migrations.html" target="_blank">https://sequelize.org/master/manual/migrations.html</a></p>
+                </div><!--//content-->
+              </div><!--//callout-block-->
+
+              <br />
+
+              <p><b>All migration files contains two member functions:</b></p>
+
+              <ul>
+                <li><code>up</code> which is in charge to create the table</li>
+                <li><code>down</code> which does exactly the reverse action: drop the table.</li>
+              </ul>
+
+              <p>
+                To create the table run the following command:
+              </p>
+
+              <code>npx sequelize db:migrate</code>
+              <br/><br/>
+              <p>to drop:</p>
+              <code>npx sequelize db:migrate:undo</code>
+            </section><!--//section-->
+
+            <br/>
+
+            <section class="docs-section" id="generators">
+              <h2 class="section-heading"><i class="fas fa-list-alt mr-3"></i>Generators</h2>
+
+              <p>
+                Bananasplit-js generators are just functions that are able to generate a row of data that can be saved in the database tables when executing seeders. Also they can be used to generate testing data for your tests.
+              </p>
+
+              <p>All generators are located at <code>database/generators</code> and they uses the Faker library to generate random data.</p>
+
+              <p>Besides, they must be named following the convention: <code>create-{resource}</code>. For example: <code>create-product</code>.</p>
+
+              <p><b>Since Sequelize CLI doesn't provides Typescript support</b>, generators must be written in Javascript just like seeders.</p>
+
+              <br />
+
+              <p><b>Let's create a generator for the products table:</b></p>
+
+              <p>To start copy <code>tmpl.js</code> -> <code>create-product.js</code> (in singular form).</p>
+
+              <br /><br />
+
+              <span class="badge badge-secondary">database/generators/create-product.js</span>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="javascript hljs">/**
+ *
+ *  Generator: Product
+ *  @description creates a product object based on fake data
+ *
+ */
+
+const Generator = require('@bananasplit-js/utils/generator')
+const faker = require('faker')
+
+// date for timestamps
+const date = new Date()
+
+// generator
+const createProduct = (product = {}) => ({
+  // columns
+  uuid: faker.datatype.uuid(),
+  name: faker.commerce.product(),
+  code: faker.internet.password().toLowerCase(),
+  price: parseInt(faker.commerce.price()),
+
+  // timestamps
+  createdAt: date,
+  updatedAt: date,
+
+  // extending
+  ...product
+})
+
+module.exports = Generator(createProduct)</code>
+                </pre>
+              </div>
+
+              <p>This file contains a common function which receives only one parameter: <code>product</code> (the resource), with an empty object as default value.</p>
+
+              <p>This value is used in order to extend the generated product or partially pass a <code>product</code> to merge it with the generated one.</p>
+
+              <p>
+                Generators files must export a generator function wrapped by the high order function <code>Generator</code> which is provided by Bananasplit-js. This <code>Generator</code> function provides extra functionalities to the original one.
+              </p>
+
+              <br />
+
+              <p><b>This generator function can be used from any file:</b></p>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="javascript hljs">const createProduct = require('@generators/create-product')
+
+// completely random
+const product1 = createProduct()
+
+// passing values
+const product2 = createProduct({
+  name: 'Macbook M1 Pro',
+  price: 1999
+})</code>
+                </pre>
+              </div>
+
+              <p><b>Output:</b></p>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="javascript hljs">// product1
+{
+  uuid: '97154f7b-2502-4677-9c7b-3ac42e44471d',
+  name: 'Keyboard',
+  code: 'Ii1RbaWe6gNf1Yl',
+  price: 626,
+  createdAt: 2022-08-07T01:38:37.096Z,
+  updatedAt: 2022-08-07T01:38:37.096Z
+} 
+
+// product2
+{
+  uuid: '6a12f49f-d5ad-4145-b549-e9580aef6c07',
+  name: 'Macbook M1 Pro',
+  code: '1ZmYCW_L0ygGwiT',
+  price: 1999,
+  createdAt: 2022-08-07T01:38:37.096Z,
+  updatedAt: 2022-08-07T01:38:37.096Z
+}</code>
+                </pre>
+              </div>
+
+              <br />
+
+              <h3>Generating amounts of data</h3>
+
+              <p>
+                Thanks to the extra functionalities provided by the <code>Generator</code> high order function, is possible to generate amounts of data:
+              </p>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="javascript hljs">// completely random
+const products1 = createProduct.amount(10)
+
+// passing values
+const products2 = createProduct.amount(10, {
+  price: 899
+})</code>
+                </pre>
+              </div>
+
+              <p>
+                The lines above will create an <code>array</code> of 10 products with completely random data and a second one of the same length but with a static <code>price</code> for all of them.
+              </p>
+
+              <br /><br />
+
+              <h3>Generating data in command-line</h3>
+
+              <p>Sometimes you will need to test your application from a REST client like Postman, Insomnia or PAW.</p>
+
+              <p>For this reason Bananasplit-js allow to you to generate data from the command-line by running the built-in script <code>generator:create</code> followed of the resource name, which is the name of the generator file omitting the "create-" part.</p>
+
+              <p>For example, for the <code>create-product.js</code> generator you should use <code>product</code> as resource name.</p>
+
+              <br/>
+
+              <p><b>Run in the command-line:</b></p>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="js hljs">// yarn
+yarn generator:create product
+
+// npm
+npm run generator:create product
+</code>
+                </pre>
+              </div>
+
+              <p>
+                You will see the resource output in the console. Also <b>it will be automatically copied to the clipboard</b>, ready to be paste in any REST client or text editor.
+              </p>
+
+              <p>Generating resources in command-line is a very good way to check if your generator is working as expected.</p>
+
+              <br />
+
+              <p><b>To generate amounts of data just pass a second parameter with the quantity:</b></p>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="js hljs">// yarn
+yarn generator:create product 10
+
+// npm
+npm run generator:create product 10
+</code>
+                </pre>
+              </div>
+
+              <p><b>To extend just pass a third parameter '--extend' containing the json object as string:</b></p>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="js hljs">// yarn
+yarn generator:create product 10 --extend="{ price: 899 }"
+
+// npm
+npm run generator:create product 10 --extend="{ price: 899 }"
+</code>
+                </pre>
+              </div>
+
+              <br />
+
+              <h3>Adapters</h3>
+
+              <p>
+                Content
+              </p>
+            </section>
+
+            <br />
+
+            <section class="docs-section" id="seeders">
+              <h2 class="section-heading"><i class="fas fa-layer-group mr-3"></i>Seeders</h2>
+              <p>Seeders are basically loaders that populate your tables with fake data, this is very useful to develop and test your application.</p>
+
+              <p>To create a seeder file the best option to use is the Sequelize CLI.</p>
+              <p><b>Sequelize CLI doesn't provide native Typescript support</b>, therefore, seeders must be written in Javascript.</p>
+
+              <br/>
+
+              <p><b>Let's create a seeder for the products table:</b></p>
+              <code>npx sequelize seeder:generate --name products-seeder</code>
+
+              <br/><br/>
+
+              <p>Optionally, you can copy the content from <code>tmpl</code> -> <code>20201229085902-products-seeder.js</code></p>
+
+              <br />
+
+              <span class="badge badge-secondary">seeders/20201229085902-products-seeder.js</span>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="javascript hljs">/**
+ *
+ *  Seeder: Products
+ *  @description seeds the products table
+ *
+ */
+
+const createProduct = require("@generators/create-product")
+
+exports.up = (queryInterface) => {
+  const products = createProduct.amount(10)
+  return queryInterface.bulkInsert('Products', products, {})
+}
+
+exports.down = (queryInterface) => {
+  return queryInterface.bulkDelete('Products', null, {})
+}</code>
+                </pre>
+              </div><!--//docs-code-block-->
+
+              <p><b>Like migrations, seeder files contains the same two member functions:</b></p>
+
+              <ul>
+                <li><code>up</code> which is in charge to add registries to the table</li>
+                <li><code>down</code> which does exactly the reverse action: truncate the table.</li>
+              </ul>
+
+              <br />
+
+              <p>This seeder file uses a <b>generator function</b> which allow us to generate amount of registries of the same type.</p>
+              <p>Please check: <a href="#generators">Creating Generators</a></p>
+
+              <div class="callout-block callout-block-success">
+                <div class="content">
+                  <h4 class="callout-title">
+                    <span class="callout-icon-holder mr-1">
+                      <i class="fas fa-thumbs-up"></i>
+                    </span><!--//icon-holder-->
+                    Creating seeders
+                  </h4>
+                  <p>For more information, please visit: <a href="https://sequelize.org/master/manual/migrations.html#creating-the-first-seed" target="_blank">https://sequelize.org/master/manual/migrations.html#creating-the-first-seed</a></p>
+                </div><!--//content-->
+              </div><!--//callout-block-->
+            </section><!--//section-->
+          </article><!--//docs-article-->
+
+          <article class="docs-article" id="util">
+            <header class="docs-header">
+              <h1 class="docs-heading">Utilities</h1>
+            </header>
+
+            <section class="docs-section" id="sqlite">
+              <h2 class="section-heading">SQLite configuration</h2>
+              <p>SQLite requires an additional parameter:</p>
+
+              <ul>
+                <li>Storage path</li>
+              </ul>
+
+              <br/>
+
+              <p>You may want to add this in the <code>sequelize.conf.ts</code> file.</p>
+
+              <br/>
+
+              <span class="badge badge-secondary">sequelize.conf.ts</span>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                <code class="typescript hljs">
+/**
+*  Sequelize Options
+* 
+*  You can overwrite default options by yours **
+*  This option object is directly passed to Sequelize constructor in the Provider.
+* 
+*/
+const SequelizeOptions: Sequelize.Options = {
+  // ...rest
+
+  // Storage for SQLite3
+  storage: 'path/to/database.sqlite'
+}
+                </code>
+                </pre>
+              </div><!--//docs-code-block-->
+
+              <span class="badge badge-success">Done.</span>
+            </section><!--//section-->
+          </article><!--//docs-article-->
+
+          <article class="docs-article" id="advanced">
+            <header class="docs-header">
+              <h1 class="docs-heading">Advanced</h1>
+            </header>
+
+            <section class="docs-section" id="extend">
+              <h2 class="section-heading">Extending Providers functionalities</h2>
+              <p>Bananasplit-js is built on their own Service Providers. These are classes that provides to the template the most important services.</p>
+              <p>By default Bananasplit-js dispose of two:</p>
+
+              <div class="table-responsive my-4">
+                <table class="table table-bordered">
+                  <tbody>
+                    <tr>
+                      <th class="theme-bg-light"><a class="theme-link" href="https://github.com/bananasplit-js/bananasplit-js/blob/main/template/src/providers/core/libs/express.ts" target="_blank">Express Provider</a></th>
+                      <td>provides the express server already configurated</td>
+                    </tr>
+                    <tr>
+                      <th class="theme-bg-light"><a class="theme-link" href="https://github.com/bananasplit-js/bananasplit-js/blob/main/template/src/providers/core/libs/sequelize.ts" target="_blank">Sequelize Provider</a></th>
+                      <td>provides the Sequelize ORM already integrated to your database</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div><!--//table-responsive-->
+
+              <p>These classes are located in the <code>providers/core/libs</code> folder and you can modify them as you want, even create your own one.</p>
+            </section><!--//section-->
+          </article><!--//docs-article-->
+
+          <article class="docs-article" id="changelog">
+            <header class="docs-header">
+              <h1 class="docs-heading">Changelog</h1>
+              <p>All notable changes to this project are listing here.</p>
+            </header>
+
+            <section class="docs-section" id="logs">
+              <div class="mb-5"><h1 class="section-heading">v1.1.0 - 2020-05-01</h1><hr/></div>
+              <h3>Added</h3>
+              <ul>
+                <li>Bananasplit will pick all configurations from the .env file variables.</li>
+                <li>Sequelize and Sequelize Client will automatically manage the correct configuration for your app enviroment in development, testing and production.</li>
+              </ul>
+
+              <br/>
+
+              <h3>Changed</h3>
+              <ul>
+                <li>Database dialect moved from app.settings to enviroment variables file.</li>
+                <li>Morgan and SassMiddleware logs deactivated for testing (jest) and production.</li>
+                <li>Added popper.js (for bootstrap) directly as npm package and not from the bootstrap package resources.</li>
+                <li>Packages updated to last version (except @types/express 4.17.2 for troubles).</li>
+                <li>Minor changes and improvements.</li>
+              </ul>
+            </section><!--//section-->
+          </article><!--//docs-article-->
+
+          <article class="docs-article" id="info">
+            <header class="docs-header">
+              <h1 class="docs-heading">Further Information</h1>
+            </header>
+            <section class="docs-section">
+              <h4><i class="fas fa-book-open mr-2"></i>For more information you can visit the official documentations:</h4>
+
+              <br/>
+
+              <ul>
+                <li><strong class="mr-1">Express</strong> <a href="https://expressjs.com" target="_blank">https://expressjs.com</a></li>
+                <li><strong class="mr-1">Sequelize</strong> <a href="https://sequelize.org/v5/" target="_blank">https://sequelize.org/v5/</a></li>
+                <li><strong class="mr-1">Jest</strong> <a href="https://jestjs.io/docs/en/getting-started" target="_blank">https://jestjs.io/docs/en/getting-started and https://www.albertgao.xyz/2017/05/24/how-to-test-expressjs-with-jest-and-supertest/</a></li>
+                <li><strong class="mr-1">Typescript</strong> <a href="https://www.typescriptlang.org/docs/home.html" target="_blank">https://www.typescriptlang.org/docs/home.html</a></li>
+              </ul>
+
+              <br/>
+
+              <h4><i class="fab fa-github mr-2"></i>You can visit the project in Github:</h4>
+              <br/>
+              <div style="overflow:auto"><a href="https://github.com/bananasplit-js/bananasplit-js">https://github.com/bananasplit-js/bananasplit-js</a></div>
+              <br/><br/>
+              <a href="https://github.com/bananasplit-js/bananasplit-js" class="btn btn-secondary"><i class="fas fa-arrow-alt-circle-right mr-2"></i> View on Github</a>
+            </section><!--//docs-intro-->
+          </article><!--//docs-article-->
+
+          <article class="docs-article" id="faq">
+            <header class="docs-header">
+              <h1 class="docs-heading">FAQs</h1>
+            </header>
+            <section class="docs-section" id="about">
+              <h2 class="section-heading">About this project <small>(questions)</small></h2>
+              <h5 class="pt-3"><i class="fas fa-question-circle mr-1"></i>Is bananasplit-js a framework?</h5>
+              <p>No. Bananasplit-js is a template that brings to you a background to quickly develop your app. This means that includes all the basics and most used resources you need already configured.</p>
+              <h5 class="pt-3"><i class="fas fa-question-circle mr-1"></i>It is hard to learn?</h5>
+              <p>Nope, Bananasplit-js is extremely simple to learn.<br/>Is pure Express code modularizated, the Express that you always knew.</p>
+              <h5 class="pt-3"><i class="fas fa-question-circle mr-1"></i>It is hard to configure?</h5>
+              <p>No! it's super easy! You just need to add your environment variables and let the builder do the rest.</p>
+              <h5 class="pt-3"><i class="fas fa-question-circle mr-1"></i>What I need to know to get it working?</h5>
+              <p>All you need to know is Typescript/Node.js.</p>
+              <h5 class="pt-3"><i class="fas fa-question-circle mr-1"></i>Why Bananasplit-js?</h5>
+              <p>I like bananas! and icecream. This template is that: a mix of flavors.</p>
+            </section><!--//section-->
+
+            <section class="docs-section" id="rights">
+              <h2 class="section-heading">About the rights <small>(the code)</small></h2>
+              <h5 class="pt-3"><i class="fas fa-question-circle mr-1"></i>Can I modifiy bananasplit-js?</h5>
+              <p>Yes of course! Bananasplit-js is licensed under <b>MIT</b>. You can do with it what you want.
+              <br/><a href="https://github.com/bananasplit-js/bananasplit-js/blob/main/template/LICENSE" target="_blank">Read the license.</a></p>
+
+              <h5 class="pt-3"><i class="fas fa-question-circle mr-1"></i>Can I contribute to the project?</h5>
+              <p>Yes! That's all about, contributing to make things better. Feel free to open a pull request or get in contact with me: <a href="https://diegoulloa.dev/contact" target="_blank">https://diegoulloa.dev/contact</a></p>
+            </section><!--//section-->
+          </article><!--//docs-article-->
+
+
+          <footer class="footer">
+            <div class="container text-center py-5">
+              <small class="copyright">2022 · Copyright &copy; <a href="../" target="_blank">Bananasplit-js</a></small>
+              <ul class="social-list list-unstyled pt-4 mb-0">
+                <li class="list-inline-item"><a href="https://github.com/bananasplit-js/bananasplit-js" target="_blank"><i class="fab fa-github fa-fw"></i></a></li> 
+                <li class="list-inline-item"><a href="#"><i class="fab fa-slack fa-fw"></i></a></li>
+                <li class="list-inline-item"><a href="#"><i class="fab fa-twitter fa-fw"></i></a></li>
+                <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f fa-fw"></i></a></li>
+              </ul><!--//social-list-->
+            </div>
+          </footer>
+        </div> 
+      </div>
+    </div><!--//docs-wrapper-->
+
+
+    <a href="#page-top" class="scroll-up">
+      <i class="fa fa-chevron-up"></i>
+    </a>
+
+
+    <!-- Javascript -->          
+    <script src="../assets/plugins/jquery-3.4.1.min.js"></script>
+    <script src="../assets/plugins/popper.min.js"></script>
+    <script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>  
+
+
+    <!-- Page Specific JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script>
+    <script src="../assets/js/highlight-custom.js"></script> 
+    <script src="../assets/plugins/jquery.scrollTo.min.js"></script>
+    <script src="../assets/plugins/lightbox/dist/ekko-lightbox.min.js"></script> 
+    <script src="../assets/js/docs.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.es6.min.js"></script>
+
+    <script>
+      $(function() {
+
+        // Matches
+        var matches = [];
+
+        // Search counter
+        var c = 0;
+
+        var mark = function() {
+
+          // Read the keyword
+          var keyword = $("input[name='search']").val();
+
+          // Determine selected options
+          var options = {
+            each: function(target) {
+              matches.push(target);
+            }
+          };
+
+          // Remove previous marked elements and mark
+          // the new keyword inside the context
+          $(".docs-content").unmark({
+            done: function() {
+              matches = [];
+              c = 0;
+              $(".docs-content").mark(keyword, options);
+            }
+          });
+        };
+
+        // Mark when tipping
+        $("input[name='search']").on("input", mark);
+
+        // Pass to next match when pressing enter
+        $('.search-form').on('submit', function(e) {
+          e.preventDefault();
+
+          if ( c < matches.length ) {
+            $(matches[c]).css({
+              'background': '#ef84a3',
+              'color': 'inherit'
+            });
+
+            $(matches[c-1]).css('background', 'transparent');
+
+            $('html, body').animate({
+              scrollTop: $(matches[c++]).offset().top - screen.height / 2
+            }, 0);
+          }
+        });
+
+        // Clean when pressing ESC
+        $("input[name='search']").keyup(function(e) {
+          if(e.key === "Escape") {
+            $(".docs-content").unmark();
+            $(this).val('');
+            matches = [];
+            c = 0;
+          }
+        });
+
+      });
+
+
+      $(function() {
+        //Scroll-top button
+        $(window).scroll(function() {
+          if ($(this).scrollTop() > 550) {
+            $('.scroll-up').addClass('scroll-show');
+          } else {
+            $('.scroll-up').removeClass('scroll-show');
+          }
+        });
+
+        $('.scroll-up').on('click', function(e) {		
+          e.preventDefault();
+
+          $('html, body').animate({
+            scrollTop : $('body').offset().top
+          }, 500);
+        });
+      });
+    </script>
+
+  </body>
+</html> 
+
