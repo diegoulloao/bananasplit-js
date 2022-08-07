@@ -74,14 +74,14 @@
       <div id="docs-sidebar" class="docs-sidebar">
         <nav id="docs-nav" class="docs-nav navbar">
           <ul class="section-items list-unstyled nav flex-column pb-3">
-            <li class="nav-item section-title"><a class="nav-link scrollto active" href="#intro"><span class="theme-icon-holder mr-2"><i class="fas fa-map-signs"></i></span>Introduction</a></li>
+            <li class="nav-item section-title"><a class="nav-link scrollto active" href="#intro"><span class="theme-icon-holder mr-2"><i class="fas fa-eye"></i></span>Introduction</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#template">About the template</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#packages">About the packages</a></li>
             <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#get-started"><span class="theme-icon-holder mr-2"><i class="fas fa-arrow-down"></i></span>Getting started</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#banana-cli">1. Create a new project</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#env-vars">2. Add enviroment variables</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#create">3. Build the stack</a></li>
-            <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#config"><span class="theme-icon-holder mr-2"><i class="fas fa-cogs"></i></span>Manual stack build</a></li>
+            <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#config"><span class="theme-icon-holder mr-2"><i class="fas fa-layer-group"></i></span>Manual stack build</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#dependencies">1. Install dependencies</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#database">2. Install database driver</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#env">3. Add enviroment variables</a></li>
@@ -96,14 +96,21 @@
             <li class="nav-item"><a class="nav-link scrollto" href="#migrations">Migrations</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#generators">Generators</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#seeders">Seeders</a></li>
-            <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#util"><span class="theme-icon-holder mr-2"><i class="fas fa-tools"></i></span>Utilities</a></li>
-            <li class="nav-item"><a class="nav-link scrollto" href="#sqlite">SQLite configuration</a></li>
+            <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#utilities"><span class="theme-icon-holder mr-2"><i class="fas fa-wrench"></i></span>Utilities</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#listing-routes">Listing routes in command-line</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#builtin-scripts">Built-in scripts</a></li>
+            <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#configuration"><span class="theme-icon-holder mr-2"><i class="fas fa-cog"></i></span>Configuration</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#sequelize">Sequelize</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#sequelize-cli">Sequelize CLI</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#sqlite">Using SQLite with Sequelize</a></li>
+            <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#settings"><span class="theme-icon-holder mr-2"><i class="fas fa-list-ul"></i></span>Settings</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#express-settings">Express</a></li>
             <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#advanced"><span class="theme-icon-holder mr-2"><i class="fas fa-laptop-code"></i></span>Advanced</a></li>
-            <li class="nav-item"><a class="nav-link scrollto" href="#extend">Extending Providers functionalities</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#extend">Extending providers</a></li>
             <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#changelog"><span class="theme-icon-holder mr-2"><i class="fas fa-clipboard"></i></span>Changelog</a></li>
             <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#info"><span class="theme-icon-holder mr-2"><i class="fas fa-info-circle"></i></span>Further Information</a></li>
             <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#faq"><span class="theme-icon-holder mr-2"><i class="fas fa-lightbulb"></i></span>FAQs</a></li>
-            <li class="nav-item"><a class="nav-link scrollto" href="#about">About this project</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#about">About the project</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#rights">About the rights</a></li>
           </ul>
         </nav><!--//docs-nav-->
@@ -132,6 +139,16 @@
                 <li><strong>Sequelize</strong> ORM for Data Management</li>
                 <li><strong>Typescript</strong> Superset language for Javascript</li>
               </ol>
+
+              <br />
+
+              <p>
+                Bananasplit-js pretends to act like a background to quickly start developing your app, no missing time. It integrates the most used technologies and libraries for backend already configurated, so you can skip building it from scratch.
+              </p>
+
+              <p>
+                This template gives to you the flexibility of avoid using a framework (therefore, learn it), familiarity to the code you already knew by using express, sequelize and jest, and the weight of more than a template, because includes util tools you can just use.
+              </p>
             </section><!--//section-->
 
             <section class="docs-section" id="packages">
@@ -1178,7 +1195,7 @@ export default class ProductsController {
                 </pre>
               </div><!--//docs-code-block-->
 
-              <p>This controller will return exactly the same <code>products array</code> than the older one but with an extra property: <code>category</code>.</p>
+              <p>This controller will return exactly the same <code>products</code> array than the older one but with an extra property: <code>category</code>.</p>
             </section>
 
             <br/>
@@ -1666,44 +1683,75 @@ exports.down = (queryInterface) => {
             </section><!--//section-->
           </article><!--//docs-article-->
 
-          <article class="docs-article" id="util">
+          <article id="utilities" class="docs-article">
             <header class="docs-header">
               <h1 class="docs-heading">Utilities</h1>
             </header>
 
+            <section id="listing-routes" class="docs-section">
+              <h2 class="section-heading">Listing routes in command-line</h2>
+
+              <p>
+                Content
+              </p>
+            </section>
+
+            <section id="builtin-scripts" class="docs-section">
+              <h2 class="section-heading">Built-in scripts</h2>
+
+              <p>
+                Content
+              </p>
+            </section>
+          </article>
+
+          <article class="docs-article" id="configuration">
+            <header class="docs-header">
+              <h1 class="docs-heading">Configuration</h1>
+            </header>
+
+            <section class="docs-section" id="sequelize">
+              <h2 class="section-heading">Sequelize</h2>
+
+              <p>
+                Content
+              </p>
+            </section>
+
+            <section class="docs-section" id="sequelize-cli">
+              <h2 class="section-heading">Sequelize CLI</h2>
+
+              <p>
+                Content
+              </p>
+            </section>
+
             <section class="docs-section" id="sqlite">
-              <h2 class="section-heading">SQLite configuration</h2>
+              <h2 class="section-heading">Using SQLite with Sequelize</h2>
               <p>SQLite requires an additional parameter:</p>
 
               <ul>
                 <li>Storage path</li>
               </ul>
 
-              <br/>
-
-              <p>You may want to add this in the <code>sequelize.conf.ts</code> file.</p>
+              <p>You will need to add the following property to the <code>config/sequelize/sequelize.conf.ts</code> file:</p>
 
               <br/>
 
-              <span class="badge badge-secondary">sequelize.conf.ts</span>
+              <span class="badge badge-secondary">config/sequelize/sequelize.conf.ts</span>
 
               <div class="docs-code-block">
                 <pre class="rounded">
-                <code class="typescript hljs">
-/**
-*  Sequelize Options
-* 
-*  You can overwrite default options by yours **
-*  This option object is directly passed to Sequelize constructor in the Provider.
-* 
-*/
-const SequelizeOptions: Sequelize.Options = {
-  // ...rest
+                <code class="typescript hljs">// ...rest
 
-  // Storage for SQLite3
-  storage: 'path/to/database.sqlite'
+const Options: Sequelize.Options = {
+  // storage path
+  storage: 'path/to/database.sqlite',
+
+  // ...rest
 }
-                </code>
+
+export default Options</code>
                 </pre>
               </div><!--//docs-code-block-->
 
@@ -1711,13 +1759,27 @@ const SequelizeOptions: Sequelize.Options = {
             </section><!--//section-->
           </article><!--//docs-article-->
 
+          <article id="settings" class="docs-article">
+            <header class="docs-header">
+              <h1 class="docs-heading">Settings</h1>
+            </header>
+
+            <section id="express-settings" class="docs-section">
+              <h2 class="section-heading">Express</h2>
+
+              <p>
+                Content
+              </p>
+            </section>
+          </article>
+
           <article class="docs-article" id="advanced">
             <header class="docs-header">
               <h1 class="docs-heading">Advanced</h1>
             </header>
 
             <section class="docs-section" id="extend">
-              <h2 class="section-heading">Extending Providers functionalities</h2>
+              <h2 class="section-heading">Extending Providers</h2>
               <p>Bananasplit-js is built on their own Service Providers. These are classes that provides to the template the most important services.</p>
               <p>By default Bananasplit-js dispose of two:</p>
 
@@ -1778,8 +1840,8 @@ const SequelizeOptions: Sequelize.Options = {
 
               <ul>
                 <li><strong class="mr-1">Express</strong> <a href="https://expressjs.com" target="_blank">https://expressjs.com</a></li>
-                <li><strong class="mr-1">Sequelize</strong> <a href="https://sequelize.org/v5/" target="_blank">https://sequelize.org/v5/</a></li>
-                <li><strong class="mr-1">Jest</strong> <a href="https://jestjs.io/docs/en/getting-started" target="_blank">https://jestjs.io/docs/en/getting-started and https://www.albertgao.xyz/2017/05/24/how-to-test-expressjs-with-jest-and-supertest/</a></li>
+                <li><strong class="mr-1">Sequelize</strong> <a href="https://sequelize.org/v5" target="_blank">https://sequelize.org/v5</a></li>
+                <li><strong class="mr-1">Jest</strong> <a href="https://jestjs.io/docs/en/getting-started" target="_blank">https://jestjs.io/docs/en/getting-started</a></li>
                 <li><strong class="mr-1">Typescript</strong> <a href="https://www.typescriptlang.org/docs/home.html" target="_blank">https://www.typescriptlang.org/docs/home.html</a></li>
               </ul>
 
@@ -1798,7 +1860,7 @@ const SequelizeOptions: Sequelize.Options = {
               <h1 class="docs-heading">FAQs</h1>
             </header>
             <section class="docs-section" id="about">
-              <h2 class="section-heading">About this project <small>(questions)</small></h2>
+              <h2 class="section-heading">About the project <small>(questions)</small></h2>
               <h5 class="pt-3"><i class="fas fa-question-circle mr-1"></i>Is bananasplit-js a framework?</h5>
               <p>No. Bananasplit-js is a template that brings to you a background to quickly develop your app. This means that includes all the basics and most used resources you need already configured.</p>
               <h5 class="pt-3"><i class="fas fa-question-circle mr-1"></i>It is hard to learn?</h5>
