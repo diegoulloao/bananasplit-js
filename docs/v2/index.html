@@ -1305,9 +1305,9 @@ export function down (queryInterface, Sequelize) {
                 Bananasplit-js generators are just functions that are able to generate a row of data that can be saved in the database tables when executing seeders. Also they can be used to generate testing data for your tests.
               </p>
 
-              <p>All generators are located at <code>database/generators</code> and they uses the Faker library to generate random data.</p>
+              <p>All generators are located at <code>database/generators</code> and they use the Faker library to generate random data.</p>
 
-              <p>Besides, they must be named following the convention: <code>create-{resource}</code>. For example: <code>create-product</code>.</p>
+              <p>They must be named following the convention: <code>create-{resource}</code>. For example: <code>create-product</code>.</p>
 
               <p><b>Since Sequelize CLI doesn't provides Typescript support</b>, generators must be written in Javascript just like seeders.</p>
 
@@ -1366,7 +1366,7 @@ module.exports = Generator(createProduct)</code>
 
               <br />
 
-              <p><b>This generator function can be used from any file:</b></p>
+              <p><b>This product generator function can be used in any file:</b></p>
 
               <div class="docs-code-block">
                 <pre class="rounded">
@@ -1496,16 +1496,17 @@ yarn generator:create product 10 --extend=$product</code>
               <h3>Adapters</h3>
 
               <p>
-                Frecuently is needed to change data column names when it is being served or sent to the API. For example in products, one table column can be named <code>price</code> but in the API served or received as JSON under the name of <code>cost</code> or <code>total</code>.
+                Frecuently is needed to change the data column names when this is being served or sent to the API. For example in products, one table column can be named <code>price</code> but served in the API or received as JSON body under the name of <code>cost</code> or <code>total</code>.
+
               </p>
 
               <p>
-                For this reason Bananasplit-js generators includes the ability to adapt the data when it's being generated from command-line.
+                For this reason Bananasplit-js generators includes the ability to adapt the data when is being generated from command-line.
               </p>
 
               <br />
 
-              <p><b>Let's modify the products generator in order to make an adaptation:</b></p>
+              <p><b>Let's modify the products generator to add an adapter:</b></p>
 
               <span class="badge badge-secondary">database/generators/create-product.js</span>
 
@@ -1529,7 +1530,7 @@ const createProduct = (product = {}) => ({
   // ...rest
 })
 
-// the adapter: key -> new key
+// the adapter
 const adapter = {
   'uuid': 'id',
   'price': 'total'
@@ -1541,15 +1542,15 @@ module.exports = Generator(createProduct, adapter)</code>
               </div>
 
               <p>
-                What this modification does is, first, define a new <code>adapter</code> object where the <b>key is the current column name</b> of the table and <b>value the new key name to be exposed as</b>.
-              </p>
-
-              <p>
-                Is important to be aware that <b>by default adapters are only activated when the data is being generated in command-line</b> and not internally in our files.
+                What this modification does is, first, define a new <code>adapter</code> object where the <b>key is the current column name</b> of the table and <b>value the new key name</b>.
               </p>
 
               <p>
                 Finally, this <code>adapter</code> object is passed as second parameter to the <code>Generator</code> high order function.
+              </p>
+
+              <p>
+                Is important to be aware that <b>by default adapters are only activated when the data is being generated in command-line</b> and not internally in our files.
               </p>
 
               <br />
@@ -1574,7 +1575,7 @@ module.exports = Generator(createProduct, adapter)</code>
               <br />
 
               <p>
-                <b>In order to activate the adapter when we are programatically generating data</b>, is possible to pass an extra <code>adapt</code> boolean to the <code>createProduct</code> (create resource) function:
+                <b>In order to activate the adapter programatically in the generator</b>, pass an extra <code>adapt</code> boolean parameter to the <code>createProduct</code> (create resource) function:
               </p>
 
               <div class="docs-code-block">
