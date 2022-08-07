@@ -1383,7 +1383,7 @@ const product2 = createProduct({
                 </pre>
               </div>
 
-              <p><b>Output:</b></p>
+              <p><b>Output example:</b></p>
 
               <div class="docs-code-block">
                 <pre class="rounded">
@@ -1470,12 +1470,7 @@ npm run generator:create product
 
               <div class="docs-code-block">
                 <pre class="rounded">
-                  <code class="js hljs">// yarn
-yarn generator:create product 10
-
-// npm
-npm run generator:create product 10
-</code>
+                  <code class="js hljs">yarn generator:create product 10</code>
                 </pre>
               </div>
 
@@ -1483,12 +1478,16 @@ npm run generator:create product 10
 
               <div class="docs-code-block">
                 <pre class="rounded">
-                  <code class="js hljs">// yarn
-yarn generator:create product 10 --extend="{ price: 899 }"
+                  <code class="js hljs">yarn generator:create product 10 --extend="{ price: 899 }"</code>
+                </pre>
+              </div>
 
-// npm
-npm run generator:create product 10 --extend="{ price: 899 }"
-</code>
+              <p>If the json object is too large, you can help yourself by <b>using shell variables</b>:</p>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="js hljs">product="{ name: 'Macbook M1 Pro', ..., price: 899 }"
+yarn generator:create product 10 --extend=\"$product\"</code>
                 </pre>
               </div>
 
