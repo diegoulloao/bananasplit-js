@@ -10540,17 +10540,6 @@ body:not(.docs-page) {
   text-align: right;
   position: relative;
 }
-#top-carousel .carousel-item.template > div:first-child::before {
-  content: "";
-  width: 307px;
-  height: 547px;
-  position: absolute;
-  bottom: 14px;
-  right: 14px;
-  border: 2px dashed rgba(255, 255, 255, 0.8);
-  background-image: repeating-linear-gradient(-24deg, transparent, transparent 4px, rgba(255, 255, 255, 0.5) 0, rgba(255, 255, 255, 0.5) 5px);
-  z-index: -1;
-}
 #top-carousel .carousel-item.template div:last-child {
   display: grid;
   align-items: center;
@@ -10608,7 +10597,7 @@ body:not(.docs-page) {
   max-height: 560px !important;
 }
 #top-carousel img#banana-code {
-  width: auto;
+  width: 100%;
   max-height: 547px;
   border-radius: 0.25rem;
 }
@@ -10633,11 +10622,6 @@ body:not(.docs-page) {
   #top-carousel .carousel-item.template {
     padding-top: 25px;
   }
-  #top-carousel .carousel-item.template > div:first-child::before {
-    bottom: 10px;
-    left: -10px;
-  }
-
   img#banana-logo {
     width: 83%;
     height: auto !important;
@@ -10665,17 +10649,6 @@ body:not(.docs-page) {
   #top-carousel .carousel-item.template div:last-child h1 {
     font-size: 41px;
     margin-bottom: 7px !important;
-  }
-  #top-carousel .carousel-item.template::before {
-    content: "";
-    width: 240px;
-    height: 482px;
-    position: absolute;
-    bottom: 14px;
-    left: -14px;
-    border: 2px dashed #fff;
-    background-image: repeating-linear-gradient(-24deg, transparent, transparent 4px, rgba(255, 255, 255, 0.5) 0, rgba(255, 255, 255, 0.5) 5px);
-    z-index: -1;
   }
   #top-carousel .carousel-item.template div:last-child h5,
 #top-carousel .carousel-item.template div:last-child ul li {
@@ -10767,25 +10740,13 @@ body:not(.docs-page) {
 #template-mobile .template div:last-child ul li {
     font-size: 1.125rem;
   }
-  #template-mobile .template::before {
-    content: "";
-    width: 307px;
-    height: 547px;
-    position: absolute;
-    top: -14px;
-    left: -28px;
-    right: 0;
-    margin: 0 auto;
-    border: 2px dashed #fff;
-    background-image: repeating-linear-gradient(-24deg, transparent, transparent 4px, rgba(255, 255, 255, 0.5) 0, rgba(255, 255, 255, 0.5) 5px);
-    z-index: -1;
-  }
   #template-mobile .template > div:first-child {
     text-align: center;
     overflow: hidden;
   }
   #template-mobile .template > div:first-child img#banana-code {
     border-radius: 0.25rem;
+    max-width: 300px;
   }
   #template-mobile .template > div:last-child {
     margin-top: 48px;
