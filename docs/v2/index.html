@@ -705,10 +705,24 @@ export default class ProductsController {
                 </ul>
               </p>
 
-              <p>This controller uses the <code>Product</code> model in order to retrieve the data from the database and every handler is a pure express handler.</p>
-              <p>Read more about: <a href="https://expressjs.com/es/guide/routing.html#route-methods">Express route methods</a></p>
+              <br />
 
-              <br/>
+              <p>This controller uses the <code>Product</code> model in order to retrieve the data from the database and every handler is a pure express handler.</p>
+
+              <div class="callout-block callout-block-success">
+                <div class="content">
+                  <h4 class="callout-title">
+                    <span class="callout-icon-holder mr-1">
+                      <i class="fas fa-thumbs-up"></i>
+                    </span><!--//icon-holder-->
+                    Express route methods
+                  </h4>
+
+                  <p>Read more about: <a href="https://expressjs.com/es/guide/routing.html#route-methods" target="_blank">https://expressjs.com/es/guide/routing.html#route-methods</a></p>
+                </div><!--//content-->
+              </div>
+
+              <br /><br />
 
               <h3>Store data at memory</h3>
               <p>
@@ -746,7 +760,7 @@ export default class ProductsController {
                 The <code>index</code> method will run at every request but the <code>ips</code> attribute value will persist over the time. Notice that <code>ips</code> has a private scope. This restrict the access to inside the controller only.
               </p>
 
-              <br />
+              <br /><br />
 
               <h3 id="express-settings-controllers">Accessing the express settings</h3>
               <p>
@@ -895,7 +909,7 @@ export default (app: Application): Router => {
 
               <p>This must be used to <b>read only</b> and not to set.</p>
 
-              <br />
+              <br /><br />
 
               <h3>Automatic routes detection</h3>
 
@@ -912,7 +926,7 @@ export default (app: Application): Router => {
                 This routes definitions are pure express code. Check the express documentation: <a href="https://expressjs.com/en/guide/routing.html" target="_blank">Express Routing.</a>
               </p>
 
-              <br />
+              <br /><br />
 
               <h3>Default routes</h3>
 
@@ -1037,7 +1051,7 @@ export default (): Router => {
               <p>To check if the middlewares were applied correctly, use the <code>route:list</code> built-in command.</p>
               <p>Please check: <a href="#router-dex">Listing routes and middlewares in the command-line</a>.</p>
 
-              <br />
+              <br /><br />
 
               <h3>The "Express" Middleware</h3>
               <p>
@@ -1562,7 +1576,11 @@ exports.down = (queryInterface) => {
 
               <div class="docs-code-block">
                 <pre class="rounded">
-                  <code class="js hljs">yarn route:list</code>
+                  <code class="js hljs">// yarn
+yarn route:list
+
+// npm
+npm run route:list</code>
                 </pre>
               </div>
 
@@ -1642,7 +1660,7 @@ exports.down = (queryInterface) => {
 
               <p>This is very useful especially when you have a lot of routes and you need to visualize them in a more orderly way.</p>
 
-              <br />
+              <br /><br />
 
               <h3>Filtering by groups</h3>
               
@@ -1670,7 +1688,7 @@ exports.down = (queryInterface) => {
 
               <p>Just can pass many filters as you want.</p>
 
-              <br />
+              <br /><br />
 
               <h3>Symbols and meanings</h3>
 
@@ -2345,7 +2363,7 @@ export default (app: Application) => {
                 Once you are able to understand how the <code>ExpressProvider</code> class is implemented you can start changing their behavior or adding more logic to it.
               </p>
 
-              <br />
+              <br /><br />
 
               <h3>The Sequelize Provider</h3>
 
