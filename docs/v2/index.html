@@ -1781,7 +1781,7 @@ export default Options</code>
 
             <section class="docs-section" id="extend">
               <h2 class="section-heading">Extending Providers</h2>
-              <p>Bananasplit-js is built on their own Service Providers. These are classes that provides to the template the most important services.</p>
+              <p>Bananasplit-js is built on their own Service Providers. Providers are classes that provides services to the template.</p>
               <p>By default Bananasplit-js dispose of two:</p>
 
               <div class="table-responsive my-4">
@@ -1793,13 +1793,263 @@ export default Options</code>
                     </tr>
                     <tr>
                       <th class="theme-bg-light"><a class="theme-link" href="https://github.com/bananasplit-js/bananasplit-js/blob/main/template/src/providers/core/libs/sequelize.ts" target="_blank">Sequelize Provider</a></th>
-                      <td>provides the Sequelize ORM already integrated to your database</td>
+                      <td>provides the Sequelize ORM already integrated to your database and application</td>
                     </tr>
                   </tbody>
                 </table>
               </div><!--//table-responsive-->
 
-              <p>These classes are located in the <code>providers/core/libs</code> folder and you can modify them as you want, even create your own one.</p>
+              <p>Providers are located in the <code>providers/core/libs</code> directory and you can modify them as you want, even create your own ones.</p>
+
+              <br /><br />
+
+              <h3>The Express Provider</h3>
+
+              <p>
+                To start let's understand how the <a href="https://github.com/bananasplit-js/bananasplit-js/blob/main/template/src/providers/core/libs/express.ts" target="_blank">provider</a> works. This is a simplified class representation:
+              </p>
+
+              <br />
+
+              <span class="badge badge-secondary">providers/core/libs/express.ts</span>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                <code class="typescript hljs">class ExpressProvider {
+  public port = 3627
+
+  private service: Express.Application
+  private static instance: ExpressProvider
+
+  private constructor () { /* implements singleton */ }
+
+  public static provide (config?: IC): ExpressProvider { /* ...magic */ }
+  public static getInstance (): ExpressProvider { /* ...magic */ }
+
+  public serve (port?: number): http.Server { /* ...magic */ }
+  public getApplication (): Express.Application { /* ...magic */ }
+
+  private settings (config?: IC): void { /* ...magic */ }
+  private middlewares (routers: IRouters): void { /* ...magic */ }
+  private routers (): IRouters { /* ...magic */ }
+}</code>
+                </pre>
+              </div><!--//docs-code-block-->
+
+              <br />
+
+              <h4>Attributes</h4>
+
+              <ul>
+                <li>
+                  <h5>public</h5>
+
+                  <ul>
+                    <li>
+                      <b>port:</b> <a>default port where the Express Application will run.</a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li>
+                  <h5>private</h5>
+
+                  <ul>
+                    <li>
+                      <b>service:</b> <a>The Express Application instance.</a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li>
+                  <h5>private static</h5>
+
+                  <ul>
+                    <li>
+                      <b>instance:</b> <a>the singleton <code>ExpressProvider</code> class instance.</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+
+              <br />
+
+              <h4>Constructor</h4>
+
+              <p>(Not used because the class implements <b>singleton</b> pattern).</p>
+
+              <br />
+
+              <h4>Methods</h4>
+
+              <ul>
+                <li>
+                  <h5>static</h5>
+
+                  <ul>
+                    <li>
+                      <b>provide:</b> <a>Bootstrap function that is called in order to setup the entire service (singleton constructor).</a>
+                    </li>
+
+                    <li>
+                      <b>getInstance:</b> <a>Getter for the <code>ExpressProvider</code> singleton instance.</a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li>
+                  <h5>public</h5>
+
+                  <ul>
+                    <li>
+                      <b>serve:</b> <a>Runs the Express Server in the specified port (listen).</a>
+                    </li>
+
+                    <li>
+                      <b>getApplication:</b> <a>Getter for the Express Application instance.</a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li>
+                  <h5>private</h5>
+
+                  <ul>
+                    <li>
+                      <b>settings:</b> <a>Plugs the settings from the <code>settings</code> directory into the Express Application.</a>
+                    </li>
+
+                    <li>
+                      <b>middlewares:</b> <a>Plugs the main "express" middleware <code>middlewares/express.ts</code> into the Express Application.</a><a></a>
+                    </li>
+
+                    <li>
+                      <b>routers:</b> <a>Plugs all the routers exported from files in the <code>app/routers</code> directory into the Express Application.</a><a></a><a></a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+
+              <br />
+
+              <p>
+              The <code>ExpressProvider</code> class uses the <code>providers/core/helpers/resources.ts</code> <a href="https://github.com/bananasplit-js/bananasplit-js/blob/main/template/src/providers/core/helpers/resources.ts" target="_blank">helper file</a> in order to simplify the logic.
+              </p>
+
+              <p>This helper file includes a couple of functions that allows Bananasplit-js to read different kind of modules and load them.</p>
+
+              <p>
+                Once you are able to understand how the <code>ExpressProvider</code> class is implemented you can start changing their behavior or adding more logic to it.
+              </p>
+
+              <br />
+
+              <h3>The Sequelize Provider</h3>
+
+              <p>
+                This <a href="https://github.com/bananasplit-js/bananasplit-js/blob/main/template/src/providers/core/libs/sequelize.ts" target="_blank">provider</a> is quite similar to the Express Provider. Part of it is based in the same class structure but it includes his own methods.
+              </p>
+
+              <span class="badge badge-secondary">providers/core/libs/sequelize.ts</span>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                <code class="typescript hljs">class SequelizeProvider {
+  private service: Sequelize
+  private static instance: SequelizeProvider
+
+  private constructor () { /* implements singleton */ }
+
+  public static provide (): SequelizeProvider { /* ...magic */ }
+  public static getInstance (): SequelizeProvider { /* ...magic */ }
+
+  public getApplication (): Sequelize { /* ...magic */ }
+
+  private makeAuth (): DBAuth | string { /* ...magic */ }
+  private makeOptions (): Options { /* ...magic */ }
+}</code>
+                </pre>
+              </div><!--//docs-code-block-->
+
+              <br />
+
+              <h4>Attributes</h4>
+
+              <ul>
+                <li>
+                  <h5>private</h5>
+
+                  <ul>
+                    <li>
+                      <b>service:</b> <a>The Sequelize Application instance.</a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li>
+                  <h5>private static</h5>
+
+                  <ul>
+                    <li>
+                      <b>instance:</b> <a>the singleton <code>SequelizeProvider</code> class instance.</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+
+              <br />
+
+              <h4>Constructor</h4>
+
+              <p>(Not used because the class implements <b>singleton</b> pattern).</p>
+
+              <br />
+
+              <h4>Methods</h4>
+
+              <ul>
+                <li>
+                  <h5>static</h5>
+
+                  <ul>
+                    <li>
+                      <b>provide:</b> <a>Bootstrap function that is called in order to setup the entire service (singleton constructor).</a>
+                    </li>
+
+                    <li>
+                      <b>getInstance:</b> <a>Getter for the <code>SequelizeProvider</code> singleton instance.</a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li>
+                  <h5>public</h5>
+
+                  <ul>
+                    <li>
+                      <b>getApplication:</b> <a>Getter for the Sequelize Application instance.</a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li>
+                  <h5>private</h5>
+
+                  <ul>
+                    <li>
+                      <b>makeAuth:</b> <a>Builds the database authentication object or string based on the environment variables.</a>
+                    </li>
+
+                    <li>
+                      <b>makeOptions:</b> <a>Builds the options object based on the environment variables, custom settings defined in the <code>config/sequelize/sequelize.conf.js</code> file and defaults.</a><a></a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+
+              <p>
+                The Sequelize Provider, contrary to the Express Provider, doesn't use helpers functions and all his logic is defined in this simple class.
+              </p>
             </section><!--//section-->
           </article><!--//docs-article-->
 
