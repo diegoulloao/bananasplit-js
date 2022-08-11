@@ -1725,17 +1725,108 @@ exports.down = (queryInterface) => {
             <section class="docs-section" id="sequelize">
               <h2 class="section-heading">Sequelize</h2>
 
-              <p>
-                Content
+              <p>The Sequelize configuration object (connection pool) is located at <code>config/sequelize/sequelize.conf.js</code> and extends the default provided by the <a href="https://github.com/bananasplit-js/bananasplit-js/blob/main/template/src/providers/core/libs/sequelize.ts" target="_blank">Sequelize Provider</a> in the <code>makeOptions</code> method.
               </p>
+               <br />
+
+              <span class="badge badge-secondary">config/sequelize/sequelize.conf.ts</span>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="javascript hljs">// ...rest
+
+const Options: Sequelize.Options = {
+  pool: {
+    max: 5,
+    min: 0,
+    acquire: 30000,
+    idle: 10000
+  },
+
+  sync: {}
+}</code>
+                </pre>
+              </div>
+
+              <p>This file is exposed in order to customize the Sequelize configuration as you want.</p>
+
+              <br />
+
+              <div class="callout-block callout-block-success">
+                <div class="content">
+                  <h4 class="callout-title">
+                    <span class="callout-icon-holder mr-1">
+                      <i class="fas fa-thumbs-up"></i>
+                    </span><!--//icon-holder-->
+                    Sequelize connection pool
+                  </h4>
+
+                  <p>For more information, please visit: <a href="https://sequelize.org/docs/v6/other-topics/connection-pool/" target="_blank">https://sequelize.org/docs/v6/other-topics/connection-pool/</a></p>
+                </div><!--//content-->
+              </div>
             </section>
 
             <section class="docs-section" id="sequelize-cli">
               <h2 class="section-heading">Sequelize CLI</h2>
 
               <p>
-                Content
+                Similar to above, the Sequelize CLI configuration is located at <code>config/sequelize/sequelize-cli.conf.js</code> and extends the defaults provided by the <a href="https://github.com/bananasplit-js/bananasplit-js/blob/main/template/src/providers/core/config/sequelize-cli.conf.js" target="_blank">main configuration</a> file.
               </p>
+
+              <br />
+
+              <span class="badge badge-secondary">config/sequelize/sequelize-cli.conf.ts</span>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="javascript hljs">module.exports = {
+  /**
+   *  development
+   */
+  development: {
+    dialectOptions: {
+      bigNumberStrings: true
+    }
+  },
+
+  /**
+   *  test
+   */
+  test: {
+    dialectOptions: {
+      bigNumberStrings: true
+    }
+  },
+
+  /**
+   *  production
+   */
+  production: {
+    dialectOptions: {
+      bigNumberStrings: true,
+      ssl: {}
+    }
+  }
+}</code>
+                </pre>
+              </div>
+
+              <p>This file is exposed in order to customize the Sequelize CLI configuration as you want.</p>
+
+              <br />
+
+              <div class="callout-block callout-block-success">
+                <div class="content">
+                  <h4 class="callout-title">
+                    <span class="callout-icon-holder mr-1">
+                      <i class="fas fa-thumbs-up"></i>
+                    </span><!--//icon-holder-->
+                    Sequelize CLI configuration
+                  </h4>
+
+                  <p>For more information, please visit: <a href="https://sequelize.org/docs/v6/other-topics/migrations/#configuration" target="_blank">https://sequelize.org/docs/v6/other-topics/migrations/#configuration</a></p>
+                </div><!--//content-->
+              </div>
             </section>
 
             <section class="docs-section" id="sqlite">
