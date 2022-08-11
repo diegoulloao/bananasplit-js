@@ -98,6 +98,7 @@
             <li class="nav-item"><a class="nav-link scrollto" href="#seeders">Seeders</a></li>
             <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#utilities"><span class="theme-icon-holder mr-2"><i class="fas fa-wrench"></i></span>Utilities</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#listing-routes">Listing routes in command-line</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#generating-cli-data">Generating data in command-line</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#builtin-scripts">Built-in scripts</a></li>
             <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#configuration"><span class="theme-icon-holder mr-2"><i class="fas fa-cog"></i></span>Configuration</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#sequelize">Sequelize</a></li>
@@ -1460,10 +1461,94 @@ const products2 = createProduct.amount(10, {
               <p>
                 The lines above will create an <code>array</code> of 10 products with completely random data and a second one of the same length but with a static <code>price</code> value for all of them.
               </p>
+            </section>
 
-              <br /><br />
+            <br />
 
-              <h3>Generating data in command-line</h3>
+            <section class="docs-section" id="seeders">
+              <h2 class="section-heading"><i class="fas fa-layer-group mr-3"></i>Seeders</h2>
+              <p>Seeders are basically loaders that populate your tables with fake data, this is very useful to develop and test your application.</p>
+
+              <p>To create a seeder file the best option to use is the Sequelize CLI.</p>
+              <p><b>Sequelize CLI doesn't provide native Typescript support</b>, therefore, seeders must be written in Javascript.</p>
+
+              <br/>
+
+              <p><b>Let's create a seeder for the products table:</b></p>
+              <code>npx sequelize seeder:generate --name products-seeder</code>
+
+              <br/><br/>
+
+              <p>Optionally, you can copy the content from <code>tmpl</code> -> <code>20201229085902-products-seeder.js</code></p>
+
+              <br />
+
+              <span class="badge badge-secondary">seeders/20201229085902-products-seeder.js</span>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="javascript hljs">/**
+ *
+ *  Seeder: Products
+ *  @description seeds the products table
+ *
+ */
+
+const createProduct = require("@generators/create-product")
+
+exports.up = (queryInterface) => {
+  const products = createProduct.amount(10)
+  return queryInterface.bulkInsert('Products', products, {})
+}
+
+exports.down = (queryInterface) => {
+  return queryInterface.bulkDelete('Products', null, {})
+}</code>
+                </pre>
+              </div><!--//docs-code-block-->
+
+              <p><b>Like migrations, seeder files contains the same two member functions:</b></p>
+
+              <ul>
+                <li><code>up</code> which is in charge to add registries to the table</li>
+                <li><code>down</code> which does exactly the reverse action: truncate the table.</li>
+              </ul>
+
+              <br />
+
+              <p>This seeder file uses a <b>generator function</b> which allow us to generate amount of registries of the same type.</p>
+              <p>Please check: <a href="#generators">Creating Generators</a></p>
+
+              <div class="callout-block callout-block-success">
+                <div class="content">
+                  <h4 class="callout-title">
+                    <span class="callout-icon-holder mr-1">
+                      <i class="fas fa-thumbs-up"></i>
+                    </span><!--//icon-holder-->
+                    Creating seeders
+                  </h4>
+
+                  <p>For more information, please visit: <a href="https://sequelize.org/master/manual/migrations.html#creating-the-first-seed" target="_blank">https://sequelize.org/master/manual/migrations.html#creating-the-first-seed</a></p>
+                </div><!--//content-->
+              </div><!--//callout-block-->
+            </section><!--//section-->
+          </article><!--//docs-article-->
+
+          <article id="utilities" class="docs-article">
+            <header class="docs-header">
+              <h1 class="docs-heading">Utilities</h1>
+            </header>
+
+            <section id="listing-routes" class="docs-section">
+              <h2 class="section-heading">Listing routes in command-line</h2>
+
+              <p>
+                Content
+              </p>
+            </section>
+
+            <section id="generating-cli-data" class="docs-section">
+              <h2 class="section-heading">Generating data in command-line</h2>
 
               <p>Sometimes you will need to test your application from REST clients like Postman, Insomnia or PAW.</p>
 
@@ -1624,96 +1709,83 @@ const product2 = createProduct({
               <p>This <code>true</code> parameter will force the generator to return adapted data.</p>
             </section>
 
-            <br />
-
-            <section class="docs-section" id="seeders">
-              <h2 class="section-heading"><i class="fas fa-layer-group mr-3"></i>Seeders</h2>
-              <p>Seeders are basically loaders that populate your tables with fake data, this is very useful to develop and test your application.</p>
-
-              <p>To create a seeder file the best option to use is the Sequelize CLI.</p>
-              <p><b>Sequelize CLI doesn't provide native Typescript support</b>, therefore, seeders must be written in Javascript.</p>
-
-              <br/>
-
-              <p><b>Let's create a seeder for the products table:</b></p>
-              <code>npx sequelize seeder:generate --name products-seeder</code>
-
-              <br/><br/>
-
-              <p>Optionally, you can copy the content from <code>tmpl</code> -> <code>20201229085902-products-seeder.js</code></p>
-
-              <br />
-
-              <span class="badge badge-secondary">seeders/20201229085902-products-seeder.js</span>
-
-              <div class="docs-code-block">
-                <pre class="rounded">
-                  <code class="javascript hljs">/**
- *
- *  Seeder: Products
- *  @description seeds the products table
- *
- */
-
-const createProduct = require("@generators/create-product")
-
-exports.up = (queryInterface) => {
-  const products = createProduct.amount(10)
-  return queryInterface.bulkInsert('Products', products, {})
-}
-
-exports.down = (queryInterface) => {
-  return queryInterface.bulkDelete('Products', null, {})
-}</code>
-                </pre>
-              </div><!--//docs-code-block-->
-
-              <p><b>Like migrations, seeder files contains the same two member functions:</b></p>
-
-              <ul>
-                <li><code>up</code> which is in charge to add registries to the table</li>
-                <li><code>down</code> which does exactly the reverse action: truncate the table.</li>
-              </ul>
-
-              <br />
-
-              <p>This seeder file uses a <b>generator function</b> which allow us to generate amount of registries of the same type.</p>
-              <p>Please check: <a href="#generators">Creating Generators</a></p>
-
-              <div class="callout-block callout-block-success">
-                <div class="content">
-                  <h4 class="callout-title">
-                    <span class="callout-icon-holder mr-1">
-                      <i class="fas fa-thumbs-up"></i>
-                    </span><!--//icon-holder-->
-                    Creating seeders
-                  </h4>
-
-                  <p>For more information, please visit: <a href="https://sequelize.org/master/manual/migrations.html#creating-the-first-seed" target="_blank">https://sequelize.org/master/manual/migrations.html#creating-the-first-seed</a></p>
-                </div><!--//content-->
-              </div><!--//callout-block-->
-            </section><!--//section-->
-          </article><!--//docs-article-->
-
-          <article id="utilities" class="docs-article">
-            <header class="docs-header">
-              <h1 class="docs-heading">Utilities</h1>
-            </header>
-
-            <section id="listing-routes" class="docs-section">
-              <h2 class="section-heading">Listing routes in command-line</h2>
-
-              <p>
-                Content
-              </p>
-            </section>
-
             <section id="builtin-scripts" class="docs-section">
               <h2 class="section-heading">Built-in scripts</h2>
 
-              <p>
-                Content
-              </p>
+              <p>Bananasplit-js includes a set of scripts already defined you can just use:</p>
+
+              <br />
+
+              <div class="table-responsive my-0">
+                <table class="table table-bordered">
+                  <tbody>
+                    <tr>
+                      <th class="theme-bg-light">dev</th>
+                      <td>start the development server using nodemon and registering path aliases</td>
+                    </tr>
+
+                    <tr>
+                      <th class="theme-bg-light">build</th>
+                      <td>build the application to <code>/dist</code> running static files copying and executing cleaning actions</td>
+                    </tr>
+
+                    <tr>
+                      <th class="theme-bg-light">build:database</th>
+                      <td>create, migrate and seed the database in one command</td>
+                    </tr>
+
+                    <tr>
+                      <th class="theme-bg-light">build:stack</th>
+                      <td>install and test the entire application stack in just one command</td>
+                    </tr>
+
+                    <tr>
+                      <th class="theme-bg-light">upgrade:stack</th>
+                      <td>upgrade all the dependencies running the tests (doctor mode)</td>
+                    </tr>
+
+                    <tr>
+                      <th class="theme-bg-light">route:list</th>
+                      <td>list all routes and middlewares defined in the application</td>
+                    </tr>
+
+                    <tr>
+                      <th class="theme-bg-light">generator:create</th>
+                      <td>create resources with fake data using generators in the command-line</td>
+                    </tr>
+
+                    <tr>
+                      <th class="theme-bg-light">test</th>
+                      <td>run tests with jest</td>
+                    </tr>
+
+                    <tr>
+                      <th class="theme-bg-light">test:watch</th>
+                      <td>run tests with jest in watch mode</td>
+                    </tr>
+
+                    <tr>
+                      <th class="theme-bg-light">test:coverage</th>
+                      <td>run tests with jest generating coverage documentation</td>
+                    </tr>
+
+                    <tr>
+                      <th class="theme-bg-light">test:cache</th>
+                      <td>clear jest cache</td>
+                    </tr>
+
+                    <tr>
+                      <th class="theme-bg-light">lint</th>
+                      <td>check lint in your code</td>
+                    </tr>
+
+                    <tr>
+                      <th class="theme-bg-light">lint:fix</th>
+                      <td>lint and fix your code</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </section>
           </article>
 
@@ -1852,9 +1924,7 @@ const Options: Sequelize.Options = {
   storage: 'path/to/database.sqlite',
 
   // ...rest
-}
-
-export default Options</code>
+}</code>
                 </pre>
               </div><!--//docs-code-block-->
 
