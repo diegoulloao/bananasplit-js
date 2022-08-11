@@ -1543,8 +1543,153 @@ exports.down = (queryInterface) => {
               <h2 class="section-heading">Listing routes in command-line</h2>
 
               <p>
-                Content
+                Bananasplit-js features <a href="https://github.com/bananasplit-js/router-dex" target="_blank">router-dex</a> module which allows to you to list your routes and middlewares in the command-line.
               </p>
+
+              <p>
+                The <code>route:list</code> command will give you additional information, for example, if you have controller functions binded or if you are using anonymous functions. It also will group all your routes by basepath and order them by alphabet.
+              </p>
+
+              <br />
+
+              <p><b>Run in the command-line:</b></p>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="js hljs">yarn route:list</code>
+                </pre>
+              </div>
+
+              <p><b>It will output something like this:</b></p>
+
+              <br />
+
+              <div class="table-responsive my-0">
+                <table class="table table-borderer">
+                  <thead>
+                    <tr>
+                      <th class="theme-bg-light">method</th>
+                      <th class="theme-bg-light">route</th>
+                      <th class="theme-bg-light">middlewares</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr class="borderless">
+                      <td></td>
+                      <td class="secondary"><small>GENERAL</small></td>
+                      <td></td>
+                    </tr>
+
+                    <tr>
+                      <td class="borderless"><code>GET</code></td>
+                      <td class="borderless text-monospace font-93">/</td>
+                      <td class="borderless text-monospace font-93">login</td>
+                    </tr>
+
+                    <tr>
+                      <td></td>
+                      <td class="secondary"><small>PRODUCTS</small></td>
+                      <td></td>
+                    </tr>
+
+                    <tr>
+                      <td class="borderless"><code>GET</code></td>
+                      <td class="borderless text-monospace font-93">/product/:id</td>
+                      <td class="borderless text-monospace font-93">auth, show</td>
+                    </tr>
+
+                    <tr>
+                      <td class="borderless"><code>POST</code></td>
+                      <td class="borderless text-monospace font-93">/product/:id</td>
+                      <td class="borderless text-monospace font-93">auth, create</td>
+                    </tr>
+
+                    <tr>
+                      <td></td>
+                      <td class="text-secondary text-monospace"><small>USERS</small></td>
+                      <td></td>
+                    </tr>
+
+                    <tr>
+                      <td class="borderless"><code>GET</code></td>
+                      <td class="borderless text-monospace font-93">/users</td>
+                      <td class="borderless text-monospace font-93">auth, *isAdmin, index</td>
+                    </tr>
+
+                    <tr>
+                      <td></td>
+                      <td class="text-secondary text-monospace"><small>USER</small></td>
+                      <td></td>
+                    </tr>
+
+                    <tr>
+                      <td class="borderless"><code>DELETE</code></td>
+                      <td class="borderless text-monospace font-93">/user/:id</td>
+                      <td class="borderless text-monospace font-93">auth, *isAdmin, delete</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <br />
+
+              <p>This is very useful especially when you have a lot of routes and you need to visualize them in a more orderly way.</p>
+
+              <br />
+
+              <h3>Filtering by groups</h3>
+              
+              <p>All routes belongs to a group which is determined by the route basepath. This group name is displayed above each route group.</p>
+
+              <p>For example, in the output above: general, products, user and users are groups.</p>
+
+              <br />
+
+              <p><b>Let's filter by product routes only:</b></p>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="js hljs">yarn route:list product</code>
+                </pre>
+              </div>
+
+              <p><b>Also is possible to filter by multiple groups, for example, product and user:</b></p>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="js hljs">yarn route:list product user</code>
+                </pre>
+              </div>
+
+              <p>Just can pass many filters as you want.</p>
+
+              <br />
+
+              <h3>Symbols and meanings</h3>
+
+
+              <p>In the middleware column of the generated table you can see the following notations:</p>
+
+              <ul>
+                <li><code>*</code> means the middleware/controller function passed is binded <code>controller.bind(ref)</code></li>
+                <li><code>anonymous</code> means the middleware/controller function was passed directly into the router/app</li>
+              </ul>
+
+              <br />
+
+              <div class="callout-block callout-block-success">
+                <div class="content">
+                  <h4 class="callout-title">
+                    <span class="callout-icon-holder mr-1">
+                      <i class="fas fa-thumbs-up"></i>
+                    </span><!--//icon-holder-->
+                    Router-dex
+                  </h4>
+
+                  <p>See the full documentation in the project repository: <a href="https://github.com/bananasplit-js/router-dex" target="_blank">https://github.com/bananasplit-js/router-dex</a></p>
+                </div><!--//content-->
+              </div>
             </section>
 
             <section id="generating-cli-data" class="docs-section">

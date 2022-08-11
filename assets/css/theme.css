@@ -428,6 +428,10 @@ h6, .h6 {
   line-height: 1.2;
 }
 
+.font-93 {
+  font-size: 93%;
+}
+
 hr {
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -1524,6 +1528,11 @@ pre code {
   padding: 0.75rem;
   vertical-align: top;
   border-top: 1px solid #cad0d8;
+}
+.table th.borderless,
+.table td.borderless {
+  border-top: none;
+  padding-top: 0;
 }
 .table thead th {
   vertical-align: bottom;
