@@ -747,7 +747,7 @@ export default class ProductsController {
 
               <br />
 
-              <h3>Accessing the express settings</h3>
+              <h3 id="express-settings-controllers">Accessing the express settings</h3>
               <p>
                 In some cases you may want to access the express settings inside controllers. This is very useful to read or edit them at runtime.
               </p>
@@ -1678,6 +1678,7 @@ exports.down = (queryInterface) => {
                     </span><!--//icon-holder-->
                     Creating seeders
                   </h4>
+
                   <p>For more information, please visit: <a href="https://sequelize.org/master/manual/migrations.html#creating-the-first-seed" target="_blank">https://sequelize.org/master/manual/migrations.html#creating-the-first-seed</a></p>
                 </div><!--//content-->
               </div><!--//callout-block-->
@@ -1765,12 +1766,92 @@ export default Options</code>
               <h1 class="docs-heading">Settings</h1>
             </header>
 
+            <br />
+
+            <p>This directory contains all the settings files related to the application.</p>
+
+            <p>Bananasplit-js only includes defaults settings for express, but you can add your owns.</p>
+
             <section id="express-settings" class="docs-section">
               <h2 class="section-heading">Express</h2>
 
+              <p>Express provides the methods <code>get</code> and <code>set</code> in order to manage global settings. This settings are shared into the entire application.</p>
+
+              <p>In order to add or remove settings just edit the <code>settings/express.ts</code> file.</p>
+
+              <br />
+
+              <p><b>Let's set a simple setting:</b></p>
+
+              <br />
+
+              <span class="badge badge-secondary">settings/express.ts</span>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                <code class="typescript hljs">// ...rest
+
+export default (app: Application) => {
+  // ...rest
+
+  // my setting
+  app.set('key', 'value')
+}</code>
+                </pre>
+              </div><!--//docs-code-block-->
+
+              <p>This setting value can be accessible from anywhere where you have access to the <code>app</code> Express Application instance:</p>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                <code class="typescript hljs">// app scope
+
+(app: Application) => {
+  // my setting value
+  const setting: string = app.get('key')
+}</code>
+                </pre>
+              </div><!--//docs-code-block-->
+
               <p>
-                Content
+                For example inside routes or even controllers.
               </p>
+
+              <p>
+                Please check: <a href="#express-settings-controllers">Accessing the express settings inside controllers.</a>
+              </p>
+
+              <br />
+
+              <div class="callout-block callout-block-success">
+                <div class="content">
+                  <h4 class="callout-title">
+                    <span class="callout-icon-holder mr-1">
+                      <i class="fas fa-thumbs-up"></i>
+                    </span><!--//icon-holder-->
+
+                    Using the Express settings
+                  </h4>
+
+                  <p>For more information, please visit: <a href="https://expressjs.com/en/api.html#app.set" target="_blank">https://expressjs.com/en/api.html#app.set</a></p>
+                </div><!--//content-->
+              </div><!--//callout-block-->
+
+              <br /><br />
+
+              <h4>Public folder</h4>
+
+              <p>Bananasplit-js already have set the public directory used by Express.</p>
+
+              <br />
+
+              <p><b>You can change it modifying the following line:</b></p>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                <code class="typescript hljs">app.set('public', path.join(__dirname, '../../public'))</code>
+                </pre>
+              </div><!--//docs-code-block-->
             </section>
           </article>
 
