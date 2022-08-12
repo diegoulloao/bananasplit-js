@@ -106,6 +106,7 @@
             <li class="nav-item"><a class="nav-link scrollto" href="#sqlite">Using SQLite with Sequelize</a></li>
             <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#settings"><span class="theme-icon-holder mr-2"><i class="fas fa-list-ul"></i></span>Settings</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#express-settings">Express</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#bananasplit-js">Bananasplit-js</a></li>
             <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#advanced"><span class="theme-icon-holder mr-2"><i class="fas fa-laptop-code"></i></span>Advanced</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#extend">Extending providers</a></li>
             <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#changelog"><span class="theme-icon-holder mr-2"><i class="fas fa-clipboard"></i></span>Changelog</a></li>
@@ -2286,6 +2287,116 @@ export default (app: Application) => {
                 <code class="typescript hljs">app.set('public', path.join(__dirname, '../../public'))</code>
                 </pre>
               </div><!--//docs-code-block-->
+            </section>
+
+            <section id="bananasplit-js" class="docs-section">
+              <h2 class="section-heading">Bananasplit-js</h2>
+
+              <p>This template provides tools to easy copy any sort of file to the <code>/dist</code> folder at build time.</p>
+
+              <p>The settings for this functionality are stored in the <code>bananasplit.json</code> file located at the root of the project.</p>
+
+              <br />
+
+              <p><b>By default the file looks like this:</b></p>
+
+              <br />
+
+              <span class="badge badge-secondary">bananasplit.json</span>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                <code class="typescript hljs">{
+  "dist": {
+    "include": [
+      "public"
+    ],
+    "exclude": [
+    ],
+    "options": {
+      "overwrite": true
+    }
+  }
+}</code>
+                </pre>
+              </div><!--//docs-code-block-->
+
+              <br />
+
+              <p>All the copy settings are declared inside the <code>dist</code> object:</p>
+
+              <ul>
+                <li>
+                  <h5>include:</h5>
+
+                  <p>File or folder pathname collection used to copy to the <code>dist</code> folder.</p>
+                  <p>Value can be a <code>string</code> or <code>[string, string]</code> where the first element is the source and the second one the destiny (optional).</p>
+                </li>
+
+                <li>
+                  <h5>exclude:</h5>
+
+                  <p>File or folder pathname collection to be ignored from the <code>include</code> list, no matter what.</p>
+                  <p>Value is only a <code>string</code> array.</p>
+                </li>
+
+                <li>
+                  <h5>options:</h5>
+
+                  <ul>
+                    <li>overwrite: <code>boolean</code> value that allows bananasplit-js to overwrite the file or folder if already exists.</li>
+                  </ul>
+                </li>
+              </ul>
+
+              <br />
+
+              <p><b>Let's add files and directories to copy at build time:</b></p>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                <code class="typescript hljs">{
+  "dist": {
+    "include": [
+      "public",
+      ".github/workflows",
+      ["docs/about/project.md", "docs/project.md"]
+    ],
+    "exclude": [
+      ".github/workflows/dev.yml"
+    ],
+    "options": {
+      "overwrite": true
+    }
+  }
+}</code>
+                </pre>
+              </div><!--//docs-code-block-->
+
+              <p><b>In this case, Bananasplit-js will copy:</b></p>
+
+              <ul>
+                <li><code>.github/workflows</code> -> <code>dist/.github/workflows</code></li>
+                <li><code>docs/about/project.md</code> -> <code>dist/docs/project.md</code> (in a new destiny)</li>
+              </ul>
+
+              <p><b>And will ignore:</b </p>
+
+              <ul>
+                <li><code>.github/workflows/dev.yml</code> (copying all the rest)</li>
+              </ul>
+
+              <br /><br />
+
+              <h3>The provider settings</h3>
+
+              <p>By default Bananasplit-js includes their own settings in background that are in charge to copy essentials files to the <code>dist</code> folder.</p>
+
+              <p>Example: <code>LICENSE</code>, <code>tsconfig.paths.json</code>, <code>jest.config.js</code>, etc.</p>
+
+              <br />
+
+              <p>You can find <a href="https://github.com/bananasplit-js/bananasplit-js/blob/main/template/src/providers/core/bananasplit.json" target="_blank">this file</a> at <code>providers/core/bananasplit.json</code> in case you want to make some modifications.</p>
             </section>
           </article>
 
