@@ -96,6 +96,7 @@
             <li class="nav-item"><a class="nav-link scrollto" href="#migrations">Migrations</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#generators">Generators</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#seeders">Seeders</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#tests">Tests</a></li>
             <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#utilities"><span class="theme-icon-holder mr-2"><i class="fas fa-wrench"></i></span>Utilities</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#listing-routes">Listing routes in command-line</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#generating-cli-data">Generating data in command-line</a></li>
@@ -1635,6 +1636,128 @@ exports.down = (queryInterface) => {
                 </div><!--//content-->
               </div><!--//callout-block-->
             </section><!--//section-->
+
+            <section class="docs-section" id="tests">
+              <h2 class="section-heading"><i class="fas fa-vial mr-3"></i>Tests</h2>
+
+              <p>Bananasplit-js includes Jest and supertest integrated ready to use.</p>
+
+              <p>Test files are located in the <code>/tests</code> directory at the root of the project.</p>
+
+              <br />
+              
+              <p>To start writting a test you may need to import first the <code>express</code> and <code>Sequelize</code> instances:</p>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="javascript hljs">import { express } from '@services'
+import { Sequelize } from '@bananasplit-js'</code>
+                </pre>
+              </div>
+
+              <br />
+
+              <h3>Using Express + supertest</h3>
+
+              <p>Once the <code>express</code> instance is imported, you need to run the server:</p>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="javascript hljs">// ...rest
+
+// Express server
+let Express: http.Server
+
+beforeAll(() => {
+  Express = express.serve(6627)
+})</code>
+                </pre>
+              </div>
+
+              <p>
+                We execute a function before run all the tests, which start listening the express server in the port <code>6627</code>. The server instance returned is stored in a global variable <code>Express</code> in order to be accessed by the entire file.
+              </p>
+
+              <br />
+
+              <p><b>Once the Express server is running, we can write a simple test using supertest:</b></p>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="javascript hljs">// ...rest
+
+import request, { Response } from 'supertest'
+
+/**
+ *  @test Express server is ok
+ */
+test('Express server is ok', async () => {
+  const response: Response = await request(Express).get('/')
+
+  expect(response.status).toBe(200)
+  expect(response.text).toBe('GET 200 /')
+})</code>
+                </pre>
+              </div>
+
+              <div class="callout-block callout-block-info mt-3">
+                <div class="content">
+                  <h4 class="callout-title">
+                    <span class="callout-icon-holder mr-1">
+                      <i class="fas fa-info-circle"></i>
+                    </span><!--//icon-holder-->
+                    Note
+                  </h4>
+                  <p>Tests will run in paralel at the port 6627 not colliding with your development server.</p>
+                </div><!--//content-->
+              </div>
+
+              <br /><br />
+
+              <h3>Using Sequelize</h3>
+
+              <p>In order to query data from the database using Sequelize, you can just use the <code>Sequelize</code> instance directly:</p>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="javascript hljs">// code</code>
+                </pre>
+              </div>
+
+              <br />
+
+              <h3>Closing connections</h3>
+
+              <p>After run the tests <b>is very important to close the connections</b> used by Express and Sequelize in order to avoid issues:</p>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="javascript hljs">afterAll(async () => {
+  // close express
+  Express.close()
+
+  // close sequelize
+  await Sequelize.close()
+})</code>
+                </pre>
+              </div>
+
+              <p>
+                We execute a function after all the tests are finished. In the first instruction the Express connection is closed, in the second one the Sequelize connection.
+              </p>
+              
+              <div class="callout-block callout-block-warning mt-5">
+                <div class="content">
+                  <h4 class="callout-title">
+                    <span class="callout-icon-holder mr-1">
+                      <i class="fas fa-info-circle"></i>
+                    </span><!--//icon-holder-->
+                    Warning
+                  </h4>
+                  <p>Not closing connections correctly can cause issues during the tests.</p>
+                </div><!--//content-->
+              </div>
+            </section>
           </article><!--//docs-article-->
 
           <article id="utilities" class="docs-article">
