@@ -240,7 +240,7 @@
 
           <article class="docs-article" id="get-started">
             <header class="docs-header">
-              <h1 class="docs-heading">Get Started</h1>
+              <h1 class="docs-heading">Get started</h1>
               <section class="docs-intro">
                 <p>To generate a new project use the bananasplit-js CLI.</p>
               </section><!--//docs-intro-->
@@ -248,10 +248,19 @@
 
             <section class="docs-section" id="banana-cli">
               <h2 class="section-heading">Step 1: Create a new project</h2>
+
               <p>Run in the command line:</p>
-              <code>npx bananasplit-js new "my-app" --git | -g</code>
-              <br/><br/>
-              <p>The optionals <code>--git</code> and <code>-g</code> flags are equals, using them Banansplit-js CLI will generate a git repository within the project.</p>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="bash hljs">npx bananasplit-js new "my-app" --git</code>
+                </pre>
+              </div><!--//docs-code-block-->
+
+              <p>The optionals <code>--git</code> or <code>-g</code> flags are equals, using them Banansplit-js CLI will generate a git repository within the project.</p>
+
+              <br />
+
               <div class="progress my-4">
                 <div class="progress-bar bg-success" role="progressbar" style="width: 33%" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
@@ -259,6 +268,7 @@
 
             <section class="docs-section" id="env-vars">
               <h2 class="section-heading">Step 2: Add enviroment variables</h2>
+
               <p>Rename the <code>.env.example</code> -> <code>.env</code>, then complete the values:</p>
 
               <div class="docs-code-block">
@@ -276,6 +286,8 @@ DB_PASSWORD=secret</code>
               </div>
 
               <p><b>Supported databases are the same by sequelize:</b> <code>mysql | mariadb | postgres | mssql | sqlite</code></p>
+
+              <br />
 
               <div class="callout-block callout-block-info">
                 <div class="content">
@@ -296,11 +308,18 @@ DB_PASSWORD=secret</code>
 
             <section class="docs-section" id="create">
               <h2 class="section-heading">Step 3: Build the stack</h2>
-              <p>Run in the command line:</p>
-              <code>yarn build:stack | npm run build:stack</code>
 
-              <br/><br/>
+              <p>Run in the command line:</p>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="bash hljs">yarn build:stack | npm run build:stack</code>
+                </pre>
+              </div><!--//docs-code-block-->
+
               <p>The <code>build:stack</code> script will install the dependencies and database drivers detecting it automatically from the <code>.env</code> file. It will also run migrations and seeders, finally, it will run a jest integration test in order to check that the application is ok.</p>
+
+              <br />
 
               <div class="progress my-4">
                 <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
@@ -312,11 +331,16 @@ DB_PASSWORD=secret</code>
           <article class="docs-article" id="ekre">
             <section class="docs-section pt-0" id="324ks">
               <h2 class="section-heading">Run the server</h2>
-              <p><b>You are ready to go!</b></p>
-              <p>Run the development server:</p>
-              <code>yarn dev | npm run dev</code>
 
-              <br/><br/><br/>
+              <p><b>You are ready to go!</b></p>
+
+              <p>Run the development server:</p>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="bash hljs">yarn dev | npm run dev</code>
+                </pre>
+              </div>
 
               <p>
                 Your application will be available by default at:
@@ -340,7 +364,12 @@ DB_PASSWORD=secret</code>
               <h2 class="section-heading">Step 1: Install dependencies</h2>
 
               <p>Run in the command line:</p>
-              <code>yarn | npm i</code>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="bash hljs">yarn | npm i</code>
+                </pre>
+              </div>
 
               <div class="progress my-4">
                 <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
@@ -358,6 +387,8 @@ DB_PASSWORD=secret</code>
                 <li><strong class="mr-1">MSSQL</strong> <code>yarn add tedious | npm i tedious</code></li>
                 <li><strong class="mr-1">SQLite</strong> <code>yarn add sqlite3 | npm i sqlite3</code></li>
               </ul>
+
+              <br />
 
               <div class="progress my-4">
                 <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
@@ -384,6 +415,8 @@ DB_PASSWORD=secret</code>
 
               <p><b>Supported databases are the same by sequelize:</b> <code>mysql | mariadb | postgres | mssql | sqlite</code></p>
 
+              <br />
+
               <div class="callout-block callout-block-info">
                 <div class="content">
                   <h4 class="callout-title">
@@ -400,6 +433,8 @@ DB_PASSWORD=secret</code>
                 </div><!--//content-->
               </div><!--//callout-block-->
 
+              <br />
+
               <div class="progress my-4">
                 <div class="progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
@@ -408,23 +443,34 @@ DB_PASSWORD=secret</code>
             <section class="docs-section" id="data">
               <h2 class="section-heading">Step 4: Migrate and seed</h2>
               <p>
-                Let's create a table in your database, then populate it in order to test the application.
+                Let's create a table in your database, then populate it in order to test the application:
               </p>
 
               <br/>
 
               <h3>4.1 Create database:</h3>
-              <code>npx sequelize db:create</code>
 
-              <br/><br/><br/>
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="bash hljs">npx sequelize db:create</code>
+                </pre>
+              </div>
 
               <h3>4.2 Run migrations:</h3>
-              <code>npx sequelize db:migrate</code>
 
-              <br/><br/><br/>
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="bash hljs">npx sequelize db:migrate</code>
+                </pre>
+              </div>
 
               <h3>4.3 Run seeders:</h3>
-              <code>npx sequelize db:seed:all</code>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="bash hljs">npx sequelize db:seed:all</code>
+                </pre>
+              </div>
 
               <div class="progress my-4">
                 <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
@@ -437,11 +483,18 @@ DB_PASSWORD=secret</code>
           <article class="docs-article" id="now">
             <section class="docs-section pt-0" id="test">
               <h1 class="docs-heading">Test your app</h1>
-              <p>Bananasplit-js includes a setup integration test in order to check that all is working properly.</p>
-              <p>You can do the test by running:</p>
-              <code>yarn test setup | npm test setup</code>
 
-              <br/><br/><br/>
+              <br />
+
+              <p>Bananasplit-js includes a setup integration test in order to check that all is working properly.</p>
+              <br />
+              <p><b>Test the setup by running:</b></p>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="bash hljs">yarn test setup | npm test setup</code>
+                </pre>
+              </div>
 
               <p><b>Tests should be pass:</b></p>
               <ul style="list-style:none">
@@ -467,11 +520,20 @@ DB_PASSWORD=secret</code>
 
             <section class="docs-section" id="run">
               <h1 class="docs-heading">Run the server</h1>
-              <p><b>You are ready to go!</b></p>
-              <p>Run the development server:</p>
-              <code>yarn dev | npm run dev</code>
 
-              <br/><br/><br/>
+              <br />
+
+              <p>You are ready to go!</p>
+
+              <br />
+
+              <p><b>Run the development server:</b></p>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="bash hljs">yarn dev | npm run dev</code>
+                </pre>
+              </div>
 
               <p>
                 Your application will be available by default at:
@@ -584,7 +646,7 @@ export default Product</code>
 
               <p>It's important to mention the fact that the <code>Model</code> class provided by Bananasplit-js extends from the Sequelize Model as well, but this logic is transparent to the developer.</p>
 
-              <br/>
+              <br/><br />
 
               <h3>Executing tasks before the export</h3>
 
@@ -611,9 +673,20 @@ export default Product</code>
 
               <p>Inside this self-invoking function you can run any task you want. For this particular case, we init the model first, then we synchronize the model with the table in the database.</p>
 
-              <p>
-                For more information visit: <a href="https://sequelize.org/master/manual/model-basics.html" target="_blank">models basics with sequelize</a>.
-              </p>
+              <br />
+
+              <div class="callout-block callout-block-success">
+                <div class="content">
+                  <h4 class="callout-title">
+                    <span class="callout-icon-holder mr-1">
+                      <i class="fas fa-thumbs-up"></i>
+                    </span><!--//icon-holder-->
+                    Models basics with Sequelize
+                  </h4>
+
+                  <p>For more information visit: <a href="https://sequelize.org/master/manual/model-basics.html" target="_blank">https://sequelize.org/master/manual/model-basics.html</a></p>
+                </div><!--//content-->
+              </div>
             </section><!--//section-->
 
             <br />
@@ -1034,6 +1107,8 @@ export default (): Router => {
 
               <p>The usage you see in the code above is pure express middlewaring and routing. The possibilities are multiple but is recommended to use it in this way.</p>
 
+              <br />
+
               <div class="callout-block callout-block-success">
                 <div class="content">
                   <h4 class="callout-title">
@@ -1308,6 +1383,8 @@ export function down (queryInterface, Sequelize) {
 
               <p>This migrations mainly performs the creation of the products table including their timestamps.</p>
 
+              <br />
+
               <div class="callout-block callout-block-success">
                 <div class="content">
                   <h4 class="callout-title">
@@ -1320,7 +1397,7 @@ export function down (queryInterface, Sequelize) {
                 </div><!--//content-->
               </div><!--//callout-block-->
 
-              <br />
+              <br /><br />
 
               <p><b>All migration files contains two member functions:</b></p>
 
@@ -1329,14 +1406,23 @@ export function down (queryInterface, Sequelize) {
                 <li><code>down</code> which does exactly the reverse action: drop the table.</li>
               </ul>
 
-              <p>
-                To create the table run the following command:
-              </p>
+              <br />
 
-              <code>npx sequelize db:migrate</code>
-              <br/><br/>
-              <p>to drop:</p>
-              <code>npx sequelize db:migrate:undo</code>
+              <p><b>To create the table run the following command:</b></p>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="bash hljs">npx sequelize db:migrate</code>
+                </pre>
+              </div>
+
+              <p><b>to drop:</b></p>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="bash hljs">npx sequelize db:migrate:undo</code>
+                </pre>
+              </div>
             </section><!--//section-->
 
             <br/>
@@ -1533,6 +1619,8 @@ exports.down = (queryInterface) => {
               <p>This seeder file uses a <b>generator function</b> which allow us to generate amount of registries of the same type.</p>
               <p>Please check: <a href="#generators">Creating Generators</a></p>
 
+              <br />
+
               <div class="callout-block callout-block-success">
                 <div class="content">
                   <h4 class="callout-title">
@@ -1589,7 +1677,7 @@ npm run route:list</code>
               <br />
 
               <div class="table-responsive my-0">
-                <table class="table table-borderer">
+                <table class="table">
                   <thead>
                     <tr>
                       <th class="theme-bg-light">method</th>
@@ -1651,6 +1739,12 @@ npm run route:list</code>
                       <td class="borderless"><code>DELETE</code></td>
                       <td class="borderless text-monospace font-93">/user/:id</td>
                       <td class="borderless text-monospace font-93">auth, *isAdmin, delete</td>
+                    </tr>
+
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
                     </tr>
                   </tbody>
                 </table>
@@ -2467,6 +2561,8 @@ export default (app: Application) => {
                   </ul>
                 </li>
               </ul>
+
+              <br />
 
               <p>
                 The Sequelize Provider, contrary to the Express Provider, doesn't use helpers functions and all his logic is defined in this simple class.
