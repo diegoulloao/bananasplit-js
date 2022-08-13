@@ -104,6 +104,7 @@
             <li class="nav-item"><a class="nav-link scrollto" href="#upgrading-dependencies">Upgrading dependencies</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#builtin-scripts">Built-in scripts</a></li>
             <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#configuration"><span class="theme-icon-holder mr-2"><i class="fas fa-cog"></i></span>Configuration</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#express-config">Express</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#sequelize">Sequelize</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#sequelize-cli">Sequelize CLI</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#sqlite">Using SQLite with Sequelize</a></li>
@@ -2286,6 +2287,60 @@ const product2 = createProduct({
             <header class="docs-header">
               <h1 class="docs-heading">Configuration</h1>
             </header>
+
+            <section id="express-config" class="docs-section">
+              <h2 class="section-heading">Express</h2>
+
+              <p>
+                content
+              </p>
+
+              <br />
+
+              <h3>Port</h3>
+
+              <p>
+                The port where Express runs by default is <code>3327</code> but you can specify a different one in the <code>providers/services.ts</code> file.
+              </p>
+
+              <br />
+
+              <p><b>Let's make Express to listen on port 3000:</b </p>
+
+              <br /><br />
+
+              <span class="badge badge-secondary">providers/services.ts</span>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="javascript hljs">// ...rest
+
+// Express server provider
+const express: Express = Express.provide({ port: 3000 })</code>
+                </pre>
+              </div>
+
+              <p>
+                Now Express will start listeting on port <code>3000</code>.
+              </p>
+
+              <br />
+
+              <p><b>Also is possible to specify the port in the environment variables:</b></p>
+
+              <span class="badge badge-secondary">.env</span>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="bash hljs"># ...rest
+
+# [Express]
+PORT=3000</code>
+                </pre>
+              </div>
+
+              <p>This is very useful for deployment scenarios.</p>
+            </section>
 
             <section class="docs-section" id="sequelize">
               <h2 class="section-heading">Sequelize</h2>
