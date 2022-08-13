@@ -1749,7 +1749,7 @@ test('Express server is ok', async () => {
               <p>
                 We execute a function after all the tests are finished. In the first instruction the Express connection is closed, in the second one the Sequelize connection.
               </p>
-              
+
               <div class="callout-block callout-block-warning mt-5">
                 <div class="content">
                   <h4 class="callout-title">
@@ -1761,6 +1761,28 @@ test('Express server is ok', async () => {
                   <p>Not closing connections correctly can cause issues during the tests.</p>
                 </div><!--//content-->
               </div>
+
+              <br /><br />
+
+              <h3>Running the tests</h3>
+              
+              <p>You can run all the tests by running:</p>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="javascript hljs xs">yarn test | npm test</code>
+                </pre>
+              </div>
+
+              <p>Or run specific tests by running:</p>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="javascript hljs xs">yarn test products | npm test products</code>
+                </pre>
+              </div>
+
+              <p>It's possible to pass one or more specific tests.</p>
             </section>
           </article><!--//docs-article-->
 
@@ -1832,11 +1854,7 @@ test('Express server is ok', async () => {
 
               <div class="docs-code-block">
                 <pre class="rounded">
-                  <code class="js hljs">// yarn
-yarn route:list
-
-// npm
-npm run route:list</code>
+                  <code class="js hljs xs">yarn route:list | npm run route:list</code>
                 </pre>
               </div>
 
@@ -1993,12 +2011,7 @@ npm run route:list</code>
 
               <div class="docs-code-block">
                 <pre class="rounded">
-                  <code class="js hljs">// yarn
-yarn generator:create product
-
-// npm
-npm run generator:create product
-</code>
+                  <code class="js hljs xs">yarn generator:create product | npm run generator:create product</code>
                 </pre>
               </div>
 
