@@ -99,10 +99,10 @@
             <li class="nav-item"><a class="nav-link scrollto" href="#tests">Tests</a></li>
             <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#building"><span class="theme-icon-holder mr-2"><i class="fas fa-check"></i></span>Building the app!</a></li>
             <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#utilities"><span class="theme-icon-holder mr-2"><i class="fas fa-wrench"></i></span>Utilities</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#builtin-scripts">Built-in scripts</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#listing-routes">Listing routes in command-line</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#generating-cli-data">Generating data in command-line</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#upgrading-dependencies">Upgrading dependencies</a></li>
-            <li class="nav-item"><a class="nav-link scrollto" href="#builtin-scripts">Built-in scripts</a></li>
             <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#configuration"><span class="theme-icon-holder mr-2"><i class="fas fa-cog"></i></span>Configuration</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#express-config">Express</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#sequelize">Sequelize</a></li>
@@ -1839,6 +1839,85 @@ test('Express server is ok', async () => {
 
             </header>
 
+            <section id="builtin-scripts" class="docs-section">
+              <h2 class="section-heading">Built-in scripts</h2>
+
+              <p>Bananasplit-js includes a set of scripts already defined you can just use:</p>
+
+              <br />
+
+              <div class="table-responsive my-0">
+                <table class="table table-bordered">
+                  <tbody>
+                    <tr>
+                      <th class="theme-bg-light">dev</th>
+                      <td>start the development server using nodemon and registering path aliases</td>
+                    </tr>
+
+                    <tr>
+                      <th class="theme-bg-light">build</th>
+                      <td>build the application to <code>/dist</code> running static files copying and executing cleaning actions</td>
+                    </tr>
+
+                    <tr>
+                      <th class="theme-bg-light">build:database</th>
+                      <td>create, migrate and seed the database in one command</td>
+                    </tr>
+
+                    <tr>
+                      <th class="theme-bg-light">build:stack</th>
+                      <td>install and test the entire application stack in just one command</td>
+                    </tr>
+
+                    <tr>
+                      <th class="theme-bg-light">upgrade:stack</th>
+                      <td>upgrade all the dependencies running the tests (doctor mode)</td>
+                    </tr>
+
+                    <tr>
+                      <th class="theme-bg-light">route:list</th>
+                      <td>list all routes and middlewares defined in the application</td>
+                    </tr>
+
+                    <tr>
+                      <th class="theme-bg-light">generator:create</th>
+                      <td>create resources with fake data using generators in the command-line</td>
+                    </tr>
+
+                    <tr>
+                      <th class="theme-bg-light">test</th>
+                      <td>run tests with jest</td>
+                    </tr>
+
+                    <tr>
+                      <th class="theme-bg-light">test:watch</th>
+                      <td>run tests with jest in watch mode</td>
+                    </tr>
+
+                    <tr>
+                      <th class="theme-bg-light">test:coverage</th>
+                      <td>run tests with jest generating coverage documentation</td>
+                    </tr>
+
+                    <tr>
+                      <th class="theme-bg-light">test:cache</th>
+                      <td>clear jest cache</td>
+                    </tr>
+
+                    <tr>
+                      <th class="theme-bg-light">lint</th>
+                      <td>check lint in your code</td>
+                    </tr>
+
+                    <tr>
+                      <th class="theme-bg-light">lint:fix</th>
+                      <td>lint and fix your code</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
             <section id="listing-routes" class="docs-section">
               <h2 class="section-heading">Listing routes in command-line</h2>
 
@@ -2201,85 +2280,6 @@ const product2 = createProduct({
               <p>
                 The <code>reject</code> array contains a list of package names to be ignored, no matter what.
               </p>
-            </section>
-
-            <section id="builtin-scripts" class="docs-section">
-              <h2 class="section-heading">Built-in scripts</h2>
-
-              <p>Bananasplit-js includes a set of scripts already defined you can just use:</p>
-
-              <br />
-
-              <div class="table-responsive my-0">
-                <table class="table table-bordered">
-                  <tbody>
-                    <tr>
-                      <th class="theme-bg-light">dev</th>
-                      <td>start the development server using nodemon and registering path aliases</td>
-                    </tr>
-
-                    <tr>
-                      <th class="theme-bg-light">build</th>
-                      <td>build the application to <code>/dist</code> running static files copying and executing cleaning actions</td>
-                    </tr>
-
-                    <tr>
-                      <th class="theme-bg-light">build:database</th>
-                      <td>create, migrate and seed the database in one command</td>
-                    </tr>
-
-                    <tr>
-                      <th class="theme-bg-light">build:stack</th>
-                      <td>install and test the entire application stack in just one command</td>
-                    </tr>
-
-                    <tr>
-                      <th class="theme-bg-light">upgrade:stack</th>
-                      <td>upgrade all the dependencies running the tests (doctor mode)</td>
-                    </tr>
-
-                    <tr>
-                      <th class="theme-bg-light">route:list</th>
-                      <td>list all routes and middlewares defined in the application</td>
-                    </tr>
-
-                    <tr>
-                      <th class="theme-bg-light">generator:create</th>
-                      <td>create resources with fake data using generators in the command-line</td>
-                    </tr>
-
-                    <tr>
-                      <th class="theme-bg-light">test</th>
-                      <td>run tests with jest</td>
-                    </tr>
-
-                    <tr>
-                      <th class="theme-bg-light">test:watch</th>
-                      <td>run tests with jest in watch mode</td>
-                    </tr>
-
-                    <tr>
-                      <th class="theme-bg-light">test:coverage</th>
-                      <td>run tests with jest generating coverage documentation</td>
-                    </tr>
-
-                    <tr>
-                      <th class="theme-bg-light">test:cache</th>
-                      <td>clear jest cache</td>
-                    </tr>
-
-                    <tr>
-                      <th class="theme-bg-light">lint</th>
-                      <td>check lint in your code</td>
-                    </tr>
-
-                    <tr>
-                      <th class="theme-bg-light">lint:fix</th>
-                      <td>lint and fix your code</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
             </section>
           </article>
 
