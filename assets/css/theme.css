@@ -432,6 +432,11 @@ h6, .h6 {
   font-size: 93%;
 }
 
+.hljs.highlighted {
+  background-color: #b9e2e2 !important;
+  color: #1a1e23 !important;
+}
+
 hr {
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -568,6 +573,10 @@ pre code {
 @media (min-width: 768px) {
   .container {
     max-width: 720px;
+  }
+
+  .hljs.xs {
+    padding: 1.3rem 2rem !important;
   }
 }
 @media (min-width: 992px) {

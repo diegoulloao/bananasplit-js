@@ -97,6 +97,7 @@
             <li class="nav-item"><a class="nav-link scrollto" href="#generators">Generators</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#seeders">Seeders</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#tests">Tests</a></li>
+            <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#building"><span class="theme-icon-holder mr-2"><i class="fas fa-check"></i></span>Building the app!</a></li>
             <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#utilities"><span class="theme-icon-holder mr-2"><i class="fas fa-wrench"></i></span>Utilities</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#listing-routes">Listing routes in command-line</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#generating-cli-data">Generating data in command-line</a></li>
@@ -255,7 +256,7 @@
 
               <div class="docs-code-block">
                 <pre class="rounded">
-                  <code class="bash hljs">npx bananasplit-js new "my-app" --git</code>
+                  <code class="bash hljs xs">npx bananasplit-js new "my-app" --git</code>
                 </pre>
               </div><!--//docs-code-block-->
 
@@ -315,7 +316,7 @@ DB_PASSWORD=secret</code>
 
               <div class="docs-code-block">
                 <pre class="rounded">
-                  <code class="bash hljs">yarn build:stack | npm run build:stack</code>
+                  <code class="bash hljs xs">yarn build:stack | npm run build:stack</code>
                 </pre>
               </div><!--//docs-code-block-->
 
@@ -340,7 +341,7 @@ DB_PASSWORD=secret</code>
 
               <div class="docs-code-block">
                 <pre class="rounded">
-                  <code class="bash hljs">yarn dev | npm run dev</code>
+                  <code class="bash hljs xs">yarn dev | npm run dev</code>
                 </pre>
               </div>
 
@@ -369,7 +370,7 @@ DB_PASSWORD=secret</code>
 
               <div class="docs-code-block">
                 <pre class="rounded">
-                  <code class="bash hljs">yarn | npm i</code>
+                  <code class="bash hljs xs">yarn | npm i</code>
                 </pre>
               </div>
 
@@ -454,7 +455,7 @@ DB_PASSWORD=secret</code>
 
               <div class="docs-code-block">
                 <pre class="rounded">
-                  <code class="bash hljs">npx sequelize db:create</code>
+                  <code class="bash hljs xs">npx sequelize db:create</code>
                 </pre>
               </div>
 
@@ -462,7 +463,7 @@ DB_PASSWORD=secret</code>
 
               <div class="docs-code-block">
                 <pre class="rounded">
-                  <code class="bash hljs">npx sequelize db:migrate</code>
+                  <code class="bash hljs xs">npx sequelize db:migrate</code>
                 </pre>
               </div>
 
@@ -470,7 +471,7 @@ DB_PASSWORD=secret</code>
 
               <div class="docs-code-block">
                 <pre class="rounded">
-                  <code class="bash hljs">npx sequelize db:seed:all</code>
+                  <code class="bash hljs xs">npx sequelize db:seed:all</code>
                 </pre>
               </div>
 
@@ -494,7 +495,7 @@ DB_PASSWORD=secret</code>
 
               <div class="docs-code-block">
                 <pre class="rounded">
-                  <code class="bash hljs">yarn test setup | npm test setup</code>
+                  <code class="bash hljs xs">yarn test setup | npm test setup</code>
                 </pre>
               </div>
 
@@ -533,7 +534,7 @@ DB_PASSWORD=secret</code>
 
               <div class="docs-code-block">
                 <pre class="rounded">
-                  <code class="bash hljs">yarn dev | npm run dev</code>
+                  <code class="bash hljs xs">yarn dev | npm run dev</code>
                 </pre>
               </div>
 
@@ -874,7 +875,10 @@ export default class ProductsController {
 
               <p><b>To finish, add the following change into the route definition:</b></p>
 
+              <br />
+
               <span class="badge badge-secondary">routes/products.routes.ts</span>
+
               <div class="docs-code-block">
                 <pre class="rounded">
                   <code class="typescript hljs">// ...rest
@@ -1011,7 +1015,7 @@ export default (app: Application): Router => {
 
               <div class="docs-code-block">
                 <pre class="rounded">
-                  <code class="typescript hljs">GET / 200</code>
+                  <code class="typescript hljs xs">GET / 200</code>
                 </pre>
               </div><!--//docs-code-block-->
 
@@ -1414,7 +1418,7 @@ export function down (queryInterface, Sequelize) {
 
               <div class="docs-code-block">
                 <pre class="rounded">
-                  <code class="bash hljs">npx sequelize db:migrate</code>
+                  <code class="bash hljs xs">npx sequelize db:migrate</code>
                 </pre>
               </div>
 
@@ -1422,7 +1426,7 @@ export function down (queryInterface, Sequelize) {
 
               <div class="docs-code-block">
                 <pre class="rounded">
-                  <code class="bash hljs">npx sequelize db:migrate:undo</code>
+                  <code class="bash hljs xs">npx sequelize db:migrate:undo</code>
                 </pre>
               </div>
             </section><!--//section-->
@@ -1760,6 +1764,46 @@ test('Express server is ok', async () => {
             </section>
           </article><!--//docs-article-->
 
+          <article class="docs-article" id="building-app">
+            <section class="docs-section pt-0" id="building">
+              <h1 class="docs-heading">Building the app!</h1>
+
+              <br />
+
+              <p>
+                Bananasplit-js will be in charge to build your application copying static files and executing some project cleaning tasks if necessary.
+              </p>
+
+              <br />
+
+              <h3>Let's build your application</h3>
+
+              <br />
+
+              <b>yarn:</b>
+
+               <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="bash hljs highlighted xs">yarn build</code>
+                </pre>
+              </div>
+
+              <b>npm:</b>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                  <code class="bash hljs highlighted xs">npm run build</code>
+                </pre>
+              </div>
+
+              <p>It be transpiled to the <code>/dist</code> directory.</p>
+
+              <br />
+              
+              <span class="badge badge-success">Done.</span>
+            </section>
+          </article>
+
           <article id="utilities" class="docs-article">
             <header class="docs-header">
               <h1 class="docs-heading">Utilities</h1>
@@ -1892,7 +1936,7 @@ npm run route:list</code>
 
               <div class="docs-code-block">
                 <pre class="rounded">
-                  <code class="js hljs">yarn route:list product</code>
+                  <code class="js hljs xs">yarn route:list product</code>
                 </pre>
               </div>
 
@@ -1900,7 +1944,7 @@ npm run route:list</code>
 
               <div class="docs-code-block">
                 <pre class="rounded">
-                  <code class="js hljs">yarn route:list product user</code>
+                  <code class="js hljs xs">yarn route:list product user</code>
                 </pre>
               </div>
 
@@ -1970,7 +2014,7 @@ npm run generator:create product
 
               <div class="docs-code-block">
                 <pre class="rounded">
-                  <code class="js hljs">yarn generator:create product 10</code>
+                  <code class="js hljs xs">yarn generator:create product 10</code>
                 </pre>
               </div>
 
@@ -1978,7 +2022,7 @@ npm run generator:create product
 
               <div class="docs-code-block">
                 <pre class="rounded">
-                  <code class="js hljs">yarn generator:create product 10 --extend='{ "price": 899 }'</code>
+                  <code class="js hljs xs">yarn generator:create product 10 --extend='{ "price": 899 }'</code>
                 </pre>
               </div>
 
@@ -1986,7 +2030,7 @@ npm run generator:create product
 
               <div class="docs-code-block">
                 <pre class="rounded">
-                  <code class="js hljs">product='{ "name": "Macbook M1 Pro", ..., "price": 899 }'
+                  <code class="js hljs xs">product='{ "name": "Macbook M1 Pro", ..., "price": 899 }'
 yarn generator:create product 10 --extend=$product</code>
                 </pre>
               </div>
