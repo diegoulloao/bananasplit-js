@@ -2693,9 +2693,59 @@ export default (app: Application) => {
             <section class="docs-section" id="core">
               <h2 class="section-heading">The core</h2>
 
+              <p><b>Core is the most important part of Bananasplit-js</b>. It can be a little unnoticed because the folder is sort of hidden, but exist.</p>
               <p>
-                content
+                This part of the template is in charge of store service providers, jobs, default routes and controllers, auto-loaders, core helpers, default configurations, etc.
               </p>
+
+              <br />
+
+              <h4>"As inside is outside"</h4>
+
+              <p>The core folder structure is similar to the structure you see inside the <code>src</code> directory.</p>
+
+              <br />
+
+              <span class="badge badge-secondary">providers/core</span>
+
+              <div class="docs-code-block">
+                <pre class="rounded">
+                <code class="misc hljs"> └──  app/
+ │  ├────  bootstrap.ts
+ │  ├────  controllers/
+ │  └────  routes/
+ ├──  config/
+ ├──  helpers/
+ ├──  interfaces/
+ ├──  jobs/
+ ├──  libs/
+ ├──  utils/
+ ├──  bananasplit.json
+ └──  index.ts</code>
+                </pre>
+              </div>
+
+              <br />
+
+              <p><b>Let's check what each part is in charge to:</b></p>
+
+              <ul>
+                <li><code>/app</code> contains default routes, controllers and the services bootstrap.</li>
+                <li><code>/config</code> stores default configurations, for example, sequelize.</li>
+                <li><code>/helpers</code> stores isolated parts of logic in order to make provider classes lighter.</li>
+                <li><code>/interfaces</code> stores shared types and interfaces alogn the core.</li>
+                <li><code>/jobs</code> stores the built-in commands scripts.</li>
+                <li><code>/libs</code> stores the service providers classes.</li>
+                <li><code>/utils</code> stores utilities and resources which are exposed to the developer.</li>
+                <li><code>bananasplit.json</code> default bananasplit-js settings file.</li>
+                <li><code>index.ts</code> bananasplit-js core entry point.</li>
+              </ul>
+
+              <br />
+
+              <p>Even though Bananasplit-js is built in order to avoid touch the core, by changing any of those files you will be able to change the complete Bananasplit-js behavior.</p>
+
+              <p><b>Only is recommended to do if you really need to cover very specifics and advanced needs.</b></p>
             </section>
 
             <section class="docs-section" id="extend">
@@ -2969,7 +3019,17 @@ export default (app: Application) => {
               <br />
 
               <p>
-                The Sequelize Provider, contrary to the Express Provider, doesn't use helpers functions and all his logic is defined in this simple class.
+                The Sequelize Provider, contrary to the Express Provider, doesn't use helpers. All his logic is defined in this simple class.
+              </p>
+
+              <br /><br />
+
+              <h3>Conclusion</h3>
+
+              <p>By modifying the providers methods and attributes you will be able to extend their functionallity as you want.</p>
+
+              <p>
+                This is recommended for very specific needs only.
               </p>
             </section><!--//section-->
 
