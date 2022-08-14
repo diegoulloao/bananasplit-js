@@ -112,7 +112,7 @@
             <li class="nav-item"><a class="nav-link scrollto" href="#express-settings">Express</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#bananasplit-js">Bananasplit-js</a></li>
             <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#advanced"><span class="theme-icon-holder mr-2"><i class="fas fa-laptop-code"></i></span>Advanced</a></li>
-            <li class="nav-item"><a class="nav-link scrollto" href="#filestructure">The core</a></li>
+            <li class="nav-item"><a class="nav-link scrollto" href="#core">The core</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#extend">Extending providers</a></li>
             <li class="nav-item"><a class="nav-link scrollto" href="#addons">Addons</a></li>
             <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#changelog"><span class="theme-icon-holder mr-2"><i class="fas fa-clipboard"></i></span>Changelog</a></li>
@@ -2293,9 +2293,7 @@ const product2 = createProduct({
             <section id="express-config" class="docs-section">
               <h2 class="section-heading">Express</h2>
 
-              <p>
-                content
-              </p>
+              <p>Express comes already configurated and no options object is needed. Anyway you may need to change the default port.</p>
 
               <br />
 
@@ -2994,22 +2992,68 @@ export default (app: Application) => {
             </header>
 
             <section class="docs-section" id="logs">
-              <div class="mb-5"><h1 class="section-heading">v1.1.0 - 2020-05-01</h1><hr/></div>
+              <div class="mb-5"><h1 class="section-heading">v2.0.0 - 2022-04-25</h1><hr/></div>
+
               <h3>Added</h3>
               <ul>
-                <li>Bananasplit will pick all configurations from the .env file variables.</li>
-                <li>Sequelize and Sequelize Client will automatically manage the correct configuration for your app enviroment in development, testing and production.</li>
+                <li>Router-dex as stand-alone module (route inspector)</li>
+                <li>Generator script to generate resources directly in CLI</li>
+                <li>Generator High Order Function that provides extra functionalities</li>
+                <li><code>bananasplit.json</code> which provides functions to easily include statics in the <code>dist</code> package</li>
+                <li>Build optimization</li>
+                <li>Pre-build, post-build and build merged into build</li>
+                <li>Controller functions: index, create, update and delete</li>
+                <li>New <code>router-dex</code> version (windows compatibility fixed)</li>
               </ul>
 
               <br/>
 
               <h3>Changed</h3>
               <ul>
-                <li>Database dialect moved from app.settings to enviroment variables file.</li>
-                <li>Morgan and SassMiddleware logs deactivated for testing (jest) and production.</li>
-                <li>Added popper.js (for bootstrap) directly as npm package and not from the bootstrap package resources.</li>
-                <li>Packages updated to last version (except @types/express 4.17.2 for troubles).</li>
-                <li>Minor changes and improvements.</li>
+                <li>Removed Handlebars, SASS, SASS Middleware, statics...</li>
+                <li>Auto-loaded routes</li>
+                <li>Bug fixes in general app and scripts (jobs)</li>
+                <li>Bug fix: Model (types)</li>
+                <li>Little changes and improvements in Providers (Express, Sequelize)</li>
+                <li>New strategy loading express parts (middlewares, controllers, routes)</li>
+                <li>Improved code readability for all the app</li>
+                <li>Typescript custom aliases moved to independent file <code>tsconfig.paths.json</code></li>
+                <li>Upgraded packages dependencies</li>
+                <li>Improved tests</li>
+                <li>Console outputs improved</li>
+                <li>Scripts error handling improved</li>
+                <li>Fixes in JSDocs</li>
+                <li>New <code>README</code></li>
+                <li>Lint fix script command and configuration</li>
+                <li>Windows issues corrections</li>
+                <li>Model properties are now declared</li>
+                <li>Alias paths are automatically init when running the app <code>alias-hq/init</code></li>
+                <li>Module alias removed, all works with alias-hq</li>
+                <li>Setup files renamed</li>
+                <li>Setup files are deleted at the end of the <code>build-stack</code> process</li>
+                <li>Already installed drivers better control (when running <code>build-stack</code> twice)</li>
+                <li>Morgan presets for development and production</li>
+              </ul>
+
+              <br /><br />
+
+              <div class="mb-5"><h1 class="section-heading">v1.1.0 - 2020-05-01</h1><hr/></div>
+
+              <h3>Added</h3>
+              <ul>
+                <li>Bananasplit will pick all configurations from the .env file variables</li>
+                <li>Sequelize and Sequelize Client will automatically manage the correct configuration for your app enviroment in development, testing and production</li>
+              </ul>
+
+              <br/>
+
+              <h3>Changed</h3>
+              <ul>
+                <li>Database dialect moved from app.settings to enviroment variables file</li>
+                <li>Morgan and SassMiddleware logs deactivated for testing (jest) and production</li>
+                <li>Added popper.js (for bootstrap) directly as npm package and not from the bootstrap package resources</li>
+                <li>Packages updated to last version (except @types/express 4.17.2 for troubles)</li>
+                <li>Minor changes and improvements</li>
               </ul>
             </section><!--//section-->
           </article><!--//docs-article-->
