@@ -10599,7 +10599,7 @@ body:not(.docs-page) {
 }
 @media only screen and (max-width: 1024px) {
   #top-carousel .carousel-item.template div:last-child ul li svg {
-    margin-right: 14px;
+    margin-right: 10px;
   }
 }
 #top-carousel .carousel-item.template div:last-child a.btn-primary {
@@ -10806,7 +10806,7 @@ body:not(.docs-page) {
     display: none;
   }
   #template-mobile .template > div:last-child ul li svg {
-    margin-right: 3px;
+    margin-right: 8px;
     color: #e94665;
   }
 }
@@ -11075,7 +11075,7 @@ section#get-started .fancy span:after {
   }
   section#get-started .get-started-step,
 section#get-started .fancy {
-    margin: 25px 0 !important;
+    margin: 35px 0 !important;
   }
 }
 .home-title-icon {
@@ -11301,7 +11301,7 @@ div.codePreview {
 
 @media only screen and (max-width: 768px) {
   #codebox .container {
-    gap: 45px;
+    gap: 75px;
   }
   #codebox .container .code-box-container {
     grid-template-columns: 100%;
@@ -11346,7 +11346,7 @@ div.codePreview {
 }
 @media only screen and (max-width: 576px) {
   #codebox .container {
-    gap: 0;
+    gap: 35px;
     padding-left: 15px;
     padding-right: 15px;
   }
@@ -11354,7 +11354,7 @@ div.codePreview {
     padding-top: 28px;
   }
   #codebox .container .code-box-container:not(:first-of-type) .code-descr span {
-    padding-bottom: 28px;
+    padding-bottom: 33px;
   }
 }
 div.codePreview > .dots {
