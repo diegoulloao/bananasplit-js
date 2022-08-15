@@ -10828,7 +10828,6 @@ body:not(.docs-page) {
 
 .logo-text {
   font-family: "Pacifico", cursive;
-  letter-spacing: 1.5px;
   color: #45505e !important;
 }
 
@@ -11356,7 +11355,7 @@ div.codePreview {
   #codebox .container .code-box-container:not(:first-of-type) {
     padding-top: 28px;
   }
-  #codebox .container .code-box-container:not(:first-of-type) .code-descr span {
+  #codebox .container .code-box-container .code-descr span {
     padding-bottom: 33px;
   }
 }
