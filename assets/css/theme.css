@@ -10594,12 +10594,12 @@ body:not(.docs-page) {
   display: none;
 }
 #top-carousel .carousel-item.template div:last-child ul li svg {
-  margin-right: 10px;
+  margin-right: 14px;
   color: #e94665;
 }
 @media only screen and (max-width: 1024px) {
   #top-carousel .carousel-item.template div:last-child ul li svg {
-    margin-right: 12px;
+    margin-right: 14px;
   }
 }
 #top-carousel .carousel-item.template div:last-child a.btn-primary {
@@ -10915,7 +10915,24 @@ body::-webkit-scrollbar-thumb {
   font-weight: 600;
   color: #ef84a3;
 }
-
+#home-title span.title-js.xl {
+  font-size: 92px;
+}
+@media only screen and (max-width: 500px) {
+  #home-title span.title-js.xl {
+    font-size: 76px;
+  }
+}
+@media only screen and (max-width: 414px) {
+  #home-title span.title-js.xl {
+    font-size: 66px;
+  }
+}
+@media only screen and (max-width: 376px) {
+  #home-title span.title-js.xl {
+    font-size: 62px;
+  }
+}
 span.banana-text,
 #home-title .logo-text {
   color: #45505e !important;

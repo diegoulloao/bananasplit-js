@@ -62,7 +62,7 @@
     <section id="banana-header-logo" class="cta-section banana-bg text-center py-5 position-relative">
       <div class="container">
         <div id="home-title">
-          <span class="logo-text">Banana</span><span class="text-alt">split</span><span class="title-js">JS</span>
+          <span class="logo-text">Banana</span><span class="text-alt">split</span><span class="title-js xl">JS</span>
         </div>
 
         <h1 style="color:#935435;font-weight:500" class="mt-2">An express.js <span style="color:#e94665">superset template</span> that brings to you a background to quickly develop your app</h1>
@@ -97,7 +97,7 @@
           <div class="col-lg-3 col-md-4 col-6 d-flex justify-content-center"><img src="assets/images/features/express-logo.svg" alt="express"></div>
           <div class="col-lg-3 col-md-4 col-6 d-flex justify-content-center"><img src="assets/images/features/typescript-logo.svg" alt=""></div>
           <div class="col-lg-3 col-md-4 col-6 d-flex justify-content-center"><img src="assets/images/features/sequelize-logo.svg" alt=""></div>
-          <div class="col-lg-3 col-md-4 col-6 d-flex justify-content-center"><img src="assets/images/features/jest-logo.svg" alt=""></div>
+          <div class="col-lg-3 col-md-4 col-6 d-flex justify-content-center"><img src="assets/images/features/jest-logo.svg" alt="" style="width:60%"></div>
           <!--<div class="col-lg-3 col-md-4 col-6 d-flex justify-content-center"><img src="assets/images/features/apollo-logo.svg" alt="graphql"></div>-->
         </div>
       </div>
@@ -143,7 +143,7 @@
       <div class="container">
         <div class="selection-secondary">
           <h2 class="mb-3"><i class="fas fa-plus mr-2"></i>Create a new project</h2>
-          <code>npx bananasplit-js new "my-app" --git|-g</code>
+          <code>npx bananasplit-js new "my-app" --git</code>
         </div>
 
         <p class="subtitle fancy">
@@ -172,7 +172,7 @@
       <h1 class="home-title">How it works</h1>
       <p>Easy and fast as you can't imagine</p>
 
-      <div class="container">
+      <div class="container mt-2">
         <div class="code-box-container">
           <div class="codePreview">
             <span class="dots"></span>
@@ -195,7 +195,7 @@ DB_PASSWORD=secret</code>
           <div class="code-descr">
             <span>
               <h3>Set your environment variables</h3>
-              <p>Add your database engine, your database name (no need to create it), and the credentials.</p>
+              <p>Add your database engine, database name, and credentials. No need to create the database.</p>
             </span>
           </div>
         </div>
@@ -217,7 +217,7 @@ npm run build:stack</code>
           <div class="code-descr">
             <span>
               <h3>Run the stack builder</h3>
-              <p>It will detect your package manager and database to install Express, Typescript, Sequelize, Jest, your Database Driver and more! Also it will run an integration test to check the setup</p>
+              <p>It detects your package manager and database in order to install Express, Typescript, Sequelize, Jest and drivers! It also will run an integration test to check the setup</p>
             </span>
           </div>
         </div>
@@ -229,7 +229,8 @@ npm run build:stack</code>
             <input type="checkbox" class="dots" />
             <input type="checkbox" class="dots" />
             <pre class="rounded">
-              <code class="misc hljs"># which is yours?
+              <code class="misc hljs"># choose your package manager
+
 yarn dev
 npm run dev</code>
             </pre>
@@ -238,7 +239,7 @@ npm run dev</code>
           <div class="code-descr">
             <span>
               <h3>Start the development server</h3>
-              <p>The services are already written. Your database is already created. Just run the development server and code the business!</p>
+              <p>The services are already written. Your database is already created. Just run the development server and start to code!</p>
             </span>
 
           </div>
@@ -263,7 +264,7 @@ yarn lint:fix</code>
           <div class="code-descr">
             <span>
               <h3>¿Need to perform an action?</h3>
-              <p>The swiss knife of scripts. Just pick up what you need: Run the route and middleware inspector, create resources in command-line to use in your REST client, run tests in coverage mode, and more...</p>
+              <p>The swiss knife of scripts. Pick up what you need: Run the route inspector, create fake data in command-line, run tests in coverage mode, etc...</p>
             </span>
           </div>
         </div>
@@ -283,8 +284,8 @@ yarn lint:fix</code>
           </div>
 
           <div class="col-lg-9 col-md-7 col-sm-12 feature-wonderful align-self-center text-lg-left text-sm-center pr-0 pl-0">
-            <h2 class="ml-1 text-lg-left mt-5 mt-md-0">Backend can be wonderful<span style="color:#eb628a">! * _</span></h2>
-            <span class="badge badge-success mt-lg-2 mt-3 p-2" style="background:#fcf0da;color:#1a1e23;font-size:14px">
+            <h2 class="ml-1 text-lg-left mt-5 mt-md-0">Backend can be wonderful<span style="color:#eb628a">!* _</span></h2>
+            <span class="badge badge-success mt-lg-0 mt-3 p-2" style="background:#fcf0da;color:#1a1e23;font-size:14px">
               import { Stack } from '@bananasplit-js'
             </span>
             <br/><br/><br class="d-block d-md-none" />
@@ -410,7 +411,7 @@ yarn lint:fix</code>
         let alert = new Noty({
           id: 'banana-alert',
           type: 'warning',
-          text: '<span style="color:#45505e"><b><i class="fas fa-grin-stars mr-2"></i>Version 2 is available!</b><br/>Try the new features</span>',
+          text: '<span style="color:#45505e"><b><i class="fas fa-grin-stars mr-2"></i>Version 2 released!</b><br/>Try the new features</span>',
           theme: 'bootstrap-v4',		// mint | relax | nest | light | bootstrap-v4
           timeout: 4000,
           animation: {
