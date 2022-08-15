@@ -10627,7 +10627,7 @@ body:not(.docs-page) {
 @media only screen and (max-width: 768px) {
   #home-title {
     margin-top: 0 !important;
-    margin-bottom: 35px !important;
+    margin-bottom: 0 !important;
   }
 
   #top-carousel {
@@ -10742,7 +10742,7 @@ body:not(.docs-page) {
     display: block !important;
   }
   #template-mobile h1:first-child {
-    margin-bottom: 40px;
+    margin-bottom: 34px;
     font-size: 56px;
     font-family: Pacifico, cursive;
     font-weight: 500;
@@ -10767,7 +10767,7 @@ body:not(.docs-page) {
     max-width: 300px;
   }
   #template-mobile .template > div:last-child {
-    margin-top: 48px;
+    margin-top: 54px;
   }
   #template-mobile .template > div:last-child h5 {
     margin-top: 0.5rem !important;
@@ -10796,8 +10796,11 @@ body:not(.docs-page) {
     color: #1a1e23;
     font-size: 1.2rem;
   }
+  #template-mobile .template > div:last-child ul li svg {
+    font-size: 1.0rem;
+  }
   #template-mobile .template > div:last-child ul li:not(:first-of-type) {
-    padding-top: 18px;
+    padding-top: 11px;
   }
   #template-mobile .template > div:last-child ul li::before {
     font-family: "Font Awesome 5 Free";
@@ -11318,7 +11321,7 @@ div.codePreview {
   }
   #codebox .container .code-box-container .code-descr h3 {
     font-size: 1.4rem;
-    margin-bottom: 4px;
+    margin-bottom: 8px;
   }
   #codebox .container .code-box-container .code-descr span {
     border: none;
