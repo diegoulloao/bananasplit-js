@@ -45,6 +45,16 @@
   box-sizing: border-box;
 }
 
+:not(.selection-secondary)::selection {
+  background-color: var(--primary);
+  color: #000;
+}
+
+.selection-secondary *::selection {
+  background-color: #bae2e2 !important;
+  color: #000 !important;
+}
+
 html {
   font-family: sans-serif;
   line-height: 1.15;
@@ -131,7 +141,7 @@ blockquote {
 
 b,
 strong {
-  font-weight: bolder;
+  font-weight: 600;
 }
 
 small {
@@ -418,6 +428,15 @@ h6, .h6 {
   line-height: 1.2;
 }
 
+.font-93 {
+  font-size: 93%;
+}
+
+.hljs.highlighted {
+  background-color: #b9e2e2 !important;
+  color: #1a1e23 !important;
+}
+
 hr {
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -554,6 +573,10 @@ pre code {
 @media (min-width: 768px) {
   .container {
     max-width: 720px;
+  }
+
+  .hljs.xs {
+    padding: 1.3rem 2rem !important;
   }
 }
 @media (min-width: 992px) {
@@ -1514,6 +1537,11 @@ pre code {
   padding: 0.75rem;
   vertical-align: top;
   border-top: 1px solid #cad0d8;
+}
+.table th.borderless,
+.table td.borderless {
+  border-top: none;
+  padding-top: 0;
 }
 .table thead th {
   vertical-align: bottom;
@@ -10530,17 +10558,6 @@ body:not(.docs-page) {
   text-align: right;
   position: relative;
 }
-#top-carousel .carousel-item.template > div:first-child::before {
-  content: "";
-  width: 307px;
-  height: 547px;
-  position: absolute;
-  bottom: 14px;
-  right: 14px;
-  border: 2px dashed rgba(255, 255, 255, 0.8);
-  background-image: repeating-linear-gradient(-24deg, transparent, transparent 4px, rgba(255, 255, 255, 0.5) 0, rgba(255, 255, 255, 0.5) 5px);
-  z-index: -1;
-}
 #top-carousel .carousel-item.template div:last-child {
   display: grid;
   align-items: center;
@@ -10577,12 +10594,12 @@ body:not(.docs-page) {
   display: none;
 }
 #top-carousel .carousel-item.template div:last-child ul li svg {
-  margin-right: 10px;
+  margin-right: 14px;
   color: #e94665;
 }
 @media only screen and (max-width: 1024px) {
   #top-carousel .carousel-item.template div:last-child ul li svg {
-    margin-right: 12px;
+    margin-right: 10px;
   }
 }
 #top-carousel .carousel-item.template div:last-child a.btn-primary {
@@ -10594,10 +10611,11 @@ body:not(.docs-page) {
   border-color: #e94665;
 }
 #top-carousel img#banana-logo {
-  height: -webkit-fill-available;
+  height: auto;
+  max-height: 560px !important;
 }
 #top-carousel img#banana-code {
-  width: auto;
+  width: 100%;
   max-height: 547px;
   border-radius: 0.25rem;
 }
@@ -10609,7 +10627,7 @@ body:not(.docs-page) {
 @media only screen and (max-width: 768px) {
   #home-title {
     margin-top: 0 !important;
-    margin-bottom: 35px !important;
+    margin-bottom: 0 !important;
   }
 
   #top-carousel {
@@ -10622,11 +10640,6 @@ body:not(.docs-page) {
   #top-carousel .carousel-item.template {
     padding-top: 25px;
   }
-  #top-carousel .carousel-item.template > div:first-child::before {
-    bottom: 10px;
-    left: -10px;
-  }
-
   img#banana-logo {
     width: 83%;
     height: auto !important;
@@ -10654,17 +10667,6 @@ body:not(.docs-page) {
   #top-carousel .carousel-item.template div:last-child h1 {
     font-size: 41px;
     margin-bottom: 7px !important;
-  }
-  #top-carousel .carousel-item.template::before {
-    content: "";
-    width: 240px;
-    height: 482px;
-    position: absolute;
-    bottom: 14px;
-    left: -14px;
-    border: 2px dashed #fff;
-    background-image: repeating-linear-gradient(-24deg, transparent, transparent 4px, rgba(255, 255, 255, 0.5) 0, rgba(255, 255, 255, 0.5) 5px);
-    z-index: -1;
   }
   #top-carousel .carousel-item.template div:last-child h5,
 #top-carousel .carousel-item.template div:last-child ul li {
@@ -10731,9 +10733,6 @@ body:not(.docs-page) {
   #top-carousel .carousel-inner {
     display: flex;
   }
-  #top-carousel .carousel-item:first-child h1 {
-    height: -webkit-fill-available;
-  }
   #top-carousel .carousel-item:first-child img#banana-logo {
     height: auto !important;
     width: 100%;
@@ -10743,7 +10742,7 @@ body:not(.docs-page) {
     display: block !important;
   }
   #template-mobile h1:first-child {
-    margin-bottom: 40px;
+    margin-bottom: 34px;
     font-size: 56px;
     font-family: Pacifico, cursive;
     font-weight: 500;
@@ -10759,28 +10758,16 @@ body:not(.docs-page) {
 #template-mobile .template div:last-child ul li {
     font-size: 1.125rem;
   }
-  #template-mobile .template::before {
-    content: "";
-    width: 307px;
-    height: 547px;
-    position: absolute;
-    top: -14px;
-    left: -28px;
-    right: 0;
-    margin: 0 auto;
-    border: 2px dashed #fff;
-    background-image: repeating-linear-gradient(-24deg, transparent, transparent 4px, rgba(255, 255, 255, 0.5) 0, rgba(255, 255, 255, 0.5) 5px);
-    z-index: -1;
-  }
   #template-mobile .template > div:first-child {
     text-align: center;
     overflow: hidden;
   }
   #template-mobile .template > div:first-child img#banana-code {
     border-radius: 0.25rem;
+    max-width: 300px;
   }
   #template-mobile .template > div:last-child {
-    margin-top: 48px;
+    margin-top: 54px;
   }
   #template-mobile .template > div:last-child h5 {
     margin-top: 0.5rem !important;
@@ -10809,8 +10796,11 @@ body:not(.docs-page) {
     color: #1a1e23;
     font-size: 1.2rem;
   }
+  #template-mobile .template > div:last-child ul li svg {
+    font-size: 1.0rem;
+  }
   #template-mobile .template > div:last-child ul li:not(:first-of-type) {
-    padding-top: 18px;
+    padding-top: 11px;
   }
   #template-mobile .template > div:last-child ul li::before {
     font-family: "Font Awesome 5 Free";
@@ -10819,7 +10809,7 @@ body:not(.docs-page) {
     display: none;
   }
   #template-mobile .template > div:last-child ul li svg {
-    margin-right: 3px;
+    margin-right: 8px;
     color: #e94665;
   }
 }
@@ -10838,7 +10828,6 @@ body:not(.docs-page) {
 
 .logo-text {
   font-family: "Pacifico", cursive;
-  letter-spacing: 1.5px;
   color: #45505e !important;
 }
 
@@ -10928,7 +10917,24 @@ body::-webkit-scrollbar-thumb {
   font-weight: 600;
   color: #ef84a3;
 }
-
+#home-title span.title-js.xl {
+  font-size: 92px;
+}
+@media only screen and (max-width: 500px) {
+  #home-title span.title-js.xl {
+    font-size: 76px;
+  }
+}
+@media only screen and (max-width: 414px) {
+  #home-title span.title-js.xl {
+    font-size: 66px;
+  }
+}
+@media only screen and (max-width: 376px) {
+  #home-title span.title-js.xl {
+    font-size: 62px;
+  }
+}
 span.banana-text,
 #home-title .logo-text {
   color: #45505e !important;
@@ -11004,74 +11010,74 @@ h1.home-title + p {
   margin-bottom: 0 !important;
 }
 
-#get-started {
+section#get-started {
   background: #bae2e2;
   overflow: hidden;
 }
-#get-started .container {
+section#get-started .container {
   padding-top: 40px;
 }
-#get-started h1 {
+section#get-started h1 {
   color: #1a1e23;
 }
-#get-started h2 {
+section#get-started h2 {
   color: #45505e;
 }
-#get-started .get-started-step {
+section#get-started .get-started-step {
   margin-top: 40px;
 }
-#get-started code {
+section#get-started code {
   padding: 20px 0;
   width: 500px;
   text-align: center;
   display: inline-block;
   background: #ef84a3;
 }
-#get-started .fancy {
+section#get-started .fancy {
   line-height: 1;
   text-align: center;
   margin: 40px 0 !important;
 }
-#get-started .fancy span {
+section#get-started .fancy span {
   display: inline-block;
   position: relative;
 }
-#get-started .fancy span i {
+section#get-started .fancy span i {
   font-family: "Poppins", cursive;
   font-size: 18px;
   font-weight: 500;
   font-style: normal;
   color: #45505e;
 }
-#get-started .fancy span:before,
-#get-started .fancy span:after {
+section#get-started .fancy span:before,
+section#get-started .fancy span:after {
   content: "";
   position: absolute;
-  height: 10px;
+  height: 20px;
   background-color: #45505e;
   width: 3px;
 }
-#get-started .fancy span:before {
+section#get-started .fancy span:before {
   right: calc(50% - 1px);
-  top: -8px;
+  top: -22px;
 }
-#get-started .fancy span:after {
+section#get-started .fancy span:after {
   left: calc(50% - 2px);
-  bottom: -12px;
+  bottom: -22px;
 }
 
 @media only screen and (max-width: 768px) {
-  #get-started h2 {
+  section#get-started h2 {
     font-size: 1.4rem;
   }
 }
 @media only screen and (max-width: 480px) {
-  #get-started .container code {
+  section#get-started .container code {
     width: 100%;
   }
-  #get-started .get-started-step,
-#get-started .fancy {
-    margin: 25px 0 !important;
+  section#get-started .get-started-step,
+section#get-started .fancy {
+    margin: 35px 0 !important;
   }
 }
 .home-title-icon {
@@ -11153,6 +11159,13 @@ h1.home-title + p {
   font-size: 15px;
   margin-top: 15px;
   margin-bottom: 20px;
+}
+
+.feature-wonderful h2 {
+  font-family: Pacifico, cursive;
+  font-weight: 500;
+  font-size: 50px;
+  color: #45505e;
 }
 
 :root {
@@ -11282,9 +11295,15 @@ div.codePreview {
   font-size: 1rem;
 }
 
+.lottie-programmer {
+  width: 270px;
+  height: 270px;
+  margin-left: -50px !important;
+}
+
 @media only screen and (max-width: 768px) {
   #codebox .container {
-    gap: 45px;
+    gap: 75px;
   }
   #codebox .container .code-box-container {
     grid-template-columns: 100%;
@@ -11301,7 +11320,7 @@ div.codePreview {
   }
   #codebox .container .code-box-container .code-descr h3 {
     font-size: 1.4rem;
-    margin-bottom: 4px;
+    margin-bottom: 8px;
   }
   #codebox .container .code-box-container .code-descr span {
     border: none;
@@ -11310,6 +11329,10 @@ div.codePreview {
   }
   #codebox .container .code-box-container .code-descr svg {
     display: none;
+  }
+
+  .lottie-programmer {
+    margin-left: auto !important;
   }
 }
 @media only screen and (max-width: 767px) {
@@ -11325,15 +11348,15 @@ div.codePreview {
 }
 @media only screen and (max-width: 576px) {
   #codebox .container {
-    gap: 0;
+    gap: 35px;
     padding-left: 15px;
     padding-right: 15px;
   }
   #codebox .container .code-box-container:not(:first-of-type) {
     padding-top: 28px;
   }
-  #codebox .container .code-box-container:not(:first-of-type) .code-descr span {
-    padding-bottom: 28px;
+  #codebox .container .code-box-container .code-descr span {
+    padding-bottom: 33px;
   }
 }
 div.codePreview > .dots {
